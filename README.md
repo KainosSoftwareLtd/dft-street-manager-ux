@@ -1,27 +1,26 @@
-# GOV.UK Prototype kit · [![Greenkeeper badge](https://badges.greenkeeper.io/alphagov/govuk_prototype_kit.svg)](https://greenkeeper.io/)
+# DfT Street Manager UX prototype
 
-Go to the [GOV.UK Prototype Kit site](https://govuk-prototype-kit.herokuapp.com/docs) to download the latest version and read the documentation.
+This repository is forked off [alphagov/govuk_prototype_kit](https://github.com/alphagov/govuk_prototype_kit).
 
-## About the prototype kit
+## About
 
-The prototype kit provides a simple way to make interactive prototypes that look like pages on GOV.UK. These prototypes can be used to show ideas to people you work with, and to do user research.
+This is a simple UX prototype and style guide for the DfT Street Manager service, intended to help share designs and patterns.
 
-Read the [project principles](https://govuk-prototype-kit.herokuapp.com/docs/principles).
+## Requires
 
-## Security
+* [Node JS](https://nodejs.org)
 
-If you publish your prototypes online, they **must** be protected by a [username and password](https://govuk-prototype-kit.herokuapp.com/docs/publishing-on-heroku). This is to prevent members of the public finding prototypes and thinking they are real services.
+## Run
 
-You must protect user privacy at all times, even when using prototypes. Prototypes made with the kit look like GOV.UK, but do not have the same security provisions. Always make sure you are handling user data appropriately.
+```
+npm install
+npm start
+# open browser to http://localhost:3000
+```
 
-## Installation instructions
+## Creating a new iteration
 
-- [Installation guide for new users (non technical)](https://govuk-prototype-kit.herokuapp.com/docs/install/introduction)
-- [Installation guide for developers (technical)](https://govuk-prototype-kit.herokuapp.com/docs/install/developer-install-instructions)
+1. Copy previous iteration folder to create new folder for views, e.g. `/app/views/alpha/v1-0` to `/app/views/alpha/v1-1`
+2. Update `/app/views/index.html` with link and header to new iteration
 
-## Community
-
-We have two Slack channels for the Prototype kit. You'll need a government email address to join them.
-
-* [Slack channel for users of the prototype kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit/)
-* [Slack channel for developers of the prototype kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit-dev/)
+See `/docs/views/examples` for page examples and [prototype documentation](https://govuk-prototype-kit.herokuapp.com/docs/tutorials-and-examples) for details on how to handle interactions.
