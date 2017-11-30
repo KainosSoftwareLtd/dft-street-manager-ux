@@ -1,0 +1,30 @@
+{% extends "map/v1-0/map_layout.html" %}
+
+{% block page_title %}
+  Map
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <h2>Map</h2>
+    <div id="map" class="map"></div>
+</main>
+
+<script type="text/javascript">
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([37.41, 8.82]),
+      zoom: 4
+    })
+  });
+</script>
+{% endblock %}
