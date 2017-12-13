@@ -11,8 +11,8 @@ router.post('/alpha/v1-0/sign-in.html', function (req, res) {
     case 'promo@sm.com' :
       res.redirect('/alpha/v1-0/promoter-planner-home.html')
       break
-    case 'auth@sm.com' :
-      res.render()
+    case 'ha@sm.com' :
+      res.redirect('/alpha/v1-0/ha-officer-home.html')
       break
     default:
       res.render('alpha/v1-0/sign-in.html', {validationError: 'Invalid login credentials.'})
