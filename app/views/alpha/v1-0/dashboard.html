@@ -1,0 +1,46 @@
+<div class="admin">
+    {% extends "layout.html" %}
+
+    {% block content %}
+
+    <main id="content" role="main">
+
+        {% include "includes/phase_banner_alpha.html" %}
+
+        <div id="dashboard" class="grid-row">
+            <div class="column-one-third">
+                <h2 class="heading-medium">Pending</h2>
+                <span class="number">248</span>
+            </div>
+
+            <div class="column-one-third">
+                <h2 class="heading-medium">In progress</h2>
+                <span class="number">318</span>
+            </div>
+
+            <div class="column-one-third">
+                <h2 class="heading-medium">Paid</h2>
+                <span class="number">786</span>
+            </div>
+
+            <div class="column-one-third">
+                <h2 class="heading-medium">Auto approved</h2>
+                <span class="number">592</span>
+            </div>
+
+            <div class="column-one-third">
+                <h2 class="heading-medium">Manually approved</h2>
+                <span class="number">194</span>
+            </div>
+
+            <div class="column-one-third">
+                <h2 class="heading-medium">Rejected</h2>
+                <span class="number">42</span>
+            </div>
+        </div>
+
+    </main>
+
+    {% endblock %}
+
+</div>
