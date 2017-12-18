@@ -48,7 +48,6 @@ $path: "/public/images/";
   border: 1px solid $grey-2;
 }
 
-
 #dashboard .number {
   font-size:65px;
   font-weight:bold;
@@ -116,6 +115,10 @@ $path: "/public/images/";
 
 }
 
+.container-button-right .button{
+  margin-top: 2em;
+  float: right;
+}
 
 .advanced-search {
   margin:0 0 0 20px;
