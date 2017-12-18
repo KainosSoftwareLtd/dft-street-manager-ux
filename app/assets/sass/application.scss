@@ -30,13 +30,24 @@ $path: "/public/images/";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 #dashboard h2 {
-
-  border-top:2px solid #bfc1c3;
   font-size:30px;
   font-weight:bold;
   margin:30px 0 5px 0;
   padding:15px 0 0 0;
 }
+
+#dashboard .container-metrics {
+  background: $grey-4;
+  margin: 1em 0;
+}
+
+#dashboard .box-metrics {
+  background: white;
+  margin: 1em;
+  padding: 0em 1em;
+  border: 1px solid $grey-2;
+}
+
 
 #dashboard .number {
   font-size:65px;
