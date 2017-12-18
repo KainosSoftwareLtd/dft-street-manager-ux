@@ -29,3 +29,83 @@ $path: "/public/images/";
 }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+#dashboard h2 {
+
+  border-top:2px solid #bfc1c3;
+  font-size:30px;
+  font-weight:bold;
+  margin:30px 0 5px 0;
+  padding:15px 0 0 0;
+}
+
+#dashboard .number {
+  font-size:65px;
+  font-weight:bold;
+}
+
+#sub-nav{
+
+  background-color: #fff;
+  border-bottom: 1px solid #bfc1c3;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  padding: 0;
+  z-index: 999;
+
+}
+#sub-nav li{
+  position:relative;
+  display:inline;
+}
+#sub-nav a{
+  display: inline-block;
+  font-weight: bold;
+  margin: 0;
+  outline: 0;
+  padding: 15px 30px;
+  text-decoration: none;
+}
+#sub-nav ul{
+  position:absolute;
+  /*top:100%; Uncommenting this makes the dropdowns work in IE7 */
+  left:-9999px;
+  margin:0;
+  padding:0;
+  text-align:left;
+}
+#sub-nav ul li{
+  display:block;
+}
+#sub-nav li:hover ul{
+  left:0;
+}
+#sub-nav li:hover a{
+  text-decoration:underline;
+  background:#f1f1f1;
+}
+#sub-nav li:hover ul a{
+  text-decoration:none;
+  background:#dde0e2;
+}
+#sub-nav li:hover ul a:hover{
+  text-decoration:underline;
+  background:#f1f1f1;
+}
+#sub-nav ul a{
+  white-space:nowrap;
+  display:block;
+  border-bottom:1px solid #ccc;
+}
+
+#sub-nav li a.active{
+  font-weight: bold;
+  background-color: #004A83;
+  color:#fff;
+
+
+}
+
+
+.advanced-search {
+  margin:0 0 0 20px;
+}

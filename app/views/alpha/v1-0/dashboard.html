@@ -7,35 +7,68 @@
 
         {% include "includes/phase_banner_alpha.html" %}
 
+        <ul id="sub-nav">
+
+            <li><a href="index" class="active">Dashboard</a></li>
+            <li><a href="#">Create Job</a></li>
+        </ul>
+
+        <div class="grid-row">
+            <div class="column-one-third">
+                <label class="form-label-bold">Filter by</label>
+                <select class="form-control full">
+                    <option selected>Today</option>
+                    <option>Yesterday</option>
+                    <option>Last 7 days</option>
+                    <option>Older</option>
+                </select>
+            </div>
+        </div>
+
         <div id="dashboard" class="grid-row">
+
+            <div class="column-full">
+                <h2 class="heading-large">Works</h2>
+            </div>
+
             <div class="column-one-third">
-                <h2 class="heading-medium">Pending</h2>
+                <h2 class="heading-medium">Scheduled</h2>
                 <span class="number">248</span>
+                <p><a href="#">View</a></p>
             </div>
 
             <div class="column-one-third">
-                <h2 class="heading-medium">In progress</h2>
-                <span class="number">318</span>
+                <h2 class="heading-medium">Completed</h2>
+                <span class="number">157m</span>
+                <p><a href="#">View</a></p>
+            </div>
+
+            <div class="column-full">
+                <h2 class="heading-large">Permits</h2>
             </div>
 
             <div class="column-one-third">
-                <h2 class="heading-medium">Paid</h2>
-                <span class="number">786</span>
+                <h2 class="heading-medium">Permits/Notices Due</h2>
+                <span class="number">31</span>
+                <p><a href="#">View</a></p>
             </div>
 
             <div class="column-one-third">
-                <h2 class="heading-medium">Auto approved</h2>
-                <span class="number">592</span>
+                <h2 class="heading-medium">Refused Permits</h2>
+                <span class="number">7</span>
+                <p><a href="#">View</a></p>
             </div>
 
             <div class="column-one-third">
-                <h2 class="heading-medium">Manually approved</h2>
-                <span class="number">194</span>
+                <h2 class="heading-medium">Permit Success</h2>
+                <span class="number">40%</span>
+                <p><a href="#">View</a></p>
             </div>
 
             <div class="column-one-third">
-                <h2 class="heading-medium">Rejected</h2>
+                <h2 class="heading-medium">Granted Permits</h2>
                 <span class="number">42</span>
+                <p><a href="#">View</a></p>
             </div>
         </div>
 
