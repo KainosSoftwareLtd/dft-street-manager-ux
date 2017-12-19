@@ -18,6 +18,33 @@ npm start
 # open browser to http://localhost:3000
 ```
 
+## Run using Docker
+**NOTE**
+
+Docker 17.05 or higher on the daemon and client is required
+
+Build:
+
+`docker build -t local/dft-street-manager-ux .`
+
+Run:
+
+`docker run -p 3000:3000 local/dft-street-manager-ux`
+
+Or run in detached mode:
+
+`docker run -p 3000:3000 local/dft-street-manager-ux`
+
+Open browser to http://localhost:3000
+
+If for any reason you need to shell into container, use:
+
+`docker exec -it $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1) /bin/sh`
+
+Stop:
+
+`docker kill $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1)`
+
 ## Creating a new iteration
 
 1. Copy previous iteration folder to create new folder for views, e.g. `/app/views/alpha/v1-0` to `/app/views/alpha/v1-1`
