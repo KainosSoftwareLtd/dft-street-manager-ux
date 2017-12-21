@@ -25,6 +25,61 @@ Create New Work - Street Manager
     </div>
 
     <h2 class="heading-large">Successfully created new work</h2>
+
+    <table>
+        <tr>
+            <td>Work Reference Number</td>
+            <td>{{ data['work-reference-number'] }}</td>
+        </tr>
+        <tr>
+            <td>Promoter Name</td>
+            <td>{{ data['promoter-name'] }}</td>
+        </tr>
+        <td>Promoter Agent</td>
+        <td>{{ data['promoter-agent'] }}</td>
+        </tr>
+        <tr>
+            <td>Highway Authority</td>
+            <td>{{ data['highway-authority'] }}</td>
+        </tr>
+        <tr>
+            <td>USRN</td>
+            <td>{{ data['usrn'] }}</td>
+        </tr>
+        <tr>
+            <td>Proposed Start</td>
+            <td>28/03/2017</td>
+        </tr>
+        <tr>
+            <td>Proposed End</td>
+            <td>30/03/2017</td>
+        </tr>
+        <tr>
+            <td>Date Flexible</td>
+            <td>{{ data['date-flexible-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Description of Work #1</td>
+            <td>{{ data['description-of-work'] }}</td>
+        </tr>
+        <tr>
+            <td>Description of Work #2</td>
+            <td>{{ data['description-of-work-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Contact Details</td>
+            <td>{{ data['contact-details'] }}</td>
+        </tr>
+        <tr>
+            <td>Commercially Sensitive</td>
+            <td>{{ data['commercially-sensitive-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Reinstatement Category</td>
+            <td>{{ data['reinstatement-category'] }}</td>
+        </tr>
+    </table>
+
 </main>
 
 {% endblock %}
