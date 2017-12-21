@@ -18,6 +18,10 @@ router.post('/alpha/v1-0/sign-in.html', function (req, res) {
       res.render('alpha/v1-0/sign-in.html', {validationError: 'Invalid login credentials.'})
   }
 })
+
+router.post('/alpha/v2-0/create-new-work.html', function (req, res) {
+  res.redirect('/alpha/v2-0/success.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router

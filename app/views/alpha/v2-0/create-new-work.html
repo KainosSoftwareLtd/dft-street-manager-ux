@@ -11,6 +11,10 @@ Create New Work - Street Manager
 
     {% include "includes/phase_banner_alpha.html" %}
 
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
     <div class="breadcrumbs">
         <div>
             <!-- the rest of this label is hidden, only used for screenreaders -->
@@ -22,131 +26,134 @@ Create New Work - Street Manager
 
     <h2 class="heading-large">Create New Work</h2>
 
-    <div class="form-group">
-        <label class="form-label" for="work-reference-number">Work Reference Number</label>
-        <input class="form-control" id="work-reference-number" type="text" name="work-reference-number">
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="promoter-name">Promoter Name</label>
-        <input class="form-control" id="promoter-name" name="promoter-name" type="text">
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="promoter-agent">Promoter Agent</label>
-        <input class="form-control" id="promoter-agent" name="promoter-agent" type="text">
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="highway-authority">Highway Authority (optional)</label>
-        <input class="form-control" id="highway-authority" type="text" name="highway-authority">
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="usrn">USRN (optional)</label>
-        <input class="form-control" id="usrn" name="usrn" type="text">
-    </div>
+    <form action="create-new-work.html" method="post" >
 
-    <div class="form-group">
-        <label class="form-label" for="start-date-day">Proposed Start (optional)</label>
-        <fieldset>
-            <div class="form-date">
-                <div class="form-group form-group-day">
-                    <label class="form-label" for="start-date-day">Day</label>
-                    <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31">
+        <div class="form-group">
+            <label class="form-label" for="workreferencenumber">Work Reference Number</label>
+            <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="promotername">Promoter Name</label>
+            <input class="form-control" id="promotername" name="promotername" type="text" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="promoteragent">Promoter Agent</label>
+            <input class="form-control" id="promoteragent" name="promoteragent" type="text" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="highway-authority">Highway Authority (optional)</label>
+            <input class="form-control" id="highway-authority" type="text" name="highway-authority">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="usrn">USRN (optional)</label>
+            <input class="form-control" id="usrn" name="usrn" type="text">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="start-date-day">Proposed Start (optional)</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="start-date-day">Day</label>
+                        <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="start-date-month">Month</label>
+                        <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="start-date-year">Year</label>
+                        <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020">
+                    </div>
                 </div>
-                <div class="form-group form-group-month">
-                    <label class="form-label" for="start-date-month">Month</label>
-                    <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12">
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="end-date-day">Proposed End (optional)</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="end-date-day">Day</label>
+                        <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="end-date-month">Month</label>
+                        <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="end-date-year">Year</label>
+                        <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020">
+                    </div>
                 </div>
-                <div class="form-group form-group-year">
-                    <label class="form-label" for="start-date-year">Year</label>
-                    <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020">
+            </fieldset>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="date-flexible-yes">Date Flexible (optional)</label>
+                <div class="multiple-choice">
+                    <input id="date-flexible-yes" type="radio" name="date-flexible-group" value="Yes">
+                    <label for="date-flexible-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="date-flexible-no" type="radio" name="date-flexible-group" value="No">
+                    <label for="date-flexible-no">No</label>
                 </div>
             </div>
         </fieldset>
-    </div>
 
-    <div class="form-group">
-        <label class="form-label" for="end-date-day">Proposed End (optional)</label>
-        <fieldset>
-            <div class="form-date">
-                <div class="form-group form-group-day">
-                    <label class="form-label" for="end-date-day">Day</label>
-                    <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31">
+        <div class="form-group">
+            <label class="form-label" for="description-of-work">Description of Work #1 (optional)</label>
+            <textarea class="form-control form-control-3-4" name="description-of-work" id="description-of-work" rows="5"></textarea>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="description-of-work-1">Description of Work #2 (optional)</label>
+                <div class="multiple-choice">
+                    <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Yes">
+                    <label for="description-of-work-1">Carriageway resurfacing</label>
                 </div>
-                <div class="form-group form-group-month">
-                    <label class="form-label" for="end-date-month">Month</label>
-                    <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12">
+                <div class="multiple-choice">
+                    <input id="description-of-work-2" type="radio" name="description-of-work-group" value="No">
+                    <label for="description-of-work-2">Footway resurfacing</label>
                 </div>
-                <div class="form-group form-group-year">
-                    <label class="form-label" for="end-date-year">Year</label>
-                    <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020">
+                <div class="multiple-choice">
+                    <input id="description-of-work-3" type="radio" name="description-of-work-group" value="No">
+                    <label for="description-of-work-3">Reinstatement</label>
                 </div>
             </div>
         </fieldset>
-    </div>
 
-    <fieldset class="inline">
         <div class="form-group">
-            <label class="form-label" for="date-flexible-yes">Date Flexible (optional)</label>
-            <div class="multiple-choice">
-                <input id="date-flexible-yes" type="radio" name="radio-inline-group" value="Yes">
-                <label for="date-flexible-yes">Yes</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="date-flexible-no" type="radio" name="radio-inline-group" value="No">
-                <label for="date-flexible-no">No</label>
-            </div>
+            <label class="form-label" for="contact-details">Contact Details (optional)</label>
+            <input class="form-control" id="contact-details" name="contact-details" type="text">
         </div>
-    </fieldset>
 
-    <div class="form-group">
-        <label class="form-label" for="description-of-work">Description of Work #1 (optional)</label>
-        <textarea class="form-control form-control-3-4" name="description-of-work" id="description-of-work" rows="5"></textarea>
-    </div>
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="commercially-sensitive-yes">Commercially Sensitive (optional)</label>
+                <div class="multiple-choice">
+                    <input id="commercially-sensitive-yes" type="radio" name="commercially-sensitive-group" value="Yes">
+                    <label for="commercially-sensitive-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="commercially-sensitive-no" type="radio" name="commercially-sensitive-group" value="No">
+                    <label for="commercially-sensitive-no">No</label>
+                </div>
+            </div>
+        </fieldset>
 
-    <fieldset class="inline">
         <div class="form-group">
-            <label class="form-label" for="description-of-work-1">Description of Work #2 (optional)</label>
-            <div class="multiple-choice">
-                <input id="description-of-work-1" type="radio" name="radio-inline-group" value="Yes">
-                <label for="description-of-work-1">Carriageway resurfacing</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="description-of-work-2" type="radio" name="radio-inline-group" value="No">
-                <label for="description-of-work-2">Footway resurfacing</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="description-of-work-3" type="radio" name="radio-inline-group" value="No">
-                <label for="description-of-work-3">Reinstatement</label>
-            </div>
+            <label class="form-label" for="reinstatement-category">Reinstatement Category (optional)</label>
+            <input class="form-control" id="reinstatement-category" name="reinstatement-category" type="text">
         </div>
-    </fieldset>
 
-    <div class="form-group">
-        <label class="form-label" for="contact-details">Contact Details (optional)</label>
-        <input class="form-control" id="contact-details" name="contact-details" type="text">
-    </div>
-
-    <fieldset class="inline">
-        <div class="form-group">
-            <label class="form-label" for="commercially-sensitive-yes">Commercially Sensitive (optional)</label>
-            <div class="multiple-choice">
-                <input id="commercially-sensitive-yes" type="radio" name="radio-inline-group" value="Yes">
-                <label for="commercially-sensitive-yes">Yes</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="commercially-sensitive-no" type="radio" name="radio-inline-group" value="No">
-                <label for="commercially-sensitive-no">No</label>
-            </div>
-        </div>
-    </fieldset>
-
-    <div class="form-group">
-        <label class="form-label" for="reinstatement-category">Reinstatement Category (optional)</label>
-        <input class="form-control" id="reinstatement-category" name="reinstatement-category" type="text">
-    </div>
-
-    <p>
-        <a class="button button-start" href="#" role="button">Create Work</a>
-    </p>
+        <p>
+            <input class="button" type="submit" value="Create Work" role="button">
+        </p>
+    </form>
 </main>
 
 {% endblock %}
