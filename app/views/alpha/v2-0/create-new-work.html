@@ -31,25 +31,25 @@ Create New Work - Street Manager
         <div class="form-group">
             <label class="form-label" for="workreferencenumber">Work Reference Number</label>
             {% if validationError %}<p class="form-group-error">{{ validationWorkReferenceError }}</p>{% endif %}
-            <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber">
+            <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" value="{{ data['workreferencenumber'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="promotername">Promoter Name</label>
             {% if validationError %}<p class="form-group-error">{{ validationPromoterNameError }}</p>{% endif %}
-            <input class="form-control" id="promotername" name="promotername" type="text">
+            <input class="form-control" id="promotername" name="promotername" type="text" value="{{ data['promotername'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="promoteragent">Promoter Agent</label>
             {% if validationError %}<p class="form-group-error">{{ validationPromoterAgentError }}</p>{% endif %}
-            <input class="form-control" id="promoteragent" name="promoteragent" type="text">
+            <input class="form-control" id="promoteragent" name="promoteragent" type="text" value="{{ data['promoteragent'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="highway-authority">Highway Authority (optional)</label>
-            <input class="form-control" id="highway-authority" type="text" name="highway-authority">
+            <input class="form-control" id="highway-authority" type="text" name="highway-authority" value="{{ data['highway-authority'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="usrn">USRN (optional)</label>
-            <input class="form-control" id="usrn" name="usrn" type="text">
+            <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
         </div>
 
         <div class="form-group">
@@ -58,15 +58,15 @@ Create New Work - Street Manager
                 <div class="form-date">
                     <div class="form-group form-group-day">
                         <label class="form-label" for="start-date-day">Day</label>
-                        <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31">
+                        <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-day'] }}">
                     </div>
                     <div class="form-group form-group-month">
                         <label class="form-label" for="start-date-month">Month</label>
-                        <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12">
+                        <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-month'] }}">
                     </div>
                     <div class="form-group form-group-year">
                         <label class="form-label" for="start-date-year">Year</label>
-                        <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020">
+                        <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-year'] }}">
                     </div>
                 </div>
             </fieldset>
@@ -78,15 +78,15 @@ Create New Work - Street Manager
                 <div class="form-date">
                     <div class="form-group form-group-day">
                         <label class="form-label" for="end-date-day">Day</label>
-                        <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31">
+                        <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-day'] }}">
                     </div>
                     <div class="form-group form-group-month">
                         <label class="form-label" for="end-date-month">Month</label>
-                        <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12">
+                        <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-month'] }}">
                     </div>
                     <div class="form-group form-group-year">
                         <label class="form-label" for="end-date-year">Year</label>
-                        <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020">
+                        <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-year'] }}">
                     </div>
                 </div>
             </fieldset>
@@ -96,11 +96,11 @@ Create New Work - Street Manager
             <div class="form-group">
                 <label class="form-label" for="date-flexible-yes">Date Flexible (optional)</label>
                 <div class="multiple-choice">
-                    <input id="date-flexible-yes" type="radio" name="date-flexible-group" value="Yes">
+                    <input id="date-flexible-yes" type="radio" name="date-flexible-group" value="Yes" {{ checked('date-flexible-group','Yes') }}>
                     <label for="date-flexible-yes">Yes</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="date-flexible-no" type="radio" name="date-flexible-group" value="No">
+                    <input id="date-flexible-no" type="radio" name="date-flexible-group" value="No" {{ checked('date-flexible-group','No') }}>
                     <label for="date-flexible-no">No</label>
                 </div>
             </div>
@@ -108,22 +108,22 @@ Create New Work - Street Manager
 
         <div class="form-group">
             <label class="form-label" for="description-of-work">Description of Work #1 (optional)</label>
-            <textarea class="form-control form-control-3-4" name="description-of-work" id="description-of-work" rows="5"></textarea>
+            <textarea class="form-control form-control-3-4" name="description-of-work" id="description-of-work" rows="5">{{ data['description-of-work'] }}</textarea>
         </div>
 
         <fieldset class="inline">
             <div class="form-group">
                 <label class="form-label" for="description-of-work-1">Description of Work #2 (optional)</label>
                 <div class="multiple-choice">
-                    <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Yes">
+                    <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Carriageway resurfacing" {{ checked('description-of-work-group','Carriageway resurfacing') }}>
                     <label for="description-of-work-1">Carriageway resurfacing</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="description-of-work-2" type="radio" name="description-of-work-group" value="No">
+                    <input id="description-of-work-2" type="radio" name="description-of-work-group" value="Footway resurfacing" {{ checked('description-of-work-group','Footway resurfacing') }}>
                     <label for="description-of-work-2">Footway resurfacing</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="description-of-work-3" type="radio" name="description-of-work-group" value="No">
+                    <input id="description-of-work-3" type="radio" name="description-of-work-group" value="Reinstatement" {{ checked('description-of-work-group','Reinstatement') }}>
                     <label for="description-of-work-3">Reinstatement</label>
                 </div>
             </div>
@@ -131,18 +131,18 @@ Create New Work - Street Manager
 
         <div class="form-group">
             <label class="form-label" for="contact-details">Contact Details (optional)</label>
-            <input class="form-control" id="contact-details" name="contact-details" type="text">
+            <input class="form-control" id="contact-details" name="contact-details" type="text" value="{{ data['contact-details'] }}">
         </div>
 
         <fieldset class="inline">
             <div class="form-group">
                 <label class="form-label" for="commercially-sensitive-yes">Commercially Sensitive (optional)</label>
                 <div class="multiple-choice">
-                    <input id="commercially-sensitive-yes" type="radio" name="commercially-sensitive-group" value="Yes">
+                    <input id="commercially-sensitive-yes" type="radio" name="commercially-sensitive-group" value="Yes" {{ checked('commercially-sensitive-group','Yes') }}>
                     <label for="commercially-sensitive-yes">Yes</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="commercially-sensitive-no" type="radio" name="commercially-sensitive-group" value="No">
+                    <input id="commercially-sensitive-no" type="radio" name="commercially-sensitive-group" value="No" {{ checked('commercially-sensitive-group','No') }}>
                     <label for="commercially-sensitive-no">No</label>
                 </div>
             </div>
@@ -150,7 +150,7 @@ Create New Work - Street Manager
 
         <div class="form-group">
             <label class="form-label" for="reinstatement-category">Reinstatement Category (optional)</label>
-            <input class="form-control" id="reinstatement-category" name="reinstatement-category" type="text">
+            <input class="form-control" id="reinstatement-category" name="reinstatement-category" type="text" value="{{ data['reinstatement-category'] }}">
         </div>
 
         <p>

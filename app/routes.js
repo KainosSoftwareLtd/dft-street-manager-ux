@@ -46,7 +46,7 @@ router.post('/alpha/v2-0/create-new-work.html', function (req, res) {
   } else if (req.body.promoteragent === '') {
     res.render('alpha/v2-0/create-new-work.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
   } else {
-    res.redirect('/alpha/v2-0/success.html')
+    res.redirect('/alpha/v2-0/work-record-check-answers.html')
   }
 })
 
@@ -66,12 +66,8 @@ router.post('/alpha/v2-0/edit-work-record.html', function (req, res) {
   } else if (req.body.promoteragent === '') {
     res.render('alpha/v2-0/edit-work-record.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
   } else {
-    res.redirect('/alpha/v2-0/edit-success.html')
+    res.redirect('/alpha/v2-0/edit-check-answers.html')
   }
-})
-
-router.get('/hello-world', function (req, res) {
-  res.render('hello-world.html', {'message': 'Hello world'})
 })
 
 router.post('/alpha/v2-0/map-search', function (req, res) {

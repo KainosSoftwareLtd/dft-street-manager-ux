@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Check Work Record Details before creating</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Work Reference Number</td>
+                <td>{{ data['workreferencenumber'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Promoter Name</td>
+                <td>{{ data['promotername'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Promoter Agent</td>
+                <td>{{ data['promoteragent'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Highway Authority</td>
+                <td>{{ data['highway-authority'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>USRN</td>
+                <td>{{ data['usrn'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Proposed Start</td>
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Proposed End</td>
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Date Flexible</td>
+                <td>{{ data['date-flexible-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Description of Work #1</td>
+                <td>{{ data['description-of-work'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Description of Work #2</td>
+                <td>{{ data['description-of-work-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Contact Details</td>
+                <td>{{ data['contact-details'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Commercially Sensitive</td>
+                <td>{{ data['commercially-sensitive-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Reinstatement Category</td>
+                <td>{{ data['reinstatement-category'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v2-0/create-new-work">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <p>
+        <img src="/public/images/examplemap.png" alt="Map showing work created" height="400" width="550">
+    </p>
+
+    <h2 class="heading-medium">Now create your application</h2>
+
+    <p class="text">
+        By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
+    </p>
+
+    <div class="form-group">
+        <a href="/alpha/v2-0/confirm-work-record" class="button">Accept and Create</a>
+    </div>
+</main>
+
+{% endblock %}
