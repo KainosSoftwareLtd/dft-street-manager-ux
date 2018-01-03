@@ -46,7 +46,7 @@ router.post('/alpha/v2-0/create-new-work.html', function (req, res) {
   } else if (req.body.promoteragent === '') {
     res.render('alpha/v2-0/create-new-work.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
   } else {
-    res.redirect('alpha/v2-0/work-record-check-answers.html')
+    res.redirect('/alpha/v2-0/work-record-check-answers.html')
   }
 })
 
