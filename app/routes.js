@@ -1,23 +1,23 @@
 const express = require('express')
 const router = express.Router()
 
-var data = {'data' :{
-  'workreferencenumber' : 'CT0224443466',
-  'promotername' : 'JOHN CARRINGTON',
-  'promoteragent' : 'FM CONWAY LTD',
-  'highway-authority' : 'Highway Authority',
-  'usrn' : '08400189',
-  'start-day' : '28',
-  'start-month' : '03',
-  'start-year' : '2017',
-  'end-day' : '30',
-  'end-month' : '03',
-  'end-year' : '2017',
-  'date-flexible-group' : 'Yes',
-  'description-of-work' : 'Digging up the road',
-  'description-of-work-group' : 'Carriageway resurfacing',
-  'contact-details' : '004455500000',
-  'commercially-sensitive-group' : 'No'}
+var data = {'data': {
+  'workreferencenumber': 'CT0224443466',
+  'promotername': 'JOHN CARRINGTON',
+  'promoteragent': 'FM CONWAY LTD',
+  'highway-authority': 'Highway Authority',
+  'usrn': '08400189',
+  'start-day': '28',
+  'start-month': '03',
+  'start-year': '2017',
+  'end-day': '30',
+  'end-month': '03',
+  'end-year': '2017',
+  'date-flexible-group': 'Yes',
+  'description-of-work': 'Digging up the road',
+  'description-of-work-group': 'Carriageway resurfacing',
+  'contact-details': '004455500000',
+  'commercially-sensitive-group': 'No'}
 }
 
 // Route index page
@@ -71,8 +71,12 @@ router.post('/alpha/v2-0/edit-work-record.html', function (req, res) {
 })
 
 router.get('/hello-world', function (req, res) {
-  res.render('hello-world.html', {'message' : 'Hello world'});
-});
+  res.render('hello-world.html', {'message': 'Hello world'})
+})
+
+router.post('/alpha/v2-0/map-search', function (req, res) {
+  res.render('alpha/v2-0/map-search-results.html', {searchDetails: req.body.search[0]})
+})
 
 // Add your routes here - above the module.exports line
 

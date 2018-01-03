@@ -17,15 +17,15 @@ Forward Planning - Street Manager
 
 <div id="search-panel">
     <h1 class="heading-medium">How do you want to search?</h1>
-    <form action="map-search" method="POST">
+    <form>
         <div class="form-group">
             <fieldset>
-                <!--<legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>-->
+                <legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>
                 <div class="form-group spacing-bottom-half">
-                    <label class="form-label" for="search">Search by postcode, address, UPRN, charge ID or title number
+                    <label class="form-label" for="maintain-map-search">Search by postcode, address, UPRN, charge ID or title number
                     </label>
-                    <input class="form-control" id="search" name="search" type="text" value="" autofocus="autofocus">
-                    <input id="map-search-button" class="button" type="submit" name="search" value="Search">
+                    <input class="form-control" id="maintain-map-search" name="maintain-map-search" type="text" value="{{searchDetails}}" autofocus="autofocus">
+                    <input id="map-search-button" class="button" type="button" name="maintain-map-search" value="Search">
 
                     <!--<input class="search-button submit maintain-map-search-button" type="submit" name="maintain-map-search" value=""> -->
 
@@ -46,7 +46,7 @@ Forward Planning - Street Manager
     ],
     view: new ol.View({
       center: ol.proj.fromLonLat([-0.25, 51.5074]),
-      zoom: 11
+      zoom: 17
     })
   });
 </script>
