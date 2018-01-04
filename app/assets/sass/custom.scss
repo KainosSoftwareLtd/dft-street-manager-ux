@@ -431,3 +431,27 @@
     margin-right: 0 !important;
   }
 }
+
+/* Map Controls */
+
+#draw-controls {
+  top: 1%;
+  right: 30%;
+  margin-right: 30px;
+}
+
+#draw-controls button {
+  display: inline;
+  height: auto;
+  width: auto;
+  padding: 14px;
+  margin-right: 4px;
+}
+
+.map-button {
+  cursor: pointer;
+  &.polygon {
+    background: url("../images/polygon.png");
+    background-size: cover;
+  }
+}
