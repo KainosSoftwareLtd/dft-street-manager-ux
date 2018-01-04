@@ -92,7 +92,9 @@ Forward Planning - Street Manager
     })
   }));
 
-  position.addFeature(new ol.Feature(new ol.geom.Point([-27437.90733296088, 6711495.343644402])));
+  position.addFeature(new ol.Feature(new ol.geom.Point([-27437.90733296088, 6711495.343644402])))
+  position.addFeature(new ol.Feature(new ol.geom.Point([-27962.217573854512, 6711595.667244026])))
+  position.addFeature(new ol.Feature(new ol.geom.Point([-27892.17951811278, 6711317.650059658])))
 
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
@@ -109,7 +111,8 @@ Forward Planning - Street Manager
       var string = `Work Type: Carriageway resurfacing <br/>
       HA: Highways England <br/>
       Start date: 04/04/2017 <br/>
-      End date: 05/05/2018 <br/>`
+      End date: 05/05/2018 <br/>
+      Contact: (020) 8825 6600 <br/>`
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
     }
