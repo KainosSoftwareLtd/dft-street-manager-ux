@@ -1,0 +1,123 @@
+{% extends "alpha/v2-0/map-layout.html" %}
+
+{% block page_title %}
+Forward Planning - Street Manager
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+<script src="https://openlayers.org/en/v4.6.4/build/ol.js" type="text/javascript"></script>
+
+<main id="content" role="main" style="padding:0px">
+    <!-- alpha banner -->
+    {% include "includes/phase_banner_alpha.html" %}
+</main>
+
+<div id="map" class="map" style="width: 100%"></div>
+<div class="arrow_box" id="popup-container"></div>
+
+<div id="search-panel">
+    <h1 class="heading-medium">How do you want to search?</h1>
+    <form>
+        <div class="form-group">
+            <fieldset>
+                <legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>
+                <div class="form-group spacing-bottom-half">
+                    <label class="form-label" for="maintain-map-search">Search by postcode, address, UPRN, charge ID or title number
+                    </label>
+                    <input class="form-control" id="maintain-map-search" name="maintain-map-search" type="text" value="{{searchDetails}}" autofocus="autofocus">
+                    <input id="map-search-button" class="button" type="button" name="maintain-map-search" value="Search">
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</div>
+
+<style>
+    .arrow_box {
+        position: relative;
+        background: #fff;
+        border: 1px solid #003c88;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .arrow_box:after, .arrow_box:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: #fff;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    .arrow_box:before {
+        border-color: rgba(153, 153, 153, 0);
+        border-top-color: #003c88;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+</style>
+
+<script type="text/javascript">
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([-0.25, 51.5074]),
+      zoom: 17
+    })
+  });
+
+  const position = new ol.source.Vector();
+  const vector = new ol.layer.Vector({
+    source: position
+  });
+  map.addLayer(vector);
+
+  vector.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker.png'
+    })
+  }));
+
+  position.addFeature(new ol.Feature(new ol.geom.Point([-27437.90733296088, 6711495.343644402])))
+  position.addFeature(new ol.Feature(new ol.geom.Point([-27962.217573854512, 6711595.667244026])))
+  position.addFeature(new ol.Feature(new ol.geom.Point([-27892.17951811278, 6711317.650059658])))
+
+  var overlay = new ol.Overlay({
+    element: document.getElementById('popup-container'),
+    positioning: 'bottom-center',
+    offset: [0, -10]
+  });
+  map.addOverlay(overlay);
+
+  map.on('click', function(e) {
+    overlay.setPosition();
+    var features = map.getFeaturesAtPixel(e.pixel);
+    if (features) {
+      var coords = features[0].getGeometry().getCoordinates();
+      var string = `Work Type: Carriageway resurfacing <br/>
+      HA: Highways England <br/>
+      Start date: 04/04/2017 <br/>
+      End date: 05/05/2018 <br/>
+      Contact: (020) 8825 6600 <br/>`
+      overlay.getElement().innerHTML = string;
+      overlay.setPosition(coords);
+    }
+  });
+
+</script>
+
+{% endblock %}
