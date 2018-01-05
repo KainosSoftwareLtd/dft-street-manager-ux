@@ -38,6 +38,19 @@ router.post('/alpha/v1-0/sign-in.html', function (req, res) {
   }
 })
 
+router.post('/alpha/v2-0/sign-in.html', function (req, res) {
+  switch (req.body.email) {
+    case 'promo@sm.com' :
+      res.redirect('/alpha/v2-0/dashboard.html')
+      break
+    case 'ha@sm.com' :
+      res.redirect('/alpha/v2-0/dashboard.html')
+      break
+    default:
+      res.render('alpha/v2-0/sign-in.html', {validationError: 'Invalid login credentials.'})
+  }
+})
+
 router.post('/alpha/v2-0/create-new-work.html', function (req, res) {
   if (req.body.workreferencenumber === '') {
     res.render('alpha/v2-0/create-new-work.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was a problem'})
