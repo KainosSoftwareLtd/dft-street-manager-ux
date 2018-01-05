@@ -10,6 +10,8 @@
 
 {% block proposition_header %}
 
+{% include "includes/scripts.html" %}
+
 <div class="header-proposition">
     <div class="content">
         <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
@@ -48,7 +50,7 @@ with-proposition
 
 {% block body_end %}
 {% block scripts %}
-{% include "includes/scripts.html" %}
+
 {% block page_scripts %}{% endblock %}
 {% endblock %}
 <!-- GOV.UK Prototype kit {{releaseVersion}} -->
