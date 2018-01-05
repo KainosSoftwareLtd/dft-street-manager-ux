@@ -31,7 +31,38 @@ Forward Planning - Street Manager
             </fieldset>
         </div>
     </form>
+    <form>
+        <fieldset>
+            <legend>
+                <span class="body-text">Select all that apply</span>
+            </legend>
+
+            <div class="multiple-choice">
+                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                <label for="layer-type-1">Assets</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                <label for="layer-type-2">My Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                <label for="layer-type-3">Other Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                <label for="layer-type-4">Current Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                <label for="layer-type-5">Restrictions</label>
+            </div>
+
+        </fieldset>
+    </form>
 </div>
+
+
 
 <style>
     .arrow_box {
@@ -91,11 +122,30 @@ Forward Planning - Street Manager
       src: '/public/images/map-marker.png'
     })
   }));
+  vector.setVisible(false)
 
   position.addFeature(new ol.Feature(new ol.geom.Point([13639.829398919617, 6837289.194287598])))
   position.addFeature(new ol.Feature(new ol.geom.Point([14154.5850112776, 6837452.817301271])))
   position.addFeature(new ol.Feature(new ol.geom.Point([14116.36649713501, 6837160.206802366])))
   position.addFeature(new ol.Feature(new ol.geom.Point([13432.016228269293, 6837043.1626028055])))
+
+
+  const position2 = new ol.source.Vector();
+  const vector2 = new ol.layer.Vector({
+    source: position2
+  });
+  map.addLayer(vector2);
+
+  vector2.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker.png'
+    })
+  }));
+  vector2.setVisible(false)
+
+  position2.addFeature(new ol.Feature(new ol.geom.Point([13576.529984870955, 6837049.134245641])))
+  position2.addFeature(new ol.Feature(new ol.geom.Point([13501.287285152734, 6837672.573757592])))
+  position2.addFeature(new ol.Feature(new ol.geom.Point([13718.655084338705, 6837371.602958717])))
 
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
@@ -116,6 +166,27 @@ Forward Planning - Street Manager
       Contact: 0345 045 5212 <br/>`
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
+    }
+  });
+
+  var assetscheckbox = $("#layer-type-1");
+  var plannedworkscheckbox = $("#layer-type-2");
+
+  assetscheckbox.change(function(event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      vector.setVisible(true)
+    } else {
+      vector.setVisible(false)
+    }
+  });
+
+  plannedworkscheckbox.change(function(event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      vector2.setVisible(true)
+    } else {
+      vector2.setVisible(false)
     }
   });
 
