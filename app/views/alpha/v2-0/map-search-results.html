@@ -237,7 +237,9 @@ Forward Planning - Street Manager
   var dropdown = new ol.control.Control({element: document.getElementById('dropdown')});
 
   document.getElementById('select').onchange = function () {
-    // filter results
+    position.forEachFeature(function (feature) {
+        //remove features
+    })
   }
 
   var map = new ol.Map({
@@ -324,7 +326,7 @@ Forward Planning - Street Manager
   map.on('click', function(e) {
     overlay.setPosition();
     var features = map.getFeaturesAtPixel(e.pixel);
-    if (features) {
+    if (features && features[0].get('text')) {
       var coords = features[0].getGeometry().getCoordinates();
       var string = features[0].get('text');
       overlay.getElement().innerHTML = string;
