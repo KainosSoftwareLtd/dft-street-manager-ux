@@ -111,41 +111,41 @@ Forward Planning - Street Manager
     })
   });
 
-  const position = new ol.source.Vector();
-  const vector = new ol.layer.Vector({
-    source: position
+  const assetsSource = new ol.source.Vector();
+  const assetsLayer = new ol.layer.Vector({
+    source: assetsSource
   });
-  map.addLayer(vector);
+  map.addLayer(assetsLayer);
 
-  vector.setStyle(new ol.style.Style({
+  assetsLayer.setStyle(new ol.style.Style({
     image: new ol.style.Icon({
-      src: '/public/images/map-marker.png'
+      src: '/public/images/map-marker-red.png'
     })
   }));
-  vector.setVisible(false)
+  assetsLayer.setVisible(false)
 
-  position.addFeature(new ol.Feature(new ol.geom.Point([13639.829398919617, 6837289.194287598])))
-  position.addFeature(new ol.Feature(new ol.geom.Point([14154.5850112776, 6837452.817301271])))
-  position.addFeature(new ol.Feature(new ol.geom.Point([14116.36649713501, 6837160.206802366])))
-  position.addFeature(new ol.Feature(new ol.geom.Point([13432.016228269293, 6837043.1626028055])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([13639.829398919617, 6837289.194287598])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([14154.5850112776, 6837452.817301271])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([14116.36649713501, 6837160.206802366])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([13432.016228269293, 6837043.1626028055])))
 
 
-  const position2 = new ol.source.Vector();
-  const vector2 = new ol.layer.Vector({
-    source: position2
+  const plannedWorksSource = new ol.source.Vector();
+  const plannedWorksLayer = new ol.layer.Vector({
+    source: plannedWorksSource
   });
-  map.addLayer(vector2);
+  map.addLayer(plannedWorksLayer);
 
-  vector2.setStyle(new ol.style.Style({
+  plannedWorksLayer.setStyle(new ol.style.Style({
     image: new ol.style.Icon({
-      src: '/public/images/map-marker.png'
+      src: '/public/images/map-marker-blue.png'
     })
   }));
-  vector2.setVisible(false)
+  plannedWorksLayer.setVisible(false)
 
-  position2.addFeature(new ol.Feature(new ol.geom.Point([13576.529984870955, 6837049.134245641])))
-  position2.addFeature(new ol.Feature(new ol.geom.Point([13501.287285152734, 6837672.573757592])))
-  position2.addFeature(new ol.Feature(new ol.geom.Point([13718.655084338705, 6837371.602958717])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13576.529984870955, 6837049.134245641])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13501.287285152734, 6837672.573757592])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13718.655084338705, 6837371.602958717])))
 
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
@@ -175,18 +175,18 @@ Forward Planning - Street Manager
   assetscheckbox.change(function(event) {
     var checkbox = event.target;
     if (checkbox.checked) {
-      vector.setVisible(true)
+      assetsLayer.setVisible(true)
     } else {
-      vector.setVisible(false)
+      assetsLayer.setVisible(false)
     }
   });
 
   plannedworkscheckbox.change(function(event) {
     var checkbox = event.target;
     if (checkbox.checked) {
-      vector2.setVisible(true)
+      plannedWorksLayer.setVisible(true)
     } else {
-      vector2.setVisible(false)
+      plannedWorksLayer.setVisible(false)
     }
   });
 
