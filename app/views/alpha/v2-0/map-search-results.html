@@ -17,6 +17,8 @@ Forward Planning - Street Manager
 
 <div id="map" class="map" style="width: 100%"></div>
 
+<div class="arrow_box" id="popup-container"></div>
+
 <div id="search-panel" class="charge-list">
     <div id="drawnArea"></div>
     <div class="form-group">
@@ -156,6 +158,39 @@ Forward Planning - Street Manager
     </div>
 </div>
 
+<style>
+    .arrow_box {
+        position: relative;
+        background: #fff;
+        border: 1px solid #003c88;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .arrow_box:after, .arrow_box:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: #fff;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    .arrow_box:before {
+        border-color: rgba(153, 153, 153, 0);
+        border-top-color: #003c88;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+</style>
+
 <script type="text/javascript">
 
   var MAP_CONFIG = {};
@@ -183,10 +218,95 @@ Forward Planning - Street Manager
       MAP_CONFIG.draw_controls
     ]),
     view: new ol.View({
-      center: ol.proj.fromLonLat([-0.25, 51.5074]),
+      center: ol.proj.fromLonLat([-0.252, 51.5073]),
       zoom: 17
     })
   });
+
+  const position = new ol.source.Vector();
+  const vector = new ol.layer.Vector({
+    source: position
+  });
+  map.addLayer(vector);
+
+  vector.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker.png'
+    })
+  }));
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27437.90733296088, 6711495.343644402]),
+      text: `Work Type: Footway resurfacing <br/>
+      HA: Cambridgeshire County Council <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-28158.910218514742, 6711424.237059503]),
+      text: `Work Ref: YG425377097 <br/>
+      Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27683.567448866303, 6711417.071088102]),
+      text: `Work Ref: CT0224443466 <br/>
+      Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27344.37813585083, 6711747.9001011485]),
+      text: `ZE4103159-CE-30 <br/>
+      Description: Water pipe realignment and enabling works for thames tideway project <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27125.81600809791, 6711948.692067497]),
+      text: `TFL_TIMS-179753<br/>
+      Maintenance -c/w-patch req for pothole lane 1 <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  var overlay = new ol.Overlay({
+    element: document.getElementById('popup-container'),
+    positioning: 'bottom-center',
+    offset: [0, -10]
+  });
+  map.addOverlay(overlay);
+
+  map.on('click', function(e) {
+    overlay.setPosition();
+    var features = map.getFeaturesAtPixel(e.pixel);
+    if (features) {
+      var coords = features[0].getGeometry().getCoordinates();
+      var string = features[0].get('text');
+      overlay.getElement().innerHTML = string;
+      overlay.setPosition(coords);
+    }
+  });
+
+  map.on('click', function (evt) {
+    console.log(evt.coordinate);
+  });
+
 </script>
 
 {% endblock %}
