@@ -1,0 +1,88 @@
+{% extends "alpha/v2-0/map-layout.html" %}
+
+{% block page_title %}
+Forward Planning - Street Manager
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+
+<main id="content" role="main" style="padding:0px">
+    <!-- alpha banner -->
+    {% include "includes/phase_banner_alpha.html" %}
+</main>
+
+<div id="map" class="map" style="height:620px; width:1280px;"></div>
+
+<div id="search-panel">
+    <h1 class="heading-medium">How do you want to search?</h1>
+    <form>
+        <div class="form-group">
+            <fieldset>
+                <legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>
+                <div class="form-group spacing-bottom-half">
+                    <label class="form-label" for="maintain-map-search">Search by postcode, address, UPRN, charge ID or title number
+                    </label>
+                    <input class="form-control" id="maintain-map-search" name="maintain-map-search" type="text" value="{{searchDetails}}" autofocus="autofocus">
+                    <input id="map-search-button" class="button" type="button" name="maintain-map-search" value="Search">
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+  var assets = L.layerGroup();
+  var myPlannedWorks = L.layerGroup();
+  var otherPlannedWorks = L.layerGroup();
+  var currentWorks = L.layerGroup();
+  var restrictions = L.layerGroup();
+
+  var redIcon = L.icon({
+    iconUrl: '/public/images/map-marker-red.png',
+  });
+
+  var blueIcon = L.icon({
+    iconUrl: '/public/images/map-marker-blue.png'
+  });
+
+  L.marker([52.19937, 0.13862], {icon: blueIcon}).bindPopup("<b>HA: Cambridgeshire County Council <br/> Start date: 09/06/2018 <br/> End date: 19/07/2018 <br/> Contact: 0345 045 5212").addTo(assets),
+  L.marker([52.19146, 0.1405], {icon: blueIcon}).bindPopup("<b>HA: Cambridgeshire County Council <br/> Start date: 09/06/2018 <br/> End date: 19/07/2018 <br/> Contact: 0345 045 5212").addTo(assets),
+  L.marker([52.19506, 0.12561], {icon: blueIcon}).bindPopup("<b>HA: Cambridgeshire County Council <br/> Start date: 09/06/2018 <br/> End date: 19/07/2018 <br/> Contact: 0345 045 5212").addTo(assets),
+
+  L.marker([52.18935, 0.15016], {icon: redIcon}).bindPopup("<b>HA: Cambridgeshire County Council <br/> Start date: 09/06/2018 <br/> End date: 19/07/2018 <br/> Contact: 0345 045 5212").addTo(myPlannedWorks);
+
+
+  var mapboxAttribute = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+  var grayscale   = L.tileLayer(mapboxUrl, {id: 'mapbox.light', attribution: mapboxAttribute}),
+  streets  = L.tileLayer(mapboxUrl, {id: 'mapbox.streets',   attribution: mapboxAttribute});
+
+  var map = L.map('map', {
+    center: [52.19485, 0.13295],
+    zoom: 15,
+    layers: [streets, assets, myPlannedWorks, otherPlannedWorks, currentWorks, restrictions]
+  });
+
+  var baseLayers = {
+    "Grayscale": grayscale,
+    "Streets": streets
+  };
+
+  var overlays = {
+    "Assets": assets,
+    "My Planned Works": myPlannedWorks,
+    "Other Planned Works": otherPlannedWorks,
+    "Current Works": currentWorks,
+    "Restrictions": restrictions
+  };
+
+  L.control.layers(baseLayers, overlays).addTo(map);
+</script>
+
+{% endblock %}
