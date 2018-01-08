@@ -159,6 +159,20 @@ Forward Planning - Street Manager
 </div>
 
 <style>
+
+    .ol-dropdown {
+        border-radius: 4px;
+        background: #fff;
+        padding: 2px;
+        position: absolute;
+        width:200px;
+        top: 5px;
+        right:90px;
+    }
+    label {
+        font-weight: bold;
+    }
+
     .arrow_box {
         position: relative;
         background: #fff;
@@ -191,11 +205,20 @@ Forward Planning - Street Manager
     }
 </style>
 
-<script type="text/javascript">
+<div class="ol-dropdown" id="dropdown">
+    <label>Time period</label>
+    <select id="select">
+        <option>This week</option>
+        <option>This month</option>
+        <option>Next month</option>
+    </select>
+</div>
 
+<script type="text/javascript">
   var MAP_CONFIG = {};
 
   (function (MAP_CONFIG) {
+
     MAP_CONFIG.draw_layer_zindex = 2;
     // Draw Source
     MAP_CONFIG.draw_features = new ol.Collection();
@@ -211,11 +234,17 @@ Forward Planning - Street Manager
     })
   })(MAP_CONFIG);
 
+  var dropdown = new ol.control.Control({element: document.getElementById('dropdown')});
+
+  document.getElementById('select').onchange = function () {
+    // filter results
+  }
+
   var map = new ol.Map({
     target: 'map',
     layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      MAP_CONFIG.draw_controls
+      MAP_CONFIG.draw_controls, dropdown
     ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([-0.252, 51.5073]),
@@ -231,7 +260,7 @@ Forward Planning - Street Manager
 
   vector.setStyle(new ol.style.Style({
     image: new ol.style.Icon({
-      src: '/public/images/map-marker.png'
+      src: '/public/images/map-marker-red.png'
     })
   }));
 
@@ -301,10 +330,6 @@ Forward Planning - Street Manager
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
     }
-  });
-
-  map.on('click', function (evt) {
-    console.log(evt.coordinate);
   });
 
 </script>
