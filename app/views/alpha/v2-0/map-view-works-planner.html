@@ -31,6 +31,35 @@ Forward Planning - Street Manager
             </fieldset>
         </div>
     </form>
+    <form>
+        <fieldset>
+            <legend>
+                <span class="body-text">Select all that apply</span>
+            </legend>
+
+            <div class="multiple-choice">
+                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                <label for="layer-type-1">Assets</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                <label for="layer-type-2">My Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                <label for="layer-type-3">Other Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                <label for="layer-type-4">Current Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                <label for="layer-type-5">Restrictions</label>
+            </div>
+
+        </fieldset>
+    </form>
 </div>
 
 <style>
@@ -80,21 +109,40 @@ Forward Planning - Street Manager
     })
   });
 
-  const position = new ol.source.Vector();
-  const vector = new ol.layer.Vector({
-    source: position
+  const assetsSource = new ol.source.Vector();
+  const assetsLayer = new ol.layer.Vector({
+    source: assetsSource
   });
-  map.addLayer(vector);
+  map.addLayer(assetsLayer);
 
-  vector.setStyle(new ol.style.Style({
+  assetsLayer.setStyle(new ol.style.Style({
     image: new ol.style.Icon({
       src: '/public/images/map-marker.png'
     })
   }));
+  assetsLayer.setVisible(false)
 
-  position.addFeature(new ol.Feature(new ol.geom.Point([-27437.90733296088, 6711495.343644402])))
-  position.addFeature(new ol.Feature(new ol.geom.Point([-27962.217573854512, 6711595.667244026])))
-  position.addFeature(new ol.Feature(new ol.geom.Point([-27892.17951811278, 6711317.650059658])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([-27437.90733296088, 6711495.343644402])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([-27962.217573854512, 6711595.667244026])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([-27892.17951811278, 6711317.650059658])))
+
+  const plannedWorksSource = new ol.source.Vector();
+  const plannedWorksLayer = new ol.layer.Vector({
+    source: plannedWorksSource
+  });
+  map.addLayer(plannedWorksLayer);
+
+  plannedWorksLayer.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker.png'
+    })
+  }));
+  plannedWorksLayer.setVisible(false)
+
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([-27662.44110354859, 6711721.071743557])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([-27206.20759097144,6711254.686438161])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([-27206.804755254925, 6711556.254401319])))
+
 
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
@@ -115,6 +163,27 @@ Forward Planning - Street Manager
       Contact: (020) 8825 6600 <br/>`
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
+    }
+  });
+
+  var assetscheckbox = $("#layer-type-1");
+  var plannedworkscheckbox = $("#layer-type-2");
+
+  assetscheckbox.change(function(event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      assetsLayer.setVisible(true)
+    } else {
+      assetsLayer.setVisible(false)
+    }
+  });
+
+  plannedworkscheckbox.change(function(event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      plannedWorksLayer.setVisible(true)
+    } else {
+      plannedWorksLayer.setVisible(false)
     }
   });
 
