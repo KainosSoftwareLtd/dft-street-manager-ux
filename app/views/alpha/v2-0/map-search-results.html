@@ -180,6 +180,12 @@ Forward Planning - Street Manager
         font-weight: bold;
     }
 
+    .ol-scale-line {
+        position: absolute;
+        left: 540px;
+        bottom: 20px;
+    }
+
     .arrow_box {
         position: relative;
         background: #fff;
@@ -282,12 +288,13 @@ Forward Planning - Street Manager
   }
 
   var legend = new ol.control.Control({element: document.getElementById('legend')});
+  var scaleLine = new ol.control.ScaleLine()
 
   var map = new ol.Map({
     target: 'map',
     layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      MAP_CONFIG.draw_controls, dropdown, legend
+      MAP_CONFIG.draw_controls, dropdown, legend, scaleLine
     ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([-0.252, 51.5073]),
