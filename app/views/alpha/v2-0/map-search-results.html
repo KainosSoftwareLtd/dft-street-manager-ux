@@ -51,7 +51,7 @@ Forward Planning - Street Manager
 
         <li class="individualResults">
             <div class="search-result-header">
-                <h2 class="heading-small"><a href="#">YG425377097</a></h2>
+                <h2 class="heading-small"><a id="result" href="#">YG425377097</a></h2>
                 <span class="status bold-xsmall">In progress</span>
             </div>
             <p>22 The Vale<br>London<br>W12 3LB</p>
@@ -289,6 +289,7 @@ Forward Planning - Street Manager
         //remove features
     })
   }
+  
 
   var legend = new ol.control.Control({element: document.getElementById('legend')});
   var scaleLine = new ol.control.ScaleLine()
@@ -305,6 +306,11 @@ Forward Planning - Street Manager
     })
   });
 
+  $("#result").click(function () {
+     var view = map.getView();
+     view.animate({zoom: 18, center: [-27683.567448866303, 6711417.071088102]})
+  });
+  
   const position = new ol.source.Vector();
   const vector = new ol.layer.Vector({
     source: position
