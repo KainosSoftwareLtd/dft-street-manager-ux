@@ -15,7 +15,7 @@ RUN npm install
 # Tests
 FROM dependencies AS test
 COPY . .
-RUN npm run lint
+RUN npm test
 
 # Final image
 FROM base AS release
