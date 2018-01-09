@@ -1,0 +1,380 @@
+{% extends "alpha/v2-0/map-layout.html" %}
+
+{% block page_title %}
+Forward Planning - Street Manager
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://openlayers.org/en/v4.5.0/css/ol.css" type="text/css">
+<script src="https://openlayers.org/en/v4.5.0/build/ol.js" type="text/javascript"></script>
+<script src="/public/javascripts/map_styles.js"></script>
+<script src="/public/javascripts/map_controls.js"></script>
+
+<main id="content" role="main" style="padding:0px">
+    <!-- alpha banner -->
+    {% include "includes/phase_banner_alpha.html" %}
+</main>
+
+<div id="map" class="map" style="width: 100%"></div>
+
+<div class="arrow_box" id="popup-container"></div>
+
+<div id="search-panel" class="charge-list">
+    <div id="drawnArea"></div>
+    <div class="form-group">
+           <fieldset>
+                <a id="create-work-button" href="/alpha/v2-0/create-new-work" style="display: none;">Create Work</a>
+            </fieldset>
+    </div>
+
+    <h1 class="heading-small">Search results for <span id="titleText"></span></h1>
+    <!-- <input class="form-control search-field maintain-searched" id="maintain-map-search" name="maintain-map-search" type="text"> -->
+    <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
+    <input class="button" type="submit" value="Search">
+    <div class="results-block">
+        <div class="pager">
+            <div class="pager-controls">
+                <ul class="pager-items">
+                    <li>1</li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+            <div class="pager-summary">Showing 1 – 10 of 100 works</div>
+        </div>
+        <ol class="results-list">
+
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">YG425377097</a></h2>
+                    <span class="status bold-xsmall">In progress</span>
+                </div>
+                <p>22 The Vale<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr</p>
+                <p><span class="bold-xsmall">Created on</span><br>20 December 2017</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">CT0224443466</a></h2>
+                    <span class="status bold-xsmall">In progress</span>
+                </div>
+                <p>24 The Vale<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br> Disconnect 1 X 32MM PE Service from main in carridgeway</p>
+                <p><span class="bold-xsmall">Created on</span><br>3 January 2018</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">ZE4103159-CE-30</a></h2>
+                    <span class="status bold-xsmall">Advanced planning</span>
+                </div>
+                <p>30 Old Oak Road<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Water pipe realignment and enabling works for thames tideway project</p>
+                <p><span class="bold-xsmall">Created on</span><br>11 November 2017</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">TFL_TIMS-179753</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>4 Sawley Road<br>Exeter<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Maintenance -c/w-patch req for pothole lane 1</p>
+                <p><span class="bold-xsmall">Created on</span><br>5 January 2018</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">YG450376470</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>28 Armstrong Road<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Hoarding: fw works no cw incursion 1.8 min maintained for pedestrians</p>
+                <p><span class="bold-xsmall">Created on</span><br>3 August 2017</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">YG407370503</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>1 Wallflower Street<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Installation and renewal of new and additional drainage signage and lighting</p>
+                <p><span class="bold-xsmall">Created on</span><br>17 May 2016</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">CT022241049</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>34 David Road<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Resurfacing footways and carriageway</p>
+                <p><span class="bold-xsmall">Created on</span><br>30 November 2017</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">EC40010739494</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>36 The Vale<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>
+                    Network Operations Distribution: INSTALL/REPLACE/REMOVE LINK BOX: Excavation to replace a 4 way link box in the footway outside</p>
+                <p><span class="bold-xsmall">Created on</span><br>1 April 2016</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">YG407375342</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>6 Oak Way<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>WBS Code SC2769.240.001 construction of EP10 crossover Fw TM only - 1.2m for Pedestrians.</p>
+                <p><span class="bold-xsmall">Created on</span><br>3 February 2015</p>
+            </li>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a href="#">LR909270187</a></h2>
+                    <span class="status bold-xsmall">Planned</span>
+                </div>
+                <p>38 Davis Road<br>London<br>W12 3LB</p>
+                <p><span class="bold-xsmall">Description</span><br>Excavate & Lay New Paving New Kerbs & Street Furniture Footway Closure SCI</p>
+                <p><span class="bold-xsmall">Created on</span><br>11 August 2015</p>
+            </li>
+        </ol>
+    </div>
+    <div class="pager">
+        <div class="pager-controls">
+            <ul class="pager-items">
+                <li>1</li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+
+        </div>
+
+        <div class="pager-summary">Showing 1 – 10 of 100 works</div>
+
+    </div>
+</div>
+
+<style>
+
+    #legend {
+        background-color: white;
+        width: 240px;
+        padding: 10px;
+        top: 80px;
+        right: 50px;
+    }
+    .ol-dropdown {
+        border-radius: 4px;
+        background: #fff;
+        padding: 2px;
+        position: absolute;
+        width:200px;
+        top: 5px;
+        right:90px;
+    }
+    label {
+        font-weight: bold;
+    }
+
+    .arrow_box {
+        position: relative;
+        background: #fff;
+        border: 1px solid #003c88;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .arrow_box:after, .arrow_box:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: #fff;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    .arrow_box:before {
+        border-color: rgba(153, 153, 153, 0);
+        border-top-color: #003c88;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+</style>
+
+<div class="ol-dropdown" id="dropdown">
+    <label>Time period</label>
+    <select id="select">
+        <option>This week</option>
+        <option>This month</option>
+        <option>Next month</option>
+    </select>
+</div>
+
+<div id="legend">
+    <form>
+        <fieldset>
+            <legend>
+                <span class="body-text">Select all that apply</span>
+            </legend>
+
+            <div class="multiple-choice">
+                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                <label for="layer-type-1">Assets</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                <label for="layer-type-2">My Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                <label for="layer-type-3">Other Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                <label for="layer-type-4">Current Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                <label for="layer-type-5">Restrictions</label>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript">
+  var MAP_CONFIG = {};
+
+  (function (MAP_CONFIG) {
+
+    MAP_CONFIG.draw_layer_zindex = 2;
+    // Draw Source
+    MAP_CONFIG.draw_features = new ol.Collection();
+    MAP_CONFIG.draw_controls = new MAP_CONTROLS.draw_controls();
+    MAP_CONFIG.draw_source = new ol.source.Vector({ features: MAP_CONFIG.draw_features });
+    MAP_CONFIG.draw_layer = new ol.layer.Vector({
+      source: MAP_CONFIG.draw_source,
+      style: draw_layer_styles.style[draw_layer_styles.NONE],
+      zIndex: MAP_CONFIG.draw_layer_zindex
+    })
+    MAP_CONFIG.base_layer = new ol.layer.Tile({
+      source: new ol.source.OSM()
+    })
+  })(MAP_CONFIG);
+
+  var dropdown = new ol.control.Control({element: document.getElementById('dropdown')});
+
+  document.getElementById('select').onchange = function () {
+    position.forEachFeature(function (feature) {
+        //remove features
+    })
+  }
+
+  var legend = new ol.control.Control({element: document.getElementById('legend')});
+
+  var map = new ol.Map({
+    target: 'map',
+    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
+    controls: ol.control.defaults({attribution: false}).extend([
+      MAP_CONFIG.draw_controls, dropdown, legend
+    ]),
+    view: new ol.View({
+      center: ol.proj.fromLonLat([-0.252, 51.5073]),
+      zoom: 17
+    })
+  });
+
+  const position = new ol.source.Vector();
+  const vector = new ol.layer.Vector({
+    source: position
+  });
+  map.addLayer(vector);
+
+  vector.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker-red.png'
+    })
+  }));
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27437.90733296088, 6711495.343644402]),
+      text: `Work Type: Footway resurfacing <br/>
+      HA: Cambridgeshire County Council <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-28158.910218514742, 6711424.237059503]),
+      text: `Work Ref: YG425377097 <br/>
+      Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27683.567448866303, 6711417.071088102]),
+      text: `Work Ref: CT0224443466 <br/>
+      Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27344.37813585083, 6711747.9001011485]),
+      text: `ZE4103159-CE-30 <br/>
+      Description: Water pipe realignment and enabling works for thames tideway project <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  position.addFeature(new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27125.81600809791, 6711948.692067497]),
+      text: `TFL_TIMS-179753<br/>
+      Maintenance -c/w-patch req for pothole lane 1 <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+    }))
+
+  var overlay = new ol.Overlay({
+    element: document.getElementById('popup-container'),
+    positioning: 'bottom-center',
+    offset: [0, -10]
+  });
+  map.addOverlay(overlay);
+
+  map.on('click', function(e) {
+    overlay.setPosition();
+    var features = map.getFeaturesAtPixel(e.pixel);
+    if (features && features[0].get('text')) {
+      var coords = features[0].getGeometry().getCoordinates();
+      var string = features[0].get('text');
+      overlay.getElement().innerHTML = string;
+      overlay.setPosition(coords);
+    }
+  });
+
+</script>
+
+{% endblock %}

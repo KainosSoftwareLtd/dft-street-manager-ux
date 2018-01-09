@@ -1,0 +1,195 @@
+{% extends "alpha/v2-0/map-layout.html" %}
+
+{% block page_title %}
+Forward Planning - Street Manager
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+<script src="https://openlayers.org/en/v4.6.4/build/ol.js" type="text/javascript"></script>
+
+<main id="content" role="main" style="padding:0px">
+    <!-- alpha banner -->
+    {% include "includes/phase_banner_alpha.html" %}
+</main>
+
+<div id="map" class="map" style="width: 100%"></div>
+<div class="arrow_box" id="popup-container"></div>
+
+<div id="search-panel">
+    <h1 class="heading-medium">How do you want to search?</h1>
+    <form>
+        <div class="form-group">
+            <fieldset>
+                <legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>
+                <div class="form-group spacing-bottom-half">
+                    <label class="form-label" for="maintain-map-search">Search by postcode, address, UPRN, charge ID or title number
+                    </label>
+                    <input class="form-control" id="maintain-map-search" name="maintain-map-search" type="text" value="{{searchDetails}}" autofocus="autofocus">
+                    <input id="map-search-button" class="button" type="button" name="maintain-map-search" value="Search">
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    <form>
+        <fieldset>
+            <legend>
+                <span class="body-text">Select all that apply</span>
+            </legend>
+
+            <div class="multiple-choice">
+                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                <label for="layer-type-1">Assets</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                <label for="layer-type-2">My Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                <label for="layer-type-3">Other Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                <label for="layer-type-4">Current Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                <label for="layer-type-5">Restrictions</label>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+
+
+<style>
+    .arrow_box {
+        position: relative;
+        background: #fff;
+        border: 1px solid #003c88;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .arrow_box:after, .arrow_box:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: #fff;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    .arrow_box:before {
+        border-color: rgba(153, 153, 153, 0);
+        border-top-color: #003c88;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+</style>
+
+<script type="text/javascript">
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([0.1218, 52.2053]),
+      zoom: 17
+    })
+  });
+
+  const assetsSource = new ol.source.Vector();
+  const assetsLayer = new ol.layer.Vector({
+    source: assetsSource
+  });
+  map.addLayer(assetsLayer);
+
+  assetsLayer.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker-red.png'
+    })
+  }));
+  assetsLayer.setVisible(false)
+
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([13639.829398919617, 6837289.194287598])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([14154.5850112776, 6837452.817301271])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([14116.36649713501, 6837160.206802366])))
+  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([13432.016228269293, 6837043.1626028055])))
+
+
+  const plannedWorksSource = new ol.source.Vector();
+  const plannedWorksLayer = new ol.layer.Vector({
+    source: plannedWorksSource
+  });
+  map.addLayer(plannedWorksLayer);
+
+  plannedWorksLayer.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '/public/images/map-marker-blue.png'
+    })
+  }));
+  plannedWorksLayer.setVisible(false)
+
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13576.529984870955, 6837049.134245641])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13501.287285152734, 6837672.573757592])))
+  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13718.655084338705, 6837371.602958717])))
+
+  var overlay = new ol.Overlay({
+    element: document.getElementById('popup-container'),
+    positioning: 'bottom-center',
+    offset: [0, -10]
+  });
+  map.addOverlay(overlay);
+
+  map.on('click', function(e) {
+    overlay.setPosition();
+    var features = map.getFeaturesAtPixel(e.pixel);
+    if (features) {
+      var coords = features[0].getGeometry().getCoordinates();
+      var string = `Work Type: Footway resurfacing <br/>
+      HA: Cambridgeshire County Council <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Contact: 0345 045 5212 <br/>`
+      overlay.getElement().innerHTML = string;
+      overlay.setPosition(coords);
+    }
+  });
+
+  var assetscheckbox = $("#layer-type-1");
+  var plannedworkscheckbox = $("#layer-type-2");
+
+  assetscheckbox.change(function(event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      assetsLayer.setVisible(true)
+    } else {
+      assetsLayer.setVisible(false)
+    }
+  });
+
+  plannedworkscheckbox.change(function(event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      plannedWorksLayer.setVisible(true)
+    } else {
+      plannedWorksLayer.setVisible(false)
+    }
+  });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Edit Work Confirmation - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <div class="govuk-box-highlight">
+                <h1 class="heading-xlarge">
+                    Work Record edited
+                </h1>
+                <p class="font-large">
+                    Your reference number is <br>
+                    <strong class="bold">HDJ2123F</strong>
+                </p>
+            </div>
+
+            <h2 class="heading-medium">What happens next</h2>
+            <p>You will be notified when work is planned.</p>
+
+            <div class="form-group">
+                <a href="/alpha/v2-0/create-new-work" class="button">Create New Work Record</a>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock %}
