@@ -20,126 +20,20 @@ Forward Planning - Street Manager
 <div class="arrow_box" id="popup-container"></div>
 
 <div id="search-panel" class="charge-list">
-    <div id="drawnArea"></div>
-    <div class="form-group">
-           <fieldset>
-                <a id="create-work-button" href="/alpha/v2-0/create-new-work" style="display: none;">Create Work</a>
-            </fieldset>
-    </div>
+
 
     <h1 class="heading-small">Search results for <span id="titleText"></span></h1>
     <!-- <input class="form-control search-field maintain-searched" id="maintain-map-search" name="maintain-map-search" type="text"> -->
     <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
     <input class="button" type="submit" value="Search">
-    <div class="results-block">
-        <div class="pager">
-            <div class="pager-controls">
-                <ul class="pager-items">
-                    <li>1</li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </div>
-            <div class="pager-summary">Showing 1 – 10 of 100 works</div>
-        </div>
-        <ol class="results-list">
 
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">YG425377097</a></h2>
-                    <span class="status bold-xsmall">In progress</span>
-                </div>
-                <p>22 The Vale<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr</p>
-                <p><span class="bold-xsmall">Created on</span><br>20 December 2017</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">CT0224443466</a></h2>
-                    <span class="status bold-xsmall">In progress</span>
-                </div>
-                <p>24 The Vale<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br> Disconnect 1 X 32MM PE Service from main in carridgeway</p>
-                <p><span class="bold-xsmall">Created on</span><br>3 January 2018</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">ZE4103159-CE-30</a></h2>
-                    <span class="status bold-xsmall">Advanced planning</span>
-                </div>
-                <p>30 Old Oak Road<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Water pipe realignment and enabling works for thames tideway project</p>
-                <p><span class="bold-xsmall">Created on</span><br>11 November 2017</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">TFL_TIMS-179753</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>4 Sawley Road<br>Exeter<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Maintenance -c/w-patch req for pothole lane 1</p>
-                <p><span class="bold-xsmall">Created on</span><br>5 January 2018</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">YG450376470</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>28 Armstrong Road<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Hoarding: fw works no cw incursion 1.8 min maintained for pedestrians</p>
-                <p><span class="bold-xsmall">Created on</span><br>3 August 2017</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">YG407370503</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>1 Wallflower Street<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Installation and renewal of new and additional drainage signage and lighting</p>
-                <p><span class="bold-xsmall">Created on</span><br>17 May 2016</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">CT022241049</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>34 David Road<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Resurfacing footways and carriageway</p>
-                <p><span class="bold-xsmall">Created on</span><br>30 November 2017</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">EC40010739494</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>36 The Vale<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>
-                    Network Operations Distribution: INSTALL/REPLACE/REMOVE LINK BOX: Excavation to replace a 4 way link box in the footway outside</p>
-                <p><span class="bold-xsmall">Created on</span><br>1 April 2016</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">YG407375342</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>6 Oak Way<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>WBS Code SC2769.240.001 construction of EP10 crossover Fw TM only - 1.2m for Pedestrians.</p>
-                <p><span class="bold-xsmall">Created on</span><br>3 February 2015</p>
-            </li>
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a href="#">LR909270187</a></h2>
-                    <span class="status bold-xsmall">Planned</span>
-                </div>
-                <p>38 Davis Road<br>London<br>W12 3LB</p>
-                <p><span class="bold-xsmall">Description</span><br>Excavate & Lay New Paving New Kerbs & Street Furniture Footway Closure SCI</p>
-                <p><span class="bold-xsmall">Created on</span><br>11 August 2015</p>
-            </li>
-        </ol>
+    <div id="drawnArea" style="padding-top: 20px;"></div>
+    <div class="form-group">
+        <fieldset>
+            <a id="create-work-button" href="/alpha/v2-0/create-new-work" style="display: none;">Create Work</a>
+        </fieldset>
     </div>
+    <div id="results" class="results-block">
     <div class="pager">
         <div class="pager-controls">
             <ul class="pager-items">
@@ -150,12 +44,121 @@ Forward Planning - Street Manager
                 <li><a href="#">5</a></li>
                 <li><a href="#">Next</a></li>
             </ul>
+        </div>
+        <div class="pager-summary">Showing 1 – 10 of 100 works</div>
+    </div>
+    <ol class="results-list">
+
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">YG425377097</a></h2>
+                <span class="status bold-xsmall">In progress</span>
+            </div>
+            <p>22 The Vale<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr</p>
+            <p><span class="bold-xsmall">Created on</span><br>20 December 2017</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">CT0224443466</a></h2>
+                <span class="status bold-xsmall">In progress</span>
+            </div>
+            <p>24 The Vale<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br> Disconnect 1 X 32MM PE Service from main in carridgeway</p>
+            <p><span class="bold-xsmall">Created on</span><br>3 January 2018</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">ZE4103159-CE-30</a></h2>
+                <span class="status bold-xsmall">Advanced planning</span>
+            </div>
+            <p>30 Old Oak Road<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Water pipe realignment and enabling works for thames tideway project</p>
+            <p><span class="bold-xsmall">Created on</span><br>11 November 2017</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">TFL_TIMS-179753</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>4 Sawley Road<br>Exeter<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Maintenance -c/w-patch req for pothole lane 1</p>
+            <p><span class="bold-xsmall">Created on</span><br>5 January 2018</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">YG450376470</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>28 Armstrong Road<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Hoarding: fw works no cw incursion 1.8 min maintained for pedestrians</p>
+            <p><span class="bold-xsmall">Created on</span><br>3 August 2017</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">YG407370503</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>1 Wallflower Street<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Installation and renewal of new and additional drainage signage and lighting</p>
+            <p><span class="bold-xsmall">Created on</span><br>17 May 2016</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">CT022241049</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>34 David Road<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Resurfacing footways and carriageway</p>
+            <p><span class="bold-xsmall">Created on</span><br>30 November 2017</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">EC40010739494</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>36 The Vale<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>
+                Network Operations Distribution: INSTALL/REPLACE/REMOVE LINK BOX: Excavation to replace a 4 way link box in the footway outside</p>
+            <p><span class="bold-xsmall">Created on</span><br>1 April 2016</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">YG407375342</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>6 Oak Way<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>WBS Code SC2769.240.001 construction of EP10 crossover Fw TM only - 1.2m for Pedestrians.</p>
+            <p><span class="bold-xsmall">Created on</span><br>3 February 2015</p>
+        </li>
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a href="#">LR909270187</a></h2>
+                <span class="status bold-xsmall">Planned</span>
+            </div>
+            <p>38 Davis Road<br>London<br>W12 3LB</p>
+            <p><span class="bold-xsmall">Description</span><br>Excavate & Lay New Paving New Kerbs & Street Furniture Footway Closure SCI</p>
+            <p><span class="bold-xsmall">Created on</span><br>11 August 2015</p>
+        </li>
+    </ol>
+    <div class="pager">
+            <div class="pager-controls">
+                <ul class="pager-items">
+                    <li>1</li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+
+            </div>
+
+            <div class="pager-summary">Showing 1 – 10 of 100 works</div>
 
         </div>
+</div>
 
-        <div class="pager-summary">Showing 1 – 10 of 100 works</div>
-
-    </div>
 </div>
 
 <style>
