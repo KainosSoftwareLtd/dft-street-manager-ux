@@ -7,6 +7,8 @@ Forward Planning - Street Manager
 {% block content %}
 <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
 <script src="https://openlayers.org/en/v4.6.4/build/ol.js" type="text/javascript"></script>
+<script src="/public/javascripts/map_styles.js"></script>
+<script src="/public/javascripts/map_controls.js"></script>
 
 <main id="content" role="main" style="padding:0px">
     <!-- alpha banner -->
@@ -31,40 +33,65 @@ Forward Planning - Street Manager
             </fieldset>
         </div>
     </form>
-    <form>
-        <fieldset>
-            <legend>
-                <span class="body-text">Select all that apply</span>
-            </legend>
+    <div id="legend">
+        <form>
+            <fieldset>
+                <legend>
+                    <span class="body-text">Select all that apply</span>
+                </legend>
 
-            <div class="multiple-choice">
-                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
-                <label for="layer-type-1">Assets</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                <label for="layer-type-2">My Planned Works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
-                <label for="layer-type-3">Other Planned Works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
-                <label for="layer-type-4">Current Works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
-                <label for="layer-type-5">Restrictions</label>
-            </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                    <label for="layer-type-1">Assets</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                    <label for="layer-type-2">My Planned Works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                    <label for="layer-type-3">Other Planned Works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                    <label for="layer-type-4">Current Works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                    <label for="layer-type-5">Restrictions</label>
+                </div>
 
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
+    </div>
 </div>
 
-
+<div id="slider">
+    <input disabled type="text" id="amount" style="border: 0; background-color: white; font-weight: bold; width: inherit;" />
+    <div id="slider-id">
+        <div class="ui-slider-handle"></div>
+    </div>
+</div>
 
 <style>
+
+    #legend {
+        background-color: white;
+        width: 240px;
+        padding: 10px;
+        top: 80px;
+        right: 50px;
+    }
+    /*#slider {*/
+        /*border-radius: 4px;*/
+        /*background: #fff;*/
+        /*padding: 2px;*/
+        /*position: absolute;*/
+        /*width:600px;*/
+        /*bottom: 20px;*/
+        /*right: 400px;*/
+    /*}*/
+
     .arrow_box {
         position: relative;
         background: #fff;
@@ -98,18 +125,54 @@ Forward Planning - Street Manager
 </style>
 
 <script type="text/javascript">
+  var MAP_CONFIG = {};
+
+  (function (MAP_CONFIG) {
+
+    MAP_CONFIG.draw_layer_zindex = 2;
+    // Draw Source
+    MAP_CONFIG.draw_features = new ol.Collection();
+    MAP_CONFIG.draw_controls = new MAP_CONTROLS.draw_controls();
+    MAP_CONFIG.draw_source = new ol.source.Vector({ features: MAP_CONFIG.draw_features });
+    MAP_CONFIG.draw_layer = new ol.layer.Vector({
+      source: MAP_CONFIG.draw_source,
+      style: draw_layer_styles.style[draw_layer_styles.NONE],
+      zIndex: MAP_CONFIG.draw_layer_zindex
+    })
+    MAP_CONFIG.base_layer = new ol.layer.Tile({
+      source: new ol.source.OSM()
+    })
+  })(MAP_CONFIG);
+
+  var slider = new ol.control.Control({element: document.getElementById('slider')});
+
+  var legend = new ol.control.Control({element: document.getElementById('legend')});
+  var scaleLine = new ol.control.ScaleLine()
+
   var map = new ol.Map({
     target: 'map',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
-      })
-    ],
+    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
+    controls: ol.control.defaults({attribution: false}).extend([
+      MAP_CONFIG.draw_controls, legend, scaleLine, slider
+    ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([0.1218, 52.2053]),
       zoom: 17
     })
   });
+
+  // var map = new ol.Map({
+  //   target: 'map',
+  //   layers: [
+  //     new ol.layer.Tile({
+  //       source: new ol.source.OSM()
+  //     })
+  //   ],
+  //   view: new ol.View({
+  //     center: ol.proj.fromLonLat([0.1218, 52.2053]),
+  //     zoom: 17
+  //   })
+  // });
 
   const assetsSource = new ol.source.Vector();
   const assetsLayer = new ol.layer.Vector({
