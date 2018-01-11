@@ -132,7 +132,6 @@ Forward Planning - Street Manager
     MAP_CONFIG.draw_layer_zindex = 2;
     // Draw Source
     MAP_CONFIG.draw_features = new ol.Collection();
-    MAP_CONFIG.draw_controls = new MAP_CONTROLS.draw_controls();
     MAP_CONFIG.draw_source = new ol.source.Vector({ features: MAP_CONFIG.draw_features });
     MAP_CONFIG.draw_layer = new ol.layer.Vector({
       source: MAP_CONFIG.draw_source,
@@ -153,26 +152,13 @@ Forward Planning - Street Manager
     target: 'map',
     layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      MAP_CONFIG.draw_controls, legend, scaleLine, slider
+      legend, scaleLine, slider
     ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([0.1218, 52.2053]),
       zoom: 17
     })
   });
-
-  // var map = new ol.Map({
-  //   target: 'map',
-  //   layers: [
-  //     new ol.layer.Tile({
-  //       source: new ol.source.OSM()
-  //     })
-  //   ],
-  //   view: new ol.View({
-  //     center: ol.proj.fromLonLat([0.1218, 52.2053]),
-  //     zoom: 17
-  //   })
-  // });
 
   const assetsSource = new ol.source.Vector();
   const assetsLayer = new ol.layer.Vector({
