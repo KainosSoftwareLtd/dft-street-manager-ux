@@ -117,15 +117,15 @@ Forward Planning - Street Manager
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                <label for="layer-type-2">My Planned Works</label>
+                <label for="layer-type-2">My planned works</label>
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
-                <label for="layer-type-3">Other Planned Works</label>
+                <label for="layer-type-3">Third party planned works</label>
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
-                <label for="layer-type-4">Current Works</label>
+                <label for="layer-type-4">Current works</label>
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
@@ -248,7 +248,7 @@ Forward Planning - Street Manager
       Start date: 09/06/2018 <br/>
       End date: 19/07/2018 <br/>
       Contact: 0345 045 5212 <br/>`,
-    dateOfWorks: new Date('2013.05.01').getTime() / 1000
+    dateOfWorks: new Date('2018.02.23').getTime() / 1000
   })
   plannedWork1.setId(1);
 
@@ -259,7 +259,7 @@ Forward Planning - Street Manager
       Start date: 09/06/2018 <br/>
       End date: 19/07/2018 <br/>
       Contact: 0345 045 5212 <br/>`,
-    dateOfWorks: new Date('2019.05.01').getTime() / 1000
+    dateOfWorks: new Date('2018.05.01').getTime() / 1000
   })
   plannedWork2.setId(2);
 
@@ -270,7 +270,7 @@ Forward Planning - Street Manager
       Start date: 09/06/2018 <br/>
       End date: 19/07/2018 <br/>
       Contact: 0345 045 5212 <br/>`,
-    dateOfWorks: new Date('2018.08.23').getTime() / 1000
+    dateOfWorks: new Date('2019.08.23').getTime() / 1000
   })
   plannedWork3.setId(3);
 
@@ -327,7 +327,7 @@ Forward Planning - Street Manager
 
   $('#slider-id').slider({
     range: true,
-    values: [ new Date().getTime() / 1000, new Date('2020.01.01').getTime() / 1000 ],
+    values: [ new Date().getTime() / 1000, new Date('2019.01.01').getTime() / 1000 ],
     min: new Date().getTime() / 1000,
     max: new Date('2020.01.01').getTime() / 1000,
     step: 86400,
@@ -335,7 +335,7 @@ Forward Planning - Street Manager
       plannedWorksSource.addFeatures(plannedWorks);
 
       plannedWorksSource.forEachFeature(function (feature) {
-        if(feature.get('dateOfWorks') < ui.values[0] || feature.get('dateOfWorks') > ui.values[1])
+        if(feature.get('dateOfWorks') <= ui.values[0] || feature.get('dateOfWorks') >= ui.values[1])
         {
           plannedWorksSource.removeFeature(feature);
         }
