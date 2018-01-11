@@ -44,7 +44,7 @@ router.post('/alpha/v2-0/sign-in.html', function (req, res) {
       res.redirect('/alpha/v2-0/dashboard.html')
       break
     case 'ha@sm.com' :
-      res.redirect('/alpha/v2-0/dashboard.html')
+      res.redirect('/alpha/v2-0/dashboard-ha.html')
       break
     default:
       res.render('alpha/v2-0/sign-in.html', {validationError: 'Invalid login credentials.'})
