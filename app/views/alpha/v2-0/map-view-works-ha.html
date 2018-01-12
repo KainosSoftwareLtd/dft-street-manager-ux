@@ -208,11 +208,11 @@ Forward Planning - Street Manager
     var features = map.getFeaturesAtPixel(e.pixel);
     if (features) {
       var coords = features[0].getGeometry().getCoordinates();
-      var string = `Work Type: Footway resurfacing <br/>
-      HA: Cambridgeshire County Council <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Contact: 0345 045 5212 <br/>`
+      var string = 'Work Type: Footway resurfacing <br/>' +
+      'HA: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Contact: 0345 045 5212 <br/>'
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
     }
