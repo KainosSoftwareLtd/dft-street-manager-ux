@@ -55,7 +55,7 @@ Forward Planning - Street Manager
         position: absolute;
         width:600px;
         bottom: 20px;
-        right: 400px;
+        right: 20%;
     }
 
     .arrow_box {
@@ -169,28 +169,28 @@ Forward Planning - Street Manager
   var asset1 = new ol.Feature (
     {
       geometry: new ol.geom.Point([13639.829398919617, 6837289.194287598]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset1.setId(1);
 
   var asset2 = new ol.Feature (
     {
       geometry: new ol.geom.Point([14154.5850112776, 6837452.817301271]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset2.setId(2);
 
   var asset3 = new ol.Feature (
     {
       geometry: new ol.geom.Point([14116.36649713501, 6837160.206802366]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset3.setId(3);
 
   var asset4 = new ol.Feature (
     {
       geometry: new ol.geom.Point([13432.016228269293, 6837043.1626028055]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset4.setId(4);
 
@@ -217,45 +217,45 @@ Forward Planning - Street Manager
 
   var plannedWork1 = new ol.Feature({
     geometry: new ol.geom.Point([13576.529984870955, 6837049.134245641]),
-    text: `Work Type: Footway resurfacing <br/>
-      Road Owner: Cambridgeshire County Council <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: Michael Harris <br/>
-      Promoter Agent: Cadent <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.02.23').getTime() / 1000
+    text: 'Work Type: Footway resurfacing <br/>' +
+      'Road Owner: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork1.setId(1);
 
   var plannedWork2 = new ol.Feature({
     geometry: new ol.geom.Point([13501.287285152734, 6837672.573757592]),
-    text: `Work Ref: YG425377097 <br/>
-      Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>
-      Road Owner: Cambridgeshire County Council <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: Michael Harris <br/>
-      Promoter Agent: Cadent <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.05.01').getTime() / 1000
+    text: 'Work Ref: YG425377097 <br/>' +
+      'Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>' +
+      'Road Owner: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/05/01').getTime() / 1000
   })
   plannedWork2.setId(2);
 
   var plannedWork3 = new ol.Feature({
     geometry: new ol.geom.Point([13718.655084338705, 6837371.602958717]),
-    text: `Work Ref: CT0224443466 <br/>
-      Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>
-      Road Owner: Cambridgeshire County Council <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: John Carrington <br/>
-      Promoter Agent: FM Conway LTD <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="/alpha/v2-0/work-record">View Work Record</a>`,
-    dateOfWorks: new Date('2018.08.23').getTime() / 1000
+    text: 'Work Ref: CT0224443466 <br/>' +
+      'Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>' +
+      'Road Owner: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Promoter Name: John Carrington <br/>' +
+      'Promoter Agent: FM Conway LTD <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="/alpha/v2-0/work-record">View Work Record</a>',
+    dateOfWorks: new Date('2018/08/23').getTime() / 1000
   })
   plannedWork3.setId(3);
 
