@@ -16,60 +16,26 @@ Forward Planning - Street Manager
 </main>
 
 <div id="map" class="map" style="width: 100%"></div>
+
 <div class="arrow_box" id="popup-container"></div>
 
-<div id="search-panel">
-    <h1 class="heading-medium">How do you want to search?</h1>
-    <form>
-        <div class="form-group">
-            <fieldset>
-                <legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>
-                <div class="form-group spacing-bottom-half">
-                    <label class="form-label" for="maintain-map-search">Search by postcode, address, UPRN, charge ID or title number
-                    </label>
-                    <input class="form-control" id="maintain-map-search" name="maintain-map-search" type="text" value="{{searchDetails}}" autofocus="autofocus">
-                    <input id="map-search-button" class="button" type="button" name="maintain-map-search" value="Search">
-                </div>
-            </fieldset>
-        </div>
-    </form>
-    <div id="legend">
-        <form>
-            <fieldset>
-                <legend>
-                    <span class="body-text">Select all that apply</span>
-                </legend>
+<div id="search-panel" class="charge-list">
 
-                <div class="multiple-choice">
-                    <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
-                    <label for="layer-type-1">Assets</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                    <label for="layer-type-2">My Planned Works</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
-                    <label for="layer-type-3">Other Planned Works</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
-                    <label for="layer-type-4">Current Works</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
-                    <label for="layer-type-5">Restrictions</label>
-                </div>
+    <h1 class="heading-small">Search results for <span id="titleText"></span></h1>
+    <!-- <input class="form-control search-field maintain-searched" id="maintain-map-search" name="maintain-map-search" type="text"> -->
+    <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
+    <input class="button" type="submit" value="Search">
 
-            </fieldset>
-        </form>
-    </div>
-</div>
+    <div id="results" class="results-block">
+        <ol class="results-list">
 
-<div id="slider">
-    <input disabled type="text" id="amount" style="border: 0; background-color: white; font-weight: bold; width: inherit;" />
-    <div id="slider-id">
-        <div class="ui-slider-handle"></div>
+            <li class="individualResults">
+                <div class="search-result-header">
+                    <h2 class="heading-small"><a id="result" href="#"></a>CB1 1NL</h2>
+                </div>
+                <p>Hobson Street<br>Cambridge<br></p>
+            </li>
+        </ol>
     </div>
 </div>
 
@@ -82,15 +48,15 @@ Forward Planning - Street Manager
         top: 80px;
         right: 50px;
     }
-    /*#slider {*/
-        /*border-radius: 4px;*/
-        /*background: #fff;*/
-        /*padding: 2px;*/
-        /*position: absolute;*/
-        /*width:600px;*/
-        /*bottom: 20px;*/
-        /*right: 400px;*/
-    /*}*/
+    #slider {
+        border-radius: 4px;
+        background: #fff;
+        padding: 2px;
+        position: absolute;
+        width:600px;
+        bottom: 20px;
+        right: 20%;
+    }
 
     .arrow_box {
         position: relative;
@@ -123,6 +89,46 @@ Forward Planning - Street Manager
         margin-left: -11px;
     }
 </style>
+
+<div id="legend">
+    <form>
+        <fieldset>
+            <legend>
+                <span class="body-text">Select all that apply</span>
+            </legend>
+
+            <div class="multiple-choice">
+                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                <label for="layer-type-1">Assets</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                <label for="layer-type-2">My Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-third-party-planned-works">
+                <label for="layer-type-3">Third Party Planned Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                <label for="layer-type-4">Current Works</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                <label for="layer-type-5">Restrictions</label>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<div id="slider">
+    <input disabled type="text" id="amount" style="border: 0; background-color: white; font-weight: bold; width: inherit;" />
+    <div id="slider-id">
+        <div class="ui-slider-handle"></div>
+    </div>
+</div>
+
 
 <script type="text/javascript">
   var MAP_CONFIG = {};
@@ -160,41 +166,119 @@ Forward Planning - Street Manager
     })
   });
 
-  const assetsSource = new ol.source.Vector();
-  const assetsLayer = new ol.layer.Vector({
-    source: assetsSource
-  });
-  map.addLayer(assetsLayer);
+  var asset1 = new ol.Feature (
+    {
+      geometry: new ol.geom.Point([13639.829398919617, 6837289.194287598]),
+      text: 'Type: Critical mains'
+    })
+  asset1.setId(1);
 
-  assetsLayer.setStyle(new ol.style.Style({
+  var asset2 = new ol.Feature (
+    {
+      geometry: new ol.geom.Point([14154.5850112776, 6837452.817301271]),
+      text: 'Type: Critical mains'
+    })
+  asset2.setId(2);
+
+  var asset3 = new ol.Feature (
+    {
+      geometry: new ol.geom.Point([14116.36649713501, 6837160.206802366]),
+      text: 'Type: Critical mains'
+    })
+  asset3.setId(3);
+
+  var asset4 = new ol.Feature (
+    {
+      geometry: new ol.geom.Point([13432.016228269293, 6837043.1626028055]),
+      text: 'Type: Critical mains'
+    })
+  asset4.setId(4);
+
+  var assets = [asset1, asset2, asset3, asset4]
+
+
+  var assetsSource = new ol.source.Vector({
+    features: assets
+  });
+  const AssetLayer = new ol.layer.Vector({
+    source: assetsSource,
+    visible: false
+  });
+  map.addLayer(AssetLayer);
+
+  AssetLayer.setStyle(new ol.style.Style({
     image: new ol.style.Icon({
-      src: '/public/images/map-marker-red.png'
+      src: '/public/images/map-marker-red.png',
+      anchor: [0.5, 25],
+      anchorXUnits: 'fraction',
+      anchorYUnits: 'pixels',
     })
   }));
-  assetsLayer.setVisible(false)
 
-  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([13639.829398919617, 6837289.194287598])))
-  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([14154.5850112776, 6837452.817301271])))
-  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([14116.36649713501, 6837160.206802366])))
-  assetsSource.addFeature(new ol.Feature(new ol.geom.Point([13432.016228269293, 6837043.1626028055])))
+  var plannedWork1 = new ol.Feature({
+    geometry: new ol.geom.Point([13576.529984870955, 6837049.134245641]),
+    text: 'Work Type: Footway resurfacing <br/>' +
+      'Road Owner: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/02/23').getTime() / 1000
+  })
+  plannedWork1.setId(1);
 
+  var plannedWork2 = new ol.Feature({
+    geometry: new ol.geom.Point([13501.287285152734, 6837672.573757592]),
+    text: 'Work Ref: YG425377097 <br/>' +
+      'Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>' +
+      'Road Owner: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/05/01').getTime() / 1000
+  })
+  plannedWork2.setId(2);
 
-  const plannedWorksSource = new ol.source.Vector();
-  const plannedWorksLayer = new ol.layer.Vector({
-    source: plannedWorksSource
+  var plannedWork3 = new ol.Feature({
+    geometry: new ol.geom.Point([13718.655084338705, 6837371.602958717]),
+    text: 'Work Ref: CT0224443466 <br/>' +
+      'Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>' +
+      'Road Owner: Cambridgeshire County Council <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Promoter Name: John Carrington <br/>' +
+      'Promoter Agent: FM Conway LTD <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="/alpha/v2-0/work-record">View Work Record</a>',
+    dateOfWorks: new Date('2018/08/23').getTime() / 1000
+  })
+  plannedWork3.setId(3);
+
+  var plannedWorks = [plannedWork1, plannedWork2, plannedWork3]
+
+  const plannedWorksSource = new ol.source.Vector({
+    features: plannedWorks
   });
-  map.addLayer(plannedWorksLayer);
+  const plannedWorksLayer = new ol.layer.Vector({
+    source: plannedWorksSource,
+    visible: false
+  });
 
   plannedWorksLayer.setStyle(new ol.style.Style({
     image: new ol.style.Icon({
-      src: '/public/images/map-marker-blue.png'
+      src: '/public/images/map-marker-blue.png',
+      anchor: [0.5, 25],
+      anchorXUnits: 'fraction',
+      anchorYUnits: 'pixels',
     })
   }));
-  plannedWorksLayer.setVisible(false)
 
-  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13576.529984870955, 6837049.134245641])))
-  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13501.287285152734, 6837672.573757592])))
-  plannedWorksSource.addFeature(new ol.Feature(new ol.geom.Point([13718.655084338705, 6837371.602958717])))
+  map.addLayer(plannedWorksLayer);
 
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
@@ -206,31 +290,47 @@ Forward Planning - Street Manager
   map.on('click', function(e) {
     overlay.setPosition();
     var features = map.getFeaturesAtPixel(e.pixel);
-    if (features) {
+    if (features && features[0].get('text')) {
       var coords = features[0].getGeometry().getCoordinates();
-      var string = 'Work Type: Footway resurfacing <br/>' +
-      'HA: Cambridgeshire County Council <br/>' +
-      'Start date: 09/06/2018 <br/>' +
-      'End date: 19/07/2018 <br/>' +
-      'Contact: 0345 045 5212 <br/>'
+      var string = features[0].get('text');
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
     }
   });
 
-  var assetscheckbox = $("#layer-type-1");
-  var plannedworkscheckbox = $("#layer-type-2");
+  $('#slider-id').slider({
+    range: true,
+    values: [ new Date().getTime() / 1000, new Date('2019.01.01').getTime() / 1000 ],
+    min: new Date().getTime() / 1000,
+    max: new Date('2019.01.01').getTime() / 1000,
+    step: 86400,
+    change: function (event, ui) {
+      plannedWorksSource.addFeatures(plannedWorks);
 
-  assetscheckbox.change(function(event) {
+      plannedWorksSource.forEachFeature(function (feature) {
+        if(feature.get('dateOfWorks') <= ui.values[0] || feature.get('dateOfWorks') >= ui.values[1])
+        {
+          plannedWorksSource.removeFeature(feature);
+        }
+      });
+    },
+    slide: function( event, ui ) {
+      $( "#amount" ).val('START: ' + (new Date(ui.values[ 0 ] *1000).toDateString() ) + "     END: " + (new Date(ui.values[ 1 ] *1000)).toDateString() );
+    }
+  });
+  $( "#amount" ).val('START: ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toDateString()) +
+    "     END: " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toDateString());
+
+  $('#layer-type-1').change(function (event) {
     var checkbox = event.target;
     if (checkbox.checked) {
-      assetsLayer.setVisible(true)
+      AssetLayer.setVisible(true);
     } else {
-      assetsLayer.setVisible(false)
+      AssetLayer.setVisible(false);
     }
   });
 
-  plannedworkscheckbox.change(function(event) {
+  $("#layer-type-3").change(function(event) {
     var checkbox = event.target;
     if (checkbox.checked) {
       plannedWorksLayer.setVisible(true)
