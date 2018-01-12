@@ -21,7 +21,7 @@ MAP_CONTROLS.polygon_button = function () {
   var button = document.createElement('button')
   button.setAttribute('class', 'map-button polygon')
   button.setAttribute('title', 'Draw Polygon')
-  button.setAttribute('value', 'Draw')
+  button.innerHTML = 'Draw'
   var handlePolygon = function () {
     MAP_CONTROLS.add_draw_interaction('Polygon', button)
   }
