@@ -63,7 +63,7 @@ Forward Planning - Street Manager
         position: absolute;
         width:600px;
         bottom: 20px;
-        right: 400px;
+        right: 20%;
     }
 
     .ol-scale-line {
@@ -251,7 +251,7 @@ Forward Planning - Street Manager
       Promoter Agent: Cadent <br/>
       Contact: 0345 045 5212 <br/>
       <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.02.23').getTime() / 1000
+    dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork1.setId(1);
 
@@ -266,7 +266,7 @@ Forward Planning - Street Manager
       Promoter Agent: Cadent <br/>
       Contact: 0345 045 5212 <br/>
       <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.05.01').getTime() / 1000
+    dateOfWorks: new Date('2018/05/01').getTime() / 1000
   })
   plannedWork2.setId(2);
 
@@ -281,7 +281,7 @@ Forward Planning - Street Manager
       Promoter Agent: FM Conway LTD <br/>
       Contact: 0345 045 5212 <br/>
       <a href="/alpha/v2-0/work-record">View Work Record</a>`,
-    dateOfWorks: new Date('2019.08.23').getTime() / 1000
+    dateOfWorks: new Date('2019/08/23').getTime() / 1000
   })
   plannedWork3.setId(3);
 
@@ -296,7 +296,7 @@ Forward Planning - Street Manager
       Promoter Agent: Cadent <br/>
       Contact: 0345 045 5212 <br/>
       <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.11.18').getTime() / 1000
+    dateOfWorks: new Date('2018/11/18').getTime() / 1000
   })
   plannedWork4.setId(4);
 
@@ -342,9 +342,9 @@ Forward Planning - Street Manager
 
   $('#slider-id').slider({
     range: true,
-    values: [ new Date().getTime() / 1000, new Date('2019.01.01').getTime() / 1000 ],
+    values: [ new Date().getTime() / 1000, new Date('2019/01/01').getTime() / 1000 ],
     min: new Date().getTime() / 1000,
-    max: new Date('2019.01.01').getTime() / 1000,
+    max: new Date('2019/01/01').getTime() / 1000,
     step: 86400,
     change: function (event, ui) {
       plannedWorksSource.addFeatures(plannedWorks);
