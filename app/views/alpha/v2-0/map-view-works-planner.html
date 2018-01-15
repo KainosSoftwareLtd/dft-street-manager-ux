@@ -156,11 +156,11 @@ Forward Planning - Street Manager
     var features = map.getFeaturesAtPixel(e.pixel);
     if (features) {
       var coords = features[0].getGeometry().getCoordinates();
-      var string = `Work Type: Carriageway resurfacing <br/>
-      HA: Highways England <br/>
-      Start date: 04/04/2017 <br/>
-      End date: 05/05/2018 <br/>
-      Contact: (020) 8825 6600 <br/>`
+      var string = 'Work Type: Carriageway resurfacing <br/>' +
+      'HA: Highways England <br/>' +
+      'Start date: 04/04/2017 <br/>' +
+      'End date: 05/05/2018 <br/>' +
+      'Contact: (020) 8825 6600 <br/>'
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
     }

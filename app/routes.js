@@ -87,6 +87,10 @@ router.post('/alpha/v2-0/map-search', function (req, res) {
   res.render('alpha/v2-0/map-search-results.html', {searchDetails: req.body.search[0]})
 })
 
+router.post('/alpha/v2-0/map-search-ha', function (req, res) {
+  res.render('alpha/v2-0/map-view-works-ha.html', {searchDetails: req.body.search[0]})
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

@@ -61,15 +61,26 @@ Forward Planning - Street Manager
         background: #fff;
         padding: 2px;
         position: absolute;
-        width:600px;
+        width: 450px;
         bottom: 20px;
-        right: 400px;
+        right: 50px;
     }
 
+    .ui-slider-handle.ui-corner-all.ui-state-default {
+        background-color: darkgray;
+        border: 1px solid black;
+    }
+    .ui-slider-range.ui-corner-all.ui-widget-header {
+        background-color: #adadad;
+    }
     .ol-scale-line {
         position: absolute;
         left: 540px;
         bottom: 20px;
+    }
+
+    .ui-slider .ui-slider-handle {
+        width: 1.9em;
     }
 
     .arrow_box {
@@ -137,7 +148,7 @@ Forward Planning - Street Manager
 </div>
 
 <div id="slider">
-    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; font-weight: bold; width: inherit;" />
+    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
     <div id="slider-id">
         <div class="ui-slider-handle"></div>
     </div>
@@ -188,35 +199,35 @@ Forward Planning - Street Manager
   var asset1 = new ol.Feature (
     {
       geometry: new ol.geom.Point([-27437.90733296088, 6711495.343644402]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset1.setId(1);
 
   var asset2 = new ol.Feature (
     {
       geometry: new ol.geom.Point([-28158.910218514742, 6711424.237059503]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset2.setId(2);
 
   var asset3 = new ol.Feature (
     {
       geometry: new ol.geom.Point([-27683.567448866303, 6711417.071088102]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset3.setId(3);
 
   var asset4 = new ol.Feature (
     {
       geometry: new ol.geom.Point([-27344.37813585083, 6711747.9001011485]),
-      text: `Type: Critical mains`
+      text: 'Type: Critical mains'
     })
   asset4.setId(4);
 
   var asset5 = new ol.Feature (
     {
       geometry: new ol.geom.Point([-27125.81600809791, 6711948.692067497]),
-      text: ``
+      text: ''
     })
   asset5.setId(5);
 
@@ -243,60 +254,64 @@ Forward Planning - Street Manager
 
   var plannedWork1 = new ol.Feature({
     geometry: new ol.geom.Point([-28362.439943029985, 6711412.323589153]),
-    text: `Work Type: Footway resurfacing <br/>
-      Road Owner: London Borough of Acton <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: Michael Harris <br/>
-      Promoter Agent: Cadent <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.02.23').getTime() / 1000
+    text: 'Work Type: Footway resurfacing <br/>' +
+      'Road Owner: London Borough of Acton <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Status: Draft forward plan <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork1.setId(1);
 
   var plannedWork2 = new ol.Feature({
     geometry: new ol.geom.Point([-27971.89450163542, 6711734.1951379515]),
-    text: `Work Ref: YG425377097 <br/>
-      Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>
-      Road Owner: London Borough of Acton <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: Michael Harris <br/>
-      Promoter Agent: Cadent <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.05.01').getTime() / 1000
+    text: 'Work Ref: YG425377097 <br/>' +
+      'Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>' +
+      'Road Owner: London Borough of Acton <br/>' +
+      'Start date: 09/06/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Status: Published forward plan <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/02/01').getTime() / 1000
   })
   plannedWork2.setId(2);
 
   var plannedWork3 = new ol.Feature({
     geometry: new ol.geom.Point([-27496.55173198698, 6711710.308566612]),
-    text: `Work Ref: CT0224443466 <br/>
-      Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>
-      Road Owner: London Borough of Acton <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: John Carrington <br/>
-      Promoter Agent: FM Conway LTD <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="/alpha/v2-0/work-record">View Work Record</a>`,
-    dateOfWorks: new Date('2019.08.23').getTime() / 1000
+    text: 'Work Ref: CT0224443466 <br/>' +
+     'Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>' +
+     'Road Owner: London Borough of Acton <br/>' +
+     'Start date: 09/06/2018 <br/>' +
+     'End date: 19/07/2018 <br/>' +
+     'Status: Submitted for PA Approval <br/>' +
+     'Promoter Name: John Carrington <br/>' +
+     'Promoter Agent: FM Conway LTD <br/>' +
+     'Contact: 0345 045 5212 <br/>' +
+     '<a href="/alpha/v2-0/work-record">View Work Record</a>',
+    dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork3.setId(3);
 
   var plannedWork4 = new ol.Feature({
     geometry: new ol.geom.Point([-28388.71517150302, 6711675.673038171]),
-    text: `ZE4103159-CE-30 <br/>
-      Description: Water pipe realignment and enabling works for thames tideway project <br/>
-      Road Owner: London Borough of Acton <br/>
-      Start date: 09/06/2018 <br/>
-      End date: 19/07/2018 <br/>
-      Promoter Name: Michael Harris <br/>
-      Promoter Agent: Cadent <br/>
-      Contact: 0345 045 5212 <br/>
-      <a href="#">View Work Record</a>`,
-    dateOfWorks: new Date('2018.11.18').getTime() / 1000
+    text: 'ZE4103159-CE-30 <br/>' +
+      'Description: Water pipe realignment and enabling works for thames tideway project <br/>' +
+      'Road Owner: London Borough of Acton <br/>' +
+      'Start date: 03/01/2018 <br/>' +
+      'End date: 19/07/2018 <br/>' +
+      'Status: Work Underway <br/>' +
+      'Promoter Name: Michael Harris <br/>' +
+      'Promoter Agent: Cadent <br/>' +
+      'Contact: 0345 045 5212 <br/>' +
+      '<a href="#">View Work Record</a>',
+    dateOfWorks: new Date('2018/02/07').getTime() / 1000
   })
   plannedWork4.setId(4);
 
@@ -321,7 +336,6 @@ Forward Planning - Street Manager
 
   map.addLayer(plannedWorksLayer);
 
-
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
     positioning: 'bottom-center',
@@ -340,11 +354,13 @@ Forward Planning - Street Manager
     }
   });
 
+  var dateOptions =  {year: 'numeric', month: 'numeric', day: 'numeric'};
+
   $('#slider-id').slider({
     range: true,
-    values: [ new Date().getTime() / 1000, new Date('2019.01.01').getTime() / 1000 ],
+    values: [ new Date().getTime() / 1000, new Date('2018/03/01').getTime() / 1000 ],
     min: new Date().getTime() / 1000,
-    max: new Date('2019.01.01').getTime() / 1000,
+    max: new Date('2018/03/01').getTime() / 1000,
     step: 86400,
     change: function (event, ui) {
       plannedWorksSource.addFeatures(plannedWorks);
@@ -357,11 +373,12 @@ Forward Planning - Street Manager
       });
     },
     slide: function( event, ui ) {
-      $( "#amount" ).val('START: ' + (new Date(ui.values[ 0 ] *1000).toDateString() ) + "     END: " + (new Date(ui.values[ 1 ] *1000)).toDateString() );
+      $( "#amount" ).val('Start:  ' + (new Date(ui.values[ 0 ] *1000).toLocaleString('en-GB', dateOptions)) + "  |  End:  " + (new Date(ui.values[ 1 ] *1000)).toLocaleString('en-GB', dateOptions));
     }
   });
-  $( "#amount" ).val('START: ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toDateString()) +
-    "     END: " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toDateString());
+
+  $( "#amount" ).val('Start:  ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toLocaleString('en-GB', dateOptions)) +
+    "  |  End:  " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toLocaleString('en-GB', dateOptions));
     
   $('#layer-type-1').change(function (event) {
     var checkbox = event.target;
