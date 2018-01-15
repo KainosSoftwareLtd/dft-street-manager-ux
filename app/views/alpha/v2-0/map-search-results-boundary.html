@@ -5,8 +5,8 @@ Forward Planning - Street Manager
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
-<script src="https://openlayers.org/en/v4.6.4/build/ol.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://openlayers.org/en/v4.5.0/css/ol.css" type="text/css">
+<script src="https://openlayers.org/en/v4.5.0/build/ol.js" type="text/javascript"></script>
 <script src="/public/javascripts/map_styles.js"></script>
 <script src="/public/javascripts/map_controls.js"></script>
 
@@ -21,22 +21,30 @@ Forward Planning - Street Manager
 
 <div id="search-panel" class="charge-list">
 
+
     <h1 class="heading-small">Search results for <span id="titleText"></span></h1>
     <!-- <input class="form-control search-field maintain-searched" id="maintain-map-search" name="maintain-map-search" type="text"> -->
     <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
     <input class="button" type="submit" value="Search">
 
-    <div id="results" class="results-block">
-        <ol class="results-list">
-
-            <li class="individualResults">
-                <div class="search-result-header">
-                    <h2 class="heading-small"><a id="result" href="#"></a>CB1 1NL</h2>
-                </div>
-                <p>Hobson Street<br>Cambridge<br></p>
-            </li>
-        </ol>
+    <div id="drawnArea" style="padding-top: 20px;"></div>
+    <div class="form-group">
+        <fieldset>
+            <a id="create-work-button" href="/alpha/v2-0/create-new-work" style="display: none;">Create Work</a>
+        </fieldset>
     </div>
+    <div id="results" class="results-block">
+    <ol class="results-list">
+
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a id="result" href="#"></a>W3 7XA</h2>
+            </div>
+            <p>Cowley Rd<br>London<br></p>
+        </li>
+    </ol>
+</div>
+
 </div>
 
 <style>
@@ -53,26 +61,15 @@ Forward Planning - Street Manager
         background: #fff;
         padding: 2px;
         position: absolute;
-        width: 450px;
+        width:600px;
         bottom: 20px;
-        right: 50px;
+        right: 400px;
     }
 
-    .ui-slider-handle.ui-corner-all.ui-state-default {
-        background-color: darkgray;
-        border: 1px solid black;
-    }
-    .ui-slider-range.ui-corner-all.ui-widget-header {
-        background-color: #adadad;
-    }
     .ol-scale-line {
         position: absolute;
         left: 540px;
         bottom: 20px;
-    }
-
-    .ui-slider .ui-slider-handle {
-        width: 1.9em;
     }
 
     .arrow_box {
@@ -120,15 +117,15 @@ Forward Planning - Street Manager
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                <label for="layer-type-2">My Planned Works</label>
+                <label for="layer-type-2">My planned works</label>
             </div>
             <div class="multiple-choice">
-                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-third-party-planned-works">
-                <label for="layer-type-3">Third Party Planned Works</label>
+                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                <label for="layer-type-3">Third party planned works</label>
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
-                <label for="layer-type-4">Current Works</label>
+                <label for="layer-type-4">Current works</label>
             </div>
             <div class="multiple-choice">
                 <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
@@ -140,12 +137,11 @@ Forward Planning - Street Manager
 </div>
 
 <div id="slider">
-    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
+    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; font-weight: bold; width: inherit;" />
     <div id="slider-id">
         <div class="ui-slider-handle"></div>
     </div>
 </div>
-
 
 <script type="text/javascript">
   var MAP_CONFIG = {};
@@ -155,6 +151,7 @@ Forward Planning - Street Manager
     MAP_CONFIG.draw_layer_zindex = 2;
     // Draw Source
     MAP_CONFIG.draw_features = new ol.Collection();
+    MAP_CONFIG.draw_controls = new MAP_CONTROLS.draw_controls();
     MAP_CONFIG.draw_source = new ol.source.Vector({ features: MAP_CONFIG.draw_features });
     MAP_CONFIG.draw_layer = new ol.layer.Vector({
       source: MAP_CONFIG.draw_source,
@@ -164,6 +161,14 @@ Forward Planning - Street Manager
     MAP_CONFIG.base_layer = new ol.layer.Tile({
       source: new ol.source.OSM()
     })
+    MAP_CONFIG.wms_layer = new ol.layer.Tile({
+      source: new ol.source.TileWMS({
+        url: 'http://192.168.99.100:8182/cgi-bin/mapserv?map=/map/counties.map&',
+        params: {'LAYERS': 'counties'},
+        transition: 0
+      })
+    })
+
   })(MAP_CONFIG);
 
   var slider = new ol.control.Control({element: document.getElementById('slider')});
@@ -173,45 +178,57 @@ Forward Planning - Street Manager
 
   var map = new ol.Map({
     target: 'map',
-    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
+    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.wms_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      legend, scaleLine, slider
+      MAP_CONFIG.draw_controls, legend, scaleLine, slider
     ]),
     view: new ol.View({
-      center: ol.proj.fromLonLat([0.1218, 52.2053]),
-      zoom: 17
+      center: ol.proj.fromLonLat([-0.252, 51.5073]),
+      zoom: 6
     })
+  });
+
+  $("#result").click(function () {
+     var view = map.getView();
+     view.animate({zoom: 18, center: [-27683.567448866303, 6711417.071088102]})
   });
 
   var asset1 = new ol.Feature (
     {
-      geometry: new ol.geom.Point([13639.829398919617, 6837289.194287598]),
-      text: 'Type: Critical mains'
+      geometry: new ol.geom.Point([-27437.90733296088, 6711495.343644402]),
+      text: `Type: Critical mains`
     })
   asset1.setId(1);
 
   var asset2 = new ol.Feature (
     {
-      geometry: new ol.geom.Point([14154.5850112776, 6837452.817301271]),
-      text: 'Type: Critical mains'
+      geometry: new ol.geom.Point([-28158.910218514742, 6711424.237059503]),
+      text: `Type: Critical mains`
     })
   asset2.setId(2);
 
   var asset3 = new ol.Feature (
     {
-      geometry: new ol.geom.Point([14116.36649713501, 6837160.206802366]),
-      text: 'Type: Critical mains'
+      geometry: new ol.geom.Point([-27683.567448866303, 6711417.071088102]),
+      text: `Type: Critical mains`
     })
   asset3.setId(3);
 
   var asset4 = new ol.Feature (
     {
-      geometry: new ol.geom.Point([13432.016228269293, 6837043.1626028055]),
-      text: 'Type: Critical mains'
+      geometry: new ol.geom.Point([-27344.37813585083, 6711747.9001011485]),
+      text: `Type: Critical mains`
     })
   asset4.setId(4);
 
-  var assets = [asset1, asset2, asset3, asset4]
+  var asset5 = new ol.Feature (
+    {
+      geometry: new ol.geom.Point([-27125.81600809791, 6711948.692067497]),
+      text: ``
+    })
+  asset5.setId(5);
+
+  var assets = [asset1, asset2, asset3, asset4, asset5]
 
 
   var assetsSource = new ol.source.Vector({
@@ -233,53 +250,65 @@ Forward Planning - Street Manager
   }));
 
   var plannedWork1 = new ol.Feature({
-    geometry: new ol.geom.Point([13576.529984870955, 6837049.134245641]),
-    text: 'Work Type: Footway resurfacing <br/>' +
-      'Road Owner: Cambridgeshire County Council <br/>' +
-      'Start date: 09/06/2018 <br/>' +
-      'End date: 19/07/2018 <br/>' +
-      'Status: Draft forward plan <br/>' +
-      'Promoter Name: Michael Harris <br/>' +
-      'Promoter Agent: Cadent <br/>' +
-      'Contact: 0345 045 5212 <br/>' +
-      '<a href="#">View Work Record</a>',
-    dateOfWorks: new Date('2018/02/23').getTime() / 1000
+    geometry: new ol.geom.Point([-28362.439943029985, 6711412.323589153]),
+    text: `Work Type: Footway resurfacing <br/>
+      Road Owner: London Borough of Acton <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Promoter Name: Michael Harris <br/>
+      Promoter Agent: Cadent <br/>
+      Contact: 0345 045 5212 <br/>
+      <a href="#">View Work Record</a>`,
+    dateOfWorks: new Date('2018.02.23').getTime() / 1000
   })
   plannedWork1.setId(1);
 
   var plannedWork2 = new ol.Feature({
-    geometry: new ol.geom.Point([13501.287285152734, 6837672.573757592]),
-    text: 'Work Ref: YG425377097 <br/>' +
-      'Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>' +
-      'Road Owner: Cambridgeshire County Council <br/>' +
-      'Start date: 09/06/2018 <br/>' +
-      'End date: 19/07/2018 <br/>' +
-      'Status: Submitted for PA Approval <br/>' +
-      'Promoter Name: Michael Harris <br/>' +
-      'Promoter Agent: Cadent <br/>' +
-      'Contact: 0345 045 5212 <br/>' +
-      '<a href="#">View Work Record</a>',
-    dateOfWorks: new Date('2018/05/01').getTime() / 1000
+    geometry: new ol.geom.Point([-27971.89450163542, 6711734.1951379515]),
+    text: `Work Ref: YG425377097 <br/>
+      Description: Nrw cat1 ponding lane 1 closed for access work hours 0000 - 24hr <br/>
+      Road Owner: London Borough of Acton <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Promoter Name: Michael Harris <br/>
+      Promoter Agent: Cadent <br/>
+      Contact: 0345 045 5212 <br/>
+      <a href="#">View Work Record</a>`,
+    dateOfWorks: new Date('2018.05.01').getTime() / 1000
   })
   plannedWork2.setId(2);
 
   var plannedWork3 = new ol.Feature({
-    geometry: new ol.geom.Point([13718.655084338705, 6837371.602958717]),
-    text: 'Work Ref: CT0224443466 <br/>' +
-      'Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>' +
-      'Road Owner: Cambridgeshire County Council <br/>' +
-      'Start date: 03/01/2018 <br/>' +
-      'End date: 19/07/2018 <br/>' +
-      'Status: Work underway <br/>' +
-      'Promoter Name: John Carrington <br/>' +
-      'Promoter Agent: FM Conway LTD <br/>' +
-      'Contact: 0345 045 5212 <br/>' +
-      '<a href="/alpha/v2-0/work-record">View Work Record</a>',
-    dateOfWorks: new Date('2018/08/23').getTime() / 1000
+    geometry: new ol.geom.Point([-27496.55173198698, 6711710.308566612]),
+    text: `Work Ref: CT0224443466 <br/>
+      Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>
+      Road Owner: London Borough of Acton <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Promoter Name: John Carrington <br/>
+      Promoter Agent: FM Conway LTD <br/>
+      Contact: 0345 045 5212 <br/>
+      <a href="/alpha/v2-0/work-record">View Work Record</a>`,
+    dateOfWorks: new Date('2019.08.23').getTime() / 1000
   })
   plannedWork3.setId(3);
 
-  var plannedWorks = [plannedWork1, plannedWork2, plannedWork3]
+  var plannedWork4 = new ol.Feature({
+    geometry: new ol.geom.Point([-28388.71517150302, 6711675.673038171]),
+    text: `ZE4103159-CE-30 <br/>
+      Description: Water pipe realignment and enabling works for thames tideway project <br/>
+      Road Owner: London Borough of Acton <br/>
+      Start date: 09/06/2018 <br/>
+      End date: 19/07/2018 <br/>
+      Promoter Name: Michael Harris <br/>
+      Promoter Agent: Cadent <br/>
+      Contact: 0345 045 5212 <br/>
+      <a href="#">View Work Record</a>`,
+    dateOfWorks: new Date('2018.11.18').getTime() / 1000
+  })
+  plannedWork4.setId(4);
+
+  var plannedWorks = [plannedWork1, plannedWork2, plannedWork3, plannedWork4]
 
   const plannedWorksSource = new ol.source.Vector({
     features: plannedWorks
@@ -300,6 +329,7 @@ Forward Planning - Street Manager
 
   map.addLayer(plannedWorksLayer);
 
+
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
     positioning: 'bottom-center',
@@ -318,8 +348,6 @@ Forward Planning - Street Manager
     }
   });
 
-  var dateOptions =  {year: 'numeric', month: 'numeric', day: 'numeric'};
-
   $('#slider-id').slider({
     range: true,
     values: [ new Date().getTime() / 1000, new Date('2019.01.01').getTime() / 1000 ],
@@ -337,13 +365,12 @@ Forward Planning - Street Manager
       });
     },
     slide: function( event, ui ) {
-      $( "#amount" ).val('Start:  ' + (new Date(ui.values[ 0 ] *1000).toLocaleString('en-GB', dateOptions)) + "  |  End:  " + (new Date(ui.values[ 1 ] *1000)).toLocaleString('en-GB', dateOptions));
+      $( "#amount" ).val('START: ' + (new Date(ui.values[ 0 ] *1000).toDateString() ) + "     END: " + (new Date(ui.values[ 1 ] *1000)).toDateString() );
     }
   });
-
-  $( "#amount" ).val('Start:  ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toLocaleString('en-GB', dateOptions)) +
-    "  |  End:  " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toLocaleString('en-GB', dateOptions));
-
+  $( "#amount" ).val('START: ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toDateString()) +
+    "     END: " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toDateString());
+    
   $('#layer-type-1').change(function (event) {
     var checkbox = event.target;
     if (checkbox.checked) {
@@ -361,6 +388,10 @@ Forward Planning - Street Manager
       plannedWorksLayer.setVisible(false)
     }
   });
+
+  map.on('click', function (event) {
+    console.log(event.coordinate)
+  })
 
 </script>
 
