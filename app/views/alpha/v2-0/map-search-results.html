@@ -61,15 +61,26 @@ Forward Planning - Street Manager
         background: #fff;
         padding: 2px;
         position: absolute;
-        width:600px;
+        width: 450px;
         bottom: 20px;
-        right: 20%;
+        right: 50px;
     }
 
+    .ui-slider-handle.ui-corner-all.ui-state-default {
+        background-color: darkgray;
+        border: 1px solid black;
+    }
+    .ui-slider-range.ui-corner-all.ui-widget-header {
+        background-color: #adadad;
+    }
     .ol-scale-line {
         position: absolute;
         left: 540px;
         bottom: 20px;
+    }
+
+    .ui-slider .ui-slider-handle {
+        width: 1.9em;
     }
 
     .arrow_box {
@@ -137,7 +148,7 @@ Forward Planning - Street Manager
 </div>
 
 <div id="slider">
-    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; font-weight: bold; width: inherit;" />
+    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
     <div id="slider-id">
         <div class="ui-slider-handle"></div>
     </div>
@@ -266,7 +277,7 @@ Forward Planning - Street Manager
       'Promoter Agent: Cadent <br/>' +
       'Contact: 0345 045 5212 <br/>' +
       '<a href="#">View Work Record</a>',
-    dateOfWorks: new Date('2018/05/01').getTime() / 1000
+    dateOfWorks: new Date('2018/02/01').getTime() / 1000
   })
   plannedWork2.setId(2);
 
@@ -281,7 +292,7 @@ Forward Planning - Street Manager
      'Promoter Agent: FM Conway LTD <br/>' +
      'Contact: 0345 045 5212 <br/>' +
      '<a href="/alpha/v2-0/work-record">View Work Record</a>',
-    dateOfWorks: new Date('2018/08/23').getTime() / 1000
+    dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork3.setId(3);
 
@@ -296,7 +307,7 @@ Forward Planning - Street Manager
       'Promoter Agent: Cadent <br/>' +
       'Contact: 0345 045 5212 <br/>' +
       '<a href="#">View Work Record</a>',
-    dateOfWorks: new Date('2018/11/18').getTime() / 1000
+    dateOfWorks: new Date('2018/02/07').getTime() / 1000
   })
   plannedWork4.setId(4);
 
@@ -321,7 +332,6 @@ Forward Planning - Street Manager
 
   map.addLayer(plannedWorksLayer);
 
-
   var overlay = new ol.Overlay({
     element: document.getElementById('popup-container'),
     positioning: 'bottom-center',
@@ -340,11 +350,13 @@ Forward Planning - Street Manager
     }
   });
 
+  var dateOptions =  {year: 'numeric', month: 'numeric', day: 'numeric'};
+
   $('#slider-id').slider({
     range: true,
-    values: [ new Date().getTime() / 1000, new Date('2019/01/01').getTime() / 1000 ],
+    values: [ new Date().getTime() / 1000, new Date('2018/03/01').getTime() / 1000 ],
     min: new Date().getTime() / 1000,
-    max: new Date('2019/01/01').getTime() / 1000,
+    max: new Date('2018/03/01').getTime() / 1000,
     step: 86400,
     change: function (event, ui) {
       plannedWorksSource.addFeatures(plannedWorks);
@@ -357,11 +369,12 @@ Forward Planning - Street Manager
       });
     },
     slide: function( event, ui ) {
-      $( "#amount" ).val('START: ' + (new Date(ui.values[ 0 ] *1000).toDateString() ) + "     END: " + (new Date(ui.values[ 1 ] *1000)).toDateString() );
+      $( "#amount" ).val('Start:  ' + (new Date(ui.values[ 0 ] *1000).toLocaleString('en-GB', dateOptions)) + "  |  End:  " + (new Date(ui.values[ 1 ] *1000)).toLocaleString('en-GB', dateOptions));
     }
   });
-  $( "#amount" ).val('START: ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toDateString()) +
-    "     END: " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toDateString());
+
+  $( "#amount" ).val('Start:  ' + (new Date($( "#slider-id" ).slider( "values", 0 )*1000).toLocaleString('en-GB', dateOptions)) +
+    "  |  End:  " + (new Date($( "#slider-id" ).slider( "values", 1 )*1000)).toLocaleString('en-GB', dateOptions));
     
   $('#layer-type-1').change(function (event) {
     var checkbox = event.target;
