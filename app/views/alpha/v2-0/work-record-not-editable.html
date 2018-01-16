@@ -30,7 +30,7 @@ Work Record
     <table>
         <tr>
             <td>Work Reference Number</td>
-            <td>{{ data['workreferencenumber'] }}</td>
+            <td>CT0931631825</td>
         </tr>
         <tr>
             <td>Work Status</td>
@@ -38,58 +38,57 @@ Work Record
         </tr>
         <tr>
             <td>Promoter Name</td>
-            <td>{{ data['promotername'] }}</td>
+            <td>Michael Harris</td>
         </tr>
         <tr>
             <td>Promoter Agent</td>
-            <td>{{ data['promoteragent'] }}</td>
+            <td>Cadent</td>
         </tr>
         <tr>
             <td>Highway Authority</td>
-            <td>{{ data['highway-authority'] }}</td>
+            <td>London Borough of Acton</td>
         </tr>
         <tr>
             <td>USRN</td>
-            <td>{{ data['usrn'] }}</td>
+            <td>08400796</td>
         </tr>
         <tr>
             <td>Proposed Start</td>
-            <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+            <td>09/06/2018</td>
         </tr>
         <tr>
             <td>Proposed End</td>
-            <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+            <td>19/07/2018</td>
         </tr>
         <tr>
             <td>Date Flexible</td>
-            <td>{{ data['date-flexible-group']}}</td>
+            <td>Yes</td>
         </tr>
         <tr>
             <td>Description of Work #1</td>
-            <td>{{ data['description-of-work'] }}</td>
+            <td>Footway resurfacing</td>
         </tr>
         <tr>
             <td>Description of Work #2</td>
-            <td>{{ data['description-of-work-group'] }}</td>
+            <td>Minor</td>
         </tr>
         <tr>
             <td>Contact Details</td>
-            <td>{{ data['contact-details'] }}</td>
+            <td>0345 045 5212</td>
         </tr>
         <tr>
             <td>Commercially Sensitive</td>
-            <td>{{ data['commercially-sensitive-group'] }}</td>
+            <td>No</td>
         </tr>
         <tr>
             <td>Reinstatement Category</td>
-            <td>{{ data['reinstatement-category'] }}</td>
+            <td></td>
         </tr>
     </table>
-
-    <div style="padding-top: 10px">
-        <a class="button" href="/alpha/v2-0/edit-work-record" role="button" style="margin-right: 20px;">Edit</a>
-        <a href="/alpha/v2-0/map-search-results" style="vertical-align: bottom">Return to map</a>
-    </div>
+    <br/>
+    <p>
+        <a href="/alpha/v2-0/map-search-results">Return to map</a>
+    </p>
 </main>
 
 {% endblock %}
