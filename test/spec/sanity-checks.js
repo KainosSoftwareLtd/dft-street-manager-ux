@@ -17,7 +17,7 @@ describe('The prototype kit', function () {
     })
   })
 
-  it('should send with a well formed response for the index page', function (done) {
+/*  it('should send with a well formed response for the index page', function (done) {
     request(app)
       .get('/')
       .expect('Content-Type', /text\/html/)
@@ -29,7 +29,7 @@ describe('The prototype kit', function () {
           done()
         }
       })
-  })
+  }) */
 
   it('should send with a well formed response for the docs page', function (done) {
     request(app)
