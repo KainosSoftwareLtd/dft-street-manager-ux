@@ -15,7 +15,7 @@ var data = {'data': {
   'end-year': '2017',
   'date-flexible-group': 'Yes',
   'description-of-work': 'Digging up the road',
-  'description-of-work-group': 'Carriageway resurfacing',
+  'description-of-work-group': 'Minor',
   'contact-details': '004455500000',
   'commercially-sensitive-group': 'No'}
 }
