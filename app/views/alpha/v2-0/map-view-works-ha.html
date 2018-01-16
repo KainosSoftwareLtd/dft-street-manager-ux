@@ -15,7 +15,44 @@ Forward Planning - Street Manager
     {% include "includes/phase_banner_alpha.html" %}
 </main>
 
-<div id="map" class="map" style="width: 100%"></div>
+<div id="map" class="map" style="width: 100%">
+    <div id="layerIcon">
+        <img src="/public/images/layers-icon.png">
+    </div>
+
+    <div id="legend" style="display: none;">
+        <form>
+            <fieldset>
+                <legend>
+                    <span class="body-text">Select all that apply</span>
+                </legend>
+
+                <div class="multiple-choice">
+                    <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                    <label for="layer-type-1">Granted permits</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                    <label for="layer-type-2">Permits awaiting assessment</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-third-party-planned-works">
+                    <label for="layer-type-3">Current works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                    <label for="layer-type-4">Rejected permits</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                    <label for="layer-type-5">Restrictions</label>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+</div>
 
 <div class="arrow_box" id="popup-container"></div>
 
@@ -41,11 +78,17 @@ Forward Planning - Street Manager
 
 <style>
 
+    #map {
+        width: 100%;
+        position: relative;
+    }
+
     #legend {
         background-color: white;
+        position: absolute;
         width: 240px;
         padding: 10px;
-        top: 80px;
+        top: 120px;
         right: 50px;
     }
     #slider {
@@ -56,6 +99,12 @@ Forward Planning - Street Manager
         width: 450px;
         bottom: 20px;
         right: 50px;
+    }
+
+    #layerIcon {
+        position: absolute;
+        right: 50px;
+        top: 90px;
     }
 
     .ui-slider-handle.ui-corner-all.ui-state-default {
@@ -107,37 +156,6 @@ Forward Planning - Street Manager
     }
 </style>
 
-<div id="legend">
-    <form>
-        <fieldset>
-            <legend>
-                <span class="body-text">Select all that apply</span>
-            </legend>
-
-            <div class="multiple-choice">
-                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
-                <label for="layer-type-1">Granted permits</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                <label for="layer-type-2">Permits awaiting assessment</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-third-party-planned-works">
-                <label for="layer-type-3">Current works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
-                <label for="layer-type-4">Rejected permits</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
-                <label for="layer-type-5">Restrictions</label>
-            </div>
-
-        </fieldset>
-    </form>
-</div>
 
 <div id="slider">
     <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
@@ -167,6 +185,7 @@ Forward Planning - Street Manager
   })(MAP_CONFIG);
 
   var slider = new ol.control.Control({element: document.getElementById('slider')});
+  var layerIcon = new ol.control.Control({element: document.getElementById('layerIcon')});
 
   var legend = new ol.control.Control({element: document.getElementById('legend')});
   var scaleLine = new ol.control.ScaleLine()
@@ -175,7 +194,7 @@ Forward Planning - Street Manager
     target: 'map',
     layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      legend, scaleLine, slider
+      legend, scaleLine, slider, layerIcon
     ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([0.1218, 52.2053]),
@@ -360,6 +379,10 @@ Forward Planning - Street Manager
     } else {
       plannedWorksLayer.setVisible(false)
     }
+  });
+
+  $('#layerIcon').click(function () {
+    $('#legend').toggle();
   });
 
 </script>
