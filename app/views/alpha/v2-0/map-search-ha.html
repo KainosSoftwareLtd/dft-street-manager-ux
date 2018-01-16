@@ -22,8 +22,7 @@ Forward Planning - Street Manager
             <fieldset>
                 <!--<legend class="visuallyhidden">Enter postcode or charge ID to find a charge</legend>-->
                 <div class="form-group spacing-bottom-half">
-                    <label class="form-label" for="search">Search by area, postcode street name or USRN
-                    </label>
+                    <label class="form-label" for="search">Search by area, postcode, street name, USRN, WRN or project number</label>
                     <input class="form-control" id="search" name="search" type="text" value="" autofocus="autofocus">
                     <input id="map-search-button" class="button" type="submit" name="search" value="Search">
 
@@ -45,7 +44,7 @@ Forward Planning - Street Manager
       })
     ],
     view: new ol.View({
-      center: ol.proj.fromLonLat([-0.25, 51.5074]),
+      center: ol.proj.fromLonLat([0.1218, 52.2053]),
       zoom: 11
     })
   });
