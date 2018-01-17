@@ -1,7 +1,10 @@
+sudo: required
+services:
+  - docker
 language: python
-
 install:
 - pip install awscli
+script: docker build -t 583284001540.dkr.ecr.eu-west-2.amazonaws.com/dft-streetworks-ux:$(git rev-parse HEAD) .
 deploy:
   provider: script
   script: "./deploy.sh 583284001540.dkr.ecr.eu-west-2.amazonaws.com dft-streetworks-ux"
