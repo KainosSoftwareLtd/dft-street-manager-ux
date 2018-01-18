@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Add more details</h2>
+
+    <form action="work-record" method="post" >
+
+        <div class="form-group">
+            <label class="form-label" for="start-date-day">Start Date (optional)</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="start-date-day">Day</label>
+                        <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="start-date-month">Month</label>
+                        <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="start-date-year">Year</label>
+                        <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-year'] }}">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="end-date-day">End Date (optional)</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="end-date-day">Day</label>
+                        <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="end-date-month">Month</label>
+                        <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="end-date-year">Year</label>
+                        <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-year'] }}">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="description-of-work-1">Work Category (optional)</label>
+                <div class="multiple-choice">
+                    <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Minor" {{ checked('description-of-work-group','Minor') }}>
+                    <label for="description-of-work-1">Minor</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="description-of-work-2" type="radio" name="description-of-work-group" value="Standard" {{ checked('description-of-work-group','Standard') }}>
+                    <label for="description-of-work-2">Standard</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="description-of-work-3" type="radio" name="description-of-work-group" value="Major" {{ checked('description-of-work-group','Major') }}>
+                    <label for="description-of-work-3">Major</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="description-of-work-4" type="radio" name="description-of-work-group" value="Immediate - urgent" {{ checked('description-of-work-group','Immediate - urgent') }}>
+                    <label for="description-of-work-4">Immediate - urgent</label>
+                </div>
+                <br/>
+                <br/>
+                <div class="multiple-choice">
+                    <input id="description-of-work-5" type="radio" name="description-of-work-group" value="Immediate - emergency" {{ checked('description-of-work-group','Immediate - emergency') }}>
+                    <label for="description-of-work-5">Immediate - emergency</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+    </form>
+</main>
+
+{% endblock %}

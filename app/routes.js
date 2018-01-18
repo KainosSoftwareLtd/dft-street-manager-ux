@@ -91,6 +91,13 @@ router.post('/alpha/v2-0/map-search-ha', function (req, res) {
   res.render('alpha/v2-0/map-view-works-ha.html', {searchDetails: req.body.search[0]})
 })
 
+router.post('/alpha/v3-0/work-record', function (req, res) {
+  res.render('alpha/v3-0/work-record-site-contact.html')
+})
+
+router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
+  res.render('alpha/v3-0/work-record-collaboration.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router
