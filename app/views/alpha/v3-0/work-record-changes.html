@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Add more details</h2>
+
+    <form action="work-record-changes" method="post" >
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="change-requested-yes">Changes requested (optional)</label>
+                <div class="multiple-choice">
+                    <input id="change-requested-yes" type="radio" name="change-requested-group" value="Yes" {{ checked('change-requested-group','Yes') }}>
+                    <label for="change-requested-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="change-requested-no" type="radio" name="change-requested-group" value="No" {{ checked('change-requested-group','No') }}>
+                    <label for="change-requested-no">No</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label class="form-label" for="change-initiator">Change initiator (optional)</label>
+            <input class="form-control" id="change-initiator" name="change-initiator" type="text" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="change-reason">Change reason (optional)</label>
+            <input class="form-control" id="change-reason" name="change-reason" type="text" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="change-status">Change status (optional)</label>
+            <input class="form-control" id="change-status" name="change-status" type="text" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="change-owner">Change owner (optional)</label>
+            <input class="form-control" id="change-owner" name="change-owner" type="text" value="">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+    </form>
+</main>
+
+{% endblock %}
