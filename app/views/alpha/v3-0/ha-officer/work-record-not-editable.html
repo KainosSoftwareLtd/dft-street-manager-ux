@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+        <!-- main content starts -->
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Work Record</h1>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>Work Reference Number</td>
+            <td>CT0931631825</td>
+        </tr>
+        <tr>
+            <td>Work Status</td>
+            <td>Draft forward plan</td>
+        </tr>
+        <tr>
+            <td>Promoter Name</td>
+            <td>Michael Harris</td>
+        </tr>
+        <tr>
+            <td>Promoter Agent</td>
+            <td>Cadent</td>
+        </tr>
+        <tr>
+            <td>Highway Authority</td>
+            <td>London Borough of Acton</td>
+        </tr>
+        <tr>
+            <td>USRN</td>
+            <td>08400796</td>
+        </tr>
+        <tr>
+            <td>Proposed Start</td>
+            <td>09/06/2018</td>
+        </tr>
+        <tr>
+            <td>Proposed End</td>
+            <td>19/07/2018</td>
+        </tr>
+        <tr>
+            <td>Date Flexible</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Description of Work #1</td>
+            <td>Footway resurfacing</td>
+        </tr>
+        <tr>
+            <td>Description of Work #2</td>
+            <td>Minor</td>
+        </tr>
+        <tr>
+            <td>Contact Details</td>
+            <td>0345 045 5212</td>
+        </tr>
+        <tr>
+            <td>Commercially Sensitive</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Reinstatement Category</td>
+            <td></td>
+        </tr>
+    </table>
+    <br/>
+    <div>
+        <input class="button" type="submit" value="Reject">
+        <input class="button" type="submit" value="Accept with conditions">
+        <input class="button" type="submit" value="Accept">
+        <input class="button" type="submit" value="Comment">
+    </div>
+
+    <form style="padding-top: 20px">
+        <div class="form-group">
+            <label class="form-label" for="textarea">
+                Comment
+            </label>
+            <textarea class="form-control form-control-3-4" name="textarea" id="textarea" rows="5"></textarea>
+        </div>
+        <input class="button" type="submit" value="Submit">
+    </form>
+
+    <div class="heading-medium">Comments</div>
+
+    <div class="heading-small">Michael Kemp</div>
+    <div>
+        <div class="grid-row">
+            <div class="column-one-third">
+                <div>
+                    Submitted: 12/01/2018
+                </div>
+                <div>
+                    Time: 12:58PM
+                </div>
+            </div>
+
+            <div class="column-two-thirds">
+                <div>
+                    Some comments about the works in here.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="heading-small">Bob Smith</div>
+    <div>
+        <div class="grid-row">
+
+            <div class="column-one-third">
+                <div>
+                    Submitted: 12/01/2018
+                </div>
+                <div>
+                    Time: 12:58PM
+                </div>
+            </div>
+
+            <div class="column-two-thirds">
+                <div>
+                    Some comments about the works in here.
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+
+</main>
+
+{% endblock %}
+
+
