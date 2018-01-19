@@ -44,8 +44,20 @@ Create New Work - Street Manager
                         <label class="form-label" for="actual-start-date-year">Year</label>
                         <input class="form-control" id="actual-start-date-year" name="start-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-date-year'] }}">
                     </div>
+                    <br/>
                 </div>
             </fieldset>
+
+            <div class="form-date">
+                <div class="form-group form-group-day">
+                    <label class="form-label" for="actual-start-date-hour">Hour (HH)</label>
+                    <input class="form-control" id="actual-start-date-hour" name="start-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['start-date-hour'] }}">
+                </div>
+                <div class="form-group form-group-month">
+                    <label class="form-label" for="actual-start-date-minute">Minute (MM)</label>
+                    <input class="form-control" id="actual-start-date-minute" name="start-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['start-date-minute'] }}">
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
@@ -66,6 +78,16 @@ Create New Work - Street Manager
                     </div>
                 </div>
             </fieldset>
+            <div class="form-date">
+                <div class="form-group form-group-day">
+                    <label class="form-label" for="actual-end-date-hour">Hour (HH)</label>
+                    <input class="form-control" id="actual-end-date-hour" name="end-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['start-end-hour'] }}">
+                </div>
+                <div class="form-group form-group-month">
+                    <label class="form-label" for="actual-end-date-minute">Minute (MM)</label>
+                    <input class="form-control" id="actual-end-date-minute" name="end-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['start-end-minute'] }}">
+                </div>
+            </div>
         </div>
 
 
@@ -108,10 +130,31 @@ Create New Work - Street Manager
             <input class="form-control" id="location-coordinates" name="location-coordinates" type="text" value="{{ data['location-coordinates'] }}">
         </div>
 
-        <div class="form-group">
-            <label class="form-label" for="works-position">Actual position of works (optional)</label>
-            <input class="form-control" id="works-position" name="works-position" type="text" value="{{ data['works-position'] }}">
-        </div>
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="works-position-1">Actual position of works (optional)</label>
+                <div class="multiple-choice">
+                    <input id="works-position-1" type="radio" name="works-position-group" value="Footway" {{ checked('works-position-group','Footway') }}>
+                    <label for="works-position-1">Footway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-position-2" type="radio" name="works-position-group" value="Carriageway" {{ checked('works-position-group','Carriageway') }}>
+                    <label for="works-position-2">Carriageway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-position-3" type="radio" name="works-position-group" value="Verge" {{ checked('works-position-group','Verge') }}>
+                    <label for="works-position-3">Verge</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-position-4" type="radio" name="works-position-group" value="Cycleway" {{ checked('works-position-group','Cycleway') }}>
+                    <label for="works-position-4">Cycleway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-position-5" type="radio" name="works-position-group" value="Footpath" {{ checked('works-position-group','Footpath') }}>
+                    <label for="works-position-5">Footpath</label>
+                </div>
+            </div>
+        </fieldset>
 
         <div class="form-group">
             <label class="form-label" for="actual-depth">Actual depth (optional)</label>

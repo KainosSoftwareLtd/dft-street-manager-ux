@@ -44,23 +44,47 @@ Create New Work - Street Manager
 
         <div class="form-group">
             <label class="form-label" for="change-initiator">Change initiator (optional)</label>
-            <input class="form-control" id="change-initiator" name="change-initiator" type="text" value="">
+            <input class="form-control" id="change-initiator" name="change-initiator" type="text" value="{{ data['change-initiator'] }}">
         </div>
 
         <div class="form-group">
             <label class="form-label" for="change-reason">Change reason (optional)</label>
-            <input class="form-control" id="change-reason" name="change-reason" type="text" value="">
+            <input class="form-control" id="change-reason" name="change-reason" type="text" value="{{ data['change-reason'] }}">
         </div>
 
         <div class="form-group">
             <label class="form-label" for="change-status">Change status (optional)</label>
-            <input class="form-control" id="change-status" name="change-status" type="text" value="">
+            <input class="form-control" id="change-status" name="change-status" type="text" value="{{ data['change-status'] }}">
         </div>
 
         <div class="form-group">
             <label class="form-label" for="change-owner">Change owner (optional)</label>
-            <input class="form-control" id="change-owner" name="change-owner" type="text" value="">
+            <input class="form-control" id="change-owner" name="change-owner" type="text" value="{{ data['change-owner'] }}">
         </div>
+
+        <div class="form-group">
+            <label class="form-label" for="updated-description-1">Updated description of work #1 (optional)</label>
+            <input class="form-control" id="updated-description-1" name="updated-description-1" type="text" value="{{ data['updated-description-1'] }}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="updated-description-2">Updated description of work #2 (optional)</label>
+            <input class="form-control" id="updated-description-2" name="updated-description-2" type="text" value="{{ data['updated-description-2'] }}">
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="lane-rental-yes">Lane rental applicable (optional)</label>
+                <div class="multiple-choice">
+                    <input id="lane-rental-yes" type="radio" name="lane-rental-group" value="Yes" {{ checked('lane-rental-group','Yes') }}>
+                    <label for="lane-rental-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="lane-rental-no" type="radio" name="lane-rental-group" value="No" {{ checked('lane-rental-group','No') }}>
+                    <label for="lane-rental-no">No</label>
+                </div>
+            </div>
+        </fieldset>
 
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
