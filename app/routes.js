@@ -115,6 +115,10 @@ router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
 router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
   res.render('alpha/v3-0/work-record-changes.html')
 })
+
+router.post('/alpha/v3-0/work-record-changes', function (req, res) {
+  res.render('alpha/v3-0/work-record-on-site.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router
