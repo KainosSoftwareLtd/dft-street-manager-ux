@@ -104,16 +104,16 @@ router.post('/alpha/v2-0/map-search-ha', function (req, res) {
   res.render('alpha/v2-0/map-view-works-ha.html', {searchDetails: req.body.search[0]})
 })
 
-router.post('/alpha/v3-0/work-record', function (req, res) {
+router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
   res.render('alpha/v3-0/work-record-site-contact.html')
 })
 
-router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
+router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
   res.render('alpha/v3-0/work-record-collaboration.html')
 })
 
-router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
-  res.render('alpha/v3-0/work-record-changes.html')
+router.post('/alpha/v3-0/work-record-check-answers', function (req, res) {
+  res.render('alpha/v3-0/work-record-check-answers.html')
 })
 
 router.post('/alpha/v3-0/work-record-changes', function (req, res) {

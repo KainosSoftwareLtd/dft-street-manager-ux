@@ -24,17 +24,18 @@ Create New Work - Street Manager
         </div>
     </div>
 
-    <h2 class="heading-large">Add site contact details</h2>
+    <h2 class="heading-large">Who</h2>
 
-    <form action="work-record-site-contact" method="post" >
-        <div class="form-group">
-            <label class="form-label" for="primary-contact">Primary Site Contact Details (optional)</label>
-            <input class="form-control" id="primary-contact" name="primary-contact" type="text" value="{{ data['primary-contact'] }}">
-        </div>
+    <form action="work-record-collaboration" method="post" >
 
         <div class="form-group">
             <label class="form-label" for="secondary-contact">Secondary Site Contact Details (optional)</label>
             <input class="form-control" id="secondary-contact" name="secondary-contact" type="text" value="{{ data['secondary-contact'] }}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="amendment-initiator">Amendment initiator (optional)</label>
+            <input class="form-control" id="amendment-initiator" name="amendment-initiator" type="text" value="{{ data['amendment-initiator'] }}">
         </div>
 
         <div class="form-group">

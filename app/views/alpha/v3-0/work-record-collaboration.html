@@ -24,13 +24,13 @@ Create New Work - Street Manager
         </div>
     </div>
 
-    <h2 class="heading-large">Add collaboration details</h2>
+    <h2 class="heading-large">What</h2>
 
-    <form action="work-record-collaboration" method="post" >
+    <form action="work-record-check-answers" method="post" >
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="collaboration-yes">Collaboration (optional)</label>
+                <label class="form-label" for="collaboration-yes">Collaborative working (optional)</label>
                 <div class="multiple-choice">
                     <input id="collaboration-yes" type="radio" name="collaboration-group" value="Yes" {{ checked('collaboration-group','Yes') }}>
                     <label for="collaboration-yes">Yes</label>
@@ -67,21 +67,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="coordination-yes">Coordination Meeting (optional)</label>
-                <div class="multiple-choice">
-                    <input id="coordination-yes" type="radio" name="coordination-group" value="Yes" {{ checked('coordination-group','Yes') }}>
-                    <label for="coordination-yes">Yes</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="coordination-no" type="radio" name="coordination-group" value="No" {{ checked('coordination-group','No') }}>
-                    <label for="coordination-no">No</label>
-                </div>
-            </div>
-        </fieldset>
-
-        <fieldset class="inline">
-            <div class="form-group">
-                <label class="form-label" for="collaboration-yes">Is a TM plan required (optional)</label>
+                <label class="form-label" for="tm-yes">Is a TM plan required (optional)</label>
                 <div class="multiple-choice">
                     <input id="tm-yes" type="radio" name="tm-group" value="Yes" {{ checked('tm-group','Yes') }}>
                     <label for="tm-yes">Yes</label>
@@ -162,11 +148,6 @@ Create New Work - Street Manager
             </div>
         </fieldset>
 
-        <div class="form-group">
-            <label class="form-label" for="traffic-signal-application">TGMP Traffic Signal application (optional)</label>
-            <input class="form-control" id="traffic-signal-application" name="traffic-signal-application" type="text" value="This should be an attachment">
-        </div>
-
         <fieldset class="inline">
             <div class="form-group">
                 <label class="form-label" for="excavation-yes">Excavation (optional)</label>
@@ -183,22 +164,17 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="road-closure">Excavation type (optional)</label>
+                <label class="form-label" for="lane-rental-yes">Lane rental applicable (optional)</label>
                 <div class="multiple-choice">
-                    <input id="excavation-standard" type="radio" name="excavation-type-group" value="Standard" {{ checked('excavation-type-group','Standard') }}>
-                    <label for="excavation-standard">Standard</label>
+                    <input id="lane-rental-yes" type="radio" name="lane-rental-group" value="Yes" {{ checked('lane-rental-group','Yes') }}>
+                    <label for="lane-rental-yes">Yes</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="excavation-deep" type="radio" name="excavation-type-group" value="Deep" {{ checked('excavation-type-group','Deep') }}>
-                    <label for="excavation-deep">Deep</label>
+                    <input id="lane-rental-no" type="radio" name="lane-rental-group" value="No" {{ checked('lane-rental-group','No') }}>
+                    <label for="lane-rental-no">No</label>
                 </div>
             </div>
         </fieldset>
-
-        <div class="form-group">
-            <label class="form-label" for="works-duration">Works duration (optional)</label>
-            <input class="form-control" id="works-duration" name="traffic-signal-application" type="text" value="{{ data['works-duration'] }}">
-        </div>
 
         <div class="form-group">
             <input type="submit" class="button" value="Continue">

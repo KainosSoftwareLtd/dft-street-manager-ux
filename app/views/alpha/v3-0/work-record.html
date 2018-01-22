@@ -24,9 +24,9 @@ Create New Work - Street Manager
         </div>
     </div>
 
-    <h2 class="heading-large">Add more details</h2>
+    <h2 class="heading-large">When</h2>
 
-    <form action="work-record" method="post" >
+    <form action="work-record-site-contact" method="post" >
 
         <div class="form-group">
             <label class="form-label" for="start-date-day">Start Date (optional)</label>
@@ -70,29 +70,8 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="description-of-work-1">Work Category (optional)</label>
-                <div class="multiple-choice">
-                    <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Minor" {{ checked('description-of-work-group','Minor') }}>
-                    <label for="description-of-work-1">Minor</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="description-of-work-2" type="radio" name="description-of-work-group" value="Standard" {{ checked('description-of-work-group','Standard') }}>
-                    <label for="description-of-work-2">Standard</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="description-of-work-3" type="radio" name="description-of-work-group" value="Major" {{ checked('description-of-work-group','Major') }}>
-                    <label for="description-of-work-3">Major</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="description-of-work-4" type="radio" name="description-of-work-group" value="Immediate - urgent" {{ checked('description-of-work-group','Immediate - urgent') }}>
-                    <label for="description-of-work-4">Immediate - urgent</label>
-                </div>
-                <br/>
-                <br/>
-                <div class="multiple-choice">
-                    <input id="description-of-work-5" type="radio" name="description-of-work-group" value="Immediate - emergency" {{ checked('description-of-work-group','Immediate - emergency') }}>
-                    <label for="description-of-work-5">Immediate - emergency</label>
-                </div>
+                <label class="form-label" for="duration">Duration (optional)</label>
+                <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
             </div>
         </fieldset>
 

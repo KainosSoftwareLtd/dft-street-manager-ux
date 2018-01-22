@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Promoter / Planner Home - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Promoter / Planner - Home</h2>
+
+    <p>
+        <a class="button button-start" href="#" role="button">Create Job</a>
+    </p>
+
+    <table class="table">
+        <tbody>
+        <thead>
+        <tr>
+            <th>Works Reference</th>
+            <th>Proposed Start Date</th>
+            <th>Estimated End Date</th>
+            <th>Works Category</th>
+            <th>Location Description</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tr>
+            <td>CT0224443466</td>
+            <td>28/03/2017</td>
+            <td>30/03/2017</td>
+            <td>Major</td>
+            <td>O/S Costa j/w Harrow Road</td>
+            <td>Work underway</td>
+            <td><a href="/alpha/v1-0/new-activity">View</a></td>
+            <td><a href="/alpha/v3-0/work-record">Submit for assessment</a></td>
+        </tr>
+        <tr>
+            <td>CT0222180881</td>
+            <td>28/03/2017</td>
+            <td>30/03/2017</td>
+            <td>Minor</td>
+            <td>O/S no 178 Boss by kerb</td>
+            <td>PA approved</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">Submit for assessment</a></td>
+        </tr>
+
+        <tr>
+            <td>YG425353061</td>
+            <td>29/03/2017</td>
+            <td>30/03/2017</td>
+            <td>Standard</td>
+            <td>SB 10M B4 NORTHUMBERLAND AVE</td>
+            <td>PA Assessment</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">Submit for assessment</a></td>
+        </tr>
+
+        <tr>
+            <td>YG425353061</td>
+            <td>29/03/2017</td>
+            <td>30/03/2017</td>
+            <td>Urgent</td>
+            <td>J/W Celbridges Mews</td>
+            <td>Published forward plan</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">Submit for assessment</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a style="float:right; margin-top: 20px" href="">Next ></a>
+</main>
+
+{% endblock %}

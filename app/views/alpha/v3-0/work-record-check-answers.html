@@ -28,11 +28,11 @@ Create New Work - Street Manager
 
     <table>
         <tbody>
-            <tr><h2 class="heading-medium">Personal details</h2></tr>
+            <tr><h2 class="heading-medium">When</h2></tr>
             <tr>
                 <td>Start Date</td>
-                {% if data['start-date-day'] != '' %}
-                <td>{{ data['start-date-day'] }}/{{ data['start-date-month'] }}/{{ data['start-date-year'] }}</td>
+                {% if data['start-day'] != '' %}
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
@@ -44,8 +44,8 @@ Create New Work - Street Manager
             </tr>
             <tr>
                 <td>End Date</td>
-                {% if data['end-date-day'] != '' %}
-                <td>{{ data['end-date-day'] }}/{{ data['end-date-month'] }}/{{ data['end-date-year'] }}</td>
+                {% if data['end-day'] != '' %}
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
@@ -56,217 +56,113 @@ Create New Work - Street Manager
                 </td>
             </tr>
             <tr>
-                <td>Work Category</td>
-                <td>{{ data['workreferencenumber'] }}</td>
+                <td>Duration</td>
+                <td>{{ data['duration'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v3-0/work-record#description-of-work-1">
-                        Change <span class="visuallyhidden">work reference number</span>
+                    <a href="/alpha/v3-0/work-record#duration">
+                        Change <span class="visuallyhidden">duration</span>
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td>Primary Site Contact Details</td>
-                <td>{{ data['promotername'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#promotername">
-                        Change <span class="visuallyhidden">promoter name</span>
-                    </a>
-                </td>
-            </tr>
+            <tr><td><h2 class="heading-medium">Who</h2></td></tr>
             <tr>
                 <td>Secondary Site Contact Details</td>
-                <td>{{ data['promoteragent'] }}</td>
+                <td>{{ data['secondary-contact'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#promoteragent">
-                        Change <span class="visuallyhidden">promoter agent</span>
+                    <a href="/alpha/v3-0/work-record-site-contact#secondary-contact">
+                        Change <span class="visuallyhidden">secondary contact</span>
                     </a>
                 </td>
             </tr>
             <tr>
-                <td>Collaboration</td>
-                <td>{{ data['highway-authority'] }}</td>
+                <td>Amendment Initiator</td>
+                <td>{{ data['amendment-initiator'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#highway-authority">
-                        Change <span class="visuallyhidden">highway authority</span>
+                    <a href="/alpha/v3-0/work-record-site-contact#amendment-initiator">
+                        Change <span class="visuallyhidden">amendment initiator</span>
+                    </a>
+                </td>
+            </tr>
+
+            <tr><td><h2 class="heading-medium">What</h2></td></tr>
+            <tr>
+                <td>Collaboration</td>
+                <td>{{ data['collaboration-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#collaboration-yes">
+                        Change <span class="visuallyhidden">collaboration</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Collaboration Type</td>
-                <td>{{ data['usrn'] }}</td>
+                <td>{{ data['collaboration-type-group'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#usrn">
-                        Change <span class="visuallyhidden">usrn</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#collaboration-type-1">
+                        Change <span class="visuallyhidden">collaboration type</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Collaboration Details</td>
-                {% if data['start-day'] != '' %}
-                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
-                {% else %}
-                <td></td>
-                {% endif %}
+                <td>{{ data['collaboration-details'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#start-date-day">
-                        Change <span class="visuallyhidden">start date</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Coordination Meeting</td>
-                {% if data['end-day'] != '' %}
-                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
-                {% else %}
-                <td></td>
-                {% endif %}
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#end-date-day">
-                        Change <span class="visuallyhidden">end date</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#collaboration-details">
+                        Change <span class="visuallyhidden">collaboration details</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Is a TM plan required</td>
-                <td>{{ data['date-flexible-group'] }}</td>
+                <td>{{ data['tm-group'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#date-flexible-yes">
-                        Change <span class="visuallyhidden">date flexible</span>
+                    <a href="/alpha/v3-0/work-record-collaboration">
+                        Change <span class="visuallyhidden">TM plan required</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Traffic management plan</td>
-                <td>{{ data['description-of-work'] }}</td>
+                <td>{{ data['traffic-management-plan'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#description-of-work">
-                        Change <span class="visuallyhidden">description of work 1</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#traffic-management-plan">
+                        Change <span class="visuallyhidden">traffic management plan</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Environmental Health Notifiable</td>
-                <td>{{ data['description-of-work-group'] }}</td>
+                <td>{{ data['environmental-health-group'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#description-of-work-1">
-                        Change <span class="visuallyhidden">description of work 2</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#environmental-health-yes">
+                        Change <span class="visuallyhidden">environmental health notifiable</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Traffic Management Type</td>
-                <td>{{ data['contact-details'] }}</td>
+                <td>{{ data['traffic-management-type-group'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#contact-details">
-                        Change <span class="visuallyhidden">contact details</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>TGMP Traffic Signal Application</td>
-                <td>{{ data['commercially-sensitive-group'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#commercially-sensitive-yes">
-                        Change <span class="visuallyhidden">commercially sensitive</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#road-closure">
+                        Change <span class="visuallyhidden">traffic management type</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Excavation</td>
-                <td>{{ data['reinstatement-category'] }}</td>
+                <td>{{ data['excavation-group'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Excavation Type</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Works Duration</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Changes Requested</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Change Initiator</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Change Reason</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Change Status</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Change Owner</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Updated Description of Work #1</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Updated Description of Work #2</td>
-                <td>{{ data['reinstatement-category'] }}</td>
-                <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#excavation-yes">
+                        Change <span class="visuallyhidden">excavation</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Lane Rental Applicable</td>
-                <td>{{ data['reinstatement-category'] }}</td>
+                <td>{{ data['lane-rental-group'] }}</td>
                 <td class="change-answer">
-                    <a href="/alpha/v2-0/create-new-work#reinstatement-category">
-                        Change <span class="visuallyhidden">reinstatement category</span>
+                    <a href="/alpha/v3-0/work-record-collaboration#lane-rental-yes">
+                        Change <span class="visuallyhidden">lane rental applicable</span>
                     </a>
                 </td>
             </tr>
