@@ -119,6 +119,10 @@ router.post('/alpha/v3-0/work-record-check-answers', function (req, res) {
 router.post('/alpha/v3-0/work-record-changes', function (req, res) {
   res.render('alpha/v3-0/work-record-check-answers.html')
 })
+
+router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {
+  res.redirect('/alpha/v3-0/promoter-planner/attach-to-record-check.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router

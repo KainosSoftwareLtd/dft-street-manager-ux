@@ -10,6 +10,12 @@
 
 {% block proposition_header %}
 
+{% block scripts %}
+{% block page_scripts %}
+{% include "includes/scripts.html" %}
+{% endblock %}
+{% endblock %}
+
   <div class="header-proposition">
     <div class="content">
       <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
@@ -47,9 +53,5 @@
 {% endblock %}
 
 {% block body_end %}
-  {% block scripts %}
-    {% include "includes/scripts.html" %}
-    {% block page_scripts %}{% endblock %}
-  {% endblock %}
   <!-- GOV.UK Prototype kit {{releaseVersion}} -->
 {% endblock %}
