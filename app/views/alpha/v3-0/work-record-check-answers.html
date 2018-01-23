@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check work record details before submitting for assessment</h1>
+
+    <table>
+        <tbody>
+            <tr><h2 class="heading-medium">When</h2></tr>
+            <tr>
+                <td>Start Date</td>
+                {% if data['start-day'] != '' %}
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record#start-date-day">
+                        Change <span class="visuallyhidden">start date</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>End Date</td>
+                {% if data['end-day'] != '' %}
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record#end-date-day">
+                        Change <span class="visuallyhidden">end date</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>{{ data['duration'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record#duration">
+                        Change <span class="visuallyhidden">duration</span>
+                    </a>
+                </td>
+            </tr>
+            <tr><td><h2 class="heading-medium">Who</h2></td></tr>
+            <tr>
+                <td>Secondary Site Contact Details</td>
+                <td>{{ data['secondary-contact'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-site-contact#secondary-contact">
+                        Change <span class="visuallyhidden">secondary contact</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Amendment Initiator</td>
+                <td>{{ data['amendment-initiator'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-site-contact#amendment-initiator">
+                        Change <span class="visuallyhidden">amendment initiator</span>
+                    </a>
+                </td>
+            </tr>
+
+            <tr><td><h2 class="heading-medium">What</h2></td></tr>
+            <tr>
+                <td>Collaboration</td>
+                <td>{{ data['collaboration-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#collaboration-yes">
+                        Change <span class="visuallyhidden">collaboration</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaboration Type</td>
+                <td>{{ data['collaboration-type-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#collaboration-type-1">
+                        Change <span class="visuallyhidden">collaboration type</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaboration Details</td>
+                <td>{{ data['collaboration-details'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#collaboration-details">
+                        Change <span class="visuallyhidden">collaboration details</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Is a TM plan required</td>
+                <td>{{ data['tm-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration">
+                        Change <span class="visuallyhidden">TM plan required</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Traffic management plan</td>
+                <td>{{ data['traffic-management-plan'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#traffic-management-plan">
+                        Change <span class="visuallyhidden">traffic management plan</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Environmental Health Notifiable</td>
+                <td>{{ data['environmental-health-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#environmental-health-yes">
+                        Change <span class="visuallyhidden">environmental health notifiable</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Traffic Management Type</td>
+                <td>{{ data['traffic-management-type-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#road-closure">
+                        Change <span class="visuallyhidden">traffic management type</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Excavation</td>
+                <td>{{ data['excavation-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#excavation-yes">
+                        Change <span class="visuallyhidden">excavation</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Lane Rental Applicable</td>
+                <td>{{ data['lane-rental-group'] }}</td>
+                <td class="change-answer">
+                    <a href="/alpha/v3-0/work-record-collaboration#lane-rental-yes">
+                        Change <span class="visuallyhidden">lane rental applicable</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="heading-medium">Now submit your permit application for assessment</h2>
+
+    <p class="text">
+        By submitting this permit application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+    </p>
+
+    <div class="form-group">
+        <a href="/alpha/v2-0/confirm-work-record" class="button">Accept and Submit</a>
+    </div>
+</main>
+
+{% endblock %}

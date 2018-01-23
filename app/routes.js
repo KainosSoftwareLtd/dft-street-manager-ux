@@ -129,6 +129,21 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision.html', function (req, re
   }
 })
 
+router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
+  res.render('alpha/v3-0/when-check-answers.html')
+})
+
+router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
+  res.render('alpha/v3-0/who-check-answers.html')
+})
+
+router.post('/alpha/v3-0/work-record-check-answers', function (req, res) {
+  res.render('alpha/v3-0/what-check-answers.html')
+})
+
+router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {
+  res.redirect('/alpha/v3-0/promoter-planner/attach-to-record-check.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router
