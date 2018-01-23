@@ -125,7 +125,7 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision.html', function (req, re
       res.redirect('/alpha/v3-0/ha-officer/comments.html')
       break
     default:
-      res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'Invalid login credentials.'})
+      res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   }
 })
 
