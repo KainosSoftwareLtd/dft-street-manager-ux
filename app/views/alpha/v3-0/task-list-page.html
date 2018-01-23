@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Task list
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds column-minimum">
+
+      <h1 class="heading-large">
+        Create a permit application
+      </h1>
+
+      <ol class="task-list">
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">1. </span> <a href="work-record.html">When</a>
+          </h2>
+          <ul class="task-list-items">
+            <li class="task-list-item">
+              <strong class="task-completed" id="when-completed">Incomplete</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">2. </span><a href="work-record-site-contact.html">Who</a>
+          </h2>
+          <ul class="task-list-items">
+            <li class="task-list-item">
+              <strong class="task-completed" id="who-completed">Incomplete</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">3. </span><a href="work-record-collaboration.html">What</a>
+          </h2>
+          <ul class="task-list-items">
+            <li class="task-list-item">
+              <strong class="task-completed" id="what-completed">Incomplete</strong>
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

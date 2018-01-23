@@ -24,17 +24,19 @@ Create New Work - Street Manager
         </div>
     </div>
 
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
     <h2 class="heading-large">Who</h2>
 
     <form action="work-record-collaboration" method="post" >
 
         <div class="form-group">
-            <label class="form-label" for="secondary-contact">Secondary Site Contact Details (optional)</label>
+            <label class="form-label" for="secondary-contact">Secondary Site Contact Details</label>
             <input class="form-control" id="secondary-contact" name="secondary-contact" type="text" value="{{ data['secondary-contact'] }}">
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="amendment-initiator">Amendment initiator (optional)</label>
+            <label class="form-label" for="amendment-initiator">Amendment initiator</label>
             <input class="form-control" id="amendment-initiator" name="amendment-initiator" type="text" value="{{ data['amendment-initiator'] }}">
         </div>
 

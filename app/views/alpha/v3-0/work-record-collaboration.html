@@ -24,13 +24,15 @@ Create New Work - Street Manager
         </div>
     </div>
 
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
     <h2 class="heading-large">What</h2>
 
     <form action="work-record-check-answers" method="post" >
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="collaboration-yes">Collaborative working (optional)</label>
+                <label class="form-label" for="collaboration-yes">Collaborative working</label>
                 <div class="multiple-choice">
                     <input id="collaboration-yes" type="radio" name="collaboration-group" value="Yes" {{ checked('collaboration-group','Yes') }}>
                     <label for="collaboration-yes">Yes</label>
@@ -67,7 +69,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="tm-yes">Is a TM plan required (optional)</label>
+                <label class="form-label" for="tm-yes">Is a TM plan required</label>
                 <div class="multiple-choice">
                     <input id="tm-yes" type="radio" name="tm-group" value="Yes" {{ checked('tm-group','Yes') }}>
                     <label for="tm-yes">Yes</label>
@@ -86,7 +88,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="environmental-health-yes">Environmental Health notifiable (optional)</label>
+                <label class="form-label" for="environmental-health-yes">Environmental Health notifiable</label>
                 <div class="multiple-choice">
                     <input id="environmental-health-yes" type="radio" name="environmental-health-group" value="Yes" {{ checked('environmental-health-group','Yes') }}>
                     <label for="environmental-health-yes">Yes</label>
@@ -100,7 +102,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="road-closure">Traffic management type (optional)</label>
+                <label class="form-label" for="road-closure">Traffic management type</label>
                 <div class="multiple-choice">
                     <input id="road-closure" type="checkbox" name="traffic-management-type-group" value="Road closure" {{ checked('traffic-management-type-group','Road closure') }}>
                     <label for="road-closure">Road closure</label>
@@ -150,7 +152,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="excavation-yes">Excavation (optional)</label>
+                <label class="form-label" for="excavation-yes">Excavation</label>
                 <div class="multiple-choice">
                     <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" {{ checked('excavation-group','Yes') }}>
                     <label for="excavation-yes">Yes</label>
@@ -164,7 +166,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="lane-rental-yes">Lane rental applicable (optional)</label>
+                <label class="form-label" for="lane-rental-yes">Lane rental applicable</label>
                 <div class="multiple-choice">
                     <input id="lane-rental-yes" type="radio" name="lane-rental-group" value="Yes" {{ checked('lane-rental-group','Yes') }}>
                     <label for="lane-rental-yes">Yes</label>

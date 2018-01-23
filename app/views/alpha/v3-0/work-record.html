@@ -24,12 +24,14 @@ Create New Work - Street Manager
         </div>
     </div>
 
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
     <h2 class="heading-large">When</h2>
 
     <form action="work-record-site-contact" method="post" >
 
         <div class="form-group">
-            <label class="form-label" for="start-date-day">Start Date (optional)</label>
+            <label class="form-label" for="start-date-day">Start Date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -49,7 +51,7 @@ Create New Work - Street Manager
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="end-date-day">End Date (optional)</label>
+            <label class="form-label" for="end-date-day">End Date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -70,7 +72,7 @@ Create New Work - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="duration">Duration (optional)</label>
+                <label class="form-label" for="duration">Duration</label>
                 <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
             </div>
         </fieldset>
