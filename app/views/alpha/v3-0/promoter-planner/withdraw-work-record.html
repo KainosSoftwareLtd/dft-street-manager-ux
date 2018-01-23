@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Withdraw Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+        <!-- main content starts -->
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Withdraw Work Record</h1>
+            <p>Are you sure you wish to withdraw the below work record? The work record will be deleted from the system.</p>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>Work Reference Number</td>
+            <td>{{ data['workreferencenumber'] }}</td>
+        </tr>
+        <tr>
+            <td>Work Status</td>
+            <td>Draft forward plan</td>
+        </tr>
+        <tr>
+            <td>Promoter Name</td>
+            <td>{{ data['promotername'] }}</td>
+        </tr>
+        <tr>
+            <td>Promoter Agent</td>
+            <td>{{ data['promoteragent'] }}</td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 10px">
+        <a class="button" href="/alpha/v3-0/promoter-planner/confirm-withdraw-work-record" role="button" style="margin-right: 20px;">Confirm</a>
+        <a class="button" href="/alpha/v3-0/promoter-planner/work-record" role="button" style="margin-right: 20px;">Cancel</a>
+    </div>
+</main>
+
+{% endblock %}
+
+

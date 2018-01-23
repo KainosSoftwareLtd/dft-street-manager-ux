@@ -149,6 +149,13 @@ router.post('/alpha/v3-0/promoter-planer/map-search-results', function (req, res
   res.render('/alpha/v3-0/promoter-planner/map-search-results.html', {searchDetails: req.body.search[0]})
 })
 
+router.get('/alpha/v3-0/promoter-planner/work-record', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/work-record.html', data)
+})
+
+router.get('/alpha/v3-0/promoter-planner/withdraw-work-record', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/withdraw-work-record.html', data)
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router
