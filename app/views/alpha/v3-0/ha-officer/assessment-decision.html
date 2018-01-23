@@ -20,31 +20,33 @@ Work Record
         </div>
     </div>
 
-    <div class="heading-large">Assessment</div>
+    <div class="heading-large">WRN CT12345</div>
+    <div class="heading-medium">Key info here...</div>
 
-    <form>
+    <form action="/alpha/v3-0/ha-officer/assessment-decision.html" method="POST">
         <div class="form-group">
             <fieldset>
-
+                <legend><h1 class="heading-medium">Assessment decision</h1></legend>
                 <div class="multiple-choice">
-                    <input id="radio-1" type="radio" name="radio-group" value="Accept">
+                    <input id="radio-1" type="radio" name="options" value="Accept">
                     <label for="radio-1">Accept</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="radio-2" type="radio" name="radio-group" value="Accept with conditions">
+                    <input id="radio-2" type="radio" name="options" value="Accept with conditions">
                     <label for="radio-2">Accept with conditions</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="radio-3" type="radio" name="radio-group" value="Reject">
+                    <input id="radio-3" type="radio" name="options" value="Reject">
                     <label for="radio-3">Reject</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="radio-4" type="radio" name="radio-group" value="Add comment">
+                    <input id="radio-4" type="radio" name="options" value="Add comment">
                     <label for="radio-4">Add comment</label>
                 </div>
 
             </fieldset>
         </div>
+        <button class="button" type="submit">Submit</button>
     </form>
 
 </main>

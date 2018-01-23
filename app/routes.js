@@ -25,6 +25,8 @@ router.get('/', function (req, res) {
   res.render('index')
 })
 
+// V1 Routes
+
 router.post('/alpha/v1-0/sign-in.html', function (req, res) {
   switch (req.body.email) {
     case 'promo@sm.com' :
@@ -38,6 +40,8 @@ router.post('/alpha/v1-0/sign-in.html', function (req, res) {
   }
 })
 
+// V2 Routes
+
 router.post('/alpha/v2-0/sign-in.html', function (req, res) {
   switch (req.body.email) {
     case 'promo@sm.com' :
@@ -45,19 +49,6 @@ router.post('/alpha/v2-0/sign-in.html', function (req, res) {
       break
     case 'ha@sm.com' :
       res.redirect('/alpha/v2-0/dashboard-ha.html')
-      break
-    default:
-      res.render('alpha/v2-0/sign-in.html', {validationError: 'Invalid login credentials.'})
-  }
-})
-
-router.post('/alpha/v3-0/sign-in.html', function (req, res) {
-  switch (req.body.email) {
-    case 'promo@sm.com' :
-      res.redirect('/alpha/v3-0/promoter-planner/dashboard.html')
-      break
-    case 'ha@sm.com' :
-      res.redirect('/alpha/v3-0/ha-officer/dashboard.html')
       break
     default:
       res.render('alpha/v2-0/sign-in.html', {validationError: 'Invalid login credentials.'})
@@ -102,6 +93,40 @@ router.post('/alpha/v2-0/map-search', function (req, res) {
 
 router.post('/alpha/v2-0/map-search-ha', function (req, res) {
   res.render('alpha/v2-0/map-view-works-ha.html', {searchDetails: req.body.search[0]})
+})
+
+// V3 Routes
+
+router.post('/alpha/v3-0/sign-in.html', function (req, res) {
+  switch (req.body.email) {
+    case 'promo@sm.com' :
+      res.redirect('/alpha/v3-0/promoter-planner/dashboard.html')
+      break
+    case 'ha@sm.com' :
+      res.redirect('/alpha/v3-0/ha-officer/dashboard.html')
+      break
+    default:
+      res.render('alpha/v2-0/sign-in.html', {validationError: 'Invalid login credentials.'})
+  }
+})
+
+router.post('/alpha/v3-0/ha-officer/assessment-decision.html', function (req, res) {
+  switch (req.body.options) {
+    case 'Accept' :
+      res.redirect('/alpha/v3-0/ha-officer/accept-confirmation.html')
+      break
+    case 'Accept with conditions' :
+      res.redirect('/alpha/v3-0/ha-officer/accept-with-conditions.html')
+      break
+    case 'Reject':
+      res.redirect('/alpha/v3-0/ha-officer/reject.html')
+      break
+    case 'Add comment':
+      res.redirect('/alpha/v3-0/ha-officer/comments.html')
+      break
+    default:
+      res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'Invalid login credentials.'})
+  }
 })
 
 // Add your routes here - above the module.exports line
