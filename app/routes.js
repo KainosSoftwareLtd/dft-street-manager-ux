@@ -129,8 +129,8 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision.html', function (req, re
   }
 })
 
-router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
-  res.render('alpha/v3-0/when-check-answers.html')
+router.post('/alpha/v3-0/promoter-planner/permit-application-screen1', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/screen1-check-answers.html')
 })
 
 router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
