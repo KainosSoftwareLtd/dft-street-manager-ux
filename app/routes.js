@@ -144,6 +144,11 @@ router.post('/alpha/v3-0/work-record-check-answers', function (req, res) {
 router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {
   res.redirect('/alpha/v3-0/promoter-planner/attach-to-record-check.html')
 })
+
+router.post('/alpha/v3-0/promoter-planer/map-search-results', function (req, res) {
+  res.render('/alpha/v3-0/promoter-planner/map-search-results.html', {searchDetails: req.body.search[0]})
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router
