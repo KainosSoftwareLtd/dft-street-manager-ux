@@ -141,14 +141,6 @@ router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req,
   res.render('alpha/v3-0/promoter-planner/screen4-check-answers.html')
 })
 
-router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
-  res.render('alpha/v3-0/who-check-answers.html')
-})
-
-router.post('/alpha/v3-0/work-record-check-answers', function (req, res) {
-  res.render('alpha/v3-0/what-check-answers.html')
-})
-
 router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {
   res.redirect('/alpha/v3-0/promoter-planner/attach-to-record-check.html')
 })
