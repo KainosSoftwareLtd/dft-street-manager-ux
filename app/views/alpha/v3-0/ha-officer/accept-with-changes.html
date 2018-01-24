@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <div class="heading-large">WRN CT12345</div>
+    <div class="heading-medium">Key info here...</div>
+
+    <form>
+        <div class="form-group">
+            <label class="form-label" for="select-box">Response</label>
+            <select class="form-control" id="select-box" name="select-box">
+                <option disabled selected>--Select--</option>
+                <option>RC10 - Missing information</option>
+                <option>RC11 - Condition not provided / not necessary</option>
+                <option>RC12 - TM not received</option>
+                <option>RC20 - Incorrect details on permit</option>
+                <option>RC21 - Incorrect primary recipient</option>
+                <option>RC22 - Location issues</option>
+                <option>RC23 - Conflicting information</option>
+                <option>RC30 - Co-ordination issues</option>
+                <option>RC31 - Clash or works</option>
+                <option>RC32 - Timing of works</option>
+                <option>RC33 - Collaboration / co-ordination</option>
+                <option>RC40 - Lack of approval</option>
+                <option>RC41 - Incorrect TM</option>
+                <option>RC42 - Early start agreement</option>
+                <option>RC43 - S.38 Restriction</option>
+                <option>RC44 - Duration</option>
+                <option>RC50 - Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="textarea">
+                Comments
+            </label>
+            <textarea class="form-control form-control-3-4" name="textarea" id="textarea" rows="5"></textarea>
+        </div>
+        <a class="button" href="accept-with-changes-confirmation.html" >Submit</a>
+    </form>
+
+</main>
+
+{% endblock %}
