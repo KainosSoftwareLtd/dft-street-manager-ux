@@ -122,8 +122,8 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
     case 'Accept with changes' :
       res.redirect('/alpha/v3-0/ha-officer/accept-with-changes')
       break
-    case 'Reject':
-      res.redirect('/alpha/v3-0/ha-officer/reject')
+    case 'Refuse':
+      res.redirect('/alpha/v3-0/ha-officer/refuse')
       break
     case 'Add comment':
       res.redirect('/alpha/v3-0/ha-officer/comments')
