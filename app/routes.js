@@ -110,19 +110,23 @@ router.post('/alpha/v3-0/sign-in.html', function (req, res) {
   }
 })
 
-router.post('/alpha/v3-0/ha-officer/assessment-decision.html', function (req, res) {
+router.get('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
+  res.render('alpha/v3-0/ha-officer/assessment-decision')
+})
+
+router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
   switch (req.body.options) {
     case 'Accept' :
-      res.redirect('/alpha/v3-0/ha-officer/accept-confirmation.html')
+      res.redirect('/alpha/v3-0/ha-officer/accept-confirmation')
       break
     case 'Accept with conditions' :
-      res.redirect('/alpha/v3-0/ha-officer/accept-with-conditions.html')
+      res.redirect('/alpha/v3-0/ha-officer/accept-with-conditions')
       break
     case 'Reject':
-      res.redirect('/alpha/v3-0/ha-officer/reject.html')
+      res.redirect('/alpha/v3-0/ha-officer/reject')
       break
     case 'Add comment':
-      res.redirect('/alpha/v3-0/ha-officer/comments.html')
+      res.redirect('/alpha/v3-0/ha-officer/comments')
       break
     default:
       res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
