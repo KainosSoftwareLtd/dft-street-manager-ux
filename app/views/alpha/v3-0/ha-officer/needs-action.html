@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+HA Officer Home - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">HA Officer - Needs Action</h2>
+
+    <div class="form-group">
+        <label class="form-label" for="tm-plan-select">Filter by Traffic Management Plan</label>
+        <select class="form-control" id="tm-plan-select" name="tm-plan-select">
+            <option value="NA">Select...</option>
+            <option value="0">No carriageway incursion</option>
+            <option value="1">Some carriageway incursion</option>
+            <option value="2">Traffic control (stop/go boards)</option>
+            <option value="3">Traffic control (two-way signals)</option>
+            <option value="4">Traffic control (multi-way signals)</option>
+            <option value="5">Traffic control (give and take)</option>
+            <option value="6">Traffic control (priority working)</option>
+            <option value="7">Traffic control (convoy working)</option>
+            <option value="8">Lane closure</option>
+            <option value="9">Contra-flow</option>
+            <option value="10">Road closure</option>
+        </select>
+    </div>
+
+    <table class="table" id="needs-action-table">
+        <thead>
+            <th>Works Reference</th>
+            <th>Proposed Start Date</th>
+            <th>Estimated End Date</th>
+            <th>Works Category</th>
+            <th>Location Description</th>
+            <th>Status</th>
+            <th></th>
+        </thead>
+        <tbody>
+        <tr>
+            <input type="hidden" name="tm-plan" value="0">
+            <td>EC40010725431</td>
+            <td>03/04/2017</td>
+            <td>14/04/2017</td>
+            <td>Emergency</td>
+            <td>o/s Prada shop. f\w.</td>
+            <td>Work underway</td>
+            <td><a href="/alpha/v1-0/new-activity">View</a></td>
+        </tr>
+        <tr>
+            <input type="hidden" name="tm-plan" value="1">
+            <td>YG4253530630</td>
+            <td>29/03/2017</td>
+            <td>30/03/2017</td>
+            <td>Standard</td>
+            <td>NB 10M PAST NORTHUMBERLAND AVE</td>
+            <td>Work underway</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        <tr>
+            <input type="hidden" name="tm-plan" value="1">
+            <td>CT0223222490</td>
+            <td>23/03/2017</td>
+            <td>27/03/2017</td>
+            <td>Minor</td>
+            <td>O/S Whiteleys j/w Redan Place on xing</td>
+            <td>Published forward plan</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        <tr>
+            <input type="hidden" name="tm-plan" value="2">
+            <td>MU3010000306</td>
+            <td>28/03/2017</td>
+            <td>30/03/2017</td>
+            <td>Urgent</td>
+            <td>CARRIAGEWAY OUTSIDE OF NO 28 DEVONSHIRE MEWS WEST</td>
+            <td>Submitted for PA approval</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a style="float:right; margin-top: 20px" href="">Next ></a>
+</main>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+
+    $('#tm-plan-select').change(function () {
+      var selectedOption = $( "#tm-plan-select option:selected" ).val()
+      if(selectedOption == "NA"){
+        $('#needs-action-table tbody tr').each(function(i, row){
+          var $row = $(row);
+          $row.removeClass("js-hidden");
+        })
+      } else {
+        $('#needs-action-table tbody tr').each(function (i, row) {
+          var $row = $(row);
+          var tmplan = ($row.find('input[name="tm-plan"]')).val();
+          if (tmplan != selectedOption) {
+            $row.addClass("js-hidden");
+          } else {
+            $row.removeClass("js-hidden");
+          }
+        })
+      }
+    });
+  })
+
+</script>
+
+{% endblock %}

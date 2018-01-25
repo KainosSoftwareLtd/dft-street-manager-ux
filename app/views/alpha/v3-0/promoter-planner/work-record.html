@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+        <!-- main content starts -->
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Work Record</h1>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>Work Reference Number</td>
+            <td>{{ data['workreferencenumber'] }}</td>
+        </tr>
+        <tr>
+            <td>Work Status</td>
+            <td>Draft forward plan</td>
+        </tr>
+        <tr>
+            <td>Promoter Name</td>
+            <td>{{ data['promotername'] }}</td>
+        </tr>
+        <tr>
+            <td>Promoter Agent</td>
+            <td>{{ data['promoteragent'] }}</td>
+        </tr>
+        <tr>
+            <td>Highway Authority</td>
+            <td>{{ data['highway-authority'] }}</td>
+        </tr>
+        <tr>
+            <td>USRN</td>
+            <td>{{ data['usrn'] }}</td>
+        </tr>
+        <tr>
+            <td>Proposed Start</td>
+            <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+        </tr>
+        <tr>
+            <td>Proposed End</td>
+            <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+        </tr>
+        <tr>
+            <td>Date Flexible</td>
+            <td>{{ data['date-flexible-group']}}</td>
+        </tr>
+        <tr>
+            <td>Description of Work #1</td>
+            <td>{{ data['description-of-work'] }}</td>
+        </tr>
+        <tr>
+            <td>Description of Work #2</td>
+            <td>{{ data['description-of-work-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Contact Details</td>
+            <td>{{ data['contact-details'] }}</td>
+        </tr>
+        <tr>
+            <td>Commercially Sensitive</td>
+            <td>{{ data['commercially-sensitive-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Reinstatement Category</td>
+            <td>{{ data['reinstatement-category'] }}</td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 10px">
+        <a class="button" href="/alpha/v2-0/edit-work-record" role="button" style="margin-right: 20px;">Edit</a>
+        <a class="button" href="/alpha/v3-0/promoter-planner/withdraw-work-record" role="button" style="margin-right: 20px;">Withdraw</a>
+        <a href="/alpha/v3-0/promoter-planner/map-search-results" style="vertical-align: bottom">Return to map</a>
+    </div>
+</main>
+
+{% endblock %}
+
+

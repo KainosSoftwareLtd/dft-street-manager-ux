@@ -15,7 +15,52 @@ Forward Planning - Street Manager
     {% include "includes/phase_banner_alpha.html" %}
 </main>
 
-<div id="map" class="map" style="width: 100%"></div>
+<div id="map" class="map">
+
+    <div id="layerIcon">
+        <img src="/public/images/layers-icon.png">
+    </div>
+
+    <div id="legend" style="display: none">
+        <form>
+            <fieldset>
+                <legend>
+                    <span class="body-text">Select all that apply</span>
+                </legend>
+
+                <div class="multiple-choice">
+                    <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
+                    <label for="layer-type-1">Assets</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                    <label for="layer-type-2">My planned works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                    <label for="layer-type-3">Third party planned works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                    <label for="layer-type-4">Current works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                    <label for="layer-type-5">Restrictions</label>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="slider">
+        <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
+        <div id="slider-id">
+            <div class="ui-slider-handle"></div>
+        </div>
+    </div>
+
+</div>
 
 <div class="arrow_box" id="popup-container"></div>
 
@@ -30,7 +75,7 @@ Forward Planning - Street Manager
     <div id="drawnArea" style="padding-top: 20px;"></div>
     <div class="form-group">
         <fieldset>
-            <a id="create-work-button" href="/alpha/v2-0/create-new-work" style="display: none;">Create Work</a>
+            <a id="create-work-button" href="/alpha/v3-0/task-list-page" style="display: none;">Create Work</a>
         </fieldset>
     </div>
     <div id="results" class="results-block">
@@ -49,11 +94,17 @@ Forward Planning - Street Manager
 
 <style>
 
+    #map {
+        width: 100%;
+        position: relative;
+    }
+
     #legend {
         background-color: white;
+        position: absolute;
         width: 240px;
         padding: 10px;
-        top: 80px;
+        top: 120px;
         right: 50px;
     }
     #slider {
@@ -64,6 +115,12 @@ Forward Planning - Street Manager
         width: 450px;
         bottom: 20px;
         right: 50px;
+    }
+
+    #layerIcon {
+        position: absolute;
+        right: 50px;
+        top: 90px;
     }
 
     .ui-slider-handle.ui-corner-all.ui-state-default {
@@ -77,6 +134,10 @@ Forward Planning - Street Manager
         position: absolute;
         left: 540px;
         bottom: 20px;
+    }
+
+    #draw-controls {
+        right: 3%;
     }
 
     .ui-slider .ui-slider-handle {
@@ -115,44 +176,8 @@ Forward Planning - Street Manager
     }
 </style>
 
-<div id="legend">
-    <form>
-        <fieldset>
-            <legend>
-                <span class="body-text">Select all that apply</span>
-            </legend>
 
-            <div class="multiple-choice">
-                <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-assets">
-                <label for="layer-type-1">Assets</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                <label for="layer-type-2">My planned works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
-                <label for="layer-type-3">Third party planned works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
-                <label for="layer-type-4">Current works</label>
-            </div>
-            <div class="multiple-choice">
-                <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
-                <label for="layer-type-5">Restrictions</label>
-            </div>
 
-        </fieldset>
-    </form>
-</div>
-
-<div id="slider">
-    <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
-    <div id="slider-id">
-        <div class="ui-slider-handle"></div>
-    </div>
-</div>
 
 <script type="text/javascript">
   var MAP_CONFIG = {};
@@ -172,29 +197,23 @@ Forward Planning - Street Manager
     MAP_CONFIG.base_layer = new ol.layer.Tile({
       source: new ol.source.OSM()
     })
-    MAP_CONFIG.wms_layer = new ol.layer.Tile({
-      source: new ol.source.TileWMS({
-        url: 'http://192.168.99.100:8182/cgi-bin/mapserv?map=/map/counties.map&',
-        params: {'LAYERS': 'counties'},
-        transition: 0
-      })
-    })
   })(MAP_CONFIG);
 
   var slider = new ol.control.Control({element: document.getElementById('slider')});
+  var layerIcon = new ol.control.Control({element: document.getElementById('layerIcon')});
 
   var legend = new ol.control.Control({element: document.getElementById('legend')});
   var scaleLine = new ol.control.ScaleLine()
 
   var map = new ol.Map({
     target: 'map',
-    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.wms_layer, MAP_CONFIG.draw_layer],
+    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      MAP_CONFIG.draw_controls, legend, scaleLine, slider
+      MAP_CONFIG.draw_controls, legend, scaleLine, slider, layerIcon
     ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([-0.252, 51.5073]),
-      zoom: 7
+      zoom: 17
     })
   });
 
@@ -301,7 +320,7 @@ Forward Planning - Street Manager
      'Promoter Name: John Carrington <br/>' +
      'Promoter Agent: FM Conway LTD <br/>' +
      'Contact: 0345 045 5212 <br/>' +
-     '<a href="/alpha/v2-0/work-record">View Work Record</a>',
+     '<a href="/alpha/v3-0/promoter-planner/work-record">View Work Record</a>',
     dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork3.setId(3);
@@ -407,7 +426,11 @@ Forward Planning - Street Manager
 
   map.on('click', function (event) {
     console.log(event.coordinate)
-  })
+  });
+
+  $('#layerIcon').click(function () {
+        $('#legend').toggle();
+  });
 
 </script>
 

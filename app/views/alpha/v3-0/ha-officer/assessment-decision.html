@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    {% if validationError %}
+    <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+            {{validationError}}
+        </h2>
+    </div>
+    {% endif %}
+
+    <div class="heading-large">WRN CT12345</div>
+
+    <div class="heading-medium">Key info here...</div>
+
+    <form action="/alpha/v3-0/ha-officer/assessment-decision.html" method="POST">
+        <div class="form-group {{'form-group-error' if validationError}}">
+            <fieldset>
+                <legend>
+                    <span class="form-label-bold">Assessment decision</span>
+                    {% if validationError %}
+                    <span class="error-message">Select the type of assessment decision</span>
+                    {% endif %}
+                </legend>
+                    <div class="multiple-choice">
+                        <input id="radio-1" type="radio" name="options" value="Accept">
+                        <label for="radio-1">Accept</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="radio-2" type="radio" name="options" value="Accept with conditions">
+                        <label for="radio-2">Accept with conditions</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="radio-3" type="radio" name="options" value="Reject">
+                        <label for="radio-3">Reject</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="radio-4" type="radio" name="options" value="Add comment">
+                        <label for="radio-4">Add comment</label>
+                    </div>
+
+            </fieldset>
+        </div>
+        <button class="button" type="submit">Submit</button>
+    </form>
+
+</main>
+
+{% endblock %}
+
+

@@ -1,0 +1,205 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check your answers</h1>
+
+    <table>
+        <tbody>
+        <tr><h2 class="heading-medium">Screen 3 Name</h2></tr>
+        <tr><td>Permit Condition</td><td>Permit Reason</td></tr>
+        <tr>
+            <td>{{ data['nct01a']}}</td>
+            <td>{{ data['nct01a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct01a">
+                    Change <span class="visuallyhidden">nct01a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct01b']}}</td>
+            <td>{{ data['nct01b-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct01b">
+                    Change <span class="visuallyhidden">nct01b</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct02a']}}</td>
+            <td>{{ data['nct02a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct02a">
+                    Change <span class="visuallyhidden">nct02a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct02b']}}</td>
+            <td>{{ data['nct02b-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct02b">
+                    Change <span class="visuallyhidden">nct02b</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct04a']}}</td>
+            <td>{{ data['nct04a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct04a">
+                    Change <span class="visuallyhidden">nct04a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct04b']}}</td>
+            <td>{{ data['nct04b-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct04b">
+                    Change <span class="visuallyhidden">nct04b</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct05a']}}</td>
+            <td>{{ data['nct05a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct05a">
+                    Change <span class="visuallyhidden">nct05a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct06a']}}</td>
+            <td>{{ data['nct06a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct06a">
+                    Change <span class="visuallyhidden">nct06a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct07a']}}</td>
+            <td>{{ data['nct07a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct07a">
+                    Change <span class="visuallyhidden">nct07a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct08a']}}</td>
+            <td>{{ data['nct08a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct08a">
+                    Change <span class="visuallyhidden">nct08a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct08b']}}</td>
+            <td>{{ data['nct08b-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct08b">
+                    Change <span class="visuallyhidden">nct08b</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct09a']}}</td>
+            <td>{{ data['nct09a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct09a">
+                    Change <span class="visuallyhidden">nct09a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct09b']}}</td>
+            <td>{{ data['nct09b-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct09b">
+                    Change <span class="visuallyhidden">nct09b</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct09c']}}</td>
+            <td>{{ data['nct09c-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct09c">
+                    Change <span class="visuallyhidden">nct09c</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct10a']}}</td>
+            <td>{{ data['nct10a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct10a">
+                    Change <span class="visuallyhidden">nct10a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct11b']}}</td>
+            <td>{{ data['nct11b-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct11b">
+                    Change <span class="visuallyhidden">nct11b</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct12a']}}</td>
+            <td>{{ data['nct12a-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct12a">
+                    Change <span class="visuallyhidden">nct12a</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ data['nct13']}}</td>
+            <td>{{ data['nct13-reason'] }}</td>
+            <td class="change-answer">
+                <a href="/alpha/v3-0/promoter-planner/permit-application-screen3#nct13">
+                    Change <span class="visuallyhidden">nct13</span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <div class="form-group">
+        <a href="/alpha/v3-0/promoter-planner/permit-application-screen4" class="button">Continue</a>
+    </div>
+</main>
+
+{% endblock %}

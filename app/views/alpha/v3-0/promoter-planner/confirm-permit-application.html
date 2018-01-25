@@ -25,8 +25,9 @@ New Work Confirmation - Street Manager
 
             <div class="govuk-box-highlight">
                 <h1 class="heading-xlarge">
-                    Work record created
+                    Permit Application created on
                 </h1>
+                <p class="font-large"id="currentDateTime"></p>
                 <p class="font-large">
                     Your work reference number is <br>
                     <strong class="bold">CT12345678</strong>
@@ -36,11 +37,17 @@ New Work Confirmation - Street Manager
     </div>
 
     <div style="padding-top: 10px">
-        <a href="/alpha/v2-0/map-search-results" class="button" style="margin-right: 20px;">Create new work record</a>
-        <a href="/alpha/v2-0/dashboard" style="vertical-align: bottom">Return to dashboard</a>
+        <a href="/alpha/v3-0/promoter-planner/map-search-results" class="button" style="margin-right: 20px;">Create new work record</a>
+        <a href="/alpha/v3-0/promoter-planner/dashboard" style="vertical-align: bottom">Return to dashboard</a>
     </div>
         
 
 </main>
+
+<script>
+  var today = new Date();
+  var today1 = today.toLocaleDateString() + " " + today.toLocaleTimeString()
+  document.getElementById('currentDateTime').innerHTML=today1;
+</script>
 
 {% endblock %}

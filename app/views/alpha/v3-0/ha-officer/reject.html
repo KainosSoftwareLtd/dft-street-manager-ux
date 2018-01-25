@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <div class="heading-large">WRN CT12345</div>
+    <div class="heading-medium">Key info here...</div>
+
+    <form>
+        <div class="form-group">
+            <label class="form-label" for="textarea">
+                Comments
+            </label>
+            <textarea class="form-control form-control-3-4" name="textarea" id="textarea" rows="5"></textarea>
+        </div>
+        <a class="button" href="reject-confirmation.html">Submit</a>
+    </form>
+
+</main>
+
+{% endblock %}

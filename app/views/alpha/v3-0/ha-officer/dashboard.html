@@ -1,0 +1,123 @@
+<div class="admin">
+    {% extends "layout.html" %}
+
+    {% block page_title %}
+    My dashboard - Street Manager
+    {% endblock %}
+
+    {% block content %}
+
+    <main id="content" role="main">
+
+        {% include "includes/phase_banner_alpha.html" %}
+
+        <div class="breadcrumbs">
+            <div>
+                <!-- the rest of this label is hidden, only used for screenreaders -->
+                <span class="visuallyhidden"> to the previous page</span>
+                <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+                <span style="float:right; margin-right:10px;">ha@sm.com</span>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h2 class="heading-large">My dashboard</h2>
+                <label class="form-label-bold">Filter by</label>
+                <select class="form-control full">
+                    <option selected>Today</option>
+                    <option>Yesterday</option>
+                    <option>Last 7 days</option>
+                    <option>Older</option>
+                </select>
+            </div>
+            <div class="column-one-third">
+                <div class="container-button-right">
+                    <a class="button" href="map-search-ha.html" role="button">View work records</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="dashboard">
+            <div id="works" class="container-metrics grid-row">
+
+                <div class="column-one-quarter">
+                    <h2 class="heading-medium">Works</h2>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">Scheduled</h3>
+                        <span class="number">248m</span>
+                        <p><a href="#">View</a></p>
+                    </div>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">In Progress</h3>
+                        <span class="number">120m</span>
+                        <p><a href="#">View</a></p>
+                    </div>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">Completed</h3>
+                        <span class="number">157m</span>
+                        <p><a href="#">View</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="permits" class="container-metrics grid-row">
+
+                <div class="column-one-quarter">
+                    <h2 class="heading-medium">Permits</h2>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">Needs action</h3>
+                        <span class="number">34</span>
+                        <p><a href="/alpha/v3-0/ha-officer/needs-action">View</a></p>
+                    </div>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">Refused</h3>
+                        <span class="number">7</span>
+                        <p><a href="#">View</a></p>
+                    </div>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">Granted</h3>
+                        <span class="number">42</span>
+                        <p><a href="#">View</a></p>
+                    </div>
+                </div>
+
+                <div class="column-one-quarter">
+                    <!-- Spacing -->
+                    <span class="number">&nbsp;</span>
+                </div>
+
+                <div class="column-one-quarter">
+                    <div class="box-metrics">
+                        <h3 class="heading-small">Success rate</h3>
+                        <span class="number">40%</span>
+                        <p><a href="#">View</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    {% endblock %}
+
+</div>

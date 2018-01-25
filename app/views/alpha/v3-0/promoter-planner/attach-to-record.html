@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Edit Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Edit Work Record</h2>
+
+    <form action="attach-to-record.html" method="post" >
+
+        <div class="form-group" data-target="file-details">
+            <label class="form-label" for="file-input">Upload a File</label>
+            <input type="file" id="file-input" name="file-input"/>
+        </div>
+
+        <div class="panel panel-border-narrow js-hidden" id="file-details">
+            <label class="form-label" for="file-name">Attachment title</label>
+            <input class="form-control" id="attachment-title" name="file-name" type="text" value="">
+            <input class="button" type="button" value="Upload" role="button" id="upload-button">
+        </div>
+
+        <div id="attachments-table" class="js-hidden">
+            <h3 class="heading-small">File Attachments</h3>
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>File type</th>
+                    <th>File name</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+    </form>
+</main>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    $('#file-input').change(function () {
+      $("#file-details").removeClass("js-hidden");
+      $("#file-details").show();
+     /*     var file = this.files[0];
+        // This code is only for demo ...
+
+      $("#attachment-file").html(file.name);
+        console.log("name : " + file.name);
+        console.log("size : " + file.size);
+        console.log("type : " + file.type);
+        console.log("date : " + file.lastModified);*/
+    });
+
+    $("#upload-button").click(function () {
+      $("#file-details").addClass("js-hidden");
+      var file = $('#file-input')[0].files[0];
+
+      var fileName = file.name;
+      var fileType = file.type;
+      var attachmentTitle = $("#attachment-title").val();
+      var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PDF</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td></tr>";
+      $("table tbody").append(markup);
+
+      $("#attachments-table").removeClass("js-hidden");
+      $("#file-input").val("");
+      $("#file-name").val("");
+    })
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Who</h2>
+
+    <form action="work-record-collaboration" method="post" >
+
+        <div class="form-group">
+            <label class="form-label" for="secondary-contact">Secondary Site Contact Details</label>
+            <input class="form-control" id="secondary-contact" name="secondary-contact" type="text" value="{{ data['secondary-contact'] }}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="amendment-initiator">Amendment initiator</label>
+            <input class="form-control" id="amendment-initiator" name="amendment-initiator" type="text" value="{{ data['amendment-initiator'] }}">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Save & Continue">
+        </div>
+    </form>
+</main>
+
+{% endblock %}

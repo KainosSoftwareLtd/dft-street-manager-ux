@@ -170,11 +170,13 @@ Forward Planning - Street Manager
       zIndex: MAP_CONFIG.draw_layer_zindex
     })
     MAP_CONFIG.base_layer = new ol.layer.Tile({
-      source: new ol.source.OSM()
+      source: new ol.source.OSM({
+        crossOrigin: null
+      })
     })
     MAP_CONFIG.wms_layer = new ol.layer.Tile({
       source: new ol.source.TileWMS({
-        url: 'http://192.168.99.100:8182/cgi-bin/mapserv?map=/map/counties.map&',
+        url: 'http://192.168.99.100:8182/cgi-bin/mapserv?map=/map/counties-postgis.map&',
         params: {'LAYERS': 'counties'},
         transition: 0
       })
