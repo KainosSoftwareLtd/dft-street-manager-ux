@@ -116,17 +116,14 @@ router.get('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
 
 router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
   switch (req.body.options) {
-    case 'Accept' :
-      res.redirect('/alpha/v3-0/ha-officer/accept-confirmation')
+    case 'Grant' :
+      res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
       break
-    case 'Accept with changes' :
-      res.redirect('/alpha/v3-0/ha-officer/accept-with-changes')
+    case 'Grant with changes' :
+      res.redirect('/alpha/v3-0/ha-officer/grant-with-changes')
       break
-    case 'Refuse':
-      res.redirect('/alpha/v3-0/ha-officer/refuse')
-      break
-    case 'Add comment':
-      res.redirect('/alpha/v3-0/ha-officer/comments')
+    case 'Revoke':
+      res.redirect('/alpha/v3-0/ha-officer/revoke')
       break
     default:
       res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
