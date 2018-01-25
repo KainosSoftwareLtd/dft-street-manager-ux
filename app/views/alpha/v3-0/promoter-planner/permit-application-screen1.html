@@ -1,0 +1,189 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Screen 1 Name here</h2>
+
+    <form action="screen1-check-answers" method="post" >
+
+        <div class="form-group">
+            <label class="form-label" for="promoter-name">Promoter Name</label>
+            {% if validationError %}<p class="form-group-error">{{ validationPromoterNameError }}</p>{% endif %}
+            <input class="form-control" id="promoter-name" name="promoter-name" type="text" value="Michael Harris">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="usrn">USRN (optional)</label>
+            <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="road-category">Road Category</label>
+            <input class="form-control" id="road-category" type="text" name="road-category" value="{{ data['road-category'] }}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="highway-authority">Highway Authority (optional)</label>
+            <input class="form-control" id="highway-authority" type="text" name="highway-authority" value="{{ data['highway-authority'] }}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="workreferencenumber">Work Reference Number</label>
+            {% if validationError %}<p class="form-group-error">{{ validationWorkReferenceError }}</p>{% endif %}
+            <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" value="{{ data['workreferencenumber'] }}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="start-date-day">Proposed Start Date</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="start-date-day">Day</label>
+                        <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="start-date-month">Month</label>
+                        <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="start-date-year">Year</label>
+                        <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-year'] }}">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="end-date-day">Proposed End Date</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="end-date-day">Day</label>
+                        <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="end-date-month">Month</label>
+                        <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="end-date-year">Year</label>
+                        <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-year'] }}">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="duration">Duration</label>
+                <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
+            </div>
+        </fieldset>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="road-closure">Traffic management type</label>
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="traffic-management-type-group" value="Road closure" {{ checked('traffic-management-type-group','Road closure') }}>
+                    <label for="road-closure">Road closure</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="contra-flow" type="checkbox" name="traffic-management-type-group" value="Road closure" {{ checked('traffic-management-type-group','Contra flow') }}>
+                    <label for="contra-flow">Contra flow</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="lane-closure" type="checkbox" name="traffic-management-type-group" value="Lane closure" {{ checked('traffic-management-type-group','Lane closure') }}>
+                    <label for="lane-closure">Lane closure</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="convoy-working" type="checkbox" name="traffic-management-type-group" value="Convoy working" {{ checked('traffic-management-type-group','Convoy working') }}>
+                    <label for="convoy-working">Convoy working</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="priority-working" type="checkbox" name="traffic-management-type-group" value="Priority working" {{ checked('traffic-management-type-group','Priority working') }}>
+                    <label for="priority-working">Priority working</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="give-take" type="checkbox" name="traffic-management-type-group" value="Give & take" {{ checked('traffic-management-type-group','Give & take') }}>
+                    <label for="give-take">Give & take</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="multi-way-signals" type="checkbox" name="traffic-management-type-group" value="Multi-way signals" {{ checked('traffic-management-type-group','Multi-way signals') }}>
+                    <label for="multi-way-signals">Multi-way signals</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="two-way-signals" type="checkbox" name="traffic-management-type-group" value="Two-way signals" {{ checked('traffic-management-type-group','Two-way signals') }}>
+                    <label for="two-way-signals">Two-way signals</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="stop-go-boards" type="checkbox" name="traffic-management-type-group" value="Stop/go boards" {{ checked('traffic-management-type-group','Stop/go boards') }}>
+                    <label for="stop-go-boards">Stop/go boards</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="some-carriageway-incursion" type="checkbox" name="traffic-management-type-group" value="Some carriageway incursion" {{ checked('traffic-management-type-group','Some carriageway incursion') }}>
+                    <label for="some-carriageway-incursion">Some carriageway incursion</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="no-carriageway-incursion" type="checkbox" name="traffic-management-type-group" value="No carriageway incursion" {{ checked('traffic-management-type-group','No carriageway incursion') }}>
+                    <label for="no-carriageway-incursion">No carriageway incursion</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="work-category-1">Work category</label>
+                <div class="multiple-choice">
+                    <input id="work-category-1" type="radio" name="work-category-group" value="FPI" {{ checked('work-category-group','FPI') }}>
+                    <label for="work-category-1">FPI</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-2" type="radio" name="work-category-group" value="Minor" {{ checked('work-category-group','Minor') }}>
+                    <label for="work-category-2">Minor</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-3" type="radio" name="work-category-group" value="Standard" {{ checked('work-category-group','Standard') }}>
+                    <label for="work-category-3">Standard</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-4" type="radio" name="work-category-group" value="Major" {{ checked('work-category-group','Major') }}>
+                    <label for="work-category-4">Major</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-5" type="radio" name="work-category-group" value="Immediate - urgent" {{ checked('work-category-group','Immediate - urgent') }}>
+                    <label for="work-category-5">Immediate - urgent</label>
+                </div>
+                <br/>
+                <br/>
+                <div class="multiple-choice">
+                    <input id="work-category-6" type="radio" name="work-category-group" value="Immediate - emergency" {{ checked('work-category-group','Immediate - emergency') }}>
+                    <label for="work-category-6">Immediate - emergency</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Save & Continue">
+        </div>
+    </form>
+</main>
+
+{% endblock %}

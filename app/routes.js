@@ -130,20 +130,36 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
   }
 })
 
-router.post('/alpha/v3-0/work-record-site-contact', function (req, res) {
-  res.render('alpha/v3-0/when-check-answers.html')
+router.post('/alpha/v3-0/promoter-planner/screen1-check-answers', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/screen1-check-answers.html')
 })
 
-router.post('/alpha/v3-0/work-record-collaboration', function (req, res) {
-  res.render('alpha/v3-0/who-check-answers.html')
+router.post('/alpha/v3-0/promoter-planner/screen2-check-answers', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/screen2-check-answers.html')
 })
 
-router.post('/alpha/v3-0/work-record-check-answers', function (req, res) {
-  res.render('alpha/v3-0/what-check-answers.html')
+router.post('/alpha/v3-0/promoter-planner/screen3-check-answers', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/screen3-check-answers.html')
+})
+
+router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/screen4-check-answers.html')
 })
 
 router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {
   res.redirect('/alpha/v3-0/promoter-planner/attach-to-record-check.html')
+})
+
+router.post('/alpha/v3-0/promoter-planer/map-search-results', function (req, res) {
+  res.render('/alpha/v3-0/promoter-planner/map-search-results.html', {searchDetails: req.body.search[0]})
+})
+
+router.get('/alpha/v3-0/promoter-planner/work-record', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/work-record.html', data)
+})
+
+router.get('/alpha/v3-0/promoter-planner/withdraw-work-record', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/withdraw-work-record.html', data)
 })
 // Add your routes here - above the module.exports line
 
