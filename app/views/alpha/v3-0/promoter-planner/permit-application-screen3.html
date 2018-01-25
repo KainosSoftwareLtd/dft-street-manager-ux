@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Permit Conditions</h2>
+
+    <form action="screen3-check-answers" method="post" >
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="road-closure">Permit Conditions                              Permit Condition Reason</label>
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT01a</label>
+                    <!--<label class="form-label" for="works-location-description">Permit Condition Reason</label>-->
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT01b</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT02a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT02b</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT04a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT04b</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT05a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT06a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT07a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT08a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT08b</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT09a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT9b</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT09c</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT10a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT11b</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT12a</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+        <fieldset class="inline">
+            <div class="form-group">
+                <div class="multiple-choice">
+                    <input id="road-closure" type="checkbox" name="permit-conditions-group" value="Road closure" {{ checked('permit-conditions-group',' NCT01a') }}>
+                    <label for="road-closure">NCT13</label>
+                </div>
+                <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Save & Continue">
+        </div>
+    </form>
+</main>
+
+{% endblock %}

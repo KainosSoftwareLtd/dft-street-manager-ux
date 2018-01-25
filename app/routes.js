@@ -137,6 +137,10 @@ router.post('/alpha/v3-0/promoter-planner/screen2-check-answers', function (req,
   res.render('alpha/v3-0/promoter-planner/screen2-check-answers.html')
 })
 
+router.post('/alpha/v3-0/promoter-planner/screen3-check-answers', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/screen3-check-answers.html')
+})
+
 router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req, res) {
   res.render('alpha/v3-0/promoter-planner/screen4-check-answers.html')
 })
