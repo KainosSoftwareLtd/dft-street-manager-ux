@@ -30,7 +30,7 @@ Permit Application - Street Manager
         <tbody>
         <tr><h2 class="heading-medium">Conditions</h2></tr>
         <tr><td>Permit Condition</td><td>Permit Reason</td></tr>
-        {% if data['nct01a'] != '' %}
+        {% if data['nct01a'] != undefined %}
         <tr>
             <td>{{ data['nct01a']}}</td>
             <td>{{ data['nct01a-reason'] }}</td>
@@ -41,6 +41,7 @@ Permit Application - Street Manager
             </td>
         </tr>
         {% endif %}
+        {% if data['nct01b'] != undefined %}
         <tr>
             <td>{{ data['nct01b']}}</td>
             <td>{{ data['nct01b-reason'] }}</td>
@@ -50,6 +51,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct02a'] != undefined %}
         <tr>
             <td>{{ data['nct02a']}}</td>
             <td>{{ data['nct02a-reason'] }}</td>
@@ -59,6 +62,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct02b'] != undefined %}
         <tr>
             <td>{{ data['nct02b']}}</td>
             <td>{{ data['nct02b-reason'] }}</td>
@@ -68,6 +73,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct04a'] != undefined %}
         <tr>
             <td>{{ data['nct04a']}}</td>
             <td>{{ data['nct04a-reason'] }}</td>
@@ -77,6 +84,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct04b'] != undefined %}
         <tr>
             <td>{{ data['nct04b']}}</td>
             <td>{{ data['nct04b-reason'] }}</td>
@@ -86,6 +95,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct05a'] != undefined %}
         <tr>
             <td>{{ data['nct05a']}}</td>
             <td>{{ data['nct05a-reason'] }}</td>
@@ -95,6 +106,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct06a'] != undefined %}
         <tr>
             <td>{{ data['nct06a']}}</td>
             <td>{{ data['nct06a-reason'] }}</td>
@@ -104,6 +117,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct07a'] != undefined %}
         <tr>
             <td>{{ data['nct07a']}}</td>
             <td>{{ data['nct07a-reason'] }}</td>
@@ -113,6 +128,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct08a'] != undefined %}
         <tr>
             <td>{{ data['nct08a']}}</td>
             <td>{{ data['nct08a-reason'] }}</td>
@@ -122,6 +139,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct08b'] != undefined %}
         <tr>
             <td>{{ data['nct08b']}}</td>
             <td>{{ data['nct08b-reason'] }}</td>
@@ -131,6 +150,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct09a'] != undefined %}
         <tr>
             <td>{{ data['nct09a']}}</td>
             <td>{{ data['nct09a-reason'] }}</td>
@@ -140,6 +161,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct09b'] != undefined %}
         <tr>
             <td>{{ data['nct09b']}}</td>
             <td>{{ data['nct09b-reason'] }}</td>
@@ -149,6 +172,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct09c'] != undefined %}
         <tr>
             <td>{{ data['nct09c']}}</td>
             <td>{{ data['nct09c-reason'] }}</td>
@@ -158,6 +183,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct10a'] != undefined %}
         <tr>
             <td>{{ data['nct10a']}}</td>
             <td>{{ data['nct10a-reason'] }}</td>
@@ -167,6 +194,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct11b'] != undefined %}
         <tr>
             <td>{{ data['nct11b']}}</td>
             <td>{{ data['nct11b-reason'] }}</td>
@@ -176,6 +205,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct12a'] != undefined %}
         <tr>
             <td>{{ data['nct12a']}}</td>
             <td>{{ data['nct12a-reason'] }}</td>
@@ -185,6 +216,8 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
+        {% if data['nct13'] != undefined %}
         <tr>
             <td>{{ data['nct13']}}</td>
             <td>{{ data['nct13-reason'] }}</td>
@@ -194,6 +227,7 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
         </tbody>
     </table>
 
