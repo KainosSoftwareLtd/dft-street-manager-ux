@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application Confirmation - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to task list">Back</a>
+
+    <div class="grid-row">
+        <p class="font-medium">
+            Work reference number: <strong class="bold">CT12345678</strong> [Status]
+        </p>
+        <div class="column-two-thirds">
+            <div class="govuk-box-highlight">
+                <h1 class="heading-large">
+                    Permit Application granted
+                </h1>
+                <p class="font-large">
+                    Your work reference number is <br>
+                    <strong class="bold">CT12345678</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-top: 10px">
+        <a href="#" class="button" style="margin-right: 20px; margin-bottom: 20px;">View this work record</a><br/>
+        <a href="/alpha/v3-0/promoter-planner/map-search-results" class="button" style="margin-right: 20px; margin-bottom: 20px;">Create new work record</a><br/>
+        <a href="/alpha/v3-0/promoter-planner/home" class="button" style="margin-right: 20px; margin-bottom: 20px;">View work record list</a><br/>
+        <a href="/alpha/v3-0/promoter-planner/dashboard" style="vertical-align: bottom">Return to dashboard</a>
+    </div>
+        
+
+</main>
+
+{% endblock %}
