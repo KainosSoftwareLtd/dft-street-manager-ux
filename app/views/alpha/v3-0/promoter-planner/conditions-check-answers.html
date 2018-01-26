@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Create New Work - Street Manager
+Permit Application - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -28,8 +28,9 @@ Create New Work - Street Manager
 
     <table>
         <tbody>
-        <tr><h2 class="heading-medium">Screen 3 Name</h2></tr>
+        <tr><h2 class="heading-medium">Conditions</h2></tr>
         <tr><td>Permit Condition</td><td>Permit Reason</td></tr>
+        {% if data['nct01a'] != '' %}
         <tr>
             <td>{{ data['nct01a']}}</td>
             <td>{{ data['nct01a-reason'] }}</td>
@@ -39,6 +40,7 @@ Create New Work - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
         <tr>
             <td>{{ data['nct01b']}}</td>
             <td>{{ data['nct01b-reason'] }}</td>
