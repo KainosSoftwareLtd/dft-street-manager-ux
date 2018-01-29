@@ -31,7 +31,7 @@ MAP_CONTROLS.polygon_button = function () {
 }
 
 // Toggle/Untoggle Control
-MAP_CONTROLS.toggle_button = function(button) {
+MAP_CONTROLS.toggle_button = function (button) {
   // Clear any active controls
   var is_active_control = button.id == 'active-control'
   $('#active-control').removeAttr('id')
@@ -65,12 +65,19 @@ MAP_CONTROLS.add_draw_interaction = function (type, button) {
       event.feature.setProperties({
         'id': Date.now()
       })
-      var coords = event.feature.getGeometry().getCoordinates();
-      var text = "New area drawn, click below to create work for this area:";
-      document.getElementById('drawnArea').innerHTML = text;
-      document.getElementById('create-work-button').style = null;
-      document.getElementById('results').style.display = "none";
-      document.getElementById('create-work-button').classList.add("button");
+      // var coords = event.feature.getGeometry().getCoordinates()
+      var text = 'New area drawn, click below to create work for this area:'
+      document.getElementById('drawnArea').innerHTML = text
+      document.getElementById('create-work-button').style = null
+      document.getElementById('results').style.display = 'none'
+      document.getElementById('create-work-button').classList.add('button')
+
+      var writer = new ol.format.WKT()
+      var geomWKT = writer.writeGeometry(event.feature.getGeometry())
+      if (document.getElementById('wktString') != null) {
+        document.getElementById('wktString').innerHTML = geomWKT
+        $('#shapecoords').val(geomWKT);
+      }
     })
 
     map.addInteraction(MAP_CONTROLS.current_interaction)

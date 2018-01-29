@@ -27,12 +27,15 @@ Forward Planning - Street Manager
     <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
     <input class="button" type="submit" value="Search">
 
-    <div id="drawnArea" style="padding-top: 20px;"></div>
-    <div class="form-group">
-        <fieldset>
-            <a id="create-work-button" href="/alpha/v2-0/create-new-work" style="display: none;">Create Work</a>
-        </fieldset>
+    <div id="drawnArea" style="padding-top: 20px;">
     </div>
+    <div id="wktString"></div>
+    <form action="save-geometry.html" method="post">
+        <div class="form-group">
+            <input class="form-control" type="hidden" id="shapecoords" name="shapecoords">
+            <input id="create-work-button" class="button" type="submit" value="Create Work" style="display: none;">
+        </div>
+    </form>
     <div id="results" class="results-block">
     <ol class="results-list">
 

@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const pg = require('pg')
+const connectionString = 'postgres://postgres:postgres@192.168.99.100:5432/shape'
 
 var data = {'data': {
   'workreferencenumber': 'CT0224443466',
@@ -159,6 +161,42 @@ router.get('/alpha/v3-0/promoter-planner/work-record', function (req, res) {
 
 router.get('/alpha/v3-0/promoter-planner/withdraw-work-record', function (req, res) {
   res.render('alpha/v3-0/promoter-planner/withdraw-work-record.html', data)
+})
+
+router.post('/alpha/v3-0/save-geometry.html', function (req, res) {
+  console.log(req.body.shapecoords)
+  const coords = req.body.shapecoords
+  console.log('Coords:' + coords)
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if (err) {
+      done()
+      console.log(err)
+      return res.status(500).json({success: false, data: err})
+    }
+
+    var pid = 0
+    client.query('select max(p_id) from drawn_polygon', (err, res) => {
+      if (err) {
+        console.log(err.stack)
+      } else {
+        console.log(res.rows[0].max)
+        pid = res.rows[0].max + 1
+      console.log(pid)
+
+  const query = {
+    text: 'INSERT INTO drawn_polygon(p_id, the_geom) VALUES($1, ST_GeomFromText($2, 3857));',
+    values: [pid, coords]
+  }
+
+  console.log(query)
+  client.query(query)
+      }
+    })
+
+  })
+
+  res.render('alpha/v3-0/map-search-results-boundary.html')
 })
 // Add your routes here - above the module.exports line
 
