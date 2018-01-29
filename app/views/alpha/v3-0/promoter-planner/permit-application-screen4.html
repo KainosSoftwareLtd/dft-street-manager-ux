@@ -26,7 +26,7 @@ Permit Application - Street Manager
 
     <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
 
-    <h2 class="heading-large">Screen 4 Name here</h2>
+    <h2 class="heading-large">4. Collaboration</h2>
 
     <form action="screen4-check-answers" method="post" >
 
@@ -63,25 +63,25 @@ Permit Application - Street Manager
             </div>
         </fieldset>
 
-        <fieldset class="inline">
-            <div class="form-group">
-                <label class="form-label" for="collaboration-type-1">Collaboration Type (optional)</label>
-                <div class="multiple-choice">
-                    <input id="collaboration-type-1" type="radio" name="collaboration-type-group" value="Trench sharing - primary promoter" {{ checked('description-of-work-group','Trench sharing - primary promoter') }}>
-                    <label for="collaboration-type-1" style="padding-right: 300px;">Trench sharing - primary promoter</label>
+        <div class="form-group">
+            <fieldset>
+                    <label class="form-label" for="collaboration-type-1">Collaboration Type (optional)</label>
+                    <div class="multiple-choice">
+                        <input id="collaboration-type-1" type="radio" name="collaboration-type-group" style="margin-bottom: 100px;" value="Trench sharing - primary promoter" {{ checked('description-of-work-group','Trench sharing - primary promoter') }}>
+                        <label for="collaboration-type-1" style="padding-right: 300px;">Trench sharing - primary promoter</label>
+                        <br/>
+                    </div>
                     <br/>
-                </div>
-                <br/>
-                <div class="multiple-choice">
-                    <input id="collaboration-type-2" type="radio" name="collaboration-type-group" value="Trench sharing - secondary promoter" {{ checked('description-of-work-group','Trench sharing - secondary promoter') }}>
-                    <label for="collaboration-type-2">Trench sharing - secondary promoter</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="collaboration-type-3" type="radio" name="collaboration-type-group" value="Sharing traffic management only" {{ checked('description-of-work-group','Sharing traffic management only') }}>
-                    <label for="collaboration-type-3">Sharing traffic management only</label>
-                </div>
-            </div>
-        </fieldset>
+                    <div class="multiple-choice">
+                        <input id="collaboration-type-2" type="radio" name="collaboration-type-group" value="Trench sharing - secondary promoter" {{ checked('description-of-work-group','Trench sharing - secondary promoter') }}>
+                        <label for="collaboration-type-2">Trench sharing - secondary promoter</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="collaboration-type-3" type="radio" name="collaboration-type-group" value="Sharing traffic management only" {{ checked('description-of-work-group','Sharing traffic management only') }}>
+                        <label for="collaboration-type-3">Sharing traffic management only</label>
+                    </div>
+            </fieldset>
+        </div>
 
         <div class="form-group">
             <label class="form-label" for="collaboration-details">Collaboration Details (optional)</label>
