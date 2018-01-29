@@ -64,8 +64,12 @@ Work Record
                 <td></td>
             </tr>
             <tr>
-                <td class="bold-small">TM type </td>
-                <td>Some carriageway incursion</td>
+                <td class="bold-small">Traffic management type </td>
+                {% if data['TmDecisionChanged'] %}
+                    <td>Two-way signals</td>
+                {% else %}
+                    <td>Stop/go boards</td>
+                {% endif %}
                 <td><a href="permit-application-screen1.html">Change</a></td>
             </tr>
             </tbody>
@@ -146,7 +150,7 @@ Work Record
     <div>
         <div class="heading-medium">Changes required</div>
         <ul class="list list-bullet">
-            <li>JKHKH</li>
+            <li>Traffic management type Stop/go boards to Two-way signals </li>
             {% if data['PermitConditionsChanged'] %}
                 <li>NCT06A has been added</li>
             {% endif %}
