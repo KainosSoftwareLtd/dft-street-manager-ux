@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+var session = require('express-session')
 
 var data = {'data': {
   'workreferencenumber': 'CT0224443466',
@@ -120,7 +121,7 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
       res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
       break
     case 'Grant with changes' :
-      res.redirect('/alpha/v3-0/ha-officer/grant-with-changes')
+      res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
       break
     case 'Revoke':
       res.redirect('/alpha/v3-0/ha-officer/revoke')
@@ -134,7 +135,8 @@ router.get('/alpha/v3-0/ha-officer/permit-application-screen4', function (req, r
   res.render('alpha/v3-0/ha-officer/permit-application-screen4')
 })
 
-router.post('/alpha/v3-0/ha-officer/permit-application-screen4', function (req, res) {
+router.post('/alpha/v3-0/ha-officer/screen1-check-answers', function (req, res) {
+  req.session.data['TmDecisionChanged'] = true
   res.redirect('assessment-decision.html')
 })
 
@@ -143,6 +145,7 @@ router.get('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, r
 })
 
 router.post('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, res) {
+  req.session.data['PermitConditionsChanged'] = true
   res.redirect('assessment-decision.html')
 })
 

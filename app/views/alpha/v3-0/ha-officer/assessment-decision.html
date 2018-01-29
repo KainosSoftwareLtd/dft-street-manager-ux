@@ -36,30 +36,37 @@ Work Record
             <tr>
                 <td class="bold-small">Street name</td>
                 <td>High Road Acton</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">USRN</td>
                 <td>84058392</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Start date</td>
                 <td>05/02/2018</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">End date</td>
                 <td>07/02/2018</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">HA</td>
                 <td>LB of Acton</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Work category</td>
                 <td>Minor</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">TM type </td>
                 <td>Some carriageway incursion</td>
+                <td><a href="permit-application-screen1.html">Change</a></td>
             </tr>
             </tbody>
         </table>
@@ -107,7 +114,7 @@ Work Record
             <tr>
                 <td class="bold-small">Is traffic management plan required?</td>
                 <td></td>
-                <td><a href="permit-application-screen4.html">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Condition chosen</td>
@@ -133,17 +140,25 @@ Work Record
         </table>
     </div>
 
-    <div class="heading-medium" style="display: none;">Changes required</div>
-    <ul class="list list-bullet">
-        <li style="display: none" management plan is required</li>
-        <li style="display: none;">NCT06A has been added</li>
-    </ul>
+    <div class="heading-medium">Assessment decision</div>
+
+    {% if data['TmDecisionChanged'] %}
+    <div>
+        <div class="heading-medium">Changes required</div>
+        <ul class="list list-bullet">
+            <li>JKHKH</li>
+            {% if data['PermitConditionsChanged'] %}
+                <li>NCT06A has been added</li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
 
     <form action="/alpha/v3-0/ha-officer/assessment-decision" method="POST">
         <div class="form-group {{'form-group-error' if validationError}}">
             <fieldset>
                 <legend>
-                    <div class="heading-medium">Assessment decision</div>
+
                     {% if validationError %}
                     <span class="error-message">Select the type of assessment decision</span>
                     {% endif %}
