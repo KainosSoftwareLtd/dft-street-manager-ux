@@ -20,14 +20,17 @@ Permit Application Confirmation - Street Manager
         </div>
     </div>
 
-    <div class="grid-row">
-        <div class="column-two-thirds">
+    <a href="../task-list-page.html" class="link-back" title="Back to task list">Back</a>
 
+    <div class="grid-row">
+        <p class="font-medium">
+            Work reference number: <strong class="bold">CT12345678</strong> [Status]
+        </p>
+        <div class="column-two-thirds">
             <div class="govuk-box-highlight">
                 <h1 class="heading-large">
-                    Permit Application created on
+                    Permit Application granted
                 </h1>
-                <p class="font-large"id="currentDateTime"></p>
                 <p class="font-large">
                     Your work reference number is <br>
                     <strong class="bold">CT12345678</strong>
@@ -37,17 +40,13 @@ Permit Application Confirmation - Street Manager
     </div>
 
     <div style="padding-top: 10px">
-        <a href="/alpha/v3-0/promoter-planner/map-search-results" class="button" style="margin-right: 20px;">Create new work record</a>
+        <a href="#" class="button" style="margin-right: 20px; margin-bottom: 20px;">View this work record</a><br/>
+        <a href="/alpha/v3-0/promoter-planner/map-search-results" class="button" style="margin-right: 20px; margin-bottom: 20px;">Create new work record</a><br/>
+        <a href="/alpha/v3-0/promoter-planner/home" class="button" style="margin-right: 20px; margin-bottom: 20px;">View work record list</a><br/>
         <a href="/alpha/v3-0/promoter-planner/dashboard" style="vertical-align: bottom">Return to dashboard</a>
     </div>
         
 
 </main>
-
-<script>
-  var today = new Date();
-  var today1 = today.toLocaleDateString() + " " + today.toLocaleTimeString()
-  document.getElementById('currentDateTime').innerHTML=today1;
-</script>
 
 {% endblock %}

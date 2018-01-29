@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Create New Work - Street Manager
+Permit Application - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -68,8 +68,10 @@ Create New Work - Street Manager
                 <label class="form-label" for="collaboration-type-1">Collaboration Type (optional)</label>
                 <div class="multiple-choice">
                     <input id="collaboration-type-1" type="radio" name="collaboration-type-group" value="Trench sharing - primary promoter" {{ checked('description-of-work-group','Trench sharing - primary promoter') }}>
-                    <label for="collaboration-type-1">Trench sharing - primary promoter</label>
+                    <label for="collaboration-type-1" style="padding-right: 300px;">Trench sharing - primary promoter</label>
+                    <br/>
                 </div>
+                <br/>
                 <div class="multiple-choice">
                     <input id="collaboration-type-2" type="radio" name="collaboration-type-group" value="Trench sharing - secondary promoter" {{ checked('description-of-work-group','Trench sharing - secondary promoter') }}>
                     <label for="collaboration-type-2">Trench sharing - secondary promoter</label>

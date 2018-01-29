@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Create New Work - Street Manager
+Permit Application - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -39,10 +39,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct01a-permit-reason">
                 <label class="form-label" for="nct01a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct01a-reason" name="permit-condition" type="text" value="{{ data['nct01a-reason'] }}">
+                <input class="form-control" id="nct01a-reason" name="nct01a-reason" type="text" value="{{ data['nct01a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct01b-permit-reason">
@@ -52,23 +52,23 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct01b-permit-reason">
                 <label class="form-label" for="nct01b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct01b-reason" name="permit-condition" type="text" value="{{ data['nct01b-reason'] }}">
+                <input class="form-control" id="nct01b-reason" name="nct01b-reason" type="text" value="{{ data['nct01b-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct02a-permit-reason">
-                    <input id="nct02a" type="checkbox" name="nct02a" value="NCT01a" {{ checked('nct02a','NCT02a') }}>
+                    <input id="nct02a" type="checkbox" name="nct02a" value="NCT02a" {{ checked('nct02a','NCT02a') }}>
                     <label for="nct01a">NCT02a</label>
                 </div>
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct02a-permit-reason">
                 <label class="form-label" for="nct02a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct02a-reason" name="permit-condition" type="text" value="{{ data['nct02a-reason'] }}">
+                <input class="form-control" id="nct02a-reason" name="nct02a-reason" type="text" value="{{ data['nct02a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct02b-permit-reason">
@@ -78,23 +78,23 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct02b-permit-reason">
                 <label class="form-label" for="nct02b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct02b-reason" name="permit-condition" type="text" value="{{ data['nct02b-reason'] }}">
+                <input class="form-control" id="nct02b-reason" name="nct02b-reason" type="text" value="{{ data['nct02b-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct04a-permit-reason">
-                    <input id="nct04a" type="checkbox" name="nct01a" value="NCT04a" {{ checked('nct04a','NCT04a') }}>
+                    <input id="nct04a" type="checkbox" name="nct04a" value="NCT04a" {{ checked('nct04a','NCT04a') }}>
                     <label for="nct04a">NCT04a</label>
                 </div>
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct04a-permit-reason">
                 <label class="form-label" for="nct04a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct04a-reason" name="permit-condition" type="text" value="{{ data['nct04a-reason'] }}">
+                <input class="form-control" id="nct04a-reason" name="nct04a-reason" type="text" value="{{ data['nct04a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct04b-permit-reason">
@@ -104,10 +104,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct04b-permit-reason">
                 <label class="form-label" for="nct04b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct04b-reason" name="permit-condition" type="text" value="{{ data['nct04b-reason'] }}">
+                <input class="form-control" id="nct04b-reason" name="nct04b-reason" type="text" value="{{ data['nct04b-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct05a-permit-reason">
@@ -117,10 +117,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct05a-permit-reason">
                 <label class="form-label" for="nct05a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct05a-reason" name="permit-condition" type="text" value="{{ data['nct05a-reason'] }}">
+                <input class="form-control" id="nct05a-reason" name="nct05a-reason" type="text" value="{{ data['nct05a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct06a-permit-reason">
@@ -130,10 +130,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct06a-permit-reason">
                 <label class="form-label" for="nct06a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct06a-reason" name="permit-condition" type="text" value="{{ data['nct06a-reason'] }}">
+                <input class="form-control" id="nct06a-reason" name="nct06a-reason" type="text" value="{{ data['nct06a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct07a-permit-reason">
@@ -143,10 +143,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct07a-permit-reason">
                 <label class="form-label" for="nct07a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct07a-reason" name="permit-condition" type="text" value="{{ data['nct07a-reason'] }}">
+                <input class="form-control" id="nct07a-reason" name="nct07a-reason" type="text" value="{{ data['nct07a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct08a-permit-reason">
@@ -156,10 +156,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct08a-permit-reason">
                 <label class="form-label" for="nct08a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct08a-reason" name="permit-condition" type="text" value="{{ data['nct08a-reason'] }}">
+                <input class="form-control" id="nct08a-reason" name="nct08a-reason" type="text" value="{{ data['nct08a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct08b-permit-reason">
@@ -169,10 +169,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct08b-permit-reason">
                 <label class="form-label" for="nct08b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct08b-reason" name="permit-condition" type="text" value="{{ data['nct08b-reason'] }}">
+                <input class="form-control" id="nct08b-reason" name="nct08b-reason" type="text" value="{{ data['nct08b-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct09a-permit-reason">
@@ -182,10 +182,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct09a-permit-reason">
                 <label class="form-label" for="nct09a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct09a-reason" name="permit-condition" type="text" value="{{ data['nct09a-reason'] }}">
+                <input class="form-control" id="nct09a-reason" name="nct09a-reason" type="text" value="{{ data['nct09a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct09b-permit-reason">
@@ -195,10 +195,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct09b-permit-reason">
                 <label class="form-label" for="nct09b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct09b-reason" name="permit-condition" type="text" value="{{ data['nct09b-reason'] }}">
+                <input class="form-control" id="nct09b-reason" name="nct09b-reason" type="text" value="{{ data['nct09b-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct09c-permit-reason">
@@ -208,10 +208,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct09c-permit-reason">
                 <label class="form-label" for="nct09c-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct09c-reason" name="permit-condition" type="text" value="{{ data['nct09c-reason'] }}">
+                <input class="form-control" id="nct09c-reason" name="nct09c-reason" type="text" value="{{ data['nct09c-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct10a-permit-reason">
@@ -221,10 +221,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct10a-permit-reason">
                 <label class="form-label" for="nct10a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct10a-reason" name="permit-condition" type="text" value="{{ data['nct10a-reason'] }}">
+                <input class="form-control" id="nct10a-reason" name="nct10a-reason" type="text" value="{{ data['nct10a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct11b-permit-reason">
@@ -234,10 +234,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct11b-permit-reason">
                 <label class="form-label" for="nct11b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct11b-reason" name="permit-condition" type="text" value="{{ data['nct11b-reason'] }}">
+                <input class="form-control" id="nct11b-reason" name="nct11b-reason" type="text" value="{{ data['nct11b-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct12a-permit-reason">
@@ -247,10 +247,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct12a-permit-reason">
                 <label class="form-label" for="nct12a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct12a-reason" name="permit-condition" type="text" value="{{ data['nct12a-reason'] }}">
+                <input class="form-control" id="nct12a-reason" name="nct12a-reason" type="text" value="{{ data['nct12a-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <fieldset class="inline">
             <div class="form-group">
                 <div class="multiple-choice" data-target="nct13-permit-reason">
@@ -260,10 +260,10 @@ Create New Work - Street Manager
             </div>
             <div class="panel panel-border-narrow js-hidden" id="nct13-permit-reason">
                 <label class="form-label" for="nct13-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct13-reason" name="permit-condition" type="text" value="{{ data['nct13-reason'] }}">
+                <input class="form-control" id="nct13-reason" name="nct13-reason" type="text" value="{{ data['nct13-reason'] }}">
             </div>
         </fieldset>
-
+        <br/>
         <div class="form-group">
             <input type="submit" class="button" value="Save & Continue">
         </div>
