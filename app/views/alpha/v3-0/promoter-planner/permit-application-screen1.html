@@ -99,10 +99,10 @@ Permit Application - Street Manager
             </div>
         </fieldset>
 
-        <fieldset class="inline">
-            <div class="form-group">
-                <label class="form-label" for="road-closure">Traffic management type</label>
-                <div class="multiple-choice">
+        <div class="grid-row">
+            <label class="form-label" for="road-closure">Traffic management type</label>
+            <div class="column-one-third">
+                <div class="multiple-choice" style="width: 100%;">
                     <input id="road-closure" type="checkbox" name="traffic-management-type-group" value="Road closure" {{ checked('traffic-management-type-group','Road closure') }}>
                     <label for="road-closure">Road closure</label>
                 </div>
@@ -118,6 +118,9 @@ Permit Application - Street Manager
                     <input id="convoy-working" type="checkbox" name="traffic-management-type-group" value="Convoy working" {{ checked('traffic-management-type-group','Convoy working') }}>
                     <label for="convoy-working">Convoy working</label>
                 </div>
+            </div>
+
+            <div class="column-one-third">
                 <div class="multiple-choice">
                     <input id="priority-working" type="checkbox" name="traffic-management-type-group" value="Priority working" {{ checked('traffic-management-type-group','Priority working') }}>
                     <label for="priority-working">Priority working</label>
@@ -134,6 +137,9 @@ Permit Application - Street Manager
                     <input id="two-way-signals" type="checkbox" name="traffic-management-type-group" value="Two-way signals" {{ checked('traffic-management-type-group','Two-way signals') }}>
                     <label for="two-way-signals">Two-way signals</label>
                 </div>
+            </div>
+
+            <div class="column-one-third">
                 <div class="multiple-choice">
                     <input id="stop-go-boards" type="checkbox" name="traffic-management-type-group" value="Stop/go boards" {{ checked('traffic-management-type-group','Stop/go boards') }}>
                     <label for="stop-go-boards">Stop/go boards</label>
@@ -147,9 +153,11 @@ Permit Application - Street Manager
                     <label for="no-carriageway-incursion">No carriageway incursion</label>
                 </div>
             </div>
-        </fieldset>
+        </div>
+
         <fieldset class="inline">
             <div class="form-group">
+                <br/>
                 <label class="form-label" for="work-category-1">Work category</label>
                 <div class="multiple-choice">
                     <input id="work-category-1" type="radio" name="work-category-group" value="FPI" {{ checked('work-category-group','FPI') }}>
