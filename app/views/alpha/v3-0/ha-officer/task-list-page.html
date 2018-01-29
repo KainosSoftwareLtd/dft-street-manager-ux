@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Task list
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <div class="breadcrumbs">
+    <div>
+      <!-- the rest of this label is hidden, only used for screenreaders -->
+      <span class="visuallyhidden"> to the previous page</span>
+      <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+      <span style="float:right; margin-right:10px;">ha@sm.com</span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds column-minimum">
+
+      <h1 class="heading-large">
+        Create a permit application
+      </h1>
+
+      <ol class="task-list">
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">1. </span> <a href="promoter-planner/permit-application-screen1.html">Plan & Create</a>
+          </h2>
+            <li class="task-list-item">
+              {% if data['Screen1Complete'] %}
+                <strong class="task-completed" id="plan-completed">Complete</strong>
+              {% else %}
+                <strong class="task-completed" id="plan-incompleted">Incomplete</strong>
+              {% endif %}
+            </li>
+        </li>
+        <br/>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">2. </span><a href="promoter-planner/permit-application-screen2.html">Location & Contact</a>
+          </h2>
+            <li class="task-list-item">
+              {% if data['Screen2Complete'] %}
+              <strong class="task-completed" id="location-completed">Complete</strong>
+              {% else %}
+              <strong class="task-completed" id="location-incompleted">Incomplete</strong>
+              {% endif %}
+        </li>
+        </li>
+        <br/>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">3. </span><a href="promoter-planner/permit-application-screen3.html">Conditions</a>
+          </h2>
+            <li class="task-list-item">
+              {% if data['Screen3Complete'] %}
+              <strong class="task-completed" id="conditions-completed">Complete</strong>
+              {% else %}
+              <strong class="task-completed" id="conditions-incompleted">Incomplete</strong>
+              {% endif %}
+        </li>
+        </li>
+        <br/>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">4. </span><a href="promoter-planner/permit-application-screen4.html">Collaboration</a>
+          </h2>
+            <li class="task-list-item">
+              {% if data['Screen4Complete'] %}
+              <strong class="task-completed" id="collaboration-completed">Complete</strong>
+              {% else %}
+              <strong class="task-completed" id="collaboration-incompleted">Incomplete</strong>
+              {% endif %}
+        </li>
+        </li>
+        <br/>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">5. </span><a href="assessment-decision.html">Assess</a>
+          </h2>
+            <li class="task-list-item">
+              {% if data['Screen5Complete'] %}
+              <strong class="task-completed" id="assessment-completed">Complete</strong>
+              {% else %}
+              <strong class="task-completed" id="assessment-incompleted">Incomplete</strong>
+              {% endif %}
+            </li>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
