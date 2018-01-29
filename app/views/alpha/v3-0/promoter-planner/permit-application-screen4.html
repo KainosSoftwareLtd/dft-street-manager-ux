@@ -44,9 +44,30 @@ Permit Application - Street Manager
             </div>
         </fieldset>
 
-        <div class="form-group">
-            <label class="form-label" for="traffic-management-plan">Traffic management plan (optional)</label>
-            <input class="form-control" id="traffic-management-plan" name="traffic-management-plan" type="text" value="This should be an attachment">
+        <div class="form-group js-hidden" id="tm-plan">
+            <label class="form-label" for="traffic-management-plan">Traffic management plan</label>
+            <input type="file" id="traffic-management-plan" name="traffic-management-plan"/>
+        </div>
+
+        <div class="panel panel-border-narrow js-hidden" id="file-details">
+            <label class="form-label" for="attachment-title">Attachment title</label>
+            <input class="form-control" id="attachment-title" name="attachment-title" type="text" value="">
+            <input class="button" type="button" value="Upload" role="button" id="upload-button">
+        </div>
+
+        <div id="attachments-table" class="js-hidden">
+            <h3 class="heading-small">File Attachments</h3>
+            <table>
+                <thead>
+                <th>Title</th>
+                <th>File type</th>
+                <th>File name</th>
+                <th></th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <br/>
         </div>
 
         <fieldset class="inline">
@@ -111,5 +132,41 @@ Permit Application - Street Manager
         </div>
     </form>
 </main>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+
+    $('input[type=radio][name=tm-group]').change(function() {
+      if (this.value == 'Yes') {
+        $("#tm-plan").removeClass("js-hidden");
+        $("#tm-plan").show();
+      }
+      else if (this.value == 'No') {
+        $("#tm-plan").hide();
+      }
+    });
+
+    $('#traffic-management-plan').change(function () {
+      $("#file-details").removeClass("js-hidden");
+      $("#file-details").show();
+    });
+
+    $("#upload-button").click(function () {
+      $("#file-details").addClass("js-hidden");
+      var file = $('#traffic-management-plan')[0].files[0];
+
+      var fileName = file.name;
+      var fileType = file.type;
+      var attachmentTitle = $("#attachment-title").val();
+      var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td></tr>";
+      $("table tbody").append(markup);
+
+      $("#attachments-table").removeClass("js-hidden");
+      $("#traffic-management-plan").val("");
+      $("#file-name").val("");
+    })
+  });
+</script>
 
 {% endblock %}
