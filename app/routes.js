@@ -130,6 +130,22 @@ router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
   }
 })
 
+router.get('/alpha/v3-0/ha-officer/permit-application-screen4', function (req, res) {
+  res.render('alpha/v3-0/ha-officer/permit-application-screen4')
+})
+
+router.post('/alpha/v3-0/ha-officer/permit-application-screen4', function (req, res) {
+  res.redirect('assessment-decision.html')
+})
+
+router.get('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, res) {
+  res.render('alpha/v3-0/ha-officer/permit-application-screen3')
+})
+
+router.post('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, res) {
+  res.redirect('assessment-decision.html')
+})
+
 router.post('/alpha/v3-0/promoter-planner/screen1-check-answers', function (req, res) {
   res.render('alpha/v3-0/promoter-planner/screen1-check-answers.html')
 })

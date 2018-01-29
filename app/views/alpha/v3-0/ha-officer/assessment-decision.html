@@ -30,6 +30,7 @@ Work Record
 
     <div class="heading-large">WRN CT12345</div>
     <div>
+        <div class="heading-medium">Key information</div>
         <table>
             <tbody>
             <tr>
@@ -104,14 +105,14 @@ Work Record
                 <td></td>
             </tr>
             <tr>
-                <td class="bold-small">Condition chosen</td>
-                <td></td>
-                <td><a href="#">Change</a></td>
-            </tr>
-            <tr>
                 <td class="bold-small">Is traffic management plan required?</td>
                 <td></td>
-                <td><a href="#">Change</a></td>
+                <td><a href="permit-application-screen4.html">Change</a></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Condition chosen</td>
+                <td></td>
+                <td><a href="permit-application-screen3.html">Change</a></td>
             </tr>
             <tr>
                 <td class="bold-small">TM</td>
@@ -132,7 +133,11 @@ Work Record
         </table>
     </div>
 
-
+    <div class="heading-medium" style="display: none;">Changes required</div>
+    <ul class="list list-bullet">
+        <li style="display: none" management plan is required</li>
+        <li style="display: none;">NCT06A has been added</li>
+    </ul>
 
     <form action="/alpha/v3-0/ha-officer/assessment-decision" method="POST">
         <div class="form-group {{'form-group-error' if validationError}}">
