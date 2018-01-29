@@ -133,7 +133,12 @@ Work Record
                 <td></td>
             </tr>
             <tr>
-                <td class="bold-small">Collaborative working type detail</td>
+                <td class="bold-small">Collaborative working type</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Collaborative working detail</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -150,7 +155,7 @@ Work Record
 
     {% if data['TmDecisionChanged'] %}
     <div>
-        <div class="heading-medium">Changes required</div>
+        <div>Changes required</div>
         <ul class="list list-bullet">
             <li>Traffic management type Stop/go boards to Two-way signals </li>
             {% if data['PermitConditionsChanged'] %}
@@ -181,11 +186,6 @@ Work Record
                         <input id="radio-3" type="radio" name="options" value="Refuse">
                         <label for="radio-3">Refuse</label>
                     </div>
-                    <div class="multiple-choice">
-                        <input id="radio-4" type="radio" name="options" value="Revoke">
-                        <label for="radio-4">Revoke</label>
-                    </div>
-
             </fieldset>
         </div>
         <button class="button" type="submit">Submit decision</button>
