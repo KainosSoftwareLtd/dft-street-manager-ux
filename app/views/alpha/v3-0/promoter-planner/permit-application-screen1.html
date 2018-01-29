@@ -39,10 +39,28 @@ Permit Application - Street Manager
             <label class="form-label" for="usrn">USRN (optional)</label>
             <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
         </div>
-        <div class="form-group">
-            <label class="form-label" for="road-category">Road Category</label>
-            <input class="form-control" id="road-category" type="text" name="road-category" value="{{ data['road-category'] }}">
+
+        <div class="form-group inline">
+            <br/>
+            <label class="form-label" for="road-category-1">Road Category</label>
+            <div class="multiple-choice">
+                <input id="road-category-1" type="radio" name="road-category-group" value="A Road" {{ checked('road-category-group','A Road') }}>
+                <label for="road-category-1">A Road</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-2" type="radio" name="road-category-group" value="B Road" {{ checked('road-category-group','B Road') }}>
+                <label for="road-category-2">B Road</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-3" type="radio" name="road-category-group" value="Classified Unnumbered" {{ checked('road-category-group','Classified Unnumbered') }}>
+                <label for="road-category-3">Classified Unnumbered</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-4" type="radio" name="road-category-group" value="Unclassified" {{ checked('road-category-group','Unclassified') }}>
+                <label for="road-category-4">Unclassified</label>
+            </div>
         </div>
+
         <div class="form-group">
             <label class="form-label" for="highway-authority">Highway Authority (optional)</label>
             <input class="form-control" id="highway-authority" type="text" name="highway-authority" value="{{ data['highway-authority'] }}">
@@ -158,7 +176,7 @@ Permit Application - Street Manager
         <fieldset class="inline">
             <div class="form-group">
                 <br/>
-                <label class="form-label" for="work-category-1">Work category</label>
+                <label class="form-label" for="work-category-1">Work Category</label>
                 <div class="multiple-choice">
                     <input id="work-category-1" type="radio" name="work-category-group" value="FPI" {{ checked('work-category-group','FPI') }}>
                     <label for="work-category-1">FPI</label>
