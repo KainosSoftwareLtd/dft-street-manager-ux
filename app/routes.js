@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+var session = require('express-session')
 
 var request = require('request');
 var data = {'data': {
@@ -117,23 +118,42 @@ router.post('/alpha/v3-0/sign-in.html', function (req, res) {
   }
 })
 
-router.post('/alpha/v3-0/ha-officer/assessment-decision.html', function (req, res) {
+router.get('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
+  res.render('alpha/v3-0/ha-officer/assessment-decision')
+})
+
+router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
   switch (req.body.options) {
-    case 'Accept' :
-      res.redirect('/alpha/v3-0/ha-officer/accept-confirmation.html')
+    case 'Grant' :
+      res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
       break
-    case 'Accept with conditions' :
-      res.redirect('/alpha/v3-0/ha-officer/accept-with-conditions.html')
+    case 'Grant with changes' :
+      res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
       break
-    case 'Reject':
-      res.redirect('/alpha/v3-0/ha-officer/reject.html')
-      break
-    case 'Add comment':
-      res.redirect('/alpha/v3-0/ha-officer/comments.html')
+    case 'Revoke':
+      res.redirect('/alpha/v3-0/ha-officer/revoke')
       break
     default:
       res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   }
+})
+
+router.get('/alpha/v3-0/ha-officer/permit-application-screen4', function (req, res) {
+  res.render('alpha/v3-0/ha-officer/permit-application-screen4')
+})
+
+router.post('/alpha/v3-0/ha-officer/screen1-check-answers', function (req, res) {
+  req.session.data['TmDecisionChanged'] = true
+  res.redirect('assessment-decision.html')
+})
+
+router.get('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, res) {
+  res.render('alpha/v3-0/ha-officer/permit-application-screen3')
+})
+
+router.post('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, res) {
+  req.session.data['PermitConditionsChanged'] = true
+  res.redirect('assessment-decision.html')
 })
 
 router.post('/alpha/v3-0/promoter-planner/screen1-check-answers', function (req, res) {
@@ -145,11 +165,15 @@ router.post('/alpha/v3-0/promoter-planner/screen2-check-answers', function (req,
 })
 
 router.post('/alpha/v3-0/promoter-planner/screen3-check-answers', function (req, res) {
-  res.render('alpha/v3-0/promoter-planner/screen3-check-answers.html')
+  res.render('alpha/v3-0/promoter-planner/conditions-check-answers.html')
 })
 
 router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req, res) {
   res.render('alpha/v3-0/promoter-planner/screen4-check-answers.html')
+})
+
+router.post('/alpha/v3-0/promoter-planner/permit-application-assessment', function (req, res) {
+  res.render('alpha/v3-0/promoter-planner/grant-permit-application.html')
 })
 
 router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {

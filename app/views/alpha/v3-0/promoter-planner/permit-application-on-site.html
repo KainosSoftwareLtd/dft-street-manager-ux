@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Create New Work - Street Manager
+Permit Application - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -89,6 +89,20 @@ Create New Work - Street Manager
                 </div>
             </div>
         </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="excavation-yes">Was an excavation required?</label>
+                <div class="multiple-choice">
+                    <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" {{ checked('excavation-group','Yes') }}>
+                    <label for="excavation-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="excavation-no" type="radio" name="excavation-group" value="No" {{ checked('excavation-group','No') }}>
+                    <label for="excavation-no">No</label>
+                </div>
+            </div>
+        </fieldset>
 
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
