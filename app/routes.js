@@ -151,23 +151,23 @@ router.post('/alpha/v3-0/ha-officer/permit-application-screen3', function (req, 
 
 router.post('/alpha/v3-0/promoter-planner/screen1-check-answers', function (req, res) {
   if (req.body.promotername === '') {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationPromoterNameError: 'Enter the Promoter name', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationPromoterNameError: 'Enter the Promoter name', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.usrn === '') {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationUsrnError: 'Enter the USRN', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationUsrnError: 'Enter the USRN', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.roadcategorygroup === undefined) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationRoadCategoryError: 'Select the Road category', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationRoadCategoryError: 'Select the Road category', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.highwayauthority === '') {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationHighwayAuthorityError: 'Enter the Highway authority', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationHighwayAuthorityError: 'Enter the Highway authority', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.workreferencenumber === '') {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.startdateday === null) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationStartDateError: 'Enter the Start date', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationStartDateError: 'Enter the Start date', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.duration === '') {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationDurationError: 'Enter the Duration', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationDurationError: 'Enter the Duration', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.trafficmanagementtypegroup === undefined) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationTMTypeError: 'Select the Traffic management type', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationTMTypeError: 'Select the Traffic management type', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else if (req.body.workcategorygroup === undefined) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationWorkCategoryError: 'Select the Work category', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationWorkCategoryError: 'Select the Work category', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   } else {
     req.session.data['Screen1Complete'] = true
     res.redirect('screen1-check-answers.html')

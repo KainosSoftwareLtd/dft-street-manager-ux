@@ -32,19 +32,19 @@ Permit Application - Street Manager
 
         <div class="form-group">
             <label class="form-label" for="promotername">Promoter Name</label>
-            {% if validationError %}<p class="form-group-error">{{ validationPromoterNameError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationPromoterNameError }}</p>{% endif %}
             <input class="form-control" id="promotername" name="promotername" type="text" value="Michael Harris">
         </div>
         <div class="form-group">
             <label class="form-label" for="usrn">USRN</label>
-            {% if validationError %}<p class="form-group-error">{{ validationUsrnError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationUsrnError }}</p>{% endif %}
             <input class="form-control" id="usrn" name="usrn" type="text" value="5600351">
         </div>
 
         <div class="form-group inline">
             <br/>
             <label class="form-label" for="road-category-1">Road Category</label>
-            {% if validationError %}<p class="form-group-error">{{ validationRoadCategoryError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationRoadCategoryError }}</p>{% endif %}
             <div class="multiple-choice">
                 <input id="road-category-1" type="radio" name="roadcategorygroup" value="A Road" checked="checked" {{ checked('roadcategorygroup','A Road') }}>
                 <label for="road-category-1">A Road</label>
@@ -65,17 +65,17 @@ Permit Application - Street Manager
 
         <div class="form-group">
             <label class="form-label" for="highwayauthority">Highway Authority</label>
-            {% if validationError %}<p class="form-group-error">{{ validationHighwayAuthorityError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationHighwayAuthorityError }}</p>{% endif %}
             <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="Ealing Borough Council">
         </div>
         <div class="form-group">
             <label class="form-label" for="workreferencenumber">Work Reference Number</label>
-            {% if validationError %}<p class="form-group-error">{{ validationWorkReferenceError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationWorkReferenceError }}</p>{% endif %}
             <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" value="{{ data['workreferencenumber'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="start-date-day">Proposed Start Date</label>
-            {% if validationError %}<p class="form-group-error">{{ validationStartDateError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationStartDateError }}</p>{% endif %}
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -117,14 +117,14 @@ Permit Application - Street Manager
         <fieldset class="inline">
             <div class="form-group">
                 <label class="form-label" for="duration">Duration</label>
-                {% if validationError %}<p class="form-group-error">{{ validationDurationError }}</p>{% endif %}
+                {% if validationError %}<p class="error-message">{{ validationDurationError }}</p>{% endif %}
                 <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
             </div>
         </fieldset>
 
         <label class="form-label" for="road-closure">Traffic Management Type</label>
         <div class="grid-row">
-            {% if validationError %}<p class="form-group-error">{{ validationTMTypeError }}</p>{% endif %}
+            {% if validationError %}<p class="error-message">{{ validationTMTypeError }}</p>{% endif %}
             <div class="column-one-third">
                 <div class="multiple-choice" style="width: 100%;">
                     <input id="road-closure" type="radio" name="trafficmanagementtypegroup" value="Road closure" {{ checked('trafficmanagementtypegroup','Road closure') }}>
@@ -183,7 +183,7 @@ Permit Application - Street Manager
             <div class="form-group">
                 <br/>
                 <label class="form-label" for="work-category-1">Work Category</label>
-                {% if validationError %}<p class="form-group-error">{{ validationWorkCategoryError }}</p>{% endif %}
+                {% if validationError %}<p class="error-message">{{ validationWorkCategoryError }}</p>{% endif %}
                 <div class="multiple-choice">
                     <input id="work-category-1" type="radio" name="workcategorygroup" value="FPI" {{ checked('workcategorygroup','FPI') }}>
                     <label for="work-category-1">FPI</label>
