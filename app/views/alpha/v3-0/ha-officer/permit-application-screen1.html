@@ -33,12 +33,12 @@ Permit Application - Street Manager
         <div class="form-group">
             <label class="form-label" for="promotername">Promoter Name</label>
             {% if validationError %}<p class="form-group-error">{{ validationPromoterNameError }}</p>{% endif %}
-            <input class="form-control" id="promotername" name="promotername" type="text" value="Michael Harris">
+            <input class="form-control" id="promotername" name="promotername" type="text" value="{{ data['promotername'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="usrn">USRN</label>
             {% if validationError %}<p class="form-group-error">{{ validationUsrnError }}</p>{% endif %}
-            <input class="form-control" id="usrn" name="usrn" type="text" value="5600351">
+            <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
         </div>
 
         <div class="form-group inline">
@@ -46,27 +46,31 @@ Permit Application - Street Manager
             <label class="form-label" for="road-category-1">Road Category</label>
             {% if validationError %}<p class="form-group-error">{{ validationRoadCategoryError }}</p>{% endif %}
             <div class="multiple-choice">
-                <input id="road-category-1" type="radio" name="roadcategorygroup" value="A Road" checked="checked" {{ checked('roadcategorygroup','A Road') }}>
-                <label for="road-category-1">A Road</label>
+                <input id="road-category-0" type="radio" name="roadcategorygroup" value="0" {{ checked('roadcategorygroup','0') }}>
+                <label for="road-category-0">0</label>
             </div>
             <div class="multiple-choice">
-                <input id="road-category-2" type="radio" name="roadcategorygroup" value="B Road" {{ checked('roadcategorygroup','B Road') }}>
-                <label for="road-category-2">B Road</label>
+                <input id="road-category-1" type="radio" name="roadcategorygroup" value="1" {{ checked('roadcategorygroup','1') }}>
+                <label for="road-category-1">1</label>
             </div>
             <div class="multiple-choice">
-                <input id="road-category-3" type="radio" name="roadcategorygroup" value="Classified Unnumbered" {{ checked('roadcategorygroup','Classified Unnumbered') }}>
-                <label for="road-category-3">Classified Unnumbered</label>
+                <input id="road-category-2" type="radio" name="roadcategorygroup" value="2" {{ checked('roadcategorygroup','2') }}>
+                <label for="road-category-2">2</label>
             </div>
             <div class="multiple-choice">
-                <input id="road-category-4" type="radio" name="roadcategorygroup" value="Unclassified" {{ checked('roadcategorygroup','Unclassified') }}>
-                <label for="road-category-4">Unclassified</label>
+                <input id="road-category-3" type="radio" name="roadcategorygroup" value="3" {{ checked('roadcategorygroup','3') }}>
+                <label for="road-category-3">3</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-4" type="radio" name="roadcategorygroup" value="4" {{ checked('roadcategorygroup','4') }}>
+                <label for="road-category-4">4</label>
             </div>
         </div>
 
         <div class="form-group">
             <label class="form-label" for="highwayauthority">Highway Authority</label>
             {% if validationError %}<p class="form-group-error">{{ validationHighwayAuthorityError }}</p>{% endif %}
-            <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="Ealing Borough Council">
+            <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="{{ data['highwayauthority'] }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="workreferencenumber">Work Reference Number</label>
@@ -165,7 +169,7 @@ Permit Application - Street Manager
 
             <div class="column-one-third">
                 <div class="multiple-choice">
-                    <input id="stop-go-boards" type="radio" name="traffic-managementtypegroup" value="Stop/go boards" {{ checked('trafficmanagementtypegroup','Stop/go boards') }}>
+                    <input id="stop-go-boards" type="radio" name="trafficmanagementtypegroup" value="Stop/go boards" {{ checked('trafficmanagementtypegroup','Stop/go boards') }}>
                     <label for="stop-go-boards">Stop/go boards</label>
                 </div>
                 <div class="multiple-choice">
