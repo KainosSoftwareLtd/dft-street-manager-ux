@@ -38,7 +38,7 @@ Permit Application - Street Manager
         <div class="form-group">
             <label class="form-label" for="usrn">USRN</label>
             {% if validationError %}<p class="form-group-error">{{ validationUsrnError }}</p>{% endif %}
-            <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
+            <input class="form-control" id="usrn" name="usrn" type="text" value="5600351">
         </div>
 
         <div class="form-group inline">
@@ -46,7 +46,7 @@ Permit Application - Street Manager
             <label class="form-label" for="road-category-1">Road Category</label>
             {% if validationError %}<p class="form-group-error">{{ validationRoadCategoryError }}</p>{% endif %}
             <div class="multiple-choice">
-                <input id="road-category-1" type="radio" name="roadcategorygroup" value="A Road" {{ checked('roadcategorygroup','A Road') }}>
+                <input id="road-category-1" type="radio" name="roadcategorygroup" value="A Road" checked="checked" {{ checked('roadcategorygroup','A Road') }}>
                 <label for="road-category-1">A Road</label>
             </div>
             <div class="multiple-choice">
@@ -66,7 +66,7 @@ Permit Application - Street Manager
         <div class="form-group">
             <label class="form-label" for="highwayauthority">Highway Authority</label>
             {% if validationError %}<p class="form-group-error">{{ validationHighwayAuthorityError }}</p>{% endif %}
-            <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="{{ data['highwayauthority'] }}">
+            <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="Ealing Borough Council">
         </div>
         <div class="form-group">
             <label class="form-label" for="workreferencenumber">Work Reference Number</label>
