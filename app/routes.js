@@ -155,7 +155,7 @@ router.post('/alpha/v3-0/promoter-planner/screen1-check-answers', function (req,
   } else if (req.body.usrn === '') {
     res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationUsrnError: 'Enter the USRN', validationError: 'There was a problem'})
   } else if (req.body.roadcategorygroup === undefined) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationRoadCategoryError: 'Enter the Road category', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationRoadCategoryError: 'Select the Road category', validationError: 'There was a problem'})
   } else if (req.body.highwayauthority === '') {
     res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationHighwayAuthorityError: 'Enter the Highway authority', validationError: 'There was a problem'})
   } else if (req.body.workreferencenumber === '') {
@@ -165,9 +165,9 @@ router.post('/alpha/v3-0/promoter-planner/screen1-check-answers', function (req,
   } else if (req.body.duration === '') {
     res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationDurationError: 'Enter the Duration', validationError: 'There was a problem'})
   } else if (req.body.trafficmanagementtypegroup === undefined) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationTMTypeError: 'Enter the Traffic management type', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationTMTypeError: 'Select the Traffic management type', validationError: 'There was a problem'})
   } else if (req.body.workcategorygroup === undefined) {
-    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationWorkCategoryError: 'Enter the Traffic management type', validationError: 'There was a problem'})
+    res.render('alpha/v3-0/promoter-planner/permit-application-screen1.html', {validationWorkCategoryError: 'Select the Work category', validationError: 'There was a problem'})
   } else {
     req.session.data['Screen1Complete'] = true
     res.redirect('screen1-check-answers.html')
