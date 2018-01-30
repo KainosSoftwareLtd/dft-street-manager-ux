@@ -137,6 +137,11 @@ Permit Application - Street Manager
 
   $(document).ready(function () {
 
+    if($('#tm-yes').prop('checked')) {
+      $("#tm-plan").removeClass("js-hidden");
+      $("#tm-plan").show();
+    }
+
     $('input[type=radio][name=tm-group]').change(function() {
       if (this.value == 'Yes') {
         $("#tm-plan").removeClass("js-hidden");
