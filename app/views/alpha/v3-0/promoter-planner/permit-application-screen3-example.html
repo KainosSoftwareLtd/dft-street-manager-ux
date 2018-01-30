@@ -55,7 +55,7 @@ Permit Application - Street Manager
         </div>
         <div class="form-group">
             <label class="form-label" for="condition-reason">Permit Condition Reason</label>
-            <input class="form-control" id="condition-reason" name="nct01a-reason" type="text" value="{{ data['nct01a-reason'] }}">
+            <input class="form-control" id="condition-reason" name="condition-reason" type="text">
         </div>
         <br/>
 
@@ -64,7 +64,7 @@ Permit Application - Street Manager
         </div>
 
 
-        <div id="conditions-table" class="js-hidden">
+        <div id="conditions-table">
             <h3 class="heading-small">Permit Conditions</h3>
             <table>
                 <thead>
@@ -73,6 +73,13 @@ Permit Application - Street Manager
                 <th></th>
                 </thead>
                 <tbody>
+                    {% for condition in data['conditions-name'] %}
+                    <tr id="{{ condition }}">
+                        <td><input class="form-control" name="conditions-name[]" type="hidden" value="{{ condition }}">{{ condition }}</td>
+                        <td><input class="form-control" name="conditions-reason[]" type="hidden" value="{{ data['conditions-reason'][loop.index -1 ] }}">{{ data['conditions-reason'][loop.index -1 ] }}</td>
+                        <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ condition }})">Remove</a></td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -87,14 +94,17 @@ Permit Application - Street Manager
 <script type="text/javascript">
 
   $(document).ready(function () {
+
     $("#add-condition").click(function () {
       var conditionName = $("#condition-select option:selected").text();
       var conditionReason = $("#condition-reason").val();
       var conditionVal = $("#condition-select option:selected").val();
-      var markup = "<tr id='"+ conditionVal + "'><td>" + conditionName + "</td><td>" + conditionReason + "</td><td><span class=\"remove-condition\"><a href=\"#\" onclick='removeCondition(" + conditionVal + ")'>Remove</a></span></td></tr>";
+
+      var conditionNameTD = "<td><input class='form-control' name='conditions-name[]' type='hidden' value='" + conditionName + "'>" + conditionName + "</td>"
+      var conditionReasonTD = "<td><input class='form-control' name='conditions-reason[]' type='hidden' value='" + conditionReason + "'>" + conditionReason + "</td>"
+      var markup = "<tr id='"+ conditionVal + "'>" + conditionNameTD + conditionReasonTD + "<td><span class=\"remove-condition\"><a href=\"#\" onclick='removeCondition(" + conditionVal + ")'>Remove</a></span></td></tr>";
       $("table tbody").append(markup);
 
-      $("#conditions-table").removeClass("js-hidden");
       $("#condition-reason").val("");
     })
   });

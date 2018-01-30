@@ -44,30 +44,42 @@ Permit Application - Street Manager
             </div>
         </fieldset>
 
-        <div class="form-group js-hidden" id="tm-plan">
-            <label class="form-label" for="traffic-management-plan">Traffic management plan</label>
-            <input type="file" id="traffic-management-plan" name="traffic-management-plan"/>
-        </div>
+        <div class="js-hidden" id="tm-plan">
+            <div class="form-group">
+                <label class="form-label" for="traffic-management-plan">Traffic management plan</label>
+                <input type="file" id="traffic-management-plan" name="traffic-management-plan"/>
+            </div>
 
-        <div class="panel panel-border-narrow js-hidden" id="file-details">
-            <label class="form-label" for="attachment-title">Attachment title</label>
-            <input class="form-control" id="attachment-title" name="attachment-title" type="text" value="">
-            <input class="button" type="button" value="Upload" role="button" id="upload-button">
-        </div>
+            <div class="panel panel-border-narrow" id="file-details">
+                <label class="form-label" for="attachment-title">Attachment title</label>
+                <input class="form-control" id="attachment-title" name="attachment-title" type="text" value="">
+                <input class="button" type="button" value="Upload" role="button" id="upload-button">
+            </div>
 
-        <div id="attachments-table" class="js-hidden">
-            <h3 class="heading-small">File Attachments</h3>
-            <table>
-                <thead>
-                <th>Title</th>
-                <th>File type</th>
-                <th>File name</th>
-                <th></th>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <br/>
+            <div id="attachments-table">
+                <h3 class="heading-small">File Attachments</h3>
+                <table>
+                    <thead>
+                    <th>Title</th>
+                    <th>File type</th>
+                    <th>File name</th>
+                    <th></th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    {% for fileName in data['file-attached-detail'] %}
+                    <tr id="{{ fileName }}">
+                        <td><input class="form-control" name="file-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
+                        <td>PNG Image</td>
+                        <td><input class="form-control" name="file-attached-name[]" type="hidden" value="{{ data['file-attached-name'][loop.index -1 ] }}">{{ data['file-attached-name'][loop.index -1 ] }}</td>
+                        <td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td>
+                        <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <br/>
+            </div>
         </div>
 
         <fieldset class="inline">
@@ -137,6 +149,11 @@ Permit Application - Street Manager
 
   $(document).ready(function () {
 
+    if($('#tm-yes').prop('checked')) {
+      $("#tm-plan").removeClass("js-hidden");
+      $("#tm-plan").show();
+    }
+
     $('input[type=radio][name=tm-group]').change(function() {
       if (this.value == 'Yes') {
         $("#tm-plan").removeClass("js-hidden");
@@ -147,23 +164,16 @@ Permit Application - Street Manager
       }
     });
 
-    $('#traffic-management-plan').change(function () {
-      $("#file-details").removeClass("js-hidden");
-      $("#file-details").show();
-    });
 
     $("#upload-button").click(function () {
-      $("#file-details").addClass("js-hidden");
       var file = $('#traffic-management-plan')[0].files[0];
 
       var fileName = file.name;
-      var fileType = file.type;
       var attachmentTitle = $("#attachment-title").val();
-      var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td></tr>";
+      var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
       $("table tbody").append(markup);
 
       $("#attachments-table").removeClass("js-hidden");
-      $("#traffic-management-plan").val("");
       $("#file-name").val("");
     })
   });
