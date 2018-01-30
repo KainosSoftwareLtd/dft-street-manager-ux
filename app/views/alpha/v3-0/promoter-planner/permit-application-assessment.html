@@ -22,63 +22,91 @@ Permit Application Confirmation - Street Manager
 
     <a href="../task-list-page.html" class="link-back" title="Back to task list">Back</a>
 
-    <form action="permit-application-assessment" method="post" >
-        <div id="dashboard" class="container-metrics grid-row">
-            <p class="font-medium">
-                Work reference number: <strong class="bold">CT0224443466</strong> [Status]
-            </p>
-            <div class="column-two-thirds">
-                <div class="container-metrics">
-                    <p>
-                        Street name: Harrow Road <br/>
-                        USRN: 22200691 <br/>
-                        Start date: 24/04/2018 <br/>
-                        End date: 30/10/2018 <br/>
-                        HA:  Harrow London Borough Council <br/>
-                        Work Category: Major <br/>
-                        TM Type: Stop/Go
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="heading-large">WRN CT12345</div>
+    <div>
+        <div class="heading-medium">Key information</div>
+        <table>
+            <tbody>
+            <tr>
+                <td class="bold-small">Street name</td>
+                <td>High Road Acton</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">USRN</td>
+                <td>84058392</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Start date</td>
+                <td>05/02/2018</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">End date</td>
+                <td>07/02/2018</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">HA</td>
+                <td>LB of Acton</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Work category</td>
+                <td>Minor</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Traffic management type </td>
+                <td>Two-way signals</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <p class="font-medium">Assessment Decision</p>
+    <div class="heading-medium">Assessment Decision</div>
+    <div style="background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px">
         <p>Changes requested by HA: Harrow London Borough Council</p>
+        <p>29 Jan</p>
+        <p>As agreed at site meeting, please confirm acceptance of TM of two-way signals rather than stop/go for these works. And removal of soil within 24 hrs of excavation. Regards, Martin.
+        </p>
+    </div>
 
-        <ul class="list list-bullet">
-            <li>TM type change from Stop/Go to Temporary Traffic Signals
+
+    <form action="permit-application-assessment" method="post" >
+     <div class="heading-small">TM type change from Stop/Go to Two-way signals</div>
                 <fieldset class="inline">
                     <div class="form-group">
                         <br/>
                         <label class="form-label" for="accept-change1-yes">Accept</label>
                         <div class="multiple-choice">
-                            <input id="accept-change1-yes" type="radio" name="change-1-group" value="Yes" {{ checked('change-1-group','Yes') }}>
+                            <input id="accept-change1-yes" type="radio" name="change-1-group" value="Yes">
                             <label for="accept-change1-yes">Yes</label>
                         </div>
                         <div class="multiple-choice">
-                            <input id="accept-change1-no" type="radio" name="change-1-group" value="No" {{ checked('change-1-group','No') }}>
+                            <input id="accept-change1-no" type="radio" name="change-1-group" value="No">
                             <label for="accept-change1-no">No</label>
                         </div>
                     </div>
                 </fieldset>
-            </li>
-            <li> <strong>New Condition</strong> NCT06a - Remove spoil by end of next working day
+
+            <div class="heading-small">New Condition NCT06a - Remove spoil by end of next working day</div>
                 <fieldset class="inline">
                     <div class="form-group">
                         <br/>
                         <label class="form-label" for="accept-change2-yes">Accept</label>
                         <div class="multiple-choice">
-                            <input id="accept-change2-yes" type="radio" name="change-2-group" value="Yes" {{ checked('change-2-group','Yes') }}>
+                            <input id="accept-change2-yes" type="radio" name="change-2-group" value="Yes" >
                             <label for="accept-change2-yes">Yes</label>
                         </div>
                         <div class="multiple-choice">
-                            <input id="accept-change2-no" type="radio" name="change-2-group" value="No" {{ checked('change-2-group','No') }}>
+                            <input id="accept-change2-no" type="radio" name="change-2-group" value="No">
                             <label for="accept-change2-no">No</label>
                         </div>
                     </div>
                 </fieldset>
-            </li>
-        </ul>
 
         <div class="form-group">
             <input type="submit" class="button" value="Submit">
