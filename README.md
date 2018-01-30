@@ -11,39 +11,28 @@ This is a simple UX prototype and style guide for the DfT Street Manager service
 * [Node JS](https://nodejs.org)
 
 ## Run
+**NOTE:**
+* Docker 17.05 or higher on the daemon and client is required (for example [docker4mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)).
+* Delete existing node_module folder if you already run `npm install` locally to prevent issues starting container with incompatible libraries
 
 ```
-npm install
-npm start
+./start_dev.sh
 # open browser to http://localhost:3000
 ```
-
-## Run using Docker
-**NOTE**
-
-Docker 17.05 or higher on the daemon and client is required
-
-Build:
-
-`docker build -t local/dft-street-manager-ux .`
-
-Run:
-
-`docker run -p 3000:3000 local/dft-street-manager-ux`
-
-Or run in detached mode:
-
-`docker run -p 3000:3000 local/dft-street-manager-ux`
-
-Open browser to http://localhost:3000
 
 If for any reason you need to shell into container, use:
 
 `docker exec -it $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1) /bin/sh`
 
+Restart:
+
+`docker kill $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1)`
+
 Stop:
 
 `docker kill $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1)`
+
+**NOTE: If you need to regenerate SASS files, plese restart (or stop and run again) container.**
 
 ## Creating a new iteration
 
