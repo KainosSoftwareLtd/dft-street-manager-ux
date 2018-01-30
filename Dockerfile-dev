@@ -6,4 +6,4 @@ WORKDIR /root/app
 ENTRYPOINT ["/sbin/tini", "--"]
 
 EXPOSE 3000
-CMD ["sh", "-c", "npm set progress=false && npm config set depth 0 && npm install && npm install -g nodemon && nodemon server.js"]
+CMD ["sh", "-c", "npm set progress=false && npm config set depth 0 && npm install && npm run start"]
