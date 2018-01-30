@@ -191,6 +191,7 @@ router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req,
 })
 
 router.post('/alpha/v3-0/promoter-planner/permit-application-assessment', function (req, res) {
+  req.session.data['Screen5Complete'] = true
   res.render('alpha/v3-0/promoter-planner/grant-permit-application.html')
 })
 
