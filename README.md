@@ -11,7 +11,9 @@ This is a simple UX prototype and style guide for the DfT Street Manager service
 * [Node JS](https://nodejs.org)
 
 ## Run
-**NOTE: Docker 17.05 or higher on the daemon and client is required (for example [docker4mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)).**
+**NOTE:**
+* Docker 17.05 or higher on the daemon and client is required (for example [docker4mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)).
+* Delete existing node_module folder if you already run `npm install` locally to prevent issues starting container with incompatible libraries
 
 ```
 ./start_dev.sh
