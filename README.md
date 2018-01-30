@@ -22,9 +22,15 @@ If for any reason you need to shell into container, use:
 
 `docker exec -it $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1) /bin/sh`
 
+Restart:
+
+`docker kill $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1)`
+
 Stop:
 
 `docker kill $(docker ps|grep local/dft-street-manager-ux|cut -d" " -f1)`
+
+**NOTE: If you need to regenerate SASS files, plese restart (or stop and run again) container.**
 
 ## Creating a new iteration
 
