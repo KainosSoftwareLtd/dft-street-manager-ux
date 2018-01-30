@@ -189,13 +189,26 @@ router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req,
   res.render('alpha/v3-0/promoter-planner/screen4-check-answers.html')
 })
 
+router.get('/alpha/v3-0/promoter-planner/permit-application-screen1', function (req, res) {
+  var prefill = {'data': {
+        'promotername': 'OpenReach',
+        'highwayauthority': 'Westminster',
+        'usrn': '34793825',
+        'roadcategorygroup': '0'}}
+
+  res.render('alpha/v3-0/promoter-planner/permit-application-screen1', prefill)
+})
+
+router.get('/alpha/v3-0/promoter-planner/permit-application-screen2', function (req, res) {
+  var prefill = {'data': {
+      'promoter-agent': 'Kier'}}
+
+  res.render('alpha/v3-0/promoter-planner/permit-application-screen2', prefill)
+})
+
 router.post('/alpha/v3-0/promoter-planner/permit-application-assessment', function (req, res) {
   req.session.data['Screen5Complete'] = true
   res.render('alpha/v3-0/promoter-planner/grant-permit-application.html')
-})
-
-router.post('/alpha/v3-0/promoter-planner/attach-to-record.html', function (req, res) {
-  res.redirect('/alpha/v3-0/promoter-planner/attach-to-record-check.html')
 })
 
 router.post('/alpha/v3-0/promoter-planer/map-search-results', function (req, res) {
