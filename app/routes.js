@@ -117,15 +117,15 @@ router.get('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
 
 router.post('/alpha/v3-0/ha-officer/assessment-decision', function (req, res) {
   switch (req.body.options) {
-    case 'Grant' :
-      res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
-      break
+    // case 'Grant' :
+    //   res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
+    //   break
     case 'Grant with changes' :
       res.redirect('/alpha/v3-0/ha-officer/grant-confirmation')
       break
-    case 'Revoke':
-      res.redirect('/alpha/v3-0/ha-officer/revoke')
-      break
+    // case 'Revoke':
+    //   res.redirect('/alpha/v3-0/ha-officer/revoke')
+    //   break
     default:
       res.render('alpha/v3-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   }
@@ -181,7 +181,6 @@ router.post('/alpha/v3-0/promoter-planner/screen2-check-answers', function (req,
 
 router.post('/alpha/v3-0/promoter-planner/screen3-check-answers', function (req, res) {
   req.session.data['Screen3Complete'] = true
-  req.
   res.render('alpha/v3-0/promoter-planner/conditions-check-answers.html')
 })
 
