@@ -20,6 +20,8 @@ Work Record
         </div>
     </div>
 
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
     {% if validationError %}
     <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
         <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
@@ -64,8 +66,12 @@ Work Record
                 <td></td>
             </tr>
             <tr>
-                <td class="bold-small">TM type </td>
-                <td>Some carriageway incursion</td>
+                <td class="bold-small">Traffic management type </td>
+                {% if data['TmDecisionChanged'] %}
+                    <td>Two-way signals</td>
+                {% else %}
+                    <td>Stop/go boards</td>
+                {% endif %}
                 <td><a href="permit-application-screen1.html">Change</a></td>
             </tr>
             </tbody>
@@ -83,7 +89,7 @@ Work Record
             </tr>
             <tr>
                 <td class="bold-small">Duration</td>
-                <td></td>
+                <td>2 Weeks</td>
                 <td></td>
             </tr>
             <tr>
@@ -93,27 +99,27 @@ Work Record
             </tr>
             <tr>
                 <td class="bold-small">Works location description</td>
-                <td></td>
+                <td>O/S Whiteleys j/w Redan Place on xing</td>
                 <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Description of work 1</td>
-                <td></td>
+                <td>Leakage</td>
                 <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Description of work 2</td>
-                <td></td>
+                <td>Fixing leak in water mains under road</td>
                 <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Excavation</td>
-                <td></td>
+                <td>Yes</td>
                 <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Is traffic management plan required?</td>
-                <td></td>
+                <td>Yes</td>
                 <td></td>
             </tr>
             <tr>
@@ -127,13 +133,18 @@ Work Record
                 <td></td>
             </tr>
             <tr>
-                <td class="bold-small">Collaborative working type detail</td>
+                <td class="bold-small">Collaborative working type</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Collaborative working detail</td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Environmental health</td>
-                <td></td>
+                <td>Yes</td>
                 <td></td>
             </tr>
             </tbody>
@@ -144,9 +155,9 @@ Work Record
 
     {% if data['TmDecisionChanged'] %}
     <div>
-        <div class="heading-medium">Changes required</div>
+        <div>Changes required</div>
         <ul class="list list-bullet">
-            <li>JKHKH</li>
+            <li>Traffic management type Stop/go boards to Two-way signals </li>
             {% if data['PermitConditionsChanged'] %}
                 <li>NCT06A has been added</li>
             {% endif %}
@@ -175,11 +186,6 @@ Work Record
                         <input id="radio-3" type="radio" name="options" value="Refuse">
                         <label for="radio-3">Refuse</label>
                     </div>
-                    <div class="multiple-choice">
-                        <input id="radio-4" type="radio" name="options" value="Revoke">
-                        <label for="radio-4">Revoke</label>
-                    </div>
-
             </fieldset>
         </div>
         <button class="button" type="submit">Submit decision</button>
