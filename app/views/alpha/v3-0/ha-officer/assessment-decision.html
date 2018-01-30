@@ -119,7 +119,9 @@ Work Record
             </tr>
             <tr>
                 <td class="bold-small">Condition chosen</td>
-                <td></td>
+                <td>
+                    {{ data['conditions-name'] | join(", ") }}
+                </td>
                 <td><a href="permit-application-screen3.html">Change</a></td>
             </tr>
             <tr>
