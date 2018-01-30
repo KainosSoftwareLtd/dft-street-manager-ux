@@ -33,18 +33,18 @@ Permit Application - Street Manager
 
 
 
-        <div class="form-group">
+        <div class="form-group {{'form-group-error' if validationPromoterNameError}}">
             <label class="form-label" for="promotername">Promoter name</label>
             {% if validationError %}<p class="error-message">{{ validationPromoterNameError }}</p>{% endif %}
             <input class="form-control" id="promotername" name="promotername" type="text" value="{{ data['promotername'] }}">
         </div>
-        <div class="form-group">
+        <div class="form-group {{'form-group-error' if validationUsrnError}}">
             <label class="form-label" for="usrn">USRN</label>
             {% if validationError %}<p class="error-message">{{ validationUsrnError }}</p>{% endif %}
             <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
         </div>
 
-        <div class="form-group inline">
+        <div class="form-group inline {{'form-group-error' if validationRoadCategoryError}}">
             <br/>
             <label class="form-label" for="road-category-0">Road category</label>
             {% if validationError %}<p class="error-message">{{ validationRoadCategoryError }}</p>{% endif %}
@@ -70,12 +70,12 @@ Permit Application - Street Manager
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group {{'form-group-error' if validationHighwayAuthorityError}}">
             <label class="form-label" for="highwayauthority">Highway authority</label>
             {% if validationError %}<p class="error-message">{{ validationHighwayAuthorityError }}</p>{% endif %}
             <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="{{ data['highwayauthority'] }}">
         </div>
-        <div class="form-group">
+        <div class="form-group {{'form-group-error' if validationWorkReferenceError}}">
             <label class="form-label" for="workreferencenumber">Work reference number</label>
             {% if validationError %}<p class="error-message">{{ validationWorkReferenceError }}</p>{% endif %}
             <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" value="{{ data['workreferencenumber'] }}">
@@ -121,7 +121,7 @@ Permit Application - Street Manager
             </fieldset>
         </div>
 
-        <fieldset class="inline">
+        <fieldset class="inline {{'form-group-error' if validationDurationError}}">
             <div class="form-group">
                 <label class="form-label" for="duration">Duration</label>
                 {% if validationError %}<p class="error-message">{{ validationDurationError }}</p>{% endif %}
@@ -130,7 +130,7 @@ Permit Application - Street Manager
         </fieldset>
 
         <label class="form-label" for="road-closure">Traffic management type</label>
-        <div class="grid-row">
+        <div class="grid-row {{'form-group-error' if validationTMTypeError}}">
             {% if validationError %}<p class="error-message">{{ validationTMTypeError }}</p>{% endif %}
             <div class="column-one-third">
                 <div class="multiple-choice" style="width: 100%;">
@@ -187,7 +187,7 @@ Permit Application - Street Manager
         </div>
 
         <fieldset class="inline">
-            <div class="form-group">
+            <div class="form-group {{'form-group-error' if validationWorkCategoryError}}">
                 <br/>
                 <label class="form-label" for="work-category-1">Work category</label>
                 {% if validationError %}<p class="error-message">{{ validationWorkCategoryError }}</p>{% endif %}
