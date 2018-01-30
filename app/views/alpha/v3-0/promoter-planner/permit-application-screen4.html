@@ -85,7 +85,7 @@ Permit Application - Street Manager
         <fieldset class="inline">
             <div class="form-group">
                 <label class="form-label" for="collaboration-yes">Collaborative working</label>
-                <div class="multiple-choice">
+                <div class="multiple-choice" data-target="collaboration-type">
                     <input id="collaboration-yes" type="radio" name="collaboration-group" value="Yes" {{ checked('collaboration-group','Yes') }}>
                     <label for="collaboration-yes">Yes</label>
                 </div>
@@ -96,9 +96,9 @@ Permit Application - Street Manager
             </div>
         </fieldset>
 
-        <div class="form-group">
+        <div class="panel panel-border-narrow js-hidden" id="collaboration-type">
             <fieldset>
-                    <label class="form-label" for="collaboration-type-1">Collaboration Type (optional)</label>
+                    <label class="form-label" for="collaboration-type-1">Collaboration Type</label>
                     <div class="multiple-choice">
                         <input id="collaboration-type-1" type="radio" name="collaboration-type-group" style="margin-bottom: 100px;" value="Trench sharing - primary promoter" {{ checked('description-of-work-group','Trench sharing - primary promoter') }}>
                         <label for="collaboration-type-1" style="padding-right: 300px;">Trench sharing - primary promoter</label>
@@ -114,10 +114,8 @@ Permit Application - Street Manager
                         <label for="collaboration-type-3">Sharing traffic management only</label>
                     </div>
             </fieldset>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label" for="collaboration-details">Collaboration Details (optional)</label>
+            <br/>
+            <label class="form-label" for="collaboration-details">Collaboration Details</label>
             <input class="form-control" id="collaboration-details" name="collaboration-details" type="text" value="{{ data['collaboration-details'] }}">
         </div>
 
