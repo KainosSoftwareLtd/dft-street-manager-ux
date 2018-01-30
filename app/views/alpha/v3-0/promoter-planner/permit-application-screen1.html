@@ -29,6 +29,9 @@ Permit Application - Street Manager
     <h2 class="heading-large">1. Plan & Create</h2>
 
     <form action="screen1-check-answers" method="post" >
+        <div class="form-group">
+
+
 
         <div class="form-group">
             <label class="form-label" for="promotername">Promoter Name</label>
@@ -43,23 +46,27 @@ Permit Application - Street Manager
 
         <div class="form-group inline">
             <br/>
-            <label class="form-label" for="road-category-1">Road Category</label>
+            <label class="form-label" for="road-category-0">Road Category</label>
             {% if validationError %}<p class="error-message">{{ validationRoadCategoryError }}</p>{% endif %}
             <div class="multiple-choice">
-                <input id="road-category-1" type="radio" name="roadcategorygroup" value="A Road" checked="checked" {{ checked('roadcategorygroup','A Road') }}>
-                <label for="road-category-1">A Road</label>
+                <input id="road-category-0" type="radio" name="roadcategorygroup" value="0" checked="checked" {{ checked('roadcategorygroup','0') }}>
+                <label for="road-category-0">0</label>
             </div>
             <div class="multiple-choice">
-                <input id="road-category-2" type="radio" name="roadcategorygroup" value="B Road" {{ checked('roadcategorygroup','B Road') }}>
-                <label for="road-category-2">B Road</label>
+                <input id="road-category-1" type="radio" name="roadcategorygroup" value="1" {{ checked('roadcategorygroup','1') }}>
+                <label for="road-category-1">1</label>
             </div>
             <div class="multiple-choice">
-                <input id="road-category-3" type="radio" name="roadcategorygroup" value="Classified Unnumbered" {{ checked('roadcategorygroup','Classified Unnumbered') }}>
-                <label for="road-category-3">Classified Unnumbered</label>
+                <input id="road-category-2" type="radio" name="roadcategorygroup" value="2" {{ checked('roadcategorygroup','2') }}>
+                <label for="road-category-2">2</label>
             </div>
             <div class="multiple-choice">
-                <input id="road-category-4" type="radio" name="roadcategorygroup" value="Unclassified" {{ checked('roadcategorygroup','Unclassified') }}>
-                <label for="road-category-4">Unclassified</label>
+                <input id="road-category-3" type="radio" name="roadcategorygroup" value="3" {{ checked('roadcategorygroup','3') }}>
+                <label for="road-category-3">3</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-4" type="radio" name="roadcategorygroup" value="4" {{ checked('roadcategorygroup','4') }}>
+                <label for="road-category-4">4</label>
             </div>
         </div>
 
@@ -212,10 +219,12 @@ Permit Application - Street Manager
                 </div>
             </div>
         </fieldset>
+        </div>
 
         <div class="form-group">
             <input type="submit" class="button" value="Save & Continue">
         </div>
+
     </form>
 </main>
 
