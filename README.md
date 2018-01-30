@@ -11,31 +11,12 @@ This is a simple UX prototype and style guide for the DfT Street Manager service
 * [Node JS](https://nodejs.org)
 
 ## Run
+**NOTE: Docker 17.05 or higher on the daemon and client is required (for example [docker4mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)).**
 
 ```
-npm install
-npm start
+./start_dev.sh
 # open browser to http://localhost:3000
 ```
-
-## Run using Docker
-**NOTE**
-
-Docker 17.05 or higher on the daemon and client is required
-
-Build:
-
-`docker build -t local/dft-street-manager-ux .`
-
-Run:
-
-`docker run -p 3000:3000 local/dft-street-manager-ux`
-
-Or run in detached mode:
-
-`docker run -p 3000:3000 local/dft-street-manager-ux`
-
-Open browser to http://localhost:3000
 
 If for any reason you need to shell into container, use:
 
