@@ -57,7 +57,7 @@ Permit Application - Street Manager
             </div>
 
             <div id="attachments-table">
-                <h3 class="heading-small">File Attachments</h3>
+                <h3 class="heading-small">File attachments</h3>
                 <table>
                     <thead>
                     <th>Title</th>
@@ -98,7 +98,7 @@ Permit Application - Street Manager
 
         <div class="panel panel-border-narrow js-hidden" id="collaboration-type">
             <fieldset>
-                    <label class="form-label" for="collaboration-type-1">Collaboration Type</label>
+                    <label class="form-label" for="collaboration-type-1">Collaboration type</label>
                     <div class="multiple-choice">
                         <input id="collaboration-type-1" type="radio" name="collaboration-type-group" style="margin-bottom: 100px;" value="Trench sharing - primary promoter" {{ checked('description-of-work-group','Trench sharing - primary promoter') }}>
                         <label for="collaboration-type-1" style="padding-right: 300px;">Trench sharing - primary promoter</label>
@@ -115,13 +115,13 @@ Permit Application - Street Manager
                     </div>
             </fieldset>
             <br/>
-            <label class="form-label" for="collaboration-details">Collaboration Details</label>
+            <label class="form-label" for="collaboration-details">Collaboration details</label>
             <input class="form-control" id="collaboration-details" name="collaboration-details" type="text" value="{{ data['collaboration-details'] }}">
         </div>
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="environmental-health-yes">Environmental Health notifiable</label>
+                <label class="form-label" for="environmental-health-yes">Environmental health notifiable</label>
                 <div class="multiple-choice">
                     <input id="environmental-health-yes" type="radio" name="environmental-health-group" value="Yes" {{ checked('environmental-health-group','Yes') }}>
                     <label for="environmental-health-yes">Yes</label>
@@ -133,7 +133,7 @@ Permit Application - Street Manager
             </div>
         </fieldset>
         <div class="form-group">
-            <label class="form-label" for="project-reference">Project Reference Number (optional)</label>
+            <label class="form-label" for="project-reference">Project reference number (optional)</label>
             <input class="form-control" id="project-reference" type="text" name="project-reference" value="{{ data['project-reference'] }}">
         </div>
 
