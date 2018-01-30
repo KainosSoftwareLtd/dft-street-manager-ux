@@ -38,15 +38,17 @@ Permit Application - Street Manager
                     </a>
                 </td>
             </tr>
+            {% for fileName in data['file-attached-detail'] %}
             <tr>
                 <td>Traffic Management Plan</td>
-                <td>{{ data['file-attached-detail[0]'] }}</td>
+                <td>{{ fileName }}</td>
                 <td class="change-answer">
                     <a href="/alpha/v3-0/promoter-planner/permit-application-screen4#traffic-management-plan">
                         Change <span class="visuallyhidden">traffic management plan</span>
                     </a>
                 </td>
             </tr>
+            {% endfor %}
             <tr>
                 <td>Collaborative Working</td>
                 <td>{{ data['collaboration-group'] }}</td>
