@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-var session = require('express-session')
 
 var data = {'data': {
   'workreferencenumber': 'CT0224443466',
@@ -191,17 +190,17 @@ router.post('/alpha/v3-0/promoter-planner/screen4-check-answers', function (req,
 
 router.get('/alpha/v3-0/promoter-planner/permit-application-screen1', function (req, res) {
   var prefill = {'data': {
-        'promotername': 'OpenReach',
-        'highwayauthority': 'Westminster',
-        'usrn': '34793825',
-        'roadcategorygroup': '0'}}
+    'promotername': 'OpenReach',
+    'highwayauthority': 'Westminster',
+    'usrn': '34793825',
+    'roadcategorygroup': '0'}}
 
   res.render('alpha/v3-0/promoter-planner/permit-application-screen1', prefill)
 })
 
 router.get('/alpha/v3-0/promoter-planner/permit-application-screen2', function (req, res) {
   var prefill = {'data': {
-      'promoter-agent': 'Kier'}}
+    'promoter-agent': 'Kier'}}
 
   res.render('alpha/v3-0/promoter-planner/permit-application-screen2', prefill)
 })
@@ -222,6 +221,22 @@ router.get('/alpha/v3-0/promoter-planner/work-record', function (req, res) {
 router.get('/alpha/v3-0/promoter-planner/withdraw-work-record', function (req, res) {
   res.render('alpha/v3-0/promoter-planner/withdraw-work-record.html', data)
 })
+
+// V4 Routes
+
+router.post('/alpha/v4-0/sign-in.html', function (req, res) {
+  switch (req.body.email) {
+    case 'promo@sm.com' :
+      res.redirect('/alpha/v4-0/promoter-planner/dashboard.html')
+      break
+    case 'ha@sm.com' :
+      res.redirect('/alpha/v4-0/ha-officer/dashboard.html')
+      break
+    default:
+      res.render('alpha/v4-0/sign-in.html', {validationError: 'Invalid login credentials.'})
+  }
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router
