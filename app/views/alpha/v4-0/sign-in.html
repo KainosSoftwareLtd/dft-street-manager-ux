@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Sign in
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+        <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <!-- main content starts -->
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-large">Sign in</h1>
+            <form action="sign-in.html" method="post" >
+                <div class="form-group">
+                    <fieldset>
+                        <legend class="visually-hidden">Sign in</legend>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" id="email" name="email" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" id="password" name="password" type="password">
+                        </div>
+                        <h3 class="heading-medium">Problems signing in?</h3>
+                        <ul class="list">
+                            <li><a href="#">I need to register</a></li>
+                            <li><a href="#">I forgot my password</a></li>
+                        </ul>
+                    </fieldset>
+                </div>
+                <input class="button" type="submit" value="Sign in" role="button">
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+
