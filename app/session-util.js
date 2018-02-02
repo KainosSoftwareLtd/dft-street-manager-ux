@@ -1,4 +1,5 @@
 module.exports.setSessionData = function (sessionData, data) {
+  // Plan & create
   sessionData['promotername'] = data.promoterName
   sessionData['usrn'] = data.USRN
   sessionData['roadcategorygroup'] = data.roadCategoryGroup
@@ -13,6 +14,8 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['duration'] = data.duration
   sessionData['trafficmanagementtypegroup'] = data.trafficManagementTypeGroup
   sessionData['workcategorygroup'] = data.workCategoryGroup
+  sessionData['Screen1Complete'] = data.screen1Complete
+  // Location & contact
   sessionData['works-location-description'] = data.worksLocationDescription
   sessionData['works-location-group'] = data.worksLocationGroup
   sessionData['description-of-work-group'] = data.descriptionOfWorkGroup
@@ -23,6 +26,12 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['secondary-contact'] = data.secondaryContact
   sessionData['commercially-sensitive-group'] = data.commerciallySensitiveGroup
   sessionData['lane-rental-group'] = data.laneRentalGroup
+  sessionData['Screen2Complete'] = data.screen2Complete
+  // Conditions
+  sessionData['conditions-name'] = data.conditionsName
+  sessionData['conditions-reason'] = data.conditionsReason
+  sessionData['Screen3Complete'] = data.screen3Complete
+  // Collaboration
   sessionData['tm-group'] = data.tmGroup
   sessionData['file-attached-detail'] = data.fileAttachedDetail
   sessionData['file-attached-name'] = data.fileAttachedName
@@ -31,5 +40,7 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['collaboration-details'] = data.collaborationDetails
   sessionData['environmental-health-group'] = data.environmentalHealthGroup
   sessionData['project-reference'] = data.projectReference
-  sessionData['conditions-name'] = data.conditionsName
+
+
+  sessionData['Screen4Complete'] = data.screen4Complete
 }

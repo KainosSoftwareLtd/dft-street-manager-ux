@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">2. Location & contact</h2>
+
+    <form action="screen2-check-answers" method="post" >
+
+        <div class="form-group">
+            <label class="form-label" for="works-location-description">Works location description</label>
+            <input class="form-control" id="works-location-description" name="works-location-description" type="text" value="{{ data['works-location-description'] }}">
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="works-location-1">Works location</label>
+                <div class="multiple-choice">
+                    <input id="works-location-1" type="checkbox" name="works-location-group" value="Footway" {{ checked('works-location-group','Footway') }}>
+                    <label for="works-location-1">Footway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-2" type="checkbox" name="works-location-group" value="Carriageway" {{ checked('works-location-group','Carriageway') }}>
+                    <label for="works-location-2">Carriageway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-3" type="checkbox" name="works-location-group" value="Verge" {{ checked('works-location-group','Verge') }}>
+                    <label for="works-location-3">Verge</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-4" type="checkbox" name="works-location-group" value="Cycleway" {{ checked('works-location-group','Cycleway') }}>
+                    <label for="works-location-4">Cycleway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-5" type="checkbox" name="works-location-group" value="Footpath" {{ checked('works-location-group','Footpath') }}>
+                    <label for="works-location-5">Footpath</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="description-of-work-1">Description of work #1</label>
+                <div class="multiple-choice">
+                    <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Leakage" {{ checked('description-of-work-group','Leakage') }}>
+                    <label for="description-of-work-1">Leakage</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="description-of-work-2" type="radio" name="description-of-work-group" value="New supply" {{ checked('description-of-work-group','New supply') }}>
+                    <label for="description-of-work-2">New supply</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="description-of-work-3" type="radio" name="description-of-work-group" value="Resurfacing" {{ checked('description-of-work-group','Resurfacing') }}>
+                    <label for="description-of-work-3">Resurfacing</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label class="form-label" for="description-of-work-2">Description of work #2</label>
+            <textarea class="form-control form-control-3-4" name="description-of-work-2" id="description-of-work-2" rows="5">{{ data['description-of-work-2'] }}</textarea>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="excavation-yes">Excavation</label>
+                <div class="multiple-choice">
+                    <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" {{ checked('excavation-group','Yes') }}>
+                    <label for="excavation-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="excavation-no" type="radio" name="excavation-group" value="No" {{ checked('excavation-group','No') }}>
+                    <label for="excavation-no">No</label>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <div class="form-group">
+            <label class="form-label" for="contact-details">Contact details</label>
+            <input class="form-control" id="contact-details" name="contact-details" type="text" value="{{ data['contact-details'] }}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="promoter-agent">Promoter agent (optional)</label>
+            <input class="form-control" id="promoter-agent" name="promoter-agent" type="text" value="{{ data['promoter-agent'] }}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="secondary-contact">Secondary site contact details</label>
+            <input class="form-control" id="secondary-contact" name="secondary-contact" type="text" value="{{ data['secondary-contact'] }}">
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="commercially-sensitive-yes">Commercially sensitive (optional)</label>
+                <div class="multiple-choice">
+                    <input id="commercially-sensitive-yes" type="radio" name="commercially-sensitive-group" value="Yes" {{ checked('commercially-sensitive-group','Yes') }}>
+                    <label for="commercially-sensitive-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="commercially-sensitive-no" type="radio" name="commercially-sensitive-group" value="No" {{ checked('commercially-sensitive-group','No') }}>
+                    <label for="commercially-sensitive-no">No</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="lane-rental-yes">Lane rental applicable</label>
+                <div class="multiple-choice">
+                    <input id="lane-rental-yes" type="radio" name="lane-rental-group" value="Yes" {{ checked('lane-rental-group','Yes') }}>
+                    <label for="lane-rental-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="lane-rental-no" type="radio" name="lane-rental-group" value="No" {{ checked('lane-rental-group','No') }}>
+                    <label for="lane-rental-no">No</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Save & Continue">
+        </div>
+    </form>
+</main>
+
+{% endblock %}

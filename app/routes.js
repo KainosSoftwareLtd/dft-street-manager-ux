@@ -244,6 +244,11 @@ router.post('/alpha/v4-0/promoter-planner/search.html', function (req, res) {
   res.redirect('alpha/v4-0/promoter-planner/search.html')
 })
 
+router.post('/alpha/v4-0/promoter-planner/screen3-check-answers', function (req, res) {
+  req.session.data['Screen3Complete'] = true
+  res.render('alpha/v4-0/promoter-planner/conditions-check-answers.html')
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router
