@@ -106,6 +106,32 @@ Create New Work - Street Manager
             </div>
         </fieldset>
 
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="works-location-1">Works location</label>
+                <div class="multiple-choice">
+                    <input id="works-location-1" type="checkbox" name="works-location-group" value="Footway" {{ checked('works-location-group','Footway') }}>
+                    <label for="works-location-1">Footway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-2" type="checkbox" name="works-location-group" value="Carriageway" {{ checked('works-location-group','Carriageway') }}>
+                    <label for="works-location-2">Carriageway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-3" type="checkbox" name="works-location-group" value="Verge" {{ checked('works-location-group','Verge') }}>
+                    <label for="works-location-3">Verge</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-4" type="checkbox" name="works-location-group" value="Cycleway" {{ checked('works-location-group','Cycleway') }}>
+                    <label for="works-location-4">Cycleway</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="works-location-5" type="checkbox" name="works-location-group" value="Footpath" {{ checked('works-location-group','Footpath') }}>
+                    <label for="works-location-5">Footpath</label>
+                </div>
+            </div>
+        </fieldset>
+
         <div class="form-group">
             <label class="form-label" for="description-of-work">Description of Work #1 (optional)</label>
             <textarea class="form-control form-control-3-4" name="description-of-work" id="description-of-work" rows="5">{{ data['description-of-work'] }}</textarea>
@@ -138,8 +164,6 @@ Create New Work - Street Manager
                 </div>
             </div>
         </fieldset>
-
-        <!-- minor, standard, major, immediate - urgent, immediate - emergency -->
 
         <div class="form-group">
             <label class="form-label" for="contact-details">Contact Details (optional)</label>
