@@ -237,6 +237,10 @@ router.post('/alpha/v4-0/sign-in.html', function (req, res) {
   }
 })
 
+router.post('/alpha/v4-0/promoter-planner/permit-application-on-site', function (req, res) {
+  res.render('alpha/v4-0/promoter-planner/confirm-on-site.html')
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router
