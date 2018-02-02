@@ -45,6 +45,7 @@ module.exports = [
   },
 
   {
+    // Plan & Create
     promoterName: '',
     USRN: '',
     roadCategoryGroup: '',
@@ -59,8 +60,10 @@ module.exports = [
     duration: '',
     trafficManagementTypeGroup: '',
     workCategoryGroup: '',
+    screen1Complete: false,
+    // Location & contact
     worksLocationDescription: '',
-    worksLocationGroup: '',
+    worksLocationGroup: [ '' ],
     descriptionOfWorkGroup: '',
     descriptionOfWork2: '',
     excavationGroup: '',
@@ -69,18 +72,25 @@ module.exports = [
     secondaryContact: '',
     commerciallySensitiveGroup: '',
     laneRentalGroup: '',
+    screen2Complete: false,
+    // Conditions
+    conditionsName: [''],
+    conditionsReason: [''],
+    screen3Complete: false,
+    // Collaboration
     tmGroup: '',
-    fileAttachedDetail: [],
-    fileAttachedName: [],
+    fileAttachedDetail: [''],
+    fileAttachedName: [''],
     collaborationGroup: '',
     collaborationTypeGroup: '',
     collaborationDetails: '',
     environmentalHealthGroup: '',
     projectReference: '',
-    conditionsName: ''
+    screen4Complete: false
   },
 
   {
+    // Plan & Create
     promoterName: '',
     USRN: '',
     roadCategoryGroup: '',
@@ -95,8 +105,10 @@ module.exports = [
     duration: '',
     trafficManagementTypeGroup: '',
     workCategoryGroup: '',
+    screen1Complete: false,
+    // Location & contact
     worksLocationDescription: '',
-    worksLocationGroup: '',
+    worksLocationGroup: [ '' ],
     descriptionOfWorkGroup: '',
     descriptionOfWork2: '',
     excavationGroup: '',
@@ -105,15 +117,20 @@ module.exports = [
     secondaryContact: '',
     commerciallySensitiveGroup: '',
     laneRentalGroup: '',
+    screen2Complete: false,
+    // Conditions
+    conditionsName: [''],
+    conditionsReason: [''],
+    screen3Complete: false,
+    // Collaboration
     tmGroup: '',
-    fileAttachedDetail: [],
-    fileAttachedName: [],
+    fileAttachedDetail: [''],
+    fileAttachedName: [''],
     collaborationGroup: '',
     collaborationTypeGroup: '',
     collaborationDetails: '',
     environmentalHealthGroup: '',
     projectReference: '',
-    conditionsName: ''
+    screen4Complete: false
   }
-
 ]
