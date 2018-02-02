@@ -40,7 +40,5 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['collaboration-details'] = data.collaborationDetails
   sessionData['environmental-health-group'] = data.environmentalHealthGroup
   sessionData['project-reference'] = data.projectReference
-
-
   sessionData['Screen4Complete'] = data.screen4Complete
 }
