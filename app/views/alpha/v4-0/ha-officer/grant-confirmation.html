@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <div class="govuk-box-highlight">
+                <h1 class="heading-large">
+                    Permit Application granted
+                </h1>
+                <p class="font-large">
+                    The work reference number is <br>
+                    <strong class="bold">{{ data['workreferencenumber'] }}</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <a class="button" href="dashboard.html">Return to dashboard</a>
+
+</main>
+
+{% endblock %}
+
+
