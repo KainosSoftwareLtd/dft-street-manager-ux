@@ -266,6 +266,10 @@ router.post('/alpha/v4-0/promoter-planner/screen3-check-answers', function (req,
   res.render('alpha/v4-0/promoter-planner/conditions-check-answers.html')
 })
 
+router.post('/alpha/v4-0/promoter-planner/permit-application-on-site', function (req, res) {
+  res.render('alpha/v4-0/promoter-planner/confirm-on-site.html')
+})
+
 router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', function (req, res) {
   req.session.data['Screen5Complete'] = true
   res.render('alpha/v4-0/promoter-planner/grant-permit-application.html')
