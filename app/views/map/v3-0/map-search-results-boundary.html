@@ -172,16 +172,25 @@ Forward Planning - Street Manager
       style: draw_layer_styles.style[draw_layer_styles.NONE],
       zIndex: MAP_CONFIG.draw_layer_zindex
     })
-    MAP_CONFIG.vector_source = new ol.source.Vector({
-      format: new ol.format.GML3(),
+    /*MAP_CONFIG.vector_source = new ol.source.Vector({
+      format: new ol.format.GeoJSON(),
       url: function(extent) {
-        var url = "http://192.168.99.100:8182/cgi-bin/mapserv?map=/map/counties-postgis-wfs.map&" +
-                "REQUEST=GetFeature&TYPENAME=drawn_features&outputFormat=gml3&srsnam=EPSG:3857" +
-                "&bbox=" + extent.join(",") + ",EPSG:3857";
-        return url;
+        return 'https://ahocevar.com/geoserver/wfs?service=WFS&' +
+          'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
+          'outputFormat=application/json&srsname=EPSG:3857&' +
+          'bbox=' + extent.join(',') + ',EPSG:3857';
       },
-      projection: 'EPSG:3857',
       strategy: ol.loadingstrategy.bbox
+    })*/
+    MAP_CONFIG.vector_source = new ol.source.Vector({
+        format: new ol.format.GML3(),
+          url: function(extent) {
+          return "http://127.0.0.1/cgi-bin/mapserv.exe?map=C:/ms4w/apps/map/counties-postgis-wfs.map&" +
+            "SERVICE=WFS&VERSION=2.0.0&" +
+            "REQUEST=GetFeature&TYPENAME=drawn_features&srsname=urn:ogc:def:crs:EPSG::3857" +
+            "&bbox=" + extent.join(",") + ",EPSG:3857";
+        },
+        strategy: ol.loadingstrategy.bbox
     })
     MAP_CONFIG.base_layer = new ol.layer.Tile({
       source: new ol.source.OSM({
@@ -195,7 +204,7 @@ Forward Planning - Street Manager
         transition: 0
       })
     })
-    MAP_CONFIG.vector_layer = new ol.layer.Vector("Drawn Features", {
+    MAP_CONFIG.vector_layer = new ol.layer.Vector({
       source: MAP_CONFIG.vector_source,
       style: new ol.style.Style({
         stroke: new ol.style.Stroke({
@@ -213,7 +222,7 @@ Forward Planning - Street Manager
 
   var map = new ol.Map({
     target: 'map',
-    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
+    layers: [MAP_CONFIG.base_layer, MAP_CONFIG.vector_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
       MAP_CONFIG.draw_controls, legend, scaleLine, slider
     ]),
@@ -222,8 +231,6 @@ Forward Planning - Street Manager
       zoom: 7
     })
   });
-
-  map.addLayer(MAP_CONFIG.vector_layer);
 
   $("#result").click(function () {
      var view = map.getView();
