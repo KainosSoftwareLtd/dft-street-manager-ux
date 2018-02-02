@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const sessionUtil = require('./session-util')
+const demoData = require('./demo-data')
 
 var data = {'data': {
   'workreferencenumber': 'CT0224443466',
@@ -235,6 +237,16 @@ router.post('/alpha/v4-0/sign-in.html', function (req, res) {
     default:
       res.render('alpha/v4-0/sign-in.html', {validationError: 'Invalid login credentials.'})
   }
+})
+
+router.post('/alpha/v4-0/promoter-planner/search.html', function (req, res) {
+  sessionUtil.setSessionData(req.session.data, demoData[0])
+  res.redirect('alpha/v4-0/promoter-planner/search.html')
+})
+
+router.post('/alpha/v4-0/promoter-planner/screen3-check-answers', function (req, res) {
+  req.session.data['Screen3Complete'] = true
+  res.render('alpha/v4-0/promoter-planner/conditions-check-answers.html')
 })
 
 router.post('/alpha/v4-0/promoter-planner/permit-application-on-site', function (req, res) {
