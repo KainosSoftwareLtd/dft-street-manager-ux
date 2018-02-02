@@ -163,7 +163,7 @@ router.get('/alpha/v3-0/promoter-planner/withdraw-work-record', function (req, r
   res.render('alpha/v3-0/promoter-planner/withdraw-work-record.html', data)
 })
 
-router.post('/alpha/v3-0/save-geometry.html', function (req, res) {
+router.post('/map/v2-0/save-geometry.html', function (req, res) {
   console.log(req.body.shapecoords)
   const coords = req.body.shapecoords
   console.log('Coords:' + coords)
@@ -196,7 +196,7 @@ router.post('/alpha/v3-0/save-geometry.html', function (req, res) {
 
   })
 
-  res.render('alpha/v3-0/map-search-results-boundary.html')
+  res.render('map/v2-0/map-search-results-boundary.html')
 })
 // Add your routes here - above the module.exports line
 
