@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application Confirmation - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <div class="govuk-box-highlight">
+                <h1 class="heading-large">
+                    On site work
+                </h1>
+                <p>Work started:</p>
+                {% if data['actual-start-day'] != '' %}
+                {{ data['actual-start-day'] }}/{{ data['actual-start-month'] }}/{{ data['actual-start-year'] }}
+                {% else %}
+                <p></p>
+                {% endif %}
+                <p>Work stopped:</p>
+                {% if data['actual-end-day'] != '' %}
+                {{ data['actual-end-day'] }}/{{ data['actual-end-month'] }}/{{ data['actual-end-year'] }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-top: 10px">
+        <a href="/alpha/v3-0/task-list-page" class="button" style="margin-right: 20px;">View work record</a>
+        <a href="/alpha/v4-0/promoter-planner/dashboard" style="vertical-align: bottom">Return to dashboard</a>
+    </div>
+        
+
+</main>
+
+{% endblock %}
