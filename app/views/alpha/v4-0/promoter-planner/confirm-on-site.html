@@ -20,33 +20,33 @@ Permit Application Confirmation - Street Manager
         </div>
     </div>
 
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        On site
+    </h1>
     <div class="grid-row">
         <div class="column-two-thirds">
-
             <div class="govuk-box-highlight">
                 <h1 class="heading-large">
-                    On site work
+                    On site work confirmed
                 </h1>
-                <p>Work started:</p>
-                {% if data['actual-start-day'] != '' %}
-                {{ data['actual-start-day'] }}/{{ data['actual-start-month'] }}/{{ data['actual-start-year'] }}
-                {% else %}
-                <p></p>
+                {% if data['actual-start-date-day'] != '' %}
+                <p>Work started: {{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}  {{ data['actual-start-date-hour'] }}:{{ data['actual-start-date-minute'] }}</p>
                 {% endif %}
-                <p>Work stopped:</p>
-                {% if data['actual-end-day'] != '' %}
-                {{ data['actual-end-day'] }}/{{ data['actual-end-month'] }}/{{ data['actual-end-year'] }}
+                {% if data['actual-end-date-day'] != '' %}
+                <p>Work stopped: {{ data['actual-end-date-day'] }}/{{ data['actual-end-date-month'] }}/{{ data['actual-end-date-year'] }}  {{ data['actual-end-date-hour'] }}:{{ data['actual-end-date-minute'] }}</p>
                 {% endif %}
             </div>
         </div>
     </div>
 
     <div style="padding-top: 10px">
-        <a href="/alpha/v3-0/task-list-page" class="button" style="margin-right: 20px;">View work record</a>
+        <a href="/alpha/v4-0/task-list-page" class="button" style="margin-right: 20px;">Return to work record</a>
         <a href="/alpha/v4-0/promoter-planner/dashboard" style="vertical-align: bottom">Return to dashboard</a>
     </div>
-        
-
 </main>
 
 {% endblock %}

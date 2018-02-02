@@ -81,6 +81,21 @@
             </li>
         </li>
         {% endif %}
+        <br/>
+        {% if data['Screen4Complete'] %}
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">6. </span><a href="../v4-0/promoter-planner/permit-application-on-site.html">On Site</a>
+          </h2>
+        <li class="task-list-item">
+          {% if data['Screen6Complete'] %}
+          <strong class="task-completed" id="onsite-completed">Complete</strong>
+          {% else %}
+          <strong class="task-completed" id="onsite-incompleted">Incomplete</strong>
+          {% endif %}
+        </li>
+        </li>
+        {% endif %}
       </ol>
 
     </div>

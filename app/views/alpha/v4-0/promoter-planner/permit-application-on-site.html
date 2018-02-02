@@ -24,9 +24,13 @@ Permit Application - Street Manager
         </div>
     </div>
 
-    <h2 class="heading-large">On site</h2>
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        On site
+    </h1>
 
-    <div class="heading-large">WRN {{ data['workreferencenumber'] }}</div>
     <div>
         <div class="heading-medium">Key information</div>
         <table>
@@ -76,6 +80,7 @@ Permit Application - Street Manager
             </tr>
             </tbody>
         </table>
+        <br/>
     </div>
 
     <form action="permit-application-on-site" method="post" >
@@ -86,33 +91,36 @@ Permit Application - Street Manager
                 <div class="form-date">
                     <div class="form-group form-group-day">
                         <label class="form-label" for="actual-start-date-day">Day</label>
-                        <input class="form-control" id="actual-start-date-day" name="start-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-date-day'] }}">
+                        <input class="form-control" id="actual-start-date-day" name="actual-start-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['actual-start-date-day'] }}">
                     </div>
                     <div class="form-group form-group-month">
                         <label class="form-label" for="actual-start-date-month">Month</label>
-                        <input class="form-control" id="actual-start-date-month" name="start-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-date-month'] }}">
+                        <input class="form-control" id="actual-start-date-month" name="actual-start-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['actual-start-date-month'] }}">
                     </div>
                     <div class="form-group form-group-year">
                         <label class="form-label" for="actual-start-date-year">Year</label>
-                        <input class="form-control" id="actual-start-date-year" name="start-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-date-year'] }}">
+                        <input class="form-control" id="actual-start-date-year" name="actual-start-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['actual-start-date-year'] }}">
                     </div>
                     <br/>
                 </div>
-                <div class="form-group">
-                    <input class="button" style="width:10%" value="Start" onclick="insertStartDateTime()">
-                </div>
             </fieldset>
-
             <div class="form-date">
+                <br/>
                 <div class="form-group form-group-day">
                     <label class="form-label" for="actual-start-date-hour">Hour (HH)</label>
-                    <input class="form-control" id="actual-start-date-hour" name="start-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['start-date-hour'] }}">
+                    <input class="form-control" id="actual-start-date-hour" name="actual-start-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['actual-start-date-hour'] }}">
                 </div>
                 <div class="form-group form-group-month">
                     <label class="form-label" for="actual-start-date-minute">Minute (MM)</label>
-                    <input class="form-control" id="actual-start-date-minute" name="start-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['start-date-minute'] }}">
+                    <input class="form-control" id="actual-start-date-minute" name="actual-start-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['actual-start-date-minute'] }}">
                 </div>
             </div>
+        </div>
+        <div class="form-group">
+            <input class="button" style="width:10%" value="Start" onclick="insertStartDateTime()">
+            <br/>
+            <br/>
+            <br/>
         </div>
 
         <div class="form-group">
@@ -121,42 +129,45 @@ Permit Application - Street Manager
                 <div class="form-date">
                     <div class="form-group form-group-day">
                         <label class="form-label" for="actual-end-date-day">Day</label>
-                        <input class="form-control" id="actual-end-date-day" name="end-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-date-day'] }}">
+                        <input class="form-control" id="actual-end-date-day" name="actual-end-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['actual-end-date-day'] }}">
                     </div>
                     <div class="form-group form-group-month">
                         <label class="form-label" for="actual-end-date-month">Month</label>
-                        <input class="form-control" id="actual-end-date-month" name="end-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-date-month'] }}">
+                        <input class="form-control" id="actual-end-date-month" name="actual-end-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['actual-end-date-month'] }}">
                     </div>
                     <div class="form-group form-group-year">
                         <label class="form-label" for="actual-end-date-year">Year</label>
-                        <input class="form-control" id="actual-end-date-year" name="end-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-date-year'] }}">
+                        <input class="form-control" id="actual-end-date-year" name="actual-end-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['actual-end-date-year'] }}">
                     </div>
-                </div>
-                <div class="form-group">
-                    <input class="button" style="width:10%" value="Stop" onclick="insertEndDateTime()">
+                    <br/>
                 </div>
             </fieldset>
             <div class="form-date">
+                <br/>
                 <div class="form-group form-group-day">
                     <label class="form-label" for="actual-end-date-hour">Hour (HH)</label>
-                    <input class="form-control" id="actual-end-date-hour" name="end-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['start-end-hour'] }}">
+                    <input class="form-control" id="actual-end-date-hour" name="actual-end-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['actual-end-date-hour'] }}">
                 </div>
                 <div class="form-group form-group-month">
                     <label class="form-label" for="actual-end-date-minute">Minute (MM)</label>
-                    <input class="form-control" id="actual-end-date-minute" name="end-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['start-end-minute'] }}">
+                    <input class="form-control" id="actual-end-date-minute" name="actual-end-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['actual-end-date-minute'] }}">
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <input class="button" style="width:10%" value="Stop" onclick="insertStopDateTime()">
+        </div>
 
         <fieldset class="inline">
+            <br/>
             <div class="form-group">
                 <label class="form-label" for="excavation-yes">Was an excavation required?</label>
-                <div class="multiple-choice" data-target="reinstatement">
-                    <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" {{ checked('excavation-group','Yes') }}>
+                <div class="multiple-choice">
+                    <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" checked="checked" {{ checked('excavation-group','Yes') }}>
                     <label for="excavation-yes">Yes</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="excavation-no" type="radio" name="excavation-group" value="No" checked="checked" {{ checked('excavation-group','No') }}>
+                    <input id="excavation-no" type="radio" name="excavation-group" value="No" {{ checked('excavation-group','No') }}>
                     <label for="excavation-no">No</label>
                 </div>
             </div>
@@ -164,10 +175,6 @@ Permit Application - Street Manager
 
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
-        </div>
-
-        <div class="form-group">
-            <input type="submit" id="reinstatement" class="button js-hidden" value="Add Reinstatement" >
         </div>
     </form>
 </main>
@@ -200,12 +207,9 @@ Permit Application - Street Manager
     document.getElementById('actual-start-date-year').value=year;
     document.getElementById('actual-start-date-hour').value=hour;
     document.getElementById('actual-start-date-minute').value=minute;
-
-    var formattedDateTime = currentDateTime.toLocaleDateString() + " " + currentDateTime.toLocaleTimeString()
-    //document.getElementById('startdate').value=formattedDateTime;
   }
 
-  function insertEndDateTime() {
+  function insertStopDateTime() {
     var currentDateTime = new Date();
     var day = currentDateTime.getDate();
     var month = currentDateTime.getMonth() + 1;
