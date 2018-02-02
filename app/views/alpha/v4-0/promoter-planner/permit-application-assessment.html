@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application Confirmation - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to task list">Back</a>
+
+    <div class="heading-large">WRN {{ data['workreferencenumber'] }}</div>
+    <div>
+        <div class="heading-medium">Key information</div>
+        <table>
+            <tbody>
+            <tr>
+                <td class="bold-small">Street name</td>
+                <td>High Road Acton</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">USRN</td>
+                <td>{{ data['usrn'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Start date</td>
+                {% if data['start-day'] != '' %}
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">End date</td>
+                {% if data['end-day'] != '' %}
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Highway Authority</td>
+                <td>{{ data['highwayauthority'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Work category</td>
+                <td>{{ data['workcategorygroup'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Traffic management type </td>
+                <td>{{ data['trafficmanagementtypegroup'] }}</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="heading-medium">Assessment decision</div>
+    <div style="background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px">
+        <p>Changes requested by HA: Harrow London Borough Council</p>
+        <p>29 Jan</p>
+        <p>{{ data['comment'] }}
+        </p>
+    </div>
+
+
+    <form action="permit-application-assessment" method="post" >
+     <div class="heading-small">TM type change from Stop/Go to Two-way signals</div>
+                <fieldset class="inline">
+                    <div class="form-group">
+                        <br/>
+                        <label class="form-label" for="accept-change1-yes">Accept</label>
+                        <div class="multiple-choice">
+                            <input id="accept-change1-yes" type="radio" name="change-1-group" value="Yes">
+                            <label for="accept-change1-yes">Yes</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="accept-change1-no" type="radio" name="change-1-group" value="No">
+                            <label for="accept-change1-no">No</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+            <div class="heading-small">New Condition NCT06a - Remove spoil by end of next working day</div>
+                <fieldset class="inline">
+                    <div class="form-group">
+                        <br/>
+                        <label class="form-label" for="accept-change2-yes">Accept</label>
+                        <div class="multiple-choice">
+                            <input id="accept-change2-yes" type="radio" name="change-2-group" value="Yes" >
+                            <label for="accept-change2-yes">Yes</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="accept-change2-no" type="radio" name="change-2-group" value="No">
+                            <label for="accept-change2-no">No</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Submit">
+        </div>
+    </form>
+
+</main>
+
+{% endblock %}

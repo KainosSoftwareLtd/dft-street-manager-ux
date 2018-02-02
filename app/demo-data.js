@@ -5,7 +5,7 @@ module.exports = [
     USRN: '08400189',
     roadCategoryGroup: '1',
     highwayAuthority: 'Highway Authority',
-    workReferenceNumber: '4',
+    workReferenceNumber: 'CT0224443466',
     startDay: '28',
     startMonth: '03',
     startYear: '2017',

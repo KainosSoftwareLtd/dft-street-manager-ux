@@ -240,8 +240,25 @@ router.post('/alpha/v4-0/sign-in.html', function (req, res) {
 })
 
 router.post('/alpha/v4-0/promoter-planner/search.html', function (req, res) {
-  sessionUtil.setSessionData(req.session.data, demoData[0])
-  res.redirect('alpha/v4-0/promoter-planner/search.html')
+  switch (req.body.wrn_search) {
+    case 'CT0224443466' :
+      sessionUtil.setSessionData(req.session.data, demoData[0])
+      res.redirect('/alpha/v4-0/task-list-page.html')
+      break
+    default:
+      res.render('alpha/v4-0/promoter-planner/dashboard', {validationError: 'Not recognised, please check and retype.'})
+  }
+})
+
+router.post('/alpha/v4-0/ha-officer/search.html', function (req, res) {
+  switch (req.body.wrn_search) {
+    case 'CT0938475839' :
+      sessionUtil.setSessionData(req.session.data, demoData[0])
+      res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
+      break
+    default:
+      res.render('alpha/v4-0/ha-officer/dashboard', {validationError: 'Not recognised, please check and retype.'})
+  }
 })
 
 router.post('/alpha/v4-0/promoter-planner/screen3-check-answers', function (req, res) {
@@ -249,11 +266,20 @@ router.post('/alpha/v4-0/promoter-planner/screen3-check-answers', function (req,
   res.render('alpha/v4-0/promoter-planner/conditions-check-answers.html')
 })
 
+router.post('/alpha/v4-0/ha-officer/screen3-check-answers', function (req, res) {
+  req.session.data['Screen3Complete'] = true
+  res.render('alpha/v4-0/ha-officer/conditions-check-answers.html')
+})
+
 router.post('/alpha/v4-0/promoter-planner/permit-application-on-site', function (req, res) {
   req.session.data['Screen5Complete'] = true
   res.render('alpha/v4-0/promoter-planner/confirm-on-site.html')
 })
 
+router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', function (req, res) {
+  req.session.data['Screen5Complete'] = true
+  res.render('alpha/v4-0/promoter-planner/grant-permit-application.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router
