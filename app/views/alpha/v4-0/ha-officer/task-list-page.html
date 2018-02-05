@@ -19,16 +19,18 @@
   </div>
 
   <div class="grid-row">
-    <div class="column-two-thirds column-minimum">
+    <div class="column-full">
 
       <h1 class="heading-large">
         Create a permit application
       </h1>
 
+      {% include "../templates/keyinfo.html" %}
+
       <ol class="task-list">
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">1. </span> <a href="permit-application-screen1.html">Plan & Create</a>
+            <span class="task-list-section-number">1. </span> <a href="permit-application-screen1.html">Plan & create</a>
           </h2>
             <li class="task-list-item">
               {% if data['Screen1Complete'] %}
@@ -41,7 +43,7 @@
         <br/>
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">2. </span><a href="permit-application-screen2.html">Location & Contact</a>
+            <span class="task-list-section-number">2. </span><a href="permit-application-screen2.html">Location & contact</a>
           </h2>
             <li class="task-list-item">
               {% if data['Screen2Complete'] %}

@@ -5,46 +5,46 @@
         <tbody>
         <tr>
             <td class="bold-small">Street name</td>
-            <td>High Road Acton</td>
-            <td></td>
+            <td style="text-align: right">High Road Acton</td>
+
         </tr>
         <tr>
             <td class="bold-small">USRN</td>
-            <td>{{ data['usrn'] }}</td>
-            <td></td>
+            <td style="text-align: right">{{ data['usrn'] }}</td>
+
         </tr>
         <tr>
             <td class="bold-small">Start date</td>
             {% if data['start-day'] != '' %}
-            <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+            <td style="text-align: right">{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
             {% else %}
             <td></td>
             {% endif %}
-            <td></td>
+
         </tr>
         <tr>
             <td class="bold-small">End date</td>
             {% if data['end-day'] != '' %}
-            <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+            <td style="text-align: right">{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
             {% else %}
             <td></td>
             {% endif %}
-            <td></td>
+
         </tr>
         <tr>
-            <td class="bold-small">Highway Authority</td>
-            <td>{{ data['highwayauthority'] }}</td>
-            <td></td>
+            <td class="bold-small">Highway authority</td>
+            <td style="text-align: right">{{ data['highwayauthority'] }}</td>
+
         </tr>
         <tr>
             <td class="bold-small">Work category</td>
-            <td>{{ data['workcategorygroup'] }}</td>
-            <td></td>
+            <td style="text-align: right">{{ data['workcategorygroup'] }}</td>
+
         </tr>
         <tr>
             <td class="bold-small">Traffic management type </td>
-            <td>{{ data['trafficmanagementtypegroup'] }}</td>
-            <td></td>
+            <td style="text-align: right">{{ data['trafficmanagementtypegroup'] }}</td>
+
         </tr>
         </tbody>
     </table>
