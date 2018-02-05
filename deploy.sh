@@ -4,7 +4,6 @@ export REPO=$1
 export NAME=$2
 export TAG=$(git rev-parse HEAD)
 
-echo ${GOOGLE_CREDENTIALS} | base64 --decode > ~/cicd.json
 gcloud auth activate-service-account continiousintegrationdelivery@lyrical-bolt-194013.iam.gserviceaccount.com --key-file=~/cicd.json
 docker tag ${REPO}/${NAME}:${TAG} ${REPO}/${NAME}:latest
 gcloud docker -- push ${REPO}/${NAME}:${TAG}
