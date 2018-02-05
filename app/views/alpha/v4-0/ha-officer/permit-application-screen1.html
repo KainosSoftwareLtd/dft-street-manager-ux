@@ -1,0 +1,231 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">1. Plan & create</h2>
+
+    <form action="screen1-check-answers" method="post" >
+        <div class="form-group">
+
+
+
+        <div class="form-group {{'form-group-error' if validationPromoterNameError}}">
+            <label class="form-label" for="promotername">Promoter name</label>
+            {% if validationError %}<p class="error-message">{{ validationPromoterNameError }}</p>{% endif %}
+            <input class="form-control" id="promotername" name="promotername" type="text" value="{{ data['promotername'] }}">
+        </div>
+        <div class="form-group {{'form-group-error' if validationUsrnError}}">
+            <label class="form-label" for="usrn">USRN</label>
+            {% if validationError %}<p class="error-message">{{ validationUsrnError }}</p>{% endif %}
+            <input class="form-control" id="usrn" name="usrn" type="text" value="{{ data['usrn'] }}">
+        </div>
+
+        <div class="form-group inline {{'form-group-error' if validationRoadCategoryError}}">
+            <br/>
+            <label class="form-label" for="road-category-0">Road category</label>
+            {% if validationError %}<p class="error-message">{{ validationRoadCategoryError }}</p>{% endif %}
+            <div class="multiple-choice">
+                <input id="road-category-0" type="radio" name="roadcategorygroup" value="0" {{ checked('roadcategorygroup','0') }}>
+                <label for="road-category-0">0</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-1" type="radio" name="roadcategorygroup" value="1" {{ checked('roadcategorygroup','1') }}>
+                <label for="road-category-1">1</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-2" type="radio" name="roadcategorygroup" value="2" {{ checked('roadcategorygroup','2') }}>
+                <label for="road-category-2">2</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-3" type="radio" name="roadcategorygroup" value="3" {{ checked('roadcategorygroup','3') }}>
+                <label for="road-category-3">3</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="road-category-4" type="radio" name="roadcategorygroup" value="4" {{ checked('roadcategorygroup','4') }}>
+                <label for="road-category-4">4</label>
+            </div>
+        </div>
+
+        <div class="form-group {{'form-group-error' if validationHighwayAuthorityError}}">
+            <label class="form-label" for="highwayauthority">Highway authority</label>
+            {% if validationError %}<p class="error-message">{{ validationHighwayAuthorityError }}</p>{% endif %}
+            <input class="form-control" id="highwayauthority" type="text" name="highwayauthority" value="{{ data['highwayauthority'] }}">
+        </div>
+        <div class="form-group {{'form-group-error' if validationWorkReferenceError}}">
+            <label class="form-label" for="workreferencenumber">Work reference number</label>
+            {% if validationError %}<p class="error-message">{{ validationWorkReferenceError }}</p>{% endif %}
+            <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" value="{{ data['workreferencenumber'] }}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="start-date-day">Proposed start date</label>
+            {% if validationError %}<p class="error-message">{{ validationStartDateError }}</p>{% endif %}
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="start-date-day">Day</label>
+                        <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="start-date-month">Month</label>
+                        <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="start-date-year">Year</label>
+                        <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-year'] }}">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="end-date-day">Proposed end date</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="end-date-day">Day</label>
+                        <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="end-date-month">Month</label>
+                        <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="end-date-year">Year</label>
+                        <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-year'] }}">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <fieldset class="inline {{'form-group-error' if validationDurationError}}">
+            <div class="form-group">
+                <label class="form-label" for="duration">Duration</label>
+                {% if validationError %}<p class="error-message">{{ validationDurationError }}</p>{% endif %}
+                <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
+            </div>
+        </fieldset>
+
+        <label class="form-label" for="road-closure">Traffic management type</label>
+        <div class="grid-row {{'form-group-error' if validationTMTypeError}}">
+            {% if validationError %}<p class="error-message">{{ validationTMTypeError }}</p>{% endif %}
+            <div class="column-one-third">
+                <div class="multiple-choice" style="width: 100%;">
+                    <input id="road-closure" type="radio" name="trafficmanagementtypegroup" value="Road closure" {{ checked('trafficmanagementtypegroup','Road closure') }}>
+                    <label for="road-closure">Road closure</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="contra-flow" type="radio" name="trafficmanagementtypegroup" value="Road closure" {{ checked('trafficmanagementtypegroup','Contra flow') }}>
+                    <label for="contra-flow">Contra flow</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="lane-closure" type="radio" name="trafficmanagementtypegroup" value="Lane closure" {{ checked('trafficmanagementtypegroup','Lane closure') }}>
+                    <label for="lane-closure">Lane closure</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="convoy-working" type="radio" name="trafficmanagementtypegroup" value="Convoy working" {{ checked('trafficmanagementtypegroup','Convoy working') }}>
+                    <label for="convoy-working">Convoy working</label>
+                </div>
+            </div>
+
+            <div class="column-one-third">
+                <div class="multiple-choice">
+                    <input id="priority-working" type="radio" name="trafficmanagementtypegroup" value="Priority working" {{ checked('trafficmanagementtypegroup','Priority working') }}>
+                    <label for="priority-working">Priority working</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="give-take" type="radio" name="trafficmanagementtypegroup" value="Give & take" {{ checked('trafficmanagementtypegroup','Give & take') }}>
+                    <label for="give-take">Give & take</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="multi-way-signals" type="radio" name="trafficmanagementtypegroup" value="Multi-way signals" {{ checked('trafficmanagementtypegroup','Multi-way signals') }}>
+                    <label for="multi-way-signals">Multi-way signals</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="two-way-signals" type="radio" name="trafficmanagementtypegroup" value="Two-way signals" {{ checked('trafficmanagementtypegroup','Two-way signals') }}>
+                    <label for="two-way-signals">Two-way signals</label>
+                </div>
+            </div>
+
+            <div class="column-one-third">
+                <div class="multiple-choice">
+                    <input id="stop-go-boards" type="radio" name="trafficmanagementtypegroup" value="Stop/go boards" {{ checked('trafficmanagementtypegroup','Stop/go boards') }}>
+                    <label for="stop-go-boards">Stop/go boards</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="some-carriageway-incursion" type="radio" name="trafficmanagementtypegroup" value="Some carriageway incursion" {{ checked('trafficmanagementtypegroup','Some carriageway incursion') }}>
+                    <label for="some-carriageway-incursion">Some carriageway incursion</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="no-carriageway-incursion" type="radio" name="trafficmanagementtypegroup" value="No carriageway incursion" {{ checked('trafficmanagementtypegroup','No carriageway incursion') }}>
+                    <label for="no-carriageway-incursion">No carriageway incursion</label>
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group {{'form-group-error' if validationWorkCategoryError}}">
+                <br/>
+                <label class="form-label" for="work-category-1">Work category</label>
+                {% if validationError %}<p class="error-message">{{ validationWorkCategoryError }}</p>{% endif %}
+                <div class="multiple-choice">
+                    <input id="work-category-1" type="radio" name="workcategorygroup" value="FPI" {{ checked('workcategorygroup','FPI') }}>
+                    <label for="work-category-1">FPI</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-2" type="radio" name="workcategorygroup" value="Minor" {{ checked('workcategorygroup','Minor') }}>
+                    <label for="work-category-2">Minor</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-3" type="radio" name="workcategorygroup" value="Standard" {{ checked('workcategorygroup','Standard') }}>
+                    <label for="work-category-3">Standard</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-4" type="radio" name="workcategorygroup" value="Major" {{ checked('workcategorygroup','Major') }}>
+                    <label for="work-category-4">Major</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="work-category-5" type="radio" name="workcategorygroup" value="Immediate - urgent" {{ checked('workcategorygroup','Immediate - urgent') }}>
+                    <label for="work-category-5">Immediate - urgent</label>
+                </div>
+                <br/>
+                <br/>
+                <div class="multiple-choice">
+                    <input id="work-category-6" type="radio" name="workcategorygroup" value="Immediate - emergency" {{ checked('workcategorygroup','Immediate - emergency') }}>
+                    <label for="work-category-6">Immediate - emergency</label>
+                </div>
+            </div>
+        </fieldset>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Save & Continue">
+        </div>
+
+    </form>
+</main>
+
+{% endblock %}

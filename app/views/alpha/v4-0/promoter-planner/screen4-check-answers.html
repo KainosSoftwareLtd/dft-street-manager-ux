@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check your answers</h1>
+
+    <table>
+        <tbody>
+            <tr><h2 class="heading-medium">Collaboration</h2></tr>
+            <tr>
+                <td>Is TM Required</td>
+                <td>{{ data['tm-group'] }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#tm-yes">
+                        Change <span class="visuallyhidden">TM required</span>
+                    </a>
+                </td>
+            </tr>
+            {% for fileName in data['file-attached-detail'] %}
+            <tr>
+                <td>Traffic Management Plan</td>
+                <td>{{ fileName }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#traffic-management-plan">
+                        Change <span class="visuallyhidden">traffic management plan</span>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Collaborative Working</td>
+                <td>{{ data['collaboration-group'] }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#collaboration-yes">
+                        Change <span class="visuallyhidden">collaborative working</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaboration Type</td>
+                <td>{{ data['collaboration-type-group'] }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#collaboration-type-1">
+                        Change <span class="visuallyhidden">collaboration type</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaboration Details</td>
+                <td>{{ data['collaboration-details'] }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#collaboration-details">
+                        Change <span class="visuallyhidden">collaboration details</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Environmental Health Notifiable</td>
+                <td>{{ data['environmental-health-group'] }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#environmental-health-yes">
+                        Change <span class="visuallyhidden">environmental health notifiable</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Project Reference Number</td>
+                <td>{{ data['project-reference'] }}</td>
+                <td class="change-answer">
+                    <a href="permit-application-screen4#project-reference">
+                        Change <span class="visuallyhidden">project reference number</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+    <div class="form-group">
+        <a href="permit-application-check-answers.html" class="button">Continue</a>
+    </div>
+</main>
+
+{% endblock %}

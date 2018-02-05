@@ -38,15 +38,17 @@ Permit Application - Street Manager
                     </a>
                 </td>
             </tr>
+            {% for fileName in data['file-attached-detail'] %}
             <tr>
                 <td>Traffic Management Plan</td>
-                <td>{{ data['traffic-management-plan'] }}</td>
+                <td>{{ fileName }}</td>
                 <td class="change-answer">
                     <a href="/alpha/v3-0/promoter-planner/permit-application-screen4#traffic-management-plan">
                         Change <span class="visuallyhidden">traffic management plan</span>
                     </a>
                 </td>
             </tr>
+            {% endfor %}
             <tr>
                 <td>Collaborative Working</td>
                 <td>{{ data['collaboration-group'] }}</td>
@@ -95,14 +97,9 @@ Permit Application - Street Manager
         </tbody>
     </table>
 
-    <h2 class="heading-medium">All sections are now complete, you are ready to submit your application</h2>
-
-    <p class="text">
-        By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
-    </p>
-
+    <br/>
     <div class="form-group">
-        <a href="/alpha/v3-0/promoter-planner/confirm-permit-application.html" class="button">Submit your permit application</a>
+        <a href="/alpha/v3-0/promoter-planner/permit-application-check-answers.html" class="button">Continue</a>
     </div>
 </main>
 

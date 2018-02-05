@@ -30,244 +30,89 @@ Permit Application - Street Manager
 
     <form action="screen3-check-answers" method="post" >
 
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct01a-permit-reason">
-                    <input id="nct01a" type="checkbox" name="nct01a" value="NCT01a" {{ checked('nct01a','NCT01a') }}>
-                    <label for="nct01a">NCT01a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct01a-permit-reason">
-                <label class="form-label" for="nct01a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct01a-reason" name="nct01a-reason" type="text" value="{{ data['nct01a-reason'] }}">
-            </div>
-        </fieldset>
+        <div class="form-group">
+            <label class="form-label" for="condition-select">Select Condition</label>
+            <select class="form-control" id="condition-select" name="condition-select">
+                <option value="nct01a">NCT01a</option>
+                <option value="nct01b">NCT01b</option>
+                <option value="nct02a">NCT02a</option>
+                <option value="nct02b">NCT02b</option>
+                <option value="nct04a">NCT04a</option>
+                <option value="nct04b">NCT04b</option>
+                <option value="nct05a">NCT05a</option>
+                <option value="nct06a">NCT06a</option>
+                <option value="nct07a">NCT07a</option>
+                <option value="nct08a">NCT08a</option>
+                <option value="nct08b">NCT08b</option>
+                <option value="nct09a">NCT09a</option>
+                <option value="nct09b">NCT09b</option>
+                <option value="nct09c">NCT09c</option>
+                <option value="nct10a">NCT10a</option>
+                <option value="nct11b">NCT11b</option>
+                <option value="nct12a">NCT12a</option>
+                <option value="nct13">NCT13</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="condition-reason">Permit condition reason</label>
+            <input class="form-control" id="condition-reason" name="condition-reason" type="text">
+        </div>
         <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct01b-permit-reason">
-                    <input id="nct01b" type="checkbox" name="nct01b" value="NCT01b" {{ checked('nct01b','NCT01b') }}>
-                    <label for="nct01a">NCT01b</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct01b-permit-reason">
-                <label class="form-label" for="nct01b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct01b-reason" name="nct01b-reason" type="text" value="{{ data['nct01b-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct02a-permit-reason">
-                    <input id="nct02a" type="checkbox" name="nct02a" value="NCT02a" {{ checked('nct02a','NCT02a') }}>
-                    <label for="nct01a">NCT02a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct02a-permit-reason">
-                <label class="form-label" for="nct02a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct02a-reason" name="nct02a-reason" type="text" value="{{ data['nct02a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct02b-permit-reason">
-                    <input id="nct02b" type="checkbox" name="nct02b" value="NCT02b" {{ checked('nct02b','NCT02b') }}>
-                    <label for="nct02b">NCT02b</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct02b-permit-reason">
-                <label class="form-label" for="nct02b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct02b-reason" name="nct02b-reason" type="text" value="{{ data['nct02b-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct04a-permit-reason">
-                    <input id="nct04a" type="checkbox" name="nct04a" value="NCT04a" {{ checked('nct04a','NCT04a') }}>
-                    <label for="nct04a">NCT04a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct04a-permit-reason">
-                <label class="form-label" for="nct04a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct04a-reason" name="nct04a-reason" type="text" value="{{ data['nct04a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct04b-permit-reason">
-                    <input id="nct04b" type="checkbox" name="nct04b" value="NCT04b" {{ checked('nct04b','NCT04b') }}>
-                    <label for="nct04b">NCT04b</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct04b-permit-reason">
-                <label class="form-label" for="nct04b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct04b-reason" name="nct04b-reason" type="text" value="{{ data['nct04b-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct05a-permit-reason">
-                    <input id="nct05a" type="checkbox" name="nct05a" value="NCT05a" {{ checked('nct05a','NCT05a') }}>
-                    <label for="nct01a">NCT05a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct05a-permit-reason">
-                <label class="form-label" for="nct05a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct05a-reason" name="nct05a-reason" type="text" value="{{ data['nct05a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct06a-permit-reason">
-                    <input id="nct06a" type="checkbox" name="nct06a" value="NCT06a" {{ checked('nct06a','NCT06a') }}>
-                    <label for="nct06a">NCT06a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct06a-permit-reason">
-                <label class="form-label" for="nct06a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct06a-reason" name="nct06a-reason" type="text" value="{{ data['nct06a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct07a-permit-reason">
-                    <input id="nct07a" type="checkbox" name="nct07a" value="NCT07a" {{ checked('nct07a','NCT07a') }}>
-                    <label for="nct07a">NCT07a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct07a-permit-reason">
-                <label class="form-label" for="nct07a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct07a-reason" name="nct07a-reason" type="text" value="{{ data['nct07a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct08a-permit-reason">
-                    <input id="nct08a" type="checkbox" name="nct08a" value="NCT08a" {{ checked('nct08a','NCT08a') }}>
-                    <label for="nct08a">NCT08a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct08a-permit-reason">
-                <label class="form-label" for="nct08a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct08a-reason" name="nct08a-reason" type="text" value="{{ data['nct08a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct08b-permit-reason">
-                    <input id="nct08b" type="checkbox" name="nct08b" value="NCT08b" {{ checked('nct08b','NCT08b') }}>
-                    <label for="nct08b">NCT08b</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct08b-permit-reason">
-                <label class="form-label" for="nct08b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct08b-reason" name="nct08b-reason" type="text" value="{{ data['nct08b-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct09a-permit-reason">
-                    <input id="nct09a" type="checkbox" name="nct09a" value="NCT09a" {{ checked('nct09a','NCT09a') }}>
-                    <label for="nct09a">NCT09a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct09a-permit-reason">
-                <label class="form-label" for="nct09a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct09a-reason" name="nct09a-reason" type="text" value="{{ data['nct09a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct09b-permit-reason">
-                    <input id="nct09b" type="checkbox" name="nct09b" value="NCT09b" {{ checked('nct09b','NCT09b') }}>
-                    <label for="nct09b">NCT09b</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct09b-permit-reason">
-                <label class="form-label" for="nct09b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct09b-reason" name="nct09b-reason" type="text" value="{{ data['nct09b-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct09c-permit-reason">
-                    <input id="nct09c" type="checkbox" name="nct09c" value="NCT09c" {{ checked('nct09c','NCT09c') }}>
-                    <label for="nct09c">NCT09c</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct09c-permit-reason">
-                <label class="form-label" for="nct09c-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct09c-reason" name="nct09c-reason" type="text" value="{{ data['nct09c-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct10a-permit-reason">
-                    <input id="nct10a" type="checkbox" name="nct10a" value="NCT10a" {{ checked('nct10a','NCT10a') }}>
-                    <label for="nct10a">NCT10a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct10a-permit-reason">
-                <label class="form-label" for="nct10a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct10a-reason" name="nct10a-reason" type="text" value="{{ data['nct10a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct11b-permit-reason">
-                    <input id="nct11b" type="checkbox" name="nct11b" value="NCT11b" {{ checked('nct11b','NCT11b') }}>
-                    <label for="nct11b">NCT11b</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct11b-permit-reason">
-                <label class="form-label" for="nct11b-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct11b-reason" name="nct11b-reason" type="text" value="{{ data['nct11b-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct12a-permit-reason">
-                    <input id="nct12a" type="checkbox" name="nct12a" value="NCT12a" {{ checked('nct12a','NCT12a') }}>
-                    <label for="nct12a">NCT12a</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct12a-permit-reason">
-                <label class="form-label" for="nct12a-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct12a-reason" name="nct12a-reason" type="text" value="{{ data['nct12a-reason'] }}">
-            </div>
-        </fieldset>
-        <br/>
-        <fieldset class="inline">
-            <div class="form-group">
-                <div class="multiple-choice" data-target="nct13-permit-reason">
-                    <input id="nct13" type="checkbox" name="nct13" value="NCT13" {{ checked('nct13','NCT13') }}>
-                    <label for="nct13">NCT13</label>
-                </div>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="nct13-permit-reason">
-                <label class="form-label" for="nct13-reason">Permit Condition Reason</label>
-                <input class="form-control" id="nct13-reason" name="nct13-reason" type="text" value="{{ data['nct13-reason'] }}">
-            </div>
-        </fieldset>
+
+        <div class="form-group">
+            <input type="button" id="add-condition" class="button" value="Add">
+        </div>
+
+
+        <div id="conditions-table">
+            <h3 class="heading-small">Permit conditions</h3>
+            <table>
+                <thead>
+                <th>Name</th>
+                <th>Reason</th>
+                <th></th>
+                </thead>
+                <tbody>
+                {% for condition in data['conditions-name'] %}
+                <tr id="{{ condition }}">
+                    <td><input class="form-control" name="conditions-name[]" type="hidden" value="{{ condition }}">{{ condition }}</td>
+                    <td><input class="form-control" name="conditions-reason[]" type="hidden" value="{{ data['conditions-reason'][loop.index -1 ] }}">{{ data['conditions-reason'][loop.index -1 ] }}</td>
+                    <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ condition }})">Remove</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
         <br/>
         <div class="form-group">
             <input type="submit" class="button" value="Save & Continue">
         </div>
     </form>
 </main>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+
+    $("#add-condition").click(function () {
+      var conditionName = $("#condition-select option:selected").text();
+      var conditionReason = $("#condition-reason").val();
+      var conditionVal = $("#condition-select option:selected").val();
+
+      var conditionNameTD = "<td><input class='form-control' name='conditions-name[]' type='hidden' value='" + conditionName + "'>" + conditionName + "</td>"
+      var conditionReasonTD = "<td><input class='form-control' name='conditions-reason[]' type='hidden' value='" + conditionReason + "'>" + conditionReason + "</td>"
+      var markup = "<tr id='"+ conditionVal + "'>" + conditionNameTD + conditionReasonTD + "<td><span class=\"remove-condition\"><a href=\"#\" onclick='removeCondition(" + conditionVal + ")'>Remove</a></span></td></tr>";
+      $("table tbody").append(markup);
+
+      $("#condition-reason").val("");
+    })
+  });
+
+  function removeCondition(conditionId) {
+    $(conditionId).remove();
+  };
+</script>
+
 
 {% endblock %}

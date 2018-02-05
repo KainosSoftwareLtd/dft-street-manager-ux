@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    {% if validationError %}
+    <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+            {{validationError}}
+        </h2>
+    </div>
+    {% endif %}
+
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        Assessment decision
+    </h1>
+
+    <div>
+        <div class="heading-medium">Key information</div>
+        <table>
+            <tbody>
+            <tr>
+                <td class="bold-small">Street name</td>
+                <td>High Road Acton</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">USRN</td>
+                <td>{{ data['usrn'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Start date</td>
+                {% if data['start-day'] != '' %}
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">End date</td>
+                {% if data['end-day'] != '' %}
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Highway Authority</td>
+                <td>{{ data['highwayauthority'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Work category</td>
+                <td>{{ data['workcategorygroup'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Traffic management type </td>
+                <td>{{ data['trafficmanagementtypegroup'] }}</td>
+                <td><a href="permit-application-screen1.html">Change</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="heading-medium">Assessment criteria</div>
+    <div>
+        <table>
+            <tbody>
+            <tr>
+                <td class="bold-small">Road category</td>
+                <td>{{ data['roadcategorygroup'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Duration</td>
+                <td>{{ data['duration'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Works location description</td>
+                <td>{{ data['works-location-description'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Works Location</td>
+                <td>{{ data['works-location-group'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Description of work 1</td>
+                <td>{{ data['description-of-work-group'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Description of work 2</td>
+                <td>{{ data['description-of-work-2'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Excavation</td>
+                <td>{{ data['excavation-group'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Is traffic management plan required?</td>
+                <td>{{ data['tm-group'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Condition chosen</td>
+                <td>
+                    {% if data['conditions-name'] %}
+                        {{ data['conditions-name'] | join(", ") }}
+                    {% endif %}
+                </td>
+                <td><a href="permit-application-screen3.html">Change</a></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Traffic management plan</td>
+                <td>
+                    {{ data['file-attached-name']}}
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Collaboration type</td>
+                <td>{{ data['collaboration-type-group'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Collaboration details</td>
+                <td>{{ data['collaboration-details'] }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bold-small">Environmental health notifiable</td>
+                <td>{{ data['environmental-health-group'] }}</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="heading-medium">Assessment decision</div>
+
+    {% if data['TmDecisionChanged'] %}
+    <div style="border: 2px solid #0b0c0c; padding: 10px 0 10px 10px; margin-bottom: 20px">
+        <div>Changes required</div>
+        <ul class="list list-bullet">
+            <li>Traffic management type Stop/go boards to Two-way signals </li>
+            {% if data['PermitConditionsChanged'] %}
+                <li>NCT06A has been added</li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form action="assessment-decision" method="POST">
+        <div class="form-group {{'form-group-error' if validationError}}">
+            <fieldset>
+                <legend>
+
+                    {% if validationError %}
+                    <span class="error-message">Select the type of assessment decision</span>
+                    {% endif %}
+                </legend>
+                    <div class="multiple-choice">
+                        <input id="radio-1" type="radio" name="options" value="Grant">
+                        <label for="radio-1">Grant</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="radio-2" type="radio" name="options" value="Grant with changes">
+                        <label for="radio-2">Grant with changes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="radio-3" type="radio" name="options" value="Refuse">
+                        <label for="radio-3">Refuse</label>
+                    </div>
+            </fieldset>
+            <div style="padding-top: 20px">
+                <label>Comment</label>
+                <textarea id="comment" value="{{ data['comment'] }}" class="form-control form-control-3-4" name="comment" id="comment" rows="5"></textarea>
+            </div>
+        </div>
+        <button class="button" type="submit">Submit decision</button>
+    </form>
+
+</main>
+
+{% endblock %}
+
+
