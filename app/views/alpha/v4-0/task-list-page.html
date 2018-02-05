@@ -23,7 +23,12 @@
     <div class="column-full">
 
       <h1 class="heading-large">
-        Create a permit application
+        {% if data['workreferencenumber'] %}
+        <span class="heading-secondary">
+                    WRN {{ data['workreferencenumber'] }}
+                </span>
+        {% endif %}
+        Permit application
       </h1>
 
       {% include "./templates/keyinfo.html" %}
