@@ -6,7 +6,7 @@ env:
   global:
     DOCKER_REPO_HOSTNAME="eu.gcr.io"
     DOCKER_REPO_NAME="lyrical-bolt-194013/dft-streetworks-ux"
-script: echo ${GOOGLE_CREDENTIALS} | base64 --decode > ~/cicd.json && docker build -t ${DOCKER_REPO_HOSTNAME}/${DOCKER_REPO_NAME}:$(git rev-parse HEAD) .
+script: echo ${GOOGLE_CREDENTIALS} | base64 --decode > ~/cicd.json && ls -l ~/ && cat ~/cicd.json && docker build -t ${DOCKER_REPO_HOSTNAME}/${DOCKER_REPO_NAME}:$(git rev-parse HEAD) .
 deploy:
   provider: script
   script: "./deploy.sh ${DOCKER_REPO_HOSTNAME} ${DOCKER_REPO_NAME}"
