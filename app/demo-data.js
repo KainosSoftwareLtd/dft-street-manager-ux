@@ -41,7 +41,20 @@ module.exports = [
     collaborationDetails: '',
     environmentalHealthGroup: 'No',
     projectReference: 'ABC12345',
-    screen4Complete: true
+    screen4Complete: true,
+    // On Site
+    actualStartDateDay: '21',
+    actualStartDateMonth: '02',
+    actualStartDateYear: '2018',
+    actualStartDateHour: '08',
+    actualStartDateMinute: '00',
+    actualEndDateDay: '23',
+    actualEndDateMonth: '02',
+    actualEndDateYear: '2018',
+    actualEndDateHour: '15',
+    actualEndDateMinute: '00',
+    excavationRequiredGroup: 'Yes',
+    screen6Complete: true
   },
 
   {
@@ -86,7 +99,20 @@ module.exports = [
     collaborationDetails: '',
     environmentalHealthGroup: '',
     projectReference: '',
-    screen4Complete: false
+    screen4Complete: false,
+    // On Site
+    actualStartDateDay: '',
+    actualStartDateMonth: '',
+    actualStartDateYear: '',
+    actualStartDateHour: '',
+    actualStartDateMinute: '',
+    actualEndDateDay: '',
+    actualEndDateMonth: '',
+    actualEndDateYear: '',
+    actualEndDateHour: '',
+    actualEndDateMinute: '',
+    excavationRequiredGroup: 'Yes',
+    screen6Complete: true
   },
 
   {
@@ -131,6 +157,19 @@ module.exports = [
     collaborationDetails: '',
     environmentalHealthGroup: '',
     projectReference: '',
-    screen4Complete: false
+    screen4Complete: false,
+    // On Site
+    actualStartDateDay: '',
+    actualStartDateMonth: '',
+    actualStartDateYear: '',
+    actualStartDateHour: '',
+    actualStartDateMinute: '',
+    actualEndDateDay: '',
+    actualEndDateMonth: '',
+    actualEndDateYear: '',
+    actualEndDateHour: '',
+    actualEndDateMinute: '',
+    excavationRequiredGroup: 'Yes',
+    screen6Complete: true
   }
 ]
