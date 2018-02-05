@@ -31,57 +31,7 @@ Permit Application - Street Manager
         On site
     </h1>
 
-    <div>
-        <div class="heading-medium">Key information</div>
-        <table>
-            <tbody>
-            <tr>
-                <td class="bold-small">Street name</td>
-                <td>High Road Acton</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="bold-small">USRN</td>
-                <td>{{ data['usrn'] }}</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="bold-small">Start date</td>
-                {% if data['start-day'] != '' %}
-                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
-                {% else %}
-                <td></td>
-                {% endif %}
-                <td></td>
-            </tr>
-            <tr>
-                <td class="bold-small">End date</td>
-                {% if data['end-day'] != '' %}
-                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
-                {% else %}
-                <td></td>
-                {% endif %}
-                <td></td>
-            </tr>
-            <tr>
-                <td class="bold-small">Highway Authority</td>
-                <td>{{ data['highwayauthority'] }}</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="bold-small">Work category</td>
-                <td>{{ data['workcategorygroup'] }}</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="bold-small">Traffic management type </td>
-                <td>{{ data['trafficmanagementtypegroup'] }}</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        <br/>
-    </div>
+    {% include "../templates/keyinfo.html" %}
 
     <form action="permit-application-on-site" method="post" >
         <br/>

@@ -280,6 +280,27 @@ router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', functi
   req.session.data['Screen5Complete'] = true
   res.render('alpha/v4-0/promoter-planner/grant-permit-application.html')
 })
+
+router.get('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {
+  res.render('alpha/v4-0/ha-officer/assessment-decision')
+})
+
+router.post('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {
+  switch (req.body.options) {
+    // case 'Grant' :
+    //   res.redirect('/alpha/v4-0/ha-officer/grant-confirmation')
+    //   break
+    case 'Grant with changes' :
+      res.redirect('/alpha/v4-0/ha-officer/grant-confirmation')
+      break
+    // case 'Revoke':
+    //   res.redirect('/alpha/v4-0/ha-officer/revoke')
+    //   break
+    default:
+      res.render('alpha/v4-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
+  }
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

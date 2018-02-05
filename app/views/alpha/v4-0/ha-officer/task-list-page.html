@@ -7,6 +7,17 @@
 {% block content %}
 
 <main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <div class="breadcrumbs">
+    <div>
+      <!-- the rest of this label is hidden, only used for screenreaders -->
+      <span class="visuallyhidden"> to the previous page</span>
+      <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+      <span style="float:right; margin-right:10px;">ha@sm.com</span>
+    </div>
+  </div>
+
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
 
@@ -17,7 +28,7 @@
       <ol class="task-list">
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">1. </span> <a href="permit-application-screen1.html">Plan & create</a>
+            <span class="task-list-section-number">1. </span> <a href="permit-application-screen1.html">Plan & Create</a>
           </h2>
             <li class="task-list-item">
               {% if data['Screen1Complete'] %}
@@ -30,7 +41,7 @@
         <br/>
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">2. </span><a href="permit-application-screen2.html">Location & contact</a>
+            <span class="task-list-section-number">2. </span><a href="permit-application-screen2.html">Location & Contact</a>
           </h2>
             <li class="task-list-item">
               {% if data['Screen2Complete'] %}
@@ -67,10 +78,9 @@
         </li>
         </li>
         <br/>
-        {% if data['Screen4Complete'] %}
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">5. </span><a href="permit-application-assessment.html">Assess</a>
+            <span class="task-list-section-number">5. </span><a href="assessment-decision.html">Assess</a>
           </h2>
             <li class="task-list-item">
               {% if data['Screen5Complete'] %}
@@ -80,7 +90,6 @@
               {% endif %}
             </li>
         </li>
-        {% endif %}
       </ol>
 
     </div>
