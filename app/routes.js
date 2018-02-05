@@ -256,6 +256,10 @@ router.post('/alpha/v4-0/ha-officer/search.html', function (req, res) {
       sessionUtil.setSessionData(req.session.data, demoData[1])
       res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
       break
+    case 'CT1293823562' :
+      sessionUtil.setSessionData(req.session.data, demoData[2])
+      res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
+      break
     default:
       res.render('alpha/v4-0/ha-officer/dashboard', {validationError: 'Not recognised, please check and retype.'})
   }

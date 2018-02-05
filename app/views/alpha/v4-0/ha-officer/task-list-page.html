@@ -97,6 +97,19 @@
               {% endif %}
             </li>
         </li>
+        <br/>
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">6. </span><a href="inspections.html">Inspections</a>
+          </h2>
+        <li class="task-list-item">
+          {% if data['Screen5Complete'] %}
+          <strong class="task-completed" id="inspections-completed">Complete</strong>
+          {% else %}
+          <strong class="task-completed" id="inspections-incompleted">Incomplete</strong>
+          {% endif %}
+        </li>
+        </li>
       </ol>
 
     </div>

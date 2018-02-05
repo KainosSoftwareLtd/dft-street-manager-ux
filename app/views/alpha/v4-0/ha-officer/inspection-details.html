@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Task list
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <a href="inspections.html" class="link-back" title="Back to previous question">Back</a>
+
+    <div class="grid-row">
+        <div class="column-full">
+
+            <h1 class="heading-large">
+                {% if data['workreferencenumber'] %}
+                <span class="heading-secondary">
+                    WRN {{ data['workreferencenumber'] }}
+                </span>
+                {% endif %}
+                Inspection details
+            </h1>
+
+            {% include "../templates/keyinfo.html" %}
+
+
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}
