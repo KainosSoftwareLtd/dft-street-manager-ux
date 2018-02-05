@@ -41,4 +41,17 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['environmental-health-group'] = data.environmentalHealthGroup
   sessionData['project-reference'] = data.projectReference
   sessionData['Screen4Complete'] = data.screen4Complete
+  // On Site
+  sessionData['actual-start-date-day'] = data.actualStartDateDay
+  sessionData['actual-start-date-month'] = data.actualStartDateMonth
+  sessionData['actual-start-date-year'] = data.actualStartDateYear
+  sessionData['actual-start-date-hour'] = data.actualStartDateHour
+  sessionData['actual-start-date-minute'] = data.actualStartDateMinute
+  sessionData['actual-end-date-day'] = data.actualEndDateDay
+  sessionData['actual-end-date-month'] = data.actualEndDateMonth
+  sessionData['actual-end-date-year'] = data.actualEndDateYear
+  sessionData['actual-end-date-hour'] = data.actualEndDateHour
+  sessionData['actual-end-date-minute'] = data.actualEndDateMinute
+  sessionData['excavation-required-group'] = data.excavationRequiredGroup
+  sessionData['Screen6Complete'] = data.screen6Complete
 }
