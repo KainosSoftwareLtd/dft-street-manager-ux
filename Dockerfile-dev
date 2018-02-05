@@ -1,6 +1,11 @@
 # Base
 FROM alpine:3.7
-RUN apk add --no-cache nodejs nodejs-npm tini
+RUN apk upgrade --no-cache && \
+    apk add --no-cache \
+      nodejs \
+      nodejs-npm \
+      tini \
+    ;
 VOLUME ["/root/app"]
 WORKDIR /root/app
 ENTRYPOINT ["/sbin/tini", "--"]
