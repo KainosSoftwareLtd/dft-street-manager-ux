@@ -110,6 +110,21 @@
         </li>
         </li>
         {% endif %}
+        <br/>
+        {% if data['ReinstatementRequired'] %}
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">7. </span><a href="../v4-0/promoter-planner/reinstatement.html">Reinstatement</a>
+          </h2>
+        <li class="task-list-item">
+          {% if data['Screen7Complete'] %}
+          <strong class="task-completed" id="reinstatement-completed">Complete</strong>
+          {% else %}
+          <strong class="task-completed" id="reinstatement-incompleted">Incomplete</strong>
+          {% endif %}
+        </li>
+        </li>
+        {% endif %}
       </ol>
 
     </div>
