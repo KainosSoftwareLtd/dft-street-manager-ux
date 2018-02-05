@@ -3,7 +3,6 @@ const router = express.Router()
 const sessionUtil = require('./session-util')
 const demoData = require('./demo-data')
 
-var request = require('request');
 var data = {'data': {
   'workreferencenumber': 'CT0224443466',
   'promotername': 'JOHN CARRINGTON',
@@ -25,13 +24,7 @@ var data = {'data': {
 
 // Route index page
 router.get('/', function (req, res) {
-  request('http://dft-street-manager-api-service/api/v1/companies', function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
-    res.render('index', { 'item': JSON.stringify(body) })
-    //res.render('index', { 'item': body })
-  });
+  res.render('index')
 })
 
 // V1 Routes
