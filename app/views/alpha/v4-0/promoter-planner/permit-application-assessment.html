@@ -22,7 +22,12 @@ Permit Application Confirmation - Street Manager
 
     <a href="../task-list-page.html" class="link-back" title="Back to task list">Back</a>
 
-    <div class="heading-large">WRN {{ data['workreferencenumber'] }}</div>
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        On site
+    </h1>
 
     {% include "../templates/keyinfo.html" %}
 
