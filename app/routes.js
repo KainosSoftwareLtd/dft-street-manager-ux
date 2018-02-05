@@ -253,7 +253,7 @@ router.post('/alpha/v4-0/promoter-planner/search.html', function (req, res) {
 router.post('/alpha/v4-0/ha-officer/search.html', function (req, res) {
   switch (req.body.wrn_search) {
     case 'CT0938475839' :
-      sessionUtil.setSessionData(req.session.data, demoData[0])
+      sessionUtil.setSessionData(req.session.data, demoData[1])
       res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
       break
     default:
