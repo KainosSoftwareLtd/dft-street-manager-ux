@@ -52,15 +52,15 @@ Reinstatement - Street Manager
         <tbody>
         {% for reinstatement in data['reinstatements'] %}
         <tr>
-            <td>{{ reinstatement }}</td>
-            <td>{{ data['reinstatements-status'][loop.index -1 ] }}</td>
-            <td>{{ reinstatements-date }}</td>
-            <td>{{ reinstatements-depth }}</td>
-            <td>{{ reinstatements-length }}</td>
-            <td>{{ reinstatements-width }}</td>
-            <td>{{ reinstatements-coordinates }}</td>
-            <td>{{ reinstatements-location }}</td>
-            <td>{{ reinstatements-warrantydate }}</td>
+            <td>{{ reinstatement['status'] }}</td>
+            <td>{{ reinstatement['date'] }}</td>
+            <td>{{ reinstatement['depth'] }}</td>
+            <td>{{ reinstatement['length'] }}</td>
+            <td>{{ reinstatement['width'] }}</td>
+            <td>{{ reinstatement['coordinates'] }}</td>
+            <td>{{ reinstatement['location'] }}</td>
+            <td>{{ reinstatement['description'] }}</td>
+            <td>{{ reinstatement['warrantydate'] }}</td>
             <td class="change-answer">
                 <a href="reinstatement">
                     Change <span class="visuallyhidden">{{ reinstatement }}</span>

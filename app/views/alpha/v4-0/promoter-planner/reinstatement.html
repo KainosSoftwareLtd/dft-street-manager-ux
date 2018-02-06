@@ -234,15 +234,15 @@ Reinstatement - Street Manager
 
       var conditionVal = $("input[name=depth-group]:checked").val();
 
-      var reinstatementStatusTD = "<td><input class='form-control' name='reinstatements-status[]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
-      var reinstatementDateTD = "<td><input class='form-control' name='reinstatements-date[]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
-      var depthTD = "<td><input class='form-control' name='reinstatements-depth[]' type='hidden' value='" + depth + "'>" + depth + "</td>"
-      var lengthTD = "<td><input class='form-control' name='reinstatements-length[]' type='hidden' value='" + length + "'>" + length + "</td>"
-      var widthTD = "<td><input class='form-control' name='reinstatements-width[]' type='hidden' value='" + width + "'>" + width + "</td>"
-      var locationCoordsTD = "<td><input class='form-control' name='reinstatements-coordinates[]' type='hidden' value='" + locationX + "," + locationY + "'>" + locationX + "," + locationY + "</td>"
-      var locationOfWorksTD = "<td><input class='form-control' name='reinstatements-location[]' type='hidden' value='" + location + "'>" + location + "</td>"
-      var locationDescriptionTD = "<td><input class='form-control' name='reinstatements-description[]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
-      var warrantyDateTD = "<td><input class='form-control' name='reinstatements-warrantydate[]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
+      var reinstatementStatusTD = "<td><input class='form-control' name='reinstatements[][status]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
+      var reinstatementDateTD = "<td><input class='form-control' name='reinstatements[][date]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
+      var depthTD = "<td><input class='form-control' name='reinstatements[][depth]' type='hidden' value='" + depth + "'>" + depth + "</td>"
+      var lengthTD = "<td><input class='form-control' name='reinstatements[][length]' type='hidden' value='" + length + "'>" + length + "</td>"
+      var widthTD = "<td><input class='form-control' name='reinstatements[][width]' type='hidden' value='" + width + "'>" + width + "</td>"
+      var locationCoordsTD = "<td><input class='form-control' name='reinstatements[][coordinates]' type='hidden' value='" + locationX + "," + locationY + "'>" + locationX + "," + locationY + "</td>"
+      var locationOfWorksTD = "<td><input class='form-control' name='reinstatements[][location]' type='hidden' value='" + location + "'>" + location + "</td>"
+      var locationDescriptionTD = "<td><input class='form-control' name='reinstatements[][description]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
+      var warrantyDateTD = "<td><input class='form-control' name='reinstatements[][warrantydate]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
 
       var markup = "<tr id='"+ conditionVal + "'>" + reinstatementStatusTD + reinstatementDateTD + depthTD + lengthTD + widthTD + locationCoordsTD + locationOfWorksTD + locationDescriptionTD + warrantyDateTD +"<td><span class=\"remove-reinstatement\"><a href=\"#\" onclick='removeReinstatement(" + conditionVal + ")'>Remove</a></span></td></tr>";
       $("#reinstatements tbody").append(markup);
