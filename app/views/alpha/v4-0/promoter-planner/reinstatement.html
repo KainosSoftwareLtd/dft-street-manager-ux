@@ -189,7 +189,7 @@ Permit Application - Street Manager
                 <tbody>
                 {% for reinstatement in data['reinstatements'] %}
                 <tr id="{{ reinstatement }}">
-                    <td><input class="form-control" name="reinstatements-status[]" type="hidden" value="{{ data['reinstatements-status'][loop.index -1 ] }}">{{ data['reinstatements-status'][loop.index -1 ] }}</td>
+                    <td><input class="form-control" name="reinstatements-status[]" type="hidden" value="{{ data['reinstatement'][loop.index -1 ] }}">{{ data['reinstatementth'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatements-date[]" type="hidden" value="{{ reinstatements-date }}">{{ reinstatements-date }}</td>
                     <td><input class="form-control" name="reinstatements-depth[]" type="hidden" value="{{ data['reinstatements-depth'] }}">{{ data['reinstatements-depth'] }}</td>
                     <td><input class="form-control" name="reinstatements-length[]" type="hidden" value="{{ data['reinstatements-length'] }}">{{ data['reinstatements-length'] }}</td>
@@ -205,7 +205,7 @@ Permit Application - Street Manager
         </div>
 
         <br/>
-        <div class="form-group" data-target="inspection-units">
+        <div class="form-group">
             <input type="submit" class="button" value="All sites added">
         </div>
     </form>
@@ -231,7 +231,7 @@ Permit Application - Street Manager
       var warrantyMonth = $("#warranty-end-date-month").val();
       var warrantyYear = $("#warranty-end-date-year").val();
 
-      var conditionVal = $("#location-x").val();
+      var conditionVal = $("input[name=depth-group]:checked").val();
 
       var reinstatementStatusTD = "<td><input class='form-control' name='reinstatements-status[]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
       var reinstatementDateTD = "<td><input class='form-control' name='reinstatements-date[]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
