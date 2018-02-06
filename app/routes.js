@@ -198,6 +198,42 @@ router.post('/map/v2-0/save-geometry.html', function (req, res) {
 
   res.render('map/v2-0/map-search-results-boundary.html')
 })
+
+router.post('/map/v3-0/save-geometry.html', function (req, res) {
+  console.log(req.body.shapecoords)
+  const coords = req.body.shapecoords
+  console.log('Coords:' + coords)
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if (err) {
+    done()
+    console.log(err)
+    return res.status(500).json({success: false, data: err})
+  }
+
+  var pid = 0
+  client.query('select max(p_id) from drawn_polygon', (err, res) => {
+    if (err) {
+    console.log(err.stack)
+  } else {
+    console.log(res.rows[0].max)
+    pid = res.rows[0].max + 1
+    console.log(pid)
+
+    const query = {
+      text: 'INSERT INTO drawn_polygon(p_id, works_owner, the_geom) VALUES($1, \'M\', ST_GeomFromText($2, 3857));',
+      values: [pid, coords]
+    }
+
+    console.log(query)
+    client.query(query)
+  }
+})
+
+})
+
+res.render('map/v3-0/map-search-results-boundary.html')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router

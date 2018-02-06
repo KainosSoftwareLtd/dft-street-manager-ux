@@ -27,6 +27,21 @@ Forward Planning - Street Manager
     <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
     <input class="button" type="submit" value="Search">
 
+    <br/>
+    <fieldset class="inline">
+        <div class="form-group">
+            <label class="form-label" for="works-owner-m">Works Owner</label>
+            <div class="multiple-choice">
+                <input id="works-owner-m" type="radio" name="works-owner-group" value="M" checked>
+                <label for="works-owner-m">M</label>
+            </div>
+            <div class="multiple-choice">
+                <input id="works-owner-y" type="radio" name="works-owner-group" value="Y">
+                <label for="works-owner-y">Y</label>
+            </div>
+        </div>
+    </fieldset>
+
     <div id="drawnArea" style="padding-top: 20px;">
     </div>
     <div id="wktString"></div>
@@ -172,26 +187,17 @@ Forward Planning - Street Manager
       style: draw_layer_styles.style[draw_layer_styles.NONE],
       zIndex: MAP_CONFIG.draw_layer_zindex
     })
-    /*MAP_CONFIG.vector_source = new ol.source.Vector({
-      format: new ol.format.GeoJSON(),
-      url: function(extent) {
-        return 'https://ahocevar.com/geoserver/wfs?service=WFS&' +
-          'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
-          'outputFormat=application/json&srsname=EPSG:3857&' +
-          'bbox=' + extent.join(',') + ',EPSG:3857';
-      },
-      strategy: ol.loadingstrategy.bbox
-    })*/
-    MAP_CONFIG.vector_source = new ol.source.Vector({
-        format: new ol.format.GML3(),
-          url: function(extent) {
-          return "http://127.0.0.1/cgi-bin/mapserv.exe?map=C:/ms4w/apps/map/counties-postgis-wfs.map&" +
-            "SERVICE=WFS&VERSION=2.0.0&" +
-            "REQUEST=GetFeature&TYPENAME=drawn_features&srsname=urn:ogc:def:crs:EPSG::3857" +
-            "&bbox=" + extent.join(",") + ",EPSG:3857";
+    MAP_CONFIG.vector_source = new ol.source.Vector(/*{
+        format: new ol.format.GeoJSON(),
+        url: function(extent) {
+            return 'http://127.0.0.1/cgi-bin/mapserv.exe?map=C:/ms4w/apps/map/counties-postgis-wfs.map&' +
+                    'SERVICE=WFS&VERSION=2.0.0&' +
+                    'REQUEST=GetFeature&TYPENAME=drawn_features&' +
+                    'outputFormat=geojson&srsname=EPSG:3857&' +
+                    'filter=<ogc:Filter><ogc:PropertyIsEqualTo><ogc:PropertyName>works_owner</ogc:PropertyName><ogc:Literal>Y</ogc:Literal></ogc:PropertyIsEqualTo></ogc:Filter>';
         },
         strategy: ol.loadingstrategy.bbox
-    })
+    }*/)
     MAP_CONFIG.base_layer = new ol.layer.Tile({
       source: new ol.source.OSM({
         crossOrigin: null
@@ -232,6 +238,30 @@ Forward Planning - Street Manager
     })
   });
 
+  function updateFeatures(worksOwner) {
+      var featureRequest = new ol.format.WFS().writeGetFeature({
+          srsName: 'EPSG:3857',
+          featureNS: 'http://mapserver.gis.umn.edu/mapserver',
+          featurePrefix: 'ms',
+          featureTypes: ['drawn_features'],
+          outputFormat: 'geojson',
+          filter: ol.format.filter.equalTo('works_owner', worksOwner)
+      })
+      // then post the request and add the received features to a layer
+      fetch('http://127.0.0.1/cgi-bin/mapserv.exe?map=C:/ms4w/apps/map/counties-postgis-wfs.map&SERVICE=WFS', {
+          method: 'POST',
+          body: new XMLSerializer().serializeToString(featureRequest)
+      }).then(function (response) {
+          return response.json();
+      }).then(function (json) {
+          var features = new ol.format.GeoJSON().readFeatures(json);
+          MAP_CONFIG.vector_source.clear()
+          MAP_CONFIG.vector_source.addFeatures(features);
+      });
+  }
+
+  updateFeatures('M');
+
   $("#result").click(function () {
      var view = map.getView();
      view.animate({zoom: 18, center: [-27683.567448866303, 6711417.071088102]})
@@ -253,6 +283,15 @@ Forward Planning - Street Manager
       overlay.getElement().innerHTML = string;
       overlay.setPosition(coords);
     }
+  });
+
+  $('input[type=radio][name=works-owner-group]').change(function() {
+      if ($('#works-owner-m').prop('checked')) {
+          updateFeatures('M');
+      }
+      else if ($('#works-owner-y').prop('checked')) {
+          updateFeatures('Y')
+      }
   });
 
   var dateOptions =  {year: 'numeric', month: 'numeric', day: 'numeric'};
