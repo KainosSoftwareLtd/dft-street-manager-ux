@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        Reinstatements
+    </h1>
+
+    {% include "../templates/keyinfo.html" %}
+
+    <br/>
+    <table>
+        <thead>
+            <th>Status</th>
+            <th>Completion date</th>
+            <th>Depth</th>
+            <th>Length</th>
+            <th>Width</th>
+            <th>Location coords</th>
+            <th>Location</th>
+            <th>Location description</th>
+            <th>Warranty period end date</th>
+            <th></th>
+        </thead>
+        <tbody>
+        {% for condition in data['conditions-name'] %}
+        <tr>
+            <td>{{ condition }}</td>
+            <td>{{ data['conditions-reason'][loop.index -1 ] }}</td>
+            <td class="change-answer">
+                <a href="permit-application-screen3">
+                    Change <span class="visuallyhidden">{{ condition }}</span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br/>
+
+    <div class="form-group">
+        <label class="form-label" for="inspection-units">Actual inspection units</label>
+        <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
+    </div>
+
+    <div class="form-group">
+        <a href="confirm-reinstatement" class="button">Register Reinstatement</a>
+    </div>
+</main>
+
+{% endblock %}

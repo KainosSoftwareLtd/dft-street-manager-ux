@@ -187,11 +187,11 @@ Permit Application - Street Manager
                 <th></th>
                 </thead>
                 <tbody>
-                {% for reinstatement in data['reinstatements-name'] %}
+                {% for reinstatement in data['reinstatements'] %}
                 <tr id="{{ reinstatement }}">
                     <td><input class="form-control" name="reinstatements-status[]" type="hidden" value="{{ data['reinstatements-status'][loop.index -1 ] }}">{{ data['reinstatements-status'][loop.index -1 ] }}</td>
-                    <td><input class="form-control" name="reinstatements-name[]" type="hidden" value="{{ reinstatement }}">{{ reinstatement }}</td>
-                    <td><input class="form-control" name="reinstatements-reason[]" type="hidden" value="{{ data['reinstatements-reason'] }}">{{ data['reinstatements-reason'] }}</td>
+                    <td><input class="form-control" name="reinstatements-date[]" type="hidden" value="{{ reinstatements-date }}">{{ reinstatements-date }}</td>
+                    <td><input class="form-control" name="reinstatements-depth[]" type="hidden" value="{{ data['reinstatements-depth'] }}">{{ data['reinstatements-depth'] }}</td>
                     <td><input class="form-control" name="reinstatements-length[]" type="hidden" value="{{ data['reinstatements-length'] }}">{{ data['reinstatements-length'] }}</td>
                     <td><input class="form-control" name="reinstatements-width[]" type="hidden" value="{{ data['reinstatements-width'][loop.index -1 ] }}">{{ data['reinstatements-width'] }}</td>
                     <td><input class="form-control" name="reinstatements-coordinates[]" type="hidden" value="{{ data['reinstatements-coordinates'] }}">{{ data['reinstatements-coordinates'] }}</td>
@@ -207,11 +207,6 @@ Permit Application - Street Manager
         <br/>
         <div class="form-group" data-target="inspection-units">
             <input type="submit" class="button" value="All sites added">
-        </div>
-
-        <div class="form-group js-hidden">
-        <label class="form-label" for="inspection-units">Actual inspection units</label>
-        <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
         </div>
     </form>
 </main>
