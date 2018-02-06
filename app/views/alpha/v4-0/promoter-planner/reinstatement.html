@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Permit Application - Street Manager
+Reinstatement - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -171,6 +171,7 @@ Permit Application - Street Manager
             <input type="button" id="add-reinstatement" class="button" value="Add">
         </div>
 
+        <br/>
         <div id="reinstatements-table">
             <h3 class="heading-small">Reinstatement sites</h3>
             <table id="reinstatements">
@@ -189,7 +190,7 @@ Permit Application - Street Manager
                 <tbody>
                 {% for reinstatement in data['reinstatements'] %}
                 <tr id="{{ reinstatement }}">
-                    <td><input class="form-control" name="reinstatements-status[]" type="hidden" value="{{ data['reinstatement'][loop.index -1 ] }}">{{ data['reinstatementth'][loop.index -1 ] }}</td>
+                    <td><input class="form-control" name="reinstatements-status[]" type="hidden" value="{{ data['reinstatement'][loop.index -1 ] }}">{{ data['reinstatement'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatements-date[]" type="hidden" value="{{ reinstatements-date }}">{{ reinstatements-date }}</td>
                     <td><input class="form-control" name="reinstatements-depth[]" type="hidden" value="{{ data['reinstatements-depth'] }}">{{ data['reinstatements-depth'] }}</td>
                     <td><input class="form-control" name="reinstatements-length[]" type="hidden" value="{{ data['reinstatements-length'] }}">{{ data['reinstatements-length'] }}</td>

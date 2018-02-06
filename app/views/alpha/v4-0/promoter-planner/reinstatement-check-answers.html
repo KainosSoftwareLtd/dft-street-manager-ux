@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Permit Application - Street Manager
+Reinstatement - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -34,6 +34,8 @@ Permit Application - Street Manager
     {% include "../templates/keyinfo.html" %}
 
     <br/>
+    <br/>
+
     <table>
         <thead>
             <th>Status</th>
@@ -48,13 +50,20 @@ Permit Application - Street Manager
             <th></th>
         </thead>
         <tbody>
-        {% for condition in data['conditions-name'] %}
+        {% for reinstatement in data['reinstatements'] %}
         <tr>
-            <td>{{ condition }}</td>
-            <td>{{ data['conditions-reason'][loop.index -1 ] }}</td>
+            <td>{{ reinstatement }}</td>
+            <td>{{ data['reinstatements-status'][loop.index -1 ] }}</td>
+            <td>{{ reinstatements-date }}</td>
+            <td>{{ reinstatements-depth }}</td>
+            <td>{{ reinstatements-length }}</td>
+            <td>{{ reinstatements-width }}</td>
+            <td>{{ reinstatements-coordinates }}</td>
+            <td>{{ reinstatements-location }}</td>
+            <td>{{ reinstatements-warrantydate }}</td>
             <td class="change-answer">
-                <a href="permit-application-screen3">
-                    Change <span class="visuallyhidden">{{ condition }}</span>
+                <a href="reinstatement">
+                    Change <span class="visuallyhidden">{{ reinstatement }}</span>
                 </a>
             </td>
         </tr>
@@ -63,12 +72,12 @@ Permit Application - Street Manager
     </table>
 
     <br/>
+    <br/>
 
     <div class="form-group">
         <label class="form-label" for="inspection-units">Actual inspection units</label>
         <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
     </div>
-
     <div class="form-group">
         <a href="confirm-reinstatement" class="button">Register Reinstatement</a>
     </div>
