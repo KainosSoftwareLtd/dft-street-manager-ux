@@ -308,7 +308,7 @@ router.post('/alpha/v4-0/ha-officer/screen3-check-answers', function (req, res) 
 
 router.post('/alpha/v4-0/promoter-planner/permit-application-on-site', function (req, res) {
   req.session.data['Screen6Complete'] = true
-  if (req.body.excavationyes === true) {
+  if (req.body.excavationrequiredgroup.valueOf() === 'Yes') {
     req.session.data['ReinstatementRequired'] = true
   }
   res.render('alpha/v4-0/promoter-planner/confirm-on-site.html')
