@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+HA Officer Home - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Overdue Reinstatements</h2>
+
+    <p>Reinstatements not entered after 10 working days or more</p>
+
+    <table class="table" id="reinstatements-table">
+        <thead>
+            <th>Date</th>
+            <th>Works Reference</th>
+            <th>Promoter</th>
+            <th>Street</th>
+            <th>Location</th>
+            <th>Position</th>
+            <th>Interim/Perm</th>
+            <th></th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>21/02/2018</td>
+            <td>CT0224443466</td>
+            <td>Cadent</td>
+            <td>High Street</td>
+            <td>O/S Costa j/w Harrow Road</td>
+            <td>?</td>
+            <td>Permanent</td>
+            <td><a href="task-list-page.html">View</a></td>
+        </tr>
+        <tr>
+            <td>03/04/2018</td>
+            <td>EC40010725431</td>
+            <td>OpenReach</td>
+            <td>Appian Way</td>
+            <td>o/s Prada shop. f\w.</td>
+            <td>?</td>
+            <td>Interim</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a style="float:right; margin-top: 20px" href="">Next ></a>
+</main>
+
+
+{% endblock %}

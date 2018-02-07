@@ -68,7 +68,7 @@ MAP_CONTROLS.add_draw_interaction = function (type, button) {
       var coords = event.feature.getGeometry().getCoordinates();
       var text = "New area drawn, click below to create work for this area:";
       document.getElementById('drawnArea').innerHTML = text;
-      document.getElementById('create-work-button').style = null;
+      document.getElementById('create-work-button').style.display = "";
       document.getElementById('results').style.display = "none";
       document.getElementById('create-work-button').classList.add("button");
     })
