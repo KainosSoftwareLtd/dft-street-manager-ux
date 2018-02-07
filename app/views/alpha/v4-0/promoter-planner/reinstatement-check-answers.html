@@ -50,17 +50,17 @@ Reinstatement - Street Manager
             <th></th>
         </thead>
         <tbody>
-        {% for reinstatement in data['reinstatements'] %}
+        {% for reinstatementStatus in data['reinstatement-status'] %}
         <tr>
-            <td>{{ reinstatement['status'] }}</td>
-            <td>{{ reinstatement['date'] }}</td>
-            <td>{{ reinstatement['depth'] }}</td>
-            <td>{{ reinstatement['length'] }}</td>
-            <td>{{ reinstatement['width'] }}</td>
-            <td>{{ reinstatement['coordinates'] }}</td>
-            <td>{{ reinstatement['location'] }}</td>
-            <td>{{ reinstatement['description'] }}</td>
-            <td>{{ reinstatement['warrantydate'] }}</td>
+            <td>{{ reinstatementStatus }}</td>
+            <td>{{ data['reinstatement-date'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-depth'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-length'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-width'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-coordinates'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-location'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-description'][loop.index -1] }}</td>
+            <td>{{ data['reinstatement-warrantydate'][loop.index -1] }}</td>
             <td class="change-answer">
                 <a href="reinstatement">
                     Change <span class="visuallyhidden">{{ reinstatement }}</span>
