@@ -38,7 +38,7 @@ Reinstatement - Street Manager
         <br/>
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="reinstatement-permanent">Reinstatement status</label>
+                <label class="form-label-bold" for="reinstatement-permanent">Reinstatement status</label>
                 <div class="multiple-choice">
                     <input id="reinstatement-permanent" type="radio" name="reinstatement-status-group" value="Permanent" {{ checked('reinstatement-status-group','Permanent') }}>
                     <label for="reinstatement-permanent">Permanent</label>
@@ -51,7 +51,7 @@ Reinstatement - Street Manager
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label" for="reinstatement-date-day">Reinstatement date</label>
+            <label class="form-label-bold" for="reinstatement-date-day">Reinstatement date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -72,7 +72,7 @@ Reinstatement - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="reinstatement-permanent">Depth</label>
+                <label class="form-label-bold" for="reinstatement-permanent">Depth</label>
                 <div class="multiple-choice">
                     <input id="depth-standard" type="radio" name="depth-group" value="Standard" {{ checked('depth-group','Standard') }}>
                     <label for="depth-standard">Standard (under 1.5m)</label>
@@ -85,7 +85,7 @@ Reinstatement - Street Manager
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label" for="length">Length
+            <label class="form-label-bold" for="length">Length
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <input class="form-control" id="length" name="length" type="text" value="{{ data['length'] }}">
@@ -93,14 +93,14 @@ Reinstatement - Street Manager
 
         </label>
         <div class="form-group">
-            <label class="form-label" for="width">Width
+            <label class="form-label-bold" for="width">Width
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <input class="form-control" id="width" name="width" type="text" value="{{ data['width'] }}">
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="reinstatement-date-day">Actual location coordinates</label>
+            <label class="form-label-bold" for="reinstatement-date-day">Actual location coordinates</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -117,7 +117,7 @@ Reinstatement - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="works-position-1">Reinstatement location</label>
+                <label class="form-label-bold" for="works-position-1">Reinstatement location</label>
                 <div class="multiple-choice">
                     <input id="works-position-1" type="radio" name="works-position-group" value="Footway" {{ checked('works-position-group','Footway') }}>
                     <label for="works-position-1">Footway</label>
@@ -141,12 +141,12 @@ Reinstatement - Street Manager
             </div>
         </fieldset>
         <div class="form-group">
-            <label class="form-label" for="location-description">Reinstatement location description</label>
+            <label class="form-label-bold" for="location-description">Reinstatement location description</label>
             <input class="form-control" id="location-description" name="location-description" type="text" value="{{ data['location-description'] }}">
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="warranty-end-date-day">Warranty period end date
+            <label class="form-label-bold" for="warranty-end-date-day">Warranty period end date
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <fieldset>
@@ -168,7 +168,7 @@ Reinstatement - Street Manager
         </div>
 
         <div class="form-group">
-            <input type="button" id="add-reinstatement" class="button" value="Add">
+            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement">
         </div>
 
         <br/>

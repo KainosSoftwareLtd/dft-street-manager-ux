@@ -31,8 +31,11 @@ Permit Application Confirmation - Street Manager
         <div class="column-two-thirds">
             <div class="govuk-box-highlight">
                 <h1 class="heading-large">
-                    Reinstatement confirmed
+                    Reinstatement registered
                 </h1>
+                {% for reinstatementStatus in data['reinstatement-status'] %}
+                <p>Completion date: {{ data['reinstatement-date'][loop.index -1] }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>
