@@ -347,6 +347,10 @@ router.post('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {
   }
 })
 
+router.post('/alpha/v4-0/ha-officer/add-inspection.html', function (req, res) {
+  res.redirect('/alpha/v4-0/ha-officer/inspection-detail')
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

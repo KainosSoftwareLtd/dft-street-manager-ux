@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Inspection details
+Inspections
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@ Inspection details
         </div>
     </div>
 
-    <a href="inspections.html" class="link-back" title="Back to previous question">Back</a>
+    <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
 
     <div class="grid-row">
         <div class="column-full">
@@ -29,193 +29,15 @@ Inspection details
                     WRN {{ data['workreferencenumber'] }}
                 </span>
                 {% endif %}
-                Inspection details
+                Inspections
             </h1>
 
             {% include "../templates/keyinfo.html" %}
 
-
-            <div class="heading-medium">Inspection 1</div>
-
-            <form action="inspection-details.html" method="POST">
-
-                <fieldset>
-                    <div class="form-group">
-                        <label class="form-label" for="inspection-type-a">Inspection type</label>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-a" type="radio" name="inspection-type-group" value="A" {{ checked('inspection-type-group','A') }}>
-                            <label for="inspection-type-a">A</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-b" type="radio" name="inspection-type-group" value="B" {{ checked('inspection-type-group','B') }}>
-                            <label for="inspection-type-b">B</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-c" type="radio" name="inspection-type-group" value="C" {{ checked('inspection-type-group','C') }}>
-                            <label for="inspection-type-c">C</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-d1" type="radio" name="inspection-type-group" value="D1" {{ checked('inspection-type-group','D1') }} >
-                            <label for="inspection-type-d1">D1</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-d2" type="radio" name="inspection-type-group" value="D2" {{ checked('inspection-type-group','D2') }}>
-                            <label for="inspection-type-d2">D2</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-d3" type="radio" name="inspection-type-group" value="D3" {{ checked('inspection-type-group','D3') }}>
-                            <label for="inspection-type-d3">D3</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-third-party" type="radio" name="inspection-type-group" value="Third party report" {{ checked('inspection-type-group','Third party report') }}>
-                            <label for="inspection-type-third-party">Third party report</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="inspection-type-defective-apparatus" type="radio" name="inspection-type-group" value="Defective apparatus" {{ checked('inspection-type-group','Defective apparatus') }}>
-                            <label for="inspection-type-defective-apparatus">Defective apparatus</label>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="form-group">
-                    <label class="form-label" for="inspection-date-day">Inspection date</label>
-                    <fieldset>
-                        <div class="form-date">
-                            <div class="form-group form-group-day">
-                                <label class="form-label" for="inspection-date-day">Day</label>
-                                <input class="form-control" id="inspection-date-day" name="inspection-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['inspection-date-day'] }}">
-                            </div>
-                            <div class="form-group form-group-month">
-                                <label class="form-label" for="inspection-date-month">Month</label>
-                                <input class="form-control" id="inspection-date-month" name="inspection-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['inspection-date-month'] }}">
-                            </div>
-                            <div class="form-group form-group-year">
-                                <label class="form-label" for="inspection-date-year">Year</label>
-                                <input class="form-control" id="inspection-date-year" name="inspection-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['inspection-date-year'] }}">
-                            </div>
-                            <br/>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <fieldset>
-                    <div class="form-group">
-                        <label class="form-label" for="outcome-pass">Inspection outcome</label>
-                        <div class="multiple-choice">
-                            <input id="outcome-pass" type="radio" name="outcome-group" value="Pass" {{ checked('outcome-group"','Pass') }}>
-                            <label for="outcome-pass">Pass</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="outcome-fail-2" type="radio" name="outcome-group" value="Fail 2 hour" {{ checked('outcome-group"','Fail 2 hour') }}>
-                            <label for="outcome-fail-2">Failed (2 hour response)</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="outcome-fail-4" type="radio" name="outcome-group" value="Fail 4 hour" {{ checked('outcome-group"','Fail 4 hour') }}>
-                            <label for="outcome-fail-4">Failed (4 hour response)</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="outcome-fail-standard" type="radio" name="outcome-group" value="Fail standard" {{ checked('outcome-group"','Fail standard') }}>
-                            <label for="outcome-fail-standard">Failed standard response</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="outcome-aborted" type="radio" name="outcome-group" value="Not agreed" {{ checked('outcome-group"','Not agreed') }}>
-                            <label for="outcome-aborted">Aborted</label>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div id="attachments">
-                    <div class="form-group">
-                        <label class="form-label" for="inspection-attachments">Inspection photos</label>
-                        <input type="file" id="inspection-attachments" name="inspection-attachments"/>
-                    </div>
-
-                    <div class="panel panel-border-narrow" id="file-details">
-                        <label class="form-label" for="attachment-title">Attachment title</label>
-                        <input class="form-control" id="attachment-title" name="attachment-title" type="text" value="">
-                        <input class="button" type="button" value="Upload" role="button" id="upload-button">
-                    </div>
-
-                    <div id="attachments-table">
-                        <h3 class="heading-small">File attachments</h3>
-                        <table>
-                            <thead>
-                            <th>Title</th>
-                            <th>File type</th>
-                            <th>File name</th>
-                            <th></th>
-                            <th></th>
-                            </thead>
-                            <tbody id="attachment-table">
-                            {% for fileName in data['file-attached-detail'] %}
-                            <tr id="{{ fileName }}">
-                                <td><input class="form-control" name="file-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
-                                <td>PNG Image</td>
-                                <td><input class="form-control" name="file-attached-name[]" type="hidden" value="{{ data['file-attached-name'][loop.index -1 ] }}">{{ data['file-attached-name'][loop.index -1 ] }}</td>
-                                <td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td>
-                                <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
-                            </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                        <br/>
-                    </div>
-                </div>
-
-                <fieldset>
-                    <div class="form-group">
-                        <label class="form-label" for="status-agreed">Current inspection status</label>
-                        <div class="multiple-choice">
-                            <input id="status-agreed" type="radio" name="status-group" value="Agreed" {{ checked('status-group"','Agreed') }}>
-                            <label for="status-agreed">Agreed</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="status-pending" type="radio" name="status-group" value="Pending" {{ checked('status-group"','Pending') }}>
-                            <label for="status-pending">Pending joint site visit</label>
-                        </div>
-                        <div class="multiple-choice">
-                            <input id="status-not-agreed" type="radio" name="status-group" value="Not agreed"  {{ checked('status-group"','Not agreed') }}>
-                            <label for="status-not-agreed">Not agreed</label>
-                        </div>
-                    </div>
-                </fieldset>
-
-
-                <button class="button" type="submit">Save inspection</button>
-            </form>
+            <a href="inspection-details.html" style="margin-top: 20px" class="button">Create inspection</a>
 
         </div>
     </div>
 </main>
 
-<script>
-  (function () {
-
-    // Auto populate date
-    var today = new Date();
-    $('#inspection-date-day').val(today.getDate().toString().padStart(2,'0'));
-    $('#inspection-date-month').val((today.getMonth() + 1).toString().padStart(2,'0'));
-    $('#inspection-date-year').val(today.getFullYear().toString());
-
-
-    //  JS for attachment
-    $("#upload-button").click(function () {
-      var file = $('#inspection-attachments')[0].files[0];
-
-      var fileName = file.name;
-      var attachmentTitle = $("#attachment-title").val();
-      var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
-      $("#attachment-table").append(markup);
-
-      $("#attachments-table").removeClass("js-hidden");
-      $("#file-name").val("");
-    });
-
-
-  })();
-</script>
-
 {% endblock %}
-
-
-
