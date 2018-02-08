@@ -34,6 +34,41 @@ Reinstatement - Street Manager
     {% include "../templates/keyinfo.html" %}
 
     <br/>
+    <div id="reinstatements-table">
+        <h3 class="heading-small">Reinstatement sites</h3>
+        <table id="reinstatements">
+            <thead>
+            <th>Status</th>
+            <th>Completion date</th>
+            <th>Depth</th>
+            <th>Length</th>
+            <th>Width</th>
+            <th>Location coords</th>
+            <th>Location</th>
+            <th>Location description</th>
+            <th>Warranty period end date</th>
+            <th></th>
+            </thead>
+            <tbody>
+            {% for reinstatement in data['reinstatements'] %}
+            <tr id="{{ reinstatement }}">
+                <td><input class="form-control" name="reinstatements[][status]" type="hidden" value="{{ reinstatement['status'] }}">{{ reinstatement['status'] }}</td>
+                <td><input class="form-control" name="reinstatements[][date]" type="hidden" value="{{ reinstatement['date'] }}">{{ reinstatement['date'] }}</td>
+                <td><input class="form-control" name="reinstatements[][depth]" type="hidden" value="{{ reinstatement['depth'] }}">{{ reinstatement['depth'] }}</td>
+                <td><input class="form-control" name="reinstatements[][length]" type="hidden" value="{{ reinstatement['length'] }}">{{ reinstatement['length'] }}</td>
+                <td><input class="form-control" name="reinstatements[][width]" type="hidden" value="{{ reinstatement['width'] }}">{{ reinstatement['width'] }}</td>
+                <td><input class="form-control" name="reinstatements[][coordinates]" type="hidden" value="{{ reinstatement['coordinates'] }}">{{ reinstatement['coordinates'] }}</td>
+                <td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>
+                <td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>
+                <td><input class="form-control" name="reinstatements[][warrantydate]" type="hidden" value="{{ reinstatement['warrantydate'] }}">{{ reinstatement['warrantydate'] }}</td>
+                <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ reinstatement }})">Remove</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br/>
+
     <form action="reinstatement" method="post" >
         <br/>
         <fieldset class="inline">
@@ -169,41 +204,6 @@ Reinstatement - Street Manager
 
         <div class="form-group">
             <input type="button" id="add-reinstatement" class="button" value="Add reinstatement">
-        </div>
-
-        <br/>
-        <div id="reinstatements-table">
-            <h3 class="heading-small">Reinstatement sites</h3>
-            <table id="reinstatements">
-                <thead>
-                <th>Status</th>
-                <th>Completion date</th>
-                <th>Depth</th>
-                <th>Length</th>
-                <th>Width</th>
-                <th>Location coords</th>
-                <th>Location</th>
-                <th>Location description</th>
-                <th>Warranty period end date</th>
-                <th></th>
-                </thead>
-                <tbody>
-                {% for reinstatement in data['reinstatements'] %}
-                <tr id="{{ reinstatement }}">
-                    <td><input class="form-control" name="reinstatements[][status]" type="hidden" value="{{ reinstatement['status'] }}">{{ reinstatement['status'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][date]" type="hidden" value="{{ reinstatement['date'] }}">{{ reinstatement['date'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][depth]" type="hidden" value="{{ reinstatement['depth'] }}">{{ reinstatement['depth'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][length]" type="hidden" value="{{ reinstatement['length'] }}">{{ reinstatement['length'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][width]" type="hidden" value="{{ reinstatement['width'] }}">{{ reinstatement['width'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][coordinates]" type="hidden" value="{{ reinstatement['coordinates'] }}">{{ reinstatement['coordinates'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][warrantydate]" type="hidden" value="{{ reinstatement['warrantydate'] }}">{{ reinstatement['warrantydate'] }}</td>
-                    <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ reinstatement }})">Remove</a></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
         </div>
 
         <br/>
