@@ -54,4 +54,13 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['actual-end-date-minute'] = data.actualEndDateMinute
   sessionData['excavation-required-group'] = data.excavationRequiredGroup
   sessionData['Screen6Complete'] = data.screen6Complete
+  // Inspections
+  sessionData['inspection-type-group'] = data.inspectionTypeGroup
+  sessionData['inspection-date-day'] = data.inspectionDateDay
+  sessionData['inspection-date-month'] = data.inspectionDateMonth
+  sessionData['inspection-date-year'] = data.inspectionDateYear
+  sessionData['outcome-group'] = data.outcomeGroup
+  sessionData['inspection-attached-detail'] = data.inspectionAttachedDetail
+  sessionData['inspection-attached-name'] = data.inspectionAttachedName
+
 }
