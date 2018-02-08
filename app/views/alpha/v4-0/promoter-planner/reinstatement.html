@@ -34,20 +34,20 @@ Reinstatement - Street Manager
     {% include "../templates/keyinfo.html" %}
 
     <br/>
-    
-    <div id="reinstatements-table">
+
+    <div id="reinstatements-table" style="display:none">
         <h3 class="heading-small">Reinstatement sites</h3>
         <table id="reinstatements">
             <thead>
             <th></th>
             <th>Status</th>
             <th>Completion date</th>
-            <th>Depth</th>
+            <!--<th>Depth</th>-->
             <th>Length</th>
             <th>Width</th>
-            <th>Location coords</th>
-            <th>Location</th>
-            <th>Location description</th>
+            <!--<th>Location coords</th>-->
+            <!--<th>Location</th>-->
+            <!--<th>Location description</th>-->
             <th>Warranty period end date</th>
             <th></th>
             </thead>
@@ -57,12 +57,12 @@ Reinstatement - Street Manager
                 <td><input class="form-control" name="reinstatements[][counter]" type="hidden" value="{{ reinstatement['counter'] }}">{{ reinstatement['counter'] }}</td>
                 <td><input class="form-control" name="reinstatements[][status]" type="hidden" value="{{ reinstatement['status'] }}">{{ reinstatement['status'] }}</td>
                 <td><input class="form-control" name="reinstatements[][date]" type="hidden" value="{{ reinstatement['date'] }}">{{ reinstatement['date'] }}</td>
-                <td><input class="form-control" name="reinstatements[][depth]" type="hidden" value="{{ reinstatement['depth'] }}">{{ reinstatement['depth'] }}</td>
+                <!--<td><input class="form-control" name="reinstatements[][depth]" type="hidden" value="{{ reinstatement['depth'] }}">{{ reinstatement['depth'] }}</td>-->
                 <td><input class="form-control" name="reinstatements[][length]" type="hidden" value="{{ reinstatement['length'] }}">{{ reinstatement['length'] }}</td>
                 <td><input class="form-control" name="reinstatements[][width]" type="hidden" value="{{ reinstatement['width'] }}">{{ reinstatement['width'] }}</td>
-                <td><input class="form-control" name="reinstatements[][coordinates]" type="hidden" value="{{ reinstatement['coordinates'] }}">{{ reinstatement['coordinates'] }}</td>
-                <td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>
-                <td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>
+                <!--<td><input class="form-control" name="reinstatements[][coordinates]" type="hidden" value="{{ reinstatement['coordinates'] }}">{{ reinstatement['coordinates'] }}</td>-->
+                <!--<td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>-->
+                <!--<td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>-->
                 <td><input class="form-control" name="reinstatements[][warrantydate]" type="hidden" value="{{ reinstatement['warrantydate'] }}">{{ reinstatement['warrantydate'] }}</td>
                 <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ reinstatement }})">Remove</a></td>
             </tr>
@@ -177,7 +177,7 @@ Reinstatement - Street Manager
                     </div>
                 </div>
                 <div class="column-one-third">
-                    <div class="multiple-choice">
+                    <div class="multiple-choice" data-target="test">
                         <input id="works-position-5" type="radio" name="works-position-group" value="Footpath" {{ checked('works-position-group','Footpath') }}>
                         <label for="works-position-5">Footpath</label>
                     </div>
@@ -211,11 +211,11 @@ Reinstatement - Street Manager
         </div>
 
         <div class="form-group">
-            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement">
+            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement" data-target="test">
         </div>
         <br/>
 
-        <div class="form-group">
+        <div class="form-group" id="add-all-reinstatements" style="display:none">
             <input type="submit" class="button" value="All sites added">
         </div>
     </form>
@@ -257,12 +257,17 @@ Reinstatement - Street Manager
       var locationDescriptionTD = "<td><input class='form-control' name='reinstatement-description[]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
       var warrantyDateTD = "<td><input class='form-control' name='reinstatement-warrantydate[]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
 
-      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + depthTD + lengthTD + widthTD + locationCoordsTD + locationOfWorksTD + locationDescriptionTD + warrantyDateTD +"<td><span class=\"remove-reinstatement\"><a href=\"#\" onclick='removeReinstatement(" + conditionVal + ")'>Remove</a></span></td></tr>";
+      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + lengthTD + widthTD + warrantyDateTD +"<td><span class=\"remove-reinstatement\"><a href=\"#\" onclick='removeReinstatement(" + conditionVal + ")'>Remove</a></span></td></tr>";
       $("#reinstatements tbody").append(markup);
 
       $("#condition-reason").val("");
     })
   });
+
+    $("#add-reinstatement").click(function () {
+      $("#add-all-reinstatements").show();
+      $("#reinstatements-table").show();
+    });
 
   function removeReinstatement(conditionId) {
     $(conditionId).remove();
