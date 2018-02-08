@@ -34,11 +34,49 @@ Reinstatement - Street Manager
     {% include "../templates/keyinfo.html" %}
 
     <br/>
+
+    <div id="reinstatements-table" style="display:none">
+        <h3 class="heading-small">Reinstatement sites</h3>
+        <table id="reinstatements">
+            <thead>
+            <th></th>
+            <th>Status</th>
+            <th>Completion date</th>
+            <!--<th>Depth</th>-->
+            <th>Length</th>
+            <th>Width</th>
+            <!--<th>Location coords</th>-->
+            <!--<th>Location</th>-->
+            <!--<th>Location description</th>-->
+            <th>Warranty period end date</th>
+            <th></th>
+            </thead>
+            <tbody>
+            {% for reinstatement in data['reinstatements'] %}
+            <tr id="{{ reinstatement }}">
+                <td><input class="form-control" name="reinstatements[][counter]" type="hidden" value="{{ reinstatement['counter'] }}">{{ reinstatement['counter'] }}</td>
+                <td><input class="form-control" name="reinstatements[][status]" type="hidden" value="{{ reinstatement['status'] }}">{{ reinstatement['status'] }}</td>
+                <td><input class="form-control" name="reinstatements[][date]" type="hidden" value="{{ reinstatement['date'] }}">{{ reinstatement['date'] }}</td>
+                <!--<td><input class="form-control" name="reinstatements[][depth]" type="hidden" value="{{ reinstatement['depth'] }}">{{ reinstatement['depth'] }}</td>-->
+                <td><input class="form-control" name="reinstatements[][length]" type="hidden" value="{{ reinstatement['length'] }}">{{ reinstatement['length'] }}</td>
+                <td><input class="form-control" name="reinstatements[][width]" type="hidden" value="{{ reinstatement['width'] }}">{{ reinstatement['width'] }}</td>
+                <!--<td><input class="form-control" name="reinstatements[][coordinates]" type="hidden" value="{{ reinstatement['coordinates'] }}">{{ reinstatement['coordinates'] }}</td>-->
+                <!--<td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>-->
+                <!--<td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>-->
+                <td><input class="form-control" name="reinstatements[][warrantydate]" type="hidden" value="{{ reinstatement['warrantydate'] }}">{{ reinstatement['warrantydate'] }}</td>
+                <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ reinstatement }})">Remove</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br/>
+
     <form action="reinstatement" method="post" >
         <br/>
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="reinstatement-permanent">Reinstatement status</label>
+                <label class="form-label-bold" for="reinstatement-permanent">Reinstatement status</label>
                 <div class="multiple-choice">
                     <input id="reinstatement-permanent" type="radio" name="reinstatement-status-group" value="Permanent" {{ checked('reinstatement-status-group','Permanent') }}>
                     <label for="reinstatement-permanent">Permanent</label>
@@ -51,7 +89,7 @@ Reinstatement - Street Manager
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label" for="reinstatement-date-day">Reinstatement date</label>
+            <label class="form-label-bold" for="reinstatement-date-day">Reinstatement date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -72,7 +110,7 @@ Reinstatement - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label" for="reinstatement-permanent">Depth</label>
+                <label class="form-label-bold" for="reinstatement-permanent">Depth</label>
                 <div class="multiple-choice">
                     <input id="depth-standard" type="radio" name="depth-group" value="Standard" {{ checked('depth-group','Standard') }}>
                     <label for="depth-standard">Standard (under 1.5m)</label>
@@ -85,7 +123,7 @@ Reinstatement - Street Manager
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label" for="length">Length
+            <label class="form-label-bold" for="length">Length
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <input class="form-control" id="length" name="length" type="text" value="{{ data['length'] }}">
@@ -93,14 +131,14 @@ Reinstatement - Street Manager
 
         </label>
         <div class="form-group">
-            <label class="form-label" for="width">Width
+            <label class="form-label-bold" for="width">Width
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <input class="form-control" id="width" name="width" type="text" value="{{ data['width'] }}">
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="reinstatement-date-day">Actual location coordinates</label>
+            <label class="form-label-bold" for="reinstatement-date-day">Actual location coordinates</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -115,38 +153,43 @@ Reinstatement - Street Manager
             </fieldset>
         </div>
 
-        <fieldset class="inline">
+        <fieldset>
             <div class="form-group">
-                <label class="form-label" for="works-position-1">Reinstatement location</label>
-                <div class="multiple-choice">
-                    <input id="works-position-1" type="radio" name="works-position-group" value="Footway" {{ checked('works-position-group','Footway') }}>
-                    <label for="works-position-1">Footway</label>
+                <label class="form-label-bold" for="works-position-1">Reinstatement location</label>
+                <div class="column-one-third">
+                    <div class="multiple-choice">
+                        <input id="works-position-1" type="radio" name="works-position-group" value="Footway" {{ checked('works-position-group','Footway') }}>
+                        <label for="works-position-1">Footway</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="works-position-2" type="radio" name="works-position-group" value="Carriageway" {{ checked('works-position-group','Carriageway') }}>
+                        <label for="works-position-2">Carriageway</label>
+                    </div>
                 </div>
-                <div class="multiple-choice">
-                    <input id="works-position-2" type="radio" name="works-position-group" value="Carriageway" {{ checked('works-position-group','Carriageway') }}>
-                    <label for="works-position-2">Carriageway</label>
+                <div class="column-one-third">
+                    <div class="multiple-choice">
+                        <input id="works-position-3" type="radio" name="works-position-group" value="Verge" {{ checked('works-position-group','Verge') }}>
+                        <label for="works-position-3">Verge</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="works-position-4" type="radio" name="works-position-group" value="Cycleway" {{ checked('works-position-group','Cycleway') }}>
+                        <label for="works-position-4">Cycleway</label>
+                    </div>
                 </div>
-                <div class="multiple-choice">
-                    <input id="works-position-3" type="radio" name="works-position-group" value="Verge" {{ checked('works-position-group','Verge') }}>
-                    <label for="works-position-3">Verge</label>
+                <div class="column-one-third">
+                    <div class="multiple-choice" data-target="test">
+                        <input id="works-position-5" type="radio" name="works-position-group" value="Footpath" {{ checked('works-position-group','Footpath') }}>
+                        <label for="works-position-5">Footpath</label>
+                    </div>
                 </div>
-                <div class="multiple-choice">
-                    <input id="works-position-4" type="radio" name="works-position-group" value="Cycleway" {{ checked('works-position-group','Cycleway') }}>
-                    <label for="works-position-4">Cycleway</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="works-position-5" type="radio" name="works-position-group" value="Footpath" {{ checked('works-position-group','Footpath') }}>
-                    <label for="works-position-5">Footpath</label>
-                </div>
-            </div>
         </fieldset>
         <div class="form-group">
-            <label class="form-label" for="location-description">Reinstatement location description</label>
+            <label class="form-label-bold" for="location-description">Reinstatement location description</label>
             <input class="form-control" id="location-description" name="location-description" type="text" value="{{ data['location-description'] }}">
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="warranty-end-date-day">Warranty period end date
+            <label class="form-label-bold" for="warranty-end-date-day">Warranty period end date
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <fieldset>
@@ -168,52 +211,19 @@ Reinstatement - Street Manager
         </div>
 
         <div class="form-group">
-            <input type="button" id="add-reinstatement" class="button" value="Add">
+            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement" data-target="test">
         </div>
-
         <br/>
-        <div id="reinstatements-table">
-            <h3 class="heading-small">Reinstatement sites</h3>
-            <table id="reinstatements">
-                <thead>
-                <th>Status</th>
-                <th>Completion date</th>
-                <th>Depth</th>
-                <th>Length</th>
-                <th>Width</th>
-                <th>Location coords</th>
-                <th>Location</th>
-                <th>Location description</th>
-                <th>Warranty period end date</th>
-                <th></th>
-                </thead>
-                <tbody>
-                {% for reinstatement in data['reinstatements'] %}
-                <tr id="{{ reinstatement }}">
-                    <td><input class="form-control" name="reinstatements[][status]" type="hidden" value="{{ reinstatement['status'] }}">{{ reinstatement['status'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][date]" type="hidden" value="{{ reinstatement['date'] }}">{{ reinstatement['date'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][depth]" type="hidden" value="{{ reinstatement['depth'] }}">{{ reinstatement['depth'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][length]" type="hidden" value="{{ reinstatement['length'] }}">{{ reinstatement['length'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][width]" type="hidden" value="{{ reinstatement['width'] }}">{{ reinstatement['width'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][coordinates]" type="hidden" value="{{ reinstatement['coordinates'] }}">{{ reinstatement['coordinates'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>
-                    <td><input class="form-control" name="reinstatements[][warrantydate]" type="hidden" value="{{ reinstatement['warrantydate'] }}">{{ reinstatement['warrantydate'] }}</td>
-                    <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ reinstatement }})">Remove</a></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
 
-        <br/>
-        <div class="form-group">
+        <div class="form-group" id="add-all-reinstatements" style="display:none">
             <input type="submit" class="button" value="All sites added">
         </div>
     </form>
 </main>
 
 <script type="text/javascript">
+
+    var reinstatementCounter=0
 
   $(document).ready(function () {
 
@@ -234,23 +244,30 @@ Reinstatement - Street Manager
       var warrantyYear = $("#warranty-end-date-year").val();
 
       var conditionVal = $("input[name=depth-group]:checked").val();
+      reinstatementCounter++
 
-      var reinstatementStatusTD = "<td><input class='form-control' name='reinstatements[][status]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
-      var reinstatementDateTD = "<td><input class='form-control' name='reinstatements[][date]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
-      var depthTD = "<td><input class='form-control' name='reinstatements[][depth]' type='hidden' value='" + depth + "'>" + depth + "</td>"
-      var lengthTD = "<td><input class='form-control' name='reinstatements[][length]' type='hidden' value='" + length + "'>" + length + "</td>"
-      var widthTD = "<td><input class='form-control' name='reinstatements[][width]' type='hidden' value='" + width + "'>" + width + "</td>"
-      var locationCoordsTD = "<td><input class='form-control' name='reinstatements[][coordinates]' type='hidden' value='" + locationX + "," + locationY + "'>" + locationX + "," + locationY + "</td>"
-      var locationOfWorksTD = "<td><input class='form-control' name='reinstatements[][location]' type='hidden' value='" + location + "'>" + location + "</td>"
-      var locationDescriptionTD = "<td><input class='form-control' name='reinstatements[][description]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
-      var warrantyDateTD = "<td><input class='form-control' name='reinstatements[][warrantydate]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
+      var reinstatementCounterTD = "<td><input class='form-control' name='reinstatement-counter[]' type='hidden' value='" + reinstatementCounter + "'>" + reinstatementCounter + "</td>"
+      var reinstatementStatusTD = "<td><input class='form-control' name='reinstatement-status[]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
+      var reinstatementDateTD = "<td><input class='form-control' name='reinstatement-date[]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
+      var depthTD = "<td><input class='form-control' name='reinstatement-depth[]' type='hidden' value='" + depth + "'>" + depth + "</td>"
+      var lengthTD = "<td><input class='form-control' name='reinstatement-length[]' type='hidden' value='" + length + "'>" + length + "</td>"
+      var widthTD = "<td><input class='form-control' name='reinstatement-width[]' type='hidden' value='" + width + "'>" + width + "</td>"
+      var locationCoordsTD = "<td><input class='form-control' name='reinstatement-coordinates[]' type='hidden' value='" + locationX + "," + locationY + "'>" + locationX + "," + locationY + "</td>"
+      var locationOfWorksTD = "<td><input class='form-control' name='reinstatement-location[]' type='hidden' value='" + location + "'>" + location + "</td>"
+      var locationDescriptionTD = "<td><input class='form-control' name='reinstatement-description[]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
+      var warrantyDateTD = "<td><input class='form-control' name='reinstatement-warrantydate[]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
 
-      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementStatusTD + reinstatementDateTD + depthTD + lengthTD + widthTD + locationCoordsTD + locationOfWorksTD + locationDescriptionTD + warrantyDateTD +"<td><span class=\"remove-reinstatement\"><a href=\"#\" onclick='removeReinstatement(" + conditionVal + ")'>Remove</a></span></td></tr>";
+      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + lengthTD + widthTD + warrantyDateTD +"<td><span class=\"remove-reinstatement\"><a href=\"#\" onclick='removeReinstatement(" + conditionVal + ")'>Remove</a></span></td></tr>";
       $("#reinstatements tbody").append(markup);
 
       $("#condition-reason").val("");
     })
   });
+
+    $("#add-reinstatement").click(function () {
+      $("#add-all-reinstatements").show();
+      $("#reinstatements-table").show();
+    });
 
   function removeReinstatement(conditionId) {
     $(conditionId).remove();
