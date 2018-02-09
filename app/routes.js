@@ -324,7 +324,7 @@ router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', functi
 })
 
 router.post('/alpha/v4-0/promoter-planner/reinstatement', function (req, res) {
-  res.render('alpha/v4-0/promoter-planner/reinstatement-check-answers.html')
+  res.render('alpha/v4-0/promoter-planner/confirm-reinstatement.html')
 })
 
 router.get('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {

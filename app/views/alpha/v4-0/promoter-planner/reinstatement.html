@@ -64,7 +64,7 @@ Reinstatement - Street Manager
                 <!--<td><input class="form-control" name="reinstatements[][location]" type="hidden" value="{{ reinstatement['location'] }}">{{ reinstatement['location'] }}</td>-->
                 <!--<td><input class="form-control" name="reinstatements[][locationdescription]" type="hidden" value="{{ reinstatement['locationdescription'] }}">{{ reinstatement['locationdescription'] }}</td>-->
                 <td><input class="form-control" name="reinstatements[][warrantydate]" type="hidden" value="{{ reinstatement['warrantydate'] }}">{{ reinstatement['warrantydate'] }}</td>
-                <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ reinstatement }})">Remove</a></td>
+                <td><span class="remove-condition"><a href="reinstatement-detail-view">View</a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -74,8 +74,10 @@ Reinstatement - Street Manager
 
     <form action="reinstatement" method="post" >
         <br/>
+        <div class="heading-medium">Add a reinstatement</div>
         <fieldset class="inline">
             <div class="form-group">
+                <br/>
                 <label class="form-label-bold" for="reinstatement-permanent">Reinstatement status</label>
                 <div class="multiple-choice">
                     <input id="reinstatement-permanent" type="radio" name="reinstatement-status-group" value="Permanent" {{ checked('reinstatement-status-group','Permanent') }}>
@@ -215,6 +217,11 @@ Reinstatement - Street Manager
         </div>
         <br/>
 
+        <div class="form-group" style="display:none" id="inspection-units">
+            <label class="form-label" for="inspection-units">Actual inspection units</label>
+            <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
+        </div>
+
         <div class="form-group" id="add-all-reinstatements" style="display:none">
             <input type="submit" class="button" value="All sites added">
         </div>
@@ -257,7 +264,7 @@ Reinstatement - Street Manager
       var locationDescriptionTD = "<td><input class='form-control' name='reinstatement-description[]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
       var warrantyDateTD = "<td><input class='form-control' name='reinstatement-warrantydate[]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
 
-      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + lengthTD + widthTD + warrantyDateTD +"<td><span class=\"remove-reinstatement\"><a href=\"#\" onclick='removeReinstatement(" + conditionVal + ")'>Remove</a></span></td></tr>";
+      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + lengthTD + widthTD + warrantyDateTD +"<td><span class=\"view-reinstatement\"><a href=\"reinstatement-detail-view\">View</a></span></td></tr>";
       $("#reinstatements tbody").append(markup);
 
       $("#condition-reason").val("");
@@ -267,11 +274,12 @@ Reinstatement - Street Manager
     $("#add-reinstatement").click(function () {
       $("#add-all-reinstatements").show();
       $("#reinstatements-table").show();
+      $("#inspection-units").show();
     });
 
-  function removeReinstatement(conditionId) {
-    $(conditionId).remove();
-  };
+  // function removeReinstatement(conditionId) {
+  //   $(conditionId).remove();
+  // };
 </script>
 
 
