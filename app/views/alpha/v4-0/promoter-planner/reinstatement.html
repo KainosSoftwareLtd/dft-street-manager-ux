@@ -52,12 +52,12 @@ Reinstatement - Street Manager
                 {% for reinstatement in data['reinstatement-counter'] %}
                 <tr id="{{ reinstatement }}">
                     <td><input class="form-control" name="reinstatement-counter[]" type="hidden" value="{{ reinstatement }}">{{ reinstatement }}</td>
-                    <td><input class="form-control" name="reinstatement-status[]" type="hidden" value="{{ data['reinstatement-status'][loop.index -1]  }}">data['reinstatement-status'][loop.index -1]  }}</td>
+                    <td><input class="form-control" name="reinstatement-status[]" type="hidden" value="{{ data['reinstatement-status'][loop.index -1]  }}">{{ data['reinstatement-status'][loop.index -1]  }}</td>
                     <td><input class="form-control" name="reinstatement-date[]" type="hidden" value="{{ data['reinstatement-date'][loop.index -1 ] }}">{{ data['reinstatement-date'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatement-length[]" type="hidden" value="{{ data['reinstatement-length'][loop.index -1] }}">{{ data['reinstatement-length'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatement-width[]" type="hidden" value="{{ data['reinstatement-width'][loop.index -1] }}">{{ data[reinstatement-width'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatement-warrantydate[]" type="hidden" value="{{ data['reinstatement-warrantydate'][loop.index -1] }}">{{ data[reinstatement-warrantydate'][loop.index -1 ] }}</td>
-                    <td><span class="remove-condition"><a href="reinstatement-detail-view">View</a></td>
+                    <td><span class="remove-condition"><a href="reinstatement-detail-view" type="submit">View</a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -177,7 +177,7 @@ Reinstatement - Street Manager
                     </div>
                 </div>
                 <div class="column-one-third">
-                    <div class="multiple-choice" data-target="test">
+                    <div class="multiple-choice">
                         <input id="works-position-5" type="radio" name="works-position-group" value="Footpath" {{ checked('works-position-group','Footpath') }}>
                         <label for="works-position-5">Footpath</label>
                     </div>
@@ -211,7 +211,7 @@ Reinstatement - Street Manager
         </div>
 
         <div class="form-group">
-            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement" data-target="test">
+            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement">
         </div>
         <br/>
 
