@@ -57,7 +57,7 @@ Reinstatement - Street Manager
                     <td><input class="form-control" name="reinstatement-length[]" type="hidden" value="{{ data['reinstatement-length'][loop.index -1] }}">{{ data['reinstatement-length'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatement-width[]" type="hidden" value="{{ data['reinstatement-width'][loop.index -1] }}">{{ data[reinstatement-width'][loop.index -1 ] }}</td>
                     <td><input class="form-control" name="reinstatement-warrantydate[]" type="hidden" value="{{ data['reinstatement-warrantydate'][loop.index -1] }}">{{ data[reinstatement-warrantydate'][loop.index -1 ] }}</td>
-                    <td><span class="remove-condition"><a href="reinstatement-detail-view" type="submit">View</a></td>
+                    <td><span class="view-reinstatement"></td>
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -65,7 +65,16 @@ Reinstatement - Street Manager
         </div>
         <br/>
         <div class="form-group" id="add-all-reinstatements" style="display:none">
-            <input type="submit" class="button" value="All sites added">
+            <input type="button" class="button" value="All sites added">
+        </div>
+
+        <div class="form-group" style="display:none" id="inspection-units">
+            <label class="form-label" for="inspection-units">Actual inspection units</label>
+            <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
+        </div>
+
+        <div class="form-group" id="register-reinstatement" style="display:none">
+            <input type="submit" class="button" value="Register Reinstatement">
         </div>
     </form>
 
@@ -214,11 +223,6 @@ Reinstatement - Street Manager
             <input type="button" id="add-reinstatement" class="button" value="Add reinstatement">
         </div>
         <br/>
-
-        <div class="form-group" style="display:none" id="inspection-units">
-            <label class="form-label" for="inspection-units">Actual inspection units</label>
-            <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
-        </div>
     </form>
 </main>
 
@@ -268,6 +272,10 @@ Reinstatement - Street Manager
     $("#add-reinstatement").click(function () {
       $("#add-all-reinstatements").show();
       $("#reinstatements-table").show();
+    });
+
+    $("#add-all-reinstatements").click(function () {
+      $("#register-reinstatement").show();
       $("#inspection-units").show();
     });
 
