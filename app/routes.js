@@ -323,8 +323,9 @@ router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', functi
   res.render('alpha/v4-0/promoter-planner/grant-permit-application.html')
 })
 
-router.post('/alpha/v4-0/promoter-planner/reinstatement', function (req, res) {
-  res.render('alpha/v4-0/promoter-planner/reinstatement-check-answers.html')
+router.post('/alpha/v4-0/promoter-planner/all-sites', function (req, res) {
+  req.session.data['Screen7Complete'] = true
+  res.render('alpha/v4-0/promoter-planner/confirm-reinstatement.html')
 })
 
 router.get('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {

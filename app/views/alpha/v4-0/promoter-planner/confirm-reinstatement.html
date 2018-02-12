@@ -33,15 +33,15 @@ Permit Application Confirmation - Street Manager
                 <h1 class="heading-large">
                     Reinstatement registered
                 </h1>
-                {% for reinstatementStatus in data['reinstatement-status'] %}
-                <p>Completion date: {{ data['reinstatement-date'][loop.index -1] }}</p>
+                {% for reinstatement in data['reinstatement-date'] %}
+                <p>Completion date: {{ reinstatement }}</p>
                 {% endfor %}
             </div>
         </div>
     </div>
 
     <div style="padding-top: 10px">
-        <a href="task-list-page" class="button" style="margin-right: 20px;">Return to work record</a>
+        <a href="../task-list-page" class="button" style="margin-right: 20px;">Return to work record</a>
         <a href="dashboard" style="vertical-align: bottom">Return to dashboard</a>
     </div>
 </main>
