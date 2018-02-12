@@ -54,4 +54,6 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['actual-end-date-minute'] = data.actualEndDateMinute
   sessionData['excavation-required-group'] = data.excavationRequiredGroup
   sessionData['Screen6Complete'] = data.screen6Complete
+  // Reinstatement
+  sessionData['Screen7Complete'] = data.screen7Complete
 }
