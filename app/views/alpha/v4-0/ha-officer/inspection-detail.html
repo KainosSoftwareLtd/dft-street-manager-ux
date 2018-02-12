@@ -63,7 +63,6 @@ Inspection detail
                         <th>File type</th>
                         <th>File name</th>
                         <th></th>
-                        <th></th>
                         </thead>
                         <tbody id="attachment-table">
 
@@ -74,7 +73,6 @@ Inspection detail
                             <td>{{extension[loop.index0]}}</td>
                             <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
                             <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
-                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
                         </tr>
                         {% endfor %}
                         </tbody>
