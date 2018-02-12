@@ -1,10 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout.html" %}
 
-</body>
-</html>
+{% block page_title %}
+Inspection detail
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <a href="add-inspection.html" class="link-back" title="Back to previous question">Back</a>
+
+    <div class="grid-row">
+        <div class="column-full">
+
+            <h1 class="heading-large">
+                {% if data['workreferencenumber'] %}
+                <span class="heading-secondary">
+                    WRN {{ data['workreferencenumber'] }}
+                </span>
+                {% endif %}
+                Inspections
+            </h1>
+
+            {% include "../templates/keyinfo.html" %}
+
+
+            <div style="background-color: #DEE0E2; padding: 0 10px 15px 10px" id="inspections-table">
+                <h3 class="heading-medium" style="padding-top: 10px">Inspections</h3>
+                <table id="inspections">
+                    <thead>
+                    <th></th>
+                    <th>Inspection date</th>
+                    <th>Inspection type</th>
+                    <th>Inspection outcome</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Inspection 1</td>
+                        <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
+                        <td>{{data['inspection-type-group']}}</td>
+                        <td>{{data['outcome-group']}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="attachments">
+                <div id="attachments-table">
+                    <h3 class="heading-medium">File attachments</h3>
+                    <table>
+                        <thead>
+                        <th>Title</th>
+                        <th>File type</th>
+                        <th>File name</th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody id="attachment-table">
+                        {% for fileName in data['inspection-attached-detail'] %}
+                        <tr id="{{ fileName }}">
+                            <td><input class="form-control" name="inspection-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
+                            <td>PNG Image</td>
+                            <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
+                            <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
+                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}
+
+
+

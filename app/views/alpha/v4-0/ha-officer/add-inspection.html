@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Inspections
+Add inspection
 {% endblock %}
 
 {% block content %}
@@ -34,9 +34,9 @@ Inspections
 
             {% include "../templates/keyinfo.html" %}
 
-
-            <div id="inspections-table" style="display: none;">
-                <h3 class="heading-medium">Inspections completed</h3>
+            {% if data['inspection-type-group'] and data['outcome-group'] %}
+            <div style="background-color: #DEE0E2; padding: 0 10px 15px 10px" id="inspections-table">
+                <h3 class="heading-medium" style="padding-top: 10px">Inspections completed</h3>
                 <table id="inspections">
                     <thead>
                     <th></th>
@@ -48,18 +48,21 @@ Inspections
                     <tbody>
                     <tr>
                         <td>Inspection 1</td>
-                        <td id="date"></td>
-                        <td id="type"></td>
-                        <td id="outcome"></td>
-                        <td><a href="#">View</a></td>
+                        <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
+                        <td>{{data['inspection-type-group']}}</td>
+                        <td>{{data['outcome-group']}}</td>
+                        <td><a href="inspection-detail.html">View</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            {% endif %}
 
-            <div class="heading-medium">Add inspection</div>
 
-            <form action="add-inspection.html" method="POST" id="inspection-form">
+
+            <div class="heading-medium" >Add inspection</div>
+
+            <form action="add-inspection" method="POST" id="inspection-form">
                 <fieldset>
                     <div class="form-group">
                         <label class="form-label-bold" for="inspection-type-a">Inspection type</label>
@@ -145,27 +148,27 @@ Inspections
                             <div class="form-date">
                                 <div class="column-one-third">
                                     <div class="multiple-choice">
-                                        <input id="outcome-pass" type="radio" name="outcome-group" value="Pass" {{ checked('outcome-group"','Pass') }}>
+                                        <input id="outcome-pass" type="radio" name="outcome-group" value="Pass" {{ checked('outcome-group','Pass') }}>
                                         <label for="outcome-pass">Pass</label>
                                     </div>
                                     <div class="multiple-choice">
-                                        <input id="outcome-fail-2" type="radio" name="outcome-group" value="Fail 2 hour" {{ checked('outcome-group"','Fail 2 hour') }}>
+                                        <input id="outcome-fail-2" type="radio" name="outcome-group" value="Fail 2 hour" {{ checked('outcome-group','Fail 2 hour') }}>
                                         <label for="outcome-fail-2">Failed (2 hour response)</label>
                                     </div>
                                 </div>
                                 <div class="column-one-third">
                                     <div class="multiple-choice">
-                                        <input id="outcome-fail-4" type="radio" name="outcome-group" value="Fail 4 hour" {{ checked('outcome-group"','Fail 4 hour') }}>
+                                        <input id="outcome-fail-4" type="radio" name="outcome-group" value="Fail 4 hour" {{ checked('outcome-group','Fail 4 hour') }}>
                                         <label for="outcome-fail-4">Failed (4 hour response)</label>
                                     </div>
                                     <div class="multiple-choice">
-                                        <input id="outcome-fail-standard" type="radio" name="outcome-group" value="Fail standard" {{ checked('outcome-group"','Fail standard') }}>
+                                        <input id="outcome-fail-standard" type="radio" name="outcome-group" value="Fail standard" {{ checked('outcome-group','Fail standard') }}>
                                         <label for="outcome-fail-standard">Failed standard response</label>
                                     </div>
                                 </div>
                                 <div class="column-one-third">
                                     <div class="multiple-choice">
-                                        <input id="outcome-aborted" type="radio" name="outcome-group" value="Aborted" {{ checked('outcome-group"','Aborted') }}>
+                                        <input id="outcome-aborted" type="radio" name="outcome-group" value="Aborted" {{ checked('outcome-group','Aborted') }}>
                                         <label for="outcome-aborted">Aborted</label>
                                     </div>
                                 </div>
@@ -212,9 +215,8 @@ Inspections
                     </div>
                 </div>
 
-                <a id="save" class="button">Add inspection</a>
-                <button class="button" type="submit" >All inspections added</button>
-
+                <button class="button" type="submit" style="margin-right: 20px;" >Submit this inspection</button>
+                <a href="dashboard.html" style="vertical-align: bottom">Return to dashboard</a>
             </form>
         </div>
     </div>
@@ -229,6 +231,9 @@ Inspections
     $('#inspection-date-month').val((today.getMonth() + 1).toString().padStart(2,'0'));
     $('#inspection-date-year').val(today.getFullYear().toString());
 
+    // Clear radio buttons on postback
+    $("input[name=inspection-type-group]:checked").prop('checked', false);
+    $("input[name=outcome-group]:checked").prop('checked', false);
 
     //  JS for attachment
     $("#upload-button").click(function () {
@@ -242,27 +247,6 @@ Inspections
       $("#attachments-table").removeClass("js-hidden");
       $("#file-name").val("");
       $("#attachment-title").val("");
-    });
-
-
-    $("#save").click(function () {
-        $("#inspections-table").show();
-        $("html, body").scrollTop(0);
-
-        $("#date").text(function () {
-          var returnDate =
-            $("#inspection-date-day").val() + "/" +
-            $("#inspection-date-month").val() + "/" +
-            $("#inspection-date-year").val()
-          return returnDate;
-        });
-
-        $("#type").text($("input[name=inspection-type-group]:checked").val());
-        $("#outcome").text($("input[name=outcome-group]:checked").val());
-
-        $("input[name=inspection-type-group]:checked").prop('checked', false);
-        $("input[name=outcome-group]:checked").prop('checked', false);
-
     });
 
   })();
