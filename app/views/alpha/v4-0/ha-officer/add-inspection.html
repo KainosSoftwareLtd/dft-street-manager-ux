@@ -236,6 +236,8 @@ Add inspection
     $("input[name=inspection-type-group]:checked").prop('checked', false);
     $("input[name=outcome-group]:checked").prop('checked', false);
 
+    var imageIndex = 1;
+
     //  JS for attachment
     $("#upload-button").click(function () {
       var file = $('#inspection-attachments')[0].files[0];
@@ -243,7 +245,8 @@ Add inspection
 
       var fileName = file.name;
       var attachmentTitle = $("#attachment-title").val();
-      var markup = "<tr><td><input type='hidden' name='inspection-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>" + extension + "</td><td><input type='hidden' name='inspection-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
+      var markup = "<tr><td><input type='hidden' name='inspection-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>" + extension + "</td><td><input type='hidden' name='inspection-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/inspection" + imageIndex + ".jpg' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
+      imageIndex++;
       $("#attachment-table").append(markup);
 
       $("#attachments-table").removeClass("js-hidden");
