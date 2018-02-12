@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Inspection detail
+View inspections
 {% endblock %}
 
 {% block content %}
@@ -14,11 +14,11 @@ Inspection detail
             <!-- the rest of this label is hidden, only used for screenreaders -->
             <span class="visuallyhidden"> to the previous page</span>
             <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
-            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
         </div>
     </div>
 
-    <a href="add-inspection.html" class="link-back" title="Back to previous question">Back</a>
+    <a href="dashboard" class="link-back">Back</a>
 
     <div class="grid-row">
         <div class="column-full">
@@ -34,15 +34,15 @@ Inspection detail
 
             {% include "../templates/keyinfo.html" %}
 
-
             <div style="background-color: #DEE0E2; padding: 0 10px 15px 10px" id="inspections-table">
-                <h3 class="heading-medium" style="padding-top: 10px">Inspections</h3>
+                <h3 class="heading-medium" style="padding-top: 10px">Inspections completed</h3>
                 <table id="inspections">
                     <thead>
                     <th></th>
                     <th>Inspection date</th>
                     <th>Inspection type</th>
                     <th>Inspection outcome</th>
+                    <th></th>
                     </thead>
                     <tbody>
                     <tr>
@@ -50,40 +50,15 @@ Inspection detail
                         <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
                         <td>{{data['inspection-type-group']}}</td>
                         <td>{{data['outcome-group']}}</td>
+                        <td><a href="inspection-detail.html">View</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <div id="attachments">
-                <div id="attachments-table">
-                    <h3 class="heading-medium">File attachments</h3>
-                    <table>
-                        <thead>
-                        <th>Title</th>
-                        <th>File type</th>
-                        <th>File name</th>
-                        <th></th>
-                        </thead>
-                        <tbody id="attachment-table">
-
-                        {% set extension = ['PDF', 'PNG', 'PNG'] %}
-                        {% for fileName in data['inspection-attached-detail'] %}
-                        <tr id="{{ fileName }}">
-                            <td><input class="form-control" name="inspection-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
-                            <td>{{extension[loop.index0]}}</td>
-                            <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
-                            <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    <br/>
-                </div>
-            </div>
         </div>
     </div>
-
 </main>
+
 
 {% endblock %}
 

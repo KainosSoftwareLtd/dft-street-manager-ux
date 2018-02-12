@@ -200,12 +200,13 @@ Add inspection
                             <th></th>
                             </thead>
                             <tbody id="attachment-table">
+                            {% set extension = ['PDF', 'PNG', 'PNG'] %}
                             {% for fileName in data['inspection-attached-detail'] %}
                             <tr id="{{ fileName }}">
                                 <td><input class="form-control" name="inspection-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
-                                <td>PNG Image</td>
+                                <td>{{extension[loop.index0]}}</td>
                                 <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
-                                <td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td>
+                                <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
                                 <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
                             </tr>
                             {% endfor %}
@@ -235,18 +236,23 @@ Add inspection
     $("input[name=inspection-type-group]:checked").prop('checked', false);
     $("input[name=outcome-group]:checked").prop('checked', false);
 
+    var imageIndex = 1;
+
     //  JS for attachment
     $("#upload-button").click(function () {
       var file = $('#inspection-attachments')[0].files[0];
+      var extension = file.name.split('.').pop().toUpperCase();
 
       var fileName = file.name;
       var attachmentTitle = $("#attachment-title").val();
-      var markup = "<tr><td><input type='hidden' name='inspection-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='inspection-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
+      var markup = "<tr><td><input type='hidden' name='inspection-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>" + extension + "</td><td><input type='hidden' name='inspection-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/inspection" + imageIndex + ".jpg' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
+      imageIndex++;
       $("#attachment-table").append(markup);
 
       $("#attachments-table").removeClass("js-hidden");
       $("#file-name").val("");
       $("#attachment-title").val("");
+      $("#inspection-attachments").val("");
     });
 
   })();
