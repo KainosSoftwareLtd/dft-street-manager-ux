@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+View inspections
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="dashboard" class="link-back">Back</a>
+
+    <div class="grid-row">
+        <div class="column-full">
+
+            <h1 class="heading-large">
+                {% if data['workreferencenumber'] %}
+                <span class="heading-secondary">
+                    WRN {{ data['workreferencenumber'] }}
+                </span>
+                {% endif %}
+                Inspections
+            </h1>
+
+            {% include "../templates/keyinfo.html" %}
+
+            <div style="background-color: #DEE0E2; padding: 0 10px 15px 10px" id="inspections-table">
+                <h3 class="heading-medium" style="padding-top: 10px">Inspections completed</h3>
+                <table id="inspections">
+                    <thead>
+                    <th></th>
+                    <th>Inspection date</th>
+                    <th>Inspection type</th>
+                    <th>Inspection outcome</th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Inspection 1</td>
+                        <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
+                        <td>{{data['inspection-type-group']}}</td>
+                        <td>{{data['outcome-group']}}</td>
+                        <td><a href="inspection-detail.html">View</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+
+
