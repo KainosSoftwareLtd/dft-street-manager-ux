@@ -62,5 +62,6 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['outcome-group'] = data.outcomeGroup
   sessionData['inspection-attached-detail'] = data.inspectionAttachedDetail
   sessionData['inspection-attached-name'] = data.inspectionAttachedName
-
+  // Reinstatement
+  sessionData['Screen7Complete'] = data.screen7Complete
 }
