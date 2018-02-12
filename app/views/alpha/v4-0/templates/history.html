@@ -1,0 +1,46 @@
+{% block history %}
+<div>
+    <div class="heading-medium">History</div>
+    <table>
+        <thead>
+            <th>Date/Time</th>
+            <th>Event</th>
+            <th>Detail</th>
+            <th>User</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01/02/2018 09:05:11</td>
+                <td>Works Submitted</td>
+                <td>Proposed Start: {{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}<br/>
+                    Proposed End: {{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                <td>Jan</td>
+            </tr>
+            <tr>
+                <td>02/02/2018 14:27:48</td>
+                <td>Grant w/ changes</td>
+                <td><a href="#">View detail</a></td>
+                <td>Chris</td>
+            </tr>
+            <tr>
+                <td>02/02/2018 16:47:23</td>
+                <td>Accept w/ changes</td>
+                <td><a href="#">View detail</a></td>
+                <td>Jan</td>
+            </tr>
+            <tr>
+                <td>11/02/2018 08:26:04</td>
+                <td>Work Start</td>
+                <td>{{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}</td>
+                <td>Jan</td>
+            </tr>
+            <tr>
+                <td>13/02/2018 11:17:03</td>
+                <td>Inspection</td>
+                <td><a href="#">Cat A (pass)</a><br/></td>
+                <td>Chris</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
