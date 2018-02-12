@@ -35,8 +35,8 @@ Inspection detail
             {% include "../templates/keyinfo.html" %}
 
 
-            <div id="inspections-table">
-                <h3 class="heading-medium">Inspections</h3>
+            <div style="background-color: #DEE0E2; padding: 0 10px 15px 10px" id="inspections-table">
+                <h3 class="heading-medium" style="padding-top: 10px">Inspections</h3>
                 <table id="inspections">
                     <thead>
                     <th></th>
@@ -47,64 +47,43 @@ Inspection detail
                     <tbody>
                     <tr>
                         <td>Inspection 1</td>
-                        <td id="date"></td>
-                        <td id="type"></td>
-                        <td id="outcome"></td>
+                        <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
+                        <td>{{data['inspection-type-group']}}</td>
+                        <td>{{data['outcome-group']}}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            <div id="attachments">
+                <div id="attachments-table">
+                    <h3 class="heading-medium">File attachments</h3>
+                    <table>
+                        <thead>
+                        <th>Title</th>
+                        <th>File type</th>
+                        <th>File name</th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody id="attachment-table">
+                        {% for fileName in data['inspection-attached-detail'] %}
+                        <tr id="{{ fileName }}">
+                            <td><input class="form-control" name="inspection-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
+                            <td>PNG Image</td>
+                            <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
+                            <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
+                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <br/>
+                </div>
+            </div>
         </div>
     </div>
+
 </main>
-
-<script>
-  (function () {
-
-    // Auto populate date
-    var today = new Date();
-    $('#inspection-date-day').val(today.getDate().toString().padStart(2,'0'));
-    $('#inspection-date-month').val((today.getMonth() + 1).toString().padStart(2,'0'));
-    $('#inspection-date-year').val(today.getFullYear().toString());
-
-
-    //  JS for attachment
-    $("#upload-button").click(function () {
-      var file = $('#inspection-attachments')[0].files[0];
-
-      var fileName = file.name;
-      var attachmentTitle = $("#attachment-title").val();
-      var markup = "<tr><td><input type='hidden' name='inspection-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='inspection-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
-      $("#attachment-table").append(markup);
-
-      $("#attachments-table").removeClass("js-hidden");
-      $("#file-name").val("");
-      $("#attachment-title").val("");
-    });
-
-
-    $("#save").click(function () {
-      $("#inspections-table").show();
-      $("html, body").scrollTop(0);
-
-      $("#date").text(function () {
-        var returnDate =
-          $("#inspection-date-day").val() + "/" +
-          $("#inspection-date-month").val() + "/" +
-          $("#inspection-date-year").val()
-        return returnDate;
-      });
-
-      $("#type").text($("input[name=inspection-type-group]:checked").val());
-      $("#outcome").text($("input[name=outcome-group]:checked").val());
-
-      $("input[name=inspection-type-group]:checked").prop('checked', false);
-      $("input[name=outcome-group]:checked").prop('checked', false);
-
-    });
-
-  })();
-</script>
 
 {% endblock %}
 

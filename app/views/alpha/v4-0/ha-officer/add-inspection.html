@@ -34,9 +34,9 @@ Add inspection
 
             {% include "../templates/keyinfo.html" %}
 
-
-            <div id="inspections-table" style="display: none;">
-                <h3 class="heading-medium">Inspections completed</h3>
+            {% if data['inspection-type-group'] and data['outcome-group'] %}
+            <div style="background-color: #DEE0E2; padding: 0 10px 15px 10px" id="inspections-table">
+                <h3 class="heading-medium" style="padding-top: 10px">Inspections completed</h3>
                 <table id="inspections">
                     <thead>
                     <th></th>
@@ -48,18 +48,21 @@ Add inspection
                     <tbody>
                     <tr>
                         <td>Inspection 1</td>
-                        <td id="date"></td>
-                        <td id="type"></td>
-                        <td id="outcome"></td>
-                        <td><a href="#">View</a></td>
+                        <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
+                        <td>{{data['inspection-type-group']}}</td>
+                        <td>{{data['outcome-group']}}</td>
+                        <td><a href="inspection-detail.html">View</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            {% endif %}
 
-            <div class="heading-medium">Add inspection</div>
 
-            <form action="add-inspection.html" method="POST" id="inspection-form">
+
+            <div class="heading-medium" >Add inspection</div>
+
+            <form action="add-inspection" method="POST" id="inspection-form">
                 <fieldset>
                     <div class="form-group">
                         <label class="form-label-bold" for="inspection-type-a">Inspection type</label>
@@ -212,9 +215,8 @@ Add inspection
                     </div>
                 </div>
 
-                <a id="save" class="button">Add inspection</a>
-                <button class="button" type="submit" >All inspections added</button>
-
+                <button class="button" type="submit" style="margin-right: 20px;" >Submit this inspection</button>
+                <a href="dashboard.html" style="vertical-align: bottom">Return to dashboard</a>
             </form>
         </div>
     </div>
@@ -229,6 +231,9 @@ Add inspection
     $('#inspection-date-month').val((today.getMonth() + 1).toString().padStart(2,'0'));
     $('#inspection-date-year').val(today.getFullYear().toString());
 
+    // Clear radio buttons on postback
+    $("input[name=inspection-type-group]:checked").prop('checked', false);
+    $("input[name=outcome-group]:checked").prop('checked', false);
 
     //  JS for attachment
     $("#upload-button").click(function () {
@@ -242,27 +247,6 @@ Add inspection
       $("#attachments-table").removeClass("js-hidden");
       $("#file-name").val("");
       $("#attachment-title").val("");
-    });
-
-
-    $("#save").click(function () {
-        $("#inspections-table").show();
-        $("html, body").scrollTop(0);
-
-        $("#date").text(function () {
-          var returnDate =
-            $("#inspection-date-day").val() + "/" +
-            $("#inspection-date-month").val() + "/" +
-            $("#inspection-date-year").val()
-          return returnDate;
-        });
-
-        $("#type").text($("input[name=inspection-type-group]:checked").val());
-        $("#outcome").text($("input[name=outcome-group]:checked").val());
-
-        $("input[name=inspection-type-group]:checked").prop('checked', false);
-        $("input[name=outcome-group]:checked").prop('checked', false);
-
     });
 
   })();
