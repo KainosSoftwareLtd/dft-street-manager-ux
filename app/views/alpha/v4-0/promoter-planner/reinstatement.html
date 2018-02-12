@@ -64,20 +64,22 @@ Reinstatement - Street Manager
             </table>
         </div>
         <br/>
-        <div class="form-group" id="add-all-reinstatements" style="display:none">
-            <input type="button" class="button" value="All sites added">
+        <div class="form-group" id="add-all-reinstatements" style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px">
+            <p>All reinstatements complete?</p>
+            <input type="button" class="button" value="Add inspection units">
         </div>
 
-        <div class="form-group" style="display:none" id="inspection-units">
-            <label class="form-label" for="inspection-units">Actual inspection units</label>
-            <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
-        </div>
-
-        <div class="form-group" id="register-reinstatement" style="display:none">
-            <input type="submit" class="button" value="Register Reinstatement">
+        <div style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px" id="inspection-units">
+            <p>All reinstatements complete?</p>
+            <div class="form-group">
+                <label class="form-label-bold" for="inspection-units">Actual inspection units</label>
+                <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
+            </div>
+            <div class="form-group" id="register-reinstatement">
+                <input type="submit" class="button" value="Register Reinstatement">
+            </div>
         </div>
     </form>
-
 
     <form action="reinstatement" method="post" >
         <br/>
@@ -135,33 +137,22 @@ Reinstatement - Street Manager
             <label class="form-label-bold" for="length">Length
                 <span class="form-hint">Hint text TBC</span>
             </label>
-            <input class="form-control" id="length" name="length" type="text" value="{{ data['length'] }}">
+            <input class="form-control" id="length" name="length" type="number" style="width:90px;" value="{{ data['length'] }}">
         </div>
-
-        </label>
         <div class="form-group">
             <label class="form-label-bold" for="width">Width
                 <span class="form-hint">Hint text TBC</span>
             </label>
-            <input class="form-control" id="width" name="width" type="text" value="{{ data['width'] }}">
+            <input class="form-control" id="width" name="width" type="number" style="width:90px;" value="{{ data['width'] }}">
         </div>
-
         <div class="form-group">
-            <label class="form-label-bold" for="reinstatement-date-day">Actual location coordinates</label>
+            <label class="form-label-bold" for="location-x">Actual location coordinates</label>
+            <span class="form-hint">Hint text TBC</span>
             <fieldset>
-                <div class="form-date">
-                    <div class="form-group form-group-day">
-                        <label class="form-label" for="location-x">X</label>
-                        <input class="form-control" id="location-x" name="location-x" type="number" value="{{ data['location-x'] }}">
-                    </div>
-                    <div class="form-group form-group-month">
-                        <label class="form-label" for="location-y">Y</label>
-                        <input class="form-control" id="location-y" name="location-y" type="number" value="{{ data['location-y'] }}">
-                    </div>
-                </div>
+                <input class="form-control" id="location-x" name="location-x" type="number" style="width:90px;" value="{{ data['location-x'] }}">
+                <input class="form-control" id="location-y" name="location-y" type="number" style="width:90px;" value="{{ data['location-y'] }}">
             </fieldset>
         </div>
-
         <fieldset>
             <div class="form-group">
                 <label class="form-label-bold" for="works-position-1">Reinstatement location</label>
@@ -191,6 +182,7 @@ Reinstatement - Street Manager
                         <label for="works-position-5">Footpath</label>
                     </div>
                 </div>
+            </div>
         </fieldset>
         <div class="form-group">
             <label class="form-label-bold" for="location-description">Reinstatement location description</label>
@@ -237,13 +229,8 @@ Reinstatement - Street Manager
       var reinstatementDay = $("#reinstatement-date-day").val();
       var reinstatementMonth = $("#reinstatement-date-month").val();
       var reinstatementYear = $("#reinstatement-date-year").val();
-      var depth = $('input[name=depth-group]:checked').val();
       var length = $("#length").val();
       var width = $("#width").val();
-      var locationX = $("#location-x").val();
-      var locationY = $("#location-y").val();
-      var location = $('input[name=works-position-group]:checked').val();
-      var locationDescription = $("#location-description").val();
       var warrantyDay = $("#warranty-end-date-day").val();
       var warrantyMonth = $("#warranty-end-date-month").val();
       var warrantyYear = $("#warranty-end-date-year").val();
@@ -254,12 +241,8 @@ Reinstatement - Street Manager
       var reinstatementCounterTD = "<td><input class='form-control' name='reinstatement-counter[]' type='hidden' value='" + reinstatementCounter + "'>" + reinstatementCounter + "</td>"
       var reinstatementStatusTD = "<td><input class='form-control' name='reinstatement-status[]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
       var reinstatementDateTD = "<td><input class='form-control' name='reinstatement-date[]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
-      var depthTD = "<td><input class='form-control' name='reinstatement-depth[]' type='hidden' value='" + depth + "'>" + depth + "</td>"
       var lengthTD = "<td><input class='form-control' name='reinstatement-length[]' type='hidden' value='" + length + "'>" + length + "</td>"
       var widthTD = "<td><input class='form-control' name='reinstatement-width[]' type='hidden' value='" + width + "'>" + width + "</td>"
-      var locationCoordsTD = "<td><input class='form-control' name='reinstatement-coordinates[]' type='hidden' value='" + locationX + "," + locationY + "'>" + locationX + "," + locationY + "</td>"
-      var locationOfWorksTD = "<td><input class='form-control' name='reinstatement-location[]' type='hidden' value='" + location + "'>" + location + "</td>"
-      var locationDescriptionTD = "<td><input class='form-control' name='reinstatement-description[]' type='hidden' value='" + locationDescription + "'>" + locationDescription + "</td>"
       var warrantyDateTD = "<td><input class='form-control' name='reinstatement-warrantydate[]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
 
       var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + lengthTD + widthTD + warrantyDateTD +"<td><span class=\"view-reinstatement\"><a href=\"reinstatement-detail-view\">View</a></span></td></tr>";
@@ -275,8 +258,8 @@ Reinstatement - Street Manager
     });
 
     $("#add-all-reinstatements").click(function () {
-      $("#register-reinstatement").show();
       $("#inspection-units").show();
+      $("#add-all-reinstatements").hide();
     });
 
 </script>
