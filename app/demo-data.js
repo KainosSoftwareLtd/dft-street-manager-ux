@@ -56,7 +56,15 @@ module.exports = [
     actualEndDateHour: '15',
     actualEndDateMinute: '00',
     excavationRequiredGroup: 'Yes',
-    screen6Complete: true
+    screen6Complete: true,
+    // Inspections
+    inspectionTypeGroup: '',
+    inspectionDateDay: '',
+    inspectionDateMonth: '',
+    inspectionDateYear: '',
+    outcomeGroup: '',
+    inspectionAttachedDetail: [],
+    inspectionAttachedName: []
   },
 
   {
@@ -116,7 +124,15 @@ module.exports = [
     actualEndDateHour: '17',
     actualEndDateMinute: '00',
     excavationRequiredGroup: 'Yes',
-    screen6Complete: true
+    screen6Complete: true,
+    // Inspections
+    inspectionTypeGroup: '',
+    inspectionDateDay: '',
+    inspectionDateMonth: '',
+    inspectionDateYear: '',
+    outcomeGroup: '',
+    inspectionAttachedDetail: [],
+    inspectionAttachedName: []
   },
 
   {
@@ -176,6 +192,14 @@ module.exports = [
     actualEndDateHour: '',
     actualEndDateMinute: '',
     excavationRequiredGroup: 'Yes',
-    screen6Complete: true
+    screen6Complete: true,
+    // Inspections
+    inspectionTypeGroup: '',
+    inspectionDateDay: '',
+    inspectionDateMonth: '',
+    inspectionDateYear: '',
+    outcomeGroup: '',
+    inspectionAttachedDetail: [],
+    inspectionAttachedName: []
   }
 ]

@@ -324,6 +324,7 @@ router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', functi
 })
 
 router.post('/alpha/v4-0/promoter-planner/all-sites', function (req, res) {
+  req.session.data['Screen7Complete'] = true
   res.render('alpha/v4-0/promoter-planner/confirm-reinstatement.html')
 })
 
@@ -347,8 +348,8 @@ router.post('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {
   }
 })
 
-router.post('/alpha/v4-0/ha-officer/add-inspection.html', function (req, res) {
-  res.redirect('/alpha/v4-0/ha-officer/inspection-detail')
+router.post('/alpha/v4-0/ha-officer/add-inspection', function (req, res) {
+  res.render('alpha/v4-0/ha-officer/add-inspection')
 })
 
 // Add your routes here - above the module.exports line
