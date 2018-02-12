@@ -200,12 +200,13 @@ Add inspection
                             <th></th>
                             </thead>
                             <tbody id="attachment-table">
+                            {% set items = ['PDF document', 'PNG image', 'PNG image']%}
                             {% for fileName in data['inspection-attached-detail'] %}
                             <tr id="{{ fileName }}">
                                 <td><input class="form-control" name="inspection-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
-                                <td>PNG Image</td>
+                                <td>{{items[loop.index0]}}</td>
                                 <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
-                                <td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td>
+                                <td><img src='/public/images/inspection{{loop.index}}.jpg'Preview' width='150' height='150'/></td>
                                 <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
                             </tr>
                             {% endfor %}

@@ -66,15 +66,31 @@ Inspection detail
                         <th></th>
                         </thead>
                         <tbody id="attachment-table">
-                        {% for fileName in data['inspection-attached-detail'] %}
-                        <tr id="{{ fileName }}">
-                            <td><input class="form-control" name="inspection-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
-                            <td>PNG Image</td>
-                            <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
-                            <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
-                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
+
+                        <tr>
+                            <td><input class="form-control" name="inspection-attached-detail[0]" type="hidden" value="{{ data['inspection-attached-detail'][0] }}">{{ data['inspection-attached-detail'][0]  }}</td>
+                            <td>PDF document</td>
+                            <td><input class="form-control" name="inspection-attached-name[0]" type="hidden" value="{{ data['inspection-attached-name'][0] }}">{{ data['inspection-attached-name'][0] }}</td>
+                            <td><img src='/public/images/inspection1.jpg' alt='Preview' width='150' height='150'/></td>
+                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ data['inspection-attached-detail'][0] }})">Remove</a></td>
                         </tr>
-                        {% endfor %}
+
+                        <tr>
+                            <td><input class="form-control" name="inspection-attached-detail[1]" type="hidden" value="{{ data['inspection-attached-detail'][1] }}">{{ data['inspection-attached-detail'][1]  }}</td>
+                            <td>PNG image</td>
+                            <td><input class="form-control" name="inspection-attached-name[1]" type="hidden" value="{{ data['inspection-attached-name'][1] }}">{{ data['inspection-attached-name'][1] }}</td>
+                            <td><img src='/public/images/inspection2.jpg' alt='Preview' width='150' height='150'/></td>
+                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ data['inspection-attached-detail'][1] }})">Remove</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><input class="form-control" name="inspection-attached-detail[2]" type="hidden" value="{{ data['inspection-attached-detail'][2] }}">{{ data['inspection-attached-detail'][2]  }}</td>
+                            <td>PNG image</td>
+                            <td><input class="form-control" name="inspection-attached-name[2]" type="hidden" value="{{ data['inspection-attached-name'][2] }}">{{ data['inspection-attached-name'][2] }}</td>
+                            <td><img src='/public/images/inspection3.jpg' alt='Preview' width='150' height='150'/></td>
+                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ data['inspection-attached-detail'][1] }})">Remove</a></td>
+                        </tr>
+
                         </tbody>
                     </table>
                     <br/>
