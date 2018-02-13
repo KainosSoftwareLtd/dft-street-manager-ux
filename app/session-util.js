@@ -63,5 +63,19 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['inspection-attached-detail'] = data.inspectionAttachedDetail
   sessionData['inspection-attached-name'] = data.inspectionAttachedName
   // Reinstatement
+  sessionData['reinstatement-status-group'] = data.reinstatementStatusGroup
+  sessionData['reinstatement-date-day'] = data.reinstatementDateDay
+  sessionData['reinstatement-date-month'] = data.reinstatementDateMonth
+  sessionData['reinstatement-date-year'] = data.reinstatementDateYear
+  sessionData['depth-group'] = data.depthGroup
+  sessionData['length'] = data.length
+  sessionData['width'] = data.width
+  sessionData['location-x'] = data.locationX
+  sessionData['location-y'] = data.locationY
+  sessionData['works-position-group'] = data.worksPositionGroup
+  sessionData['location-description'] = data.worksLocationDescription
+  sessionData['warranty-end-date-day'] = data.warrantyEndDateDay
+  sessionData['warranty-end-date-month'] = data.warrantyEndDateMonth
+  sessionData['warranty-end-date-year'] = data.warrantyEndDateYear
   sessionData['Screen7Complete'] = data.screen7Complete
 }
