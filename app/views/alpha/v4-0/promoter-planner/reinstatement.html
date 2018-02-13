@@ -35,86 +35,96 @@ Reinstatement - Street Manager
 
     <br/>
 
-    <form action="all-sites" method="post">
-        <div id="reinstatements-table" style="display:none">
-            <h3 class="heading-medium">Reinstatement sites</h3>
-            <table id="reinstatements">
-                <thead>
-                <th></th>
-                <th>Status</th>
-                <th>Completion date</th>
-                <th>Length</th>
-                <th>Width</th>
-                <th>Warranty period end date</th>
-                <th></th>
-                </thead>
-                <tbody>
-                {% for reinstatement in data['reinstatement-counter'] %}
-                <tr id="{{ reinstatement }}">
-                    <td><input class="form-control" name="reinstatement-counter[]" type="hidden" value="{{ reinstatement }}">{{ reinstatement }}</td>
-                    <td><input class="form-control" name="reinstatement-status[]" type="hidden" value="{{ data['reinstatement-status'][loop.index -1]  }}">{{ data['reinstatement-status'][loop.index -1]  }}</td>
-                    <td><input class="form-control" name="reinstatement-date[]" type="hidden" value="{{ data['reinstatement-date'][loop.index -1 ] }}">{{ data['reinstatement-date'][loop.index -1 ] }}</td>
-                    <td><input class="form-control" name="reinstatement-length[]" type="hidden" value="{{ data['reinstatement-length'][loop.index -1] }}">{{ data['reinstatement-length'][loop.index -1 ] }}</td>
-                    <td><input class="form-control" name="reinstatement-width[]" type="hidden" value="{{ data['reinstatement-width'][loop.index -1] }}">{{ data[reinstatement-width'][loop.index -1 ] }}</td>
-                    <td><input class="form-control" name="reinstatement-warrantydate[]" type="hidden" value="{{ data['reinstatement-warrantydate'][loop.index -1] }}">{{ data[reinstatement-warrantydate'][loop.index -1 ] }}</td>
-                    <td><span class="view-reinstatement"></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <br/>
-        <div class="form-group" id="add-all-reinstatements" style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px">
-            <p>All reinstatements complete?</p>
-            <input type="button" class="button" value="Add inspection units">
-            <p></p>
-        </div>
+    {% if data['reinstatement-status-group'] %}
+        <form action="all-sites" method="post">
+            <div id="reinstatements-table">
+                <h3 class="heading-medium">Reinstatement sites</h3>
+                <table id="reinstatements">
+                    <thead>
+                    <th></th>
+                    <th>Status</th>
+                    <th>Completion date</th>
+                    <th>Length</th>
+                    <th>Width</th>
+                    <th>Warranty period end date</th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    {% for reinstatementStatus in data['reinstatement-status-group'] %}
+                    <tr id="{{ loop.index }}">
+                        <td>{{ loop.index }}</td>
+                        <td>{{ reinstatementStatus  }}</td>
+                        <td>{{ data['reinstatement-day'][loop.index -1 ] }}/{{ data['reinstatement-month'][loop.index -1 ] }}/{{ data['reinstatement-year'][loop.index -1 ] }}</td>
+                        <td><input class="form-control" name="reinstatement-length[]" type="hidden" value="{{ data['reinstatement-length'][loop.index -1] }}">{{ data['reinstatement-length'][loop.index -1 ] }}</td>
+                        <td><input class="form-control" name="reinstatement-width[]" type="hidden" value="{{ data['reinstatement-width'][loop.index -1] }}">{{ data[reinstatement-width'][loop.index -1 ] }}</td>
+                        <td><input class="form-control" name="reinstatement-warrantydate[]" type="hidden" value="{{ data['reinstatement-warrantydate'][loop.index -1] }}">{{ data[reinstatement-warrantydate'][loop.index -1 ] }}</td>
+                        <td><span class="view-reinstatement"></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="form-group" id="add-all-reinstatements" style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px">
+                <p>All reinstatements complete?</p>
+                <input type="button" class="button" value="Add inspection units">
+                <p></p>
+            </div>
 
-        <div style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px" id="inspection-units">
-            <p>All reinstatements complete?</p>
-            <div class="form-group">
-                <label class="form-label-bold" for="inspection-units">Actual inspection units</label>
-                <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
+            <div style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px" id="inspection-units">
+                <p>All reinstatements complete?</p>
+                <div class="form-group">
+                    <label class="form-label-bold" for="inspection-units">Actual inspection units</label>
+                    <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
+                </div>
+                <div class="form-group" id="register-reinstatement">
+                    <input type="submit" class="button" value="Register Reinstatement">
+                </div>
             </div>
-            <div class="form-group" id="register-reinstatement">
-                <input type="submit" class="button" value="Register Reinstatement">
-            </div>
-        </div>
-    </form>
+        </form>
+    {% endif %}
 
     <form action="reinstatement" method="post" >
         <div id="single-reinstatement" class="heading-medium">Add a reinstatement</div>
         <div id="multiple-reinstatement" class="heading-medium" style="display:none;">Add another reinstatement</div>
+
+        {% for reinstatementStatus in data['reinstatement-status-group'] %}
+            <input class="form-control" name="reinstatement-status-group[]" type="hidden" value="{{ reinstatementStatus  }}">
+            <input class="form-control" name="reinstatement-day[]" type="hidden" value="{{ data['reinstatement-day'][loop.index - 1]  }}">
+            <input class="form-control" name="reinstatement-month[]" type="hidden" value="{{ data['reinstatement-month'][loop.index - 1]  }}">
+            <input class="form-control" name="reinstatement-year[]" type="hidden" value="{{ data['reinstatement-year'][loop.index - 1]  }}">
+        {% endfor %}
+
         <fieldset class="inline">
             <div class="form-group">
                 <br/>
                 <label class="form-label-bold" for="reinstatement-permanent">Reinstatement status</label>
                 <div class="multiple-choice">
-                    <input id="reinstatement-permanent" type="radio" name="reinstatement-status-group" value="Permanent" {{ checked('reinstatement-status-group','Permanent') }}>
+                    <input id="reinstatement-permanent" type="radio" name="reinstatement-status-group[]" value="Permanent" >
                     <label for="reinstatement-permanent">Permanent</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="reinstatement-interim" type="radio" name="reinstatement-status-group" value="Interim" {{ checked('reinstatement-status-group','Interim') }}>
+                    <input id="reinstatement-interim" type="radio" name="reinstatement-status-group[]" value="Interim" >
                     <label for="reinstatement-interim">Interim</label>
                 </div>
             </div>
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label-bold" for="reinstatement-date-day">Reinstatement date</label>
+            <label class="form-label-bold" for="reinstatement-day">Reinstatement date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
-                        <label class="form-label" for="reinstatement-date-day">Day</label>
-                        <input class="form-control" id="reinstatement-date-day" name="reinstatement-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['reinstatement-day'] }}">
+                        <label class="form-label" for="reinstatement-day">Day</label>
+                        <input class="form-control" id="reinstatement-day" name="reinstatement-day[]" type="number" pattern="[0-9]*" min="0" max="31">
                     </div>
                     <div class="form-group form-group-month">
-                        <label class="form-label" for="reinstatement-date-month">Month</label>
-                        <input class="form-control" id="reinstatement-date-month" name="reinstatement-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['reinstatement-month'] }}">
+                        <label class="form-label" for="reinstatement-month">Month</label>
+                        <input class="form-control" id="reinstatement-month" name="reinstatement-month[]" type="number" pattern="[0-9]*" min="0" max="12">
                     </div>
                     <div class="form-group form-group-year">
-                        <label class="form-label" for="reinstatement-date-year">Year</label>
-                        <input class="form-control" id="reinstatement-date-year" name="reinstatement-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['reinstatement-year'] }}">
+                        <label class="form-label" for="reinstatement-year">Year</label>
+                        <input class="form-control" id="reinstatement-year" name="reinstatement-year[]" type="number" pattern="[0-9]*" min="0" max="2020">
                     </div>
                 </div>
             </fieldset>
@@ -213,7 +223,7 @@ Reinstatement - Street Manager
         </div>
 
         <div class="form-group">
-            <input type="button" id="add-reinstatement" class="button" value="Add reinstatement">
+            <input type="submit" id="add-reinstatement" class="button" value="Add reinstatement">
         </div>
         <br/>
     </form>
