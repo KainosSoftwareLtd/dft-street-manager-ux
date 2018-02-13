@@ -323,6 +323,10 @@ router.post('/alpha/v4-0/promoter-planner/permit-application-assessment', functi
   res.render('alpha/v4-0/promoter-planner/grant-permit-application.html')
 })
 
+router.post('/alpha/v4-0/promoter-planner/reinstatement', function (req, res) {
+  res.render('alpha/v4-0/promoter-planner/reinstatement.html')
+})
+
 router.post('/alpha/v4-0/promoter-planner/all-sites', function (req, res) {
   req.session.data['Screen7Complete'] = true
   res.render('alpha/v4-0/promoter-planner/confirm-reinstatement.html')
@@ -353,6 +357,15 @@ router.post('/alpha/v4-0/ha-officer/add-inspection', function (req, res) {
   res.render('alpha/v4-0/ha-officer/add-inspection')
 })
 
+router.get('/alpha/v4-0/ha-officer/overdue-reinstatements', function (req, res) {
+  sessionUtil.setSessionData(req.session.data, demoData[2])
+  res.render('alpha/v4-0/ha-officer/overdue-reinstatements')
+})
+
+router.get('/alpha/v4-0/ha-officer/reinstatement-detail-view', function (req, res) {
+  sessionUtil.setSessionData(req.session.data, demoData[2])
+  res.render('alpha/v4-0/ha-officer/reinstatement-detail-view')
+})
 // Add your routes here - above the module.exports line
 
 module.exports = router

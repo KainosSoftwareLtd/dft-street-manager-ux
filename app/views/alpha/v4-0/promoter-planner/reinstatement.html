@@ -37,7 +37,7 @@ Reinstatement - Street Manager
 
     <form action="all-sites" method="post">
         <div id="reinstatements-table" style="display:none">
-            <h3 class="heading-small">Reinstatement sites</h3>
+            <h3 class="heading-medium">Reinstatement sites</h3>
             <table id="reinstatements">
                 <thead>
                 <th></th>
@@ -64,12 +64,13 @@ Reinstatement - Street Manager
             </table>
         </div>
         <br/>
-        <div class="form-group" id="add-all-reinstatements" style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px">
+        <div class="form-group" id="add-all-reinstatements" style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px">
             <p>All reinstatements complete?</p>
             <input type="button" class="button" value="Add inspection units">
+            <p></p>
         </div>
 
-        <div style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px" id="inspection-units">
+        <div style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px" id="inspection-units">
             <p>All reinstatements complete?</p>
             <div class="form-group">
                 <label class="form-label-bold" for="inspection-units">Actual inspection units</label>
@@ -82,8 +83,8 @@ Reinstatement - Street Manager
     </form>
 
     <form action="reinstatement" method="post" >
-        <br/>
-        <div class="heading-medium">Add a reinstatement</div>
+        <div id="single-reinstatement" class="heading-medium">Add a reinstatement</div>
+        <div id="multiple-reinstatement" class="heading-medium" style="display:none;">Add another reinstatement</div>
         <fieldset class="inline">
             <div class="form-group">
                 <br/>
@@ -249,12 +250,31 @@ Reinstatement - Street Manager
       $("#reinstatements tbody").append(markup);
 
       $("#condition-reason").val("");
+
+      $("#reinstatement-date-day").val("");
+      $("#reinstatement-date-month").val("");
+      $("#reinstatement-date-year").val("");
+      $("#reinstatement-date-year").val("");
+      $("#length").val("");
+      $("#width").val("");
+      $("#location-x").val("");
+      $("#location-y").val("");
+      $("#location-description").val("");
+      $("#warranty-end-date-day").val("");
+      $("#warranty-end-date-month").val("");
+      $("#warranty-end-date-year").val("");
+      $("input[name=reinstatement-status-group]:checked").prop('checked', false);
+      $("input[name=depth-group]:checked").prop('checked', false);
+      $("input[name=works-position-group]:checked").prop('checked', false);
+
     })
   });
 
     $("#add-reinstatement").click(function () {
       $("#add-all-reinstatements").show();
       $("#reinstatements-table").show();
+      $("#multiple-reinstatement").show();
+      $("#single-reinstatement").hide();
     });
 
     $("#add-all-reinstatements").click(function () {
