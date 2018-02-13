@@ -64,7 +64,22 @@ module.exports = [
     inspectionDateYear: '',
     outcomeGroup: '',
     inspectionAttachedDetail: [],
-    inspectionAttachedName: []
+    inspectionAttachedName: [],
+    // Reinstatement
+    reinstatementStatusGroup: '',
+    reinstatementDateDay: '',
+    reinstatementDateMonth: '',
+    reinstatementDateYear: '',
+    depthGroup: '',
+    length: '',
+    width: '',
+    locationX: '',
+    locationY: '',
+    worksPositionGroup: '',
+    warrantyEndDateDay: '',
+    warrantyEndDateMonth: '',
+    warrantyEndDateYear: '',
+    screen7Complete: true
   },
 
   {
@@ -132,7 +147,22 @@ module.exports = [
     inspectionDateYear: '',
     outcomeGroup: '',
     inspectionAttachedDetail: [],
-    inspectionAttachedName: []
+    inspectionAttachedName: [],
+    // Reinstatement
+    reinstatementStatusGroup: '',
+    reinstatementDateDay: '',
+    reinstatementDateMonth: '',
+    reinstatementDateYear: '',
+    depthGroup: '',
+    length: '',
+    width: '',
+    locationX: '',
+    locationY: '',
+    worksPositionGroup: '',
+    warrantyEndDateDay: '',
+    warrantyEndDateMonth: '',
+    warrantyEndDateYear: '',
+    screen7Complete: true
   },
 
   {
@@ -200,7 +230,22 @@ module.exports = [
     inspectionDateYear: '',
     outcomeGroup: '',
     inspectionAttachedDetail: [],
-    inspectionAttachedName: []
+    inspectionAttachedName: [],
+    // Reinstatement
+    reinstatementStatusGroup: '',
+    reinstatementDateDay: '',
+    reinstatementDateMonth: '',
+    reinstatementDateYear: '',
+    depthGroup: '',
+    length: '',
+    width: '',
+    locationX: '',
+    locationY: '',
+    worksPositionGroup: '',
+    warrantyEndDateDay: '',
+    warrantyEndDateMonth: '',
+    warrantyEndDateYear: '',
+    screen7Complete: true
   },
 
   {
@@ -268,6 +313,21 @@ module.exports = [
     inspectionDateYear: '',
     outcomeGroup: '',
     inspectionAttachedDetail: [],
-    inspectionAttachedName: []
+    inspectionAttachedName: [],
+    // Reinstatement
+    reinstatementStatusGroup: '',
+    reinstatementDateDay: '',
+    reinstatementDateMonth: '',
+    reinstatementDateYear: '',
+    depthGroup: '',
+    length: '',
+    width: '',
+    locationX: '',
+    locationY: '',
+    worksPositionGroup: '',
+    warrantyEndDateDay: '',
+    warrantyEndDateMonth: '',
+    warrantyEndDateYear: '',
+    screen7Complete: true
   }
 ]
