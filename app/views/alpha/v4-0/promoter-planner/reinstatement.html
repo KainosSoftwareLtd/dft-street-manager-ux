@@ -55,17 +55,17 @@ Reinstatement - Street Manager
                         <td>{{ loop.index }}</td>
                         <td>{{ reinstatementStatus  }}</td>
                         <td>{{ data['reinstatement-day'][loop.index -1 ] }}/{{ data['reinstatement-month'][loop.index -1 ] }}/{{ data['reinstatement-year'][loop.index -1 ] }}</td>
-                        <td><input class="form-control" name="reinstatement-length[]" type="hidden" value="{{ data['reinstatement-length'][loop.index -1] }}">{{ data['reinstatement-length'][loop.index -1 ] }}</td>
-                        <td><input class="form-control" name="reinstatement-width[]" type="hidden" value="{{ data['reinstatement-width'][loop.index -1] }}">{{ data[reinstatement-width'][loop.index -1 ] }}</td>
-                        <td><input class="form-control" name="reinstatement-warrantydate[]" type="hidden" value="{{ data['reinstatement-warrantydate'][loop.index -1] }}">{{ data[reinstatement-warrantydate'][loop.index -1 ] }}</td>
-                        <td><span class="view-reinstatement"></td>
+                        <td>{{ data['reinstatement-length'][loop.index -1 ] }}</td>
+                        <td>{{ data['reinstatement-width'][loop.index -1 ] }}</td>
+                        <td>{{ data['warranty-end-day'][loop.index -1 ] }}/{{ data['warranty-end-month'][loop.index -1 ] }}/{{ data['warranty-end-year'][loop.index -1 ] }}</td>
+                        <td><span class="view-reinstatement"><a href="reinstatement-detail-view">View</a></td>
                     </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
             <br/>
-            <div class="form-group" id="add-all-reinstatements" style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px">
+            <div class="form-group" id="add-all-reinstatements" style="background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px">
                 <p>All reinstatements complete?</p>
                 <input type="button" class="button" value="Add inspection units">
                 <p></p>
@@ -93,6 +93,16 @@ Reinstatement - Street Manager
             <input class="form-control" name="reinstatement-day[]" type="hidden" value="{{ data['reinstatement-day'][loop.index - 1]  }}">
             <input class="form-control" name="reinstatement-month[]" type="hidden" value="{{ data['reinstatement-month'][loop.index - 1]  }}">
             <input class="form-control" name="reinstatement-year[]" type="hidden" value="{{ data['reinstatement-year'][loop.index - 1]  }}">
+            <input class="form-control" name="depth-group[]" type="hidden" value="{{ data['depth-group'][loop.index - 1]  }}">
+            <input class="form-control" name="reinstatement-length[]" type="hidden" value="{{ data['reinstatement-length'][loop.index - 1]  }}">
+            <input class="form-control" name="reinstatement-width[]" type="hidden" value="{{ data['reinstatement-width'][loop.index - 1]  }}">
+            <input class="form-control" name="location-x[]" type="hidden" value="{{ data['location-x'][loop.index - 1]  }}">
+            <input class="form-control" name="location-y[]" type="hidden" value="{{ data['location-y'][loop.index - 1]  }}">
+            <input class="form-control" name="works-position-group[]" type="hidden" value="{{ data['works-position-group'][loop.index - 1]  }}">
+            <input class="form-control" name="location-description[]" type="hidden" value="{{ data['location-description'][loop.index - 1]  }}">
+            <input class="form-control" name="warranty-end-day[]" type="hidden" value="{{ data['warranty-end-day'][loop.index - 1]  }}">
+            <input class="form-control" name="warranty-end-month[]" type="hidden" value="{{ data['warranty-end-month'][loop.index - 1]  }}">
+            <input class="form-control" name="warranty-end-year[]" type="hidden" value="{{ data['warranty-end-year'][loop.index - 1]  }}">
         {% endfor %}
 
         <fieldset class="inline">
@@ -134,34 +144,34 @@ Reinstatement - Street Manager
             <div class="form-group">
                 <label class="form-label-bold" for="reinstatement-permanent">Depth</label>
                 <div class="multiple-choice">
-                    <input id="depth-standard" type="radio" name="depth-group" value="Standard" {{ checked('depth-group','Standard') }}>
+                    <input id="depth-standard" type="radio" name="depth-group[]" value="Standard">
                     <label for="depth-standard">Standard (under 1.5m)</label>
                 </div>
                 <div class="multiple-choice">
-                    <input id="depth-deep" type="radio" name="depth-group" value="Deep" {{ checked('depth-group','Deep') }}>
+                    <input id="depth-deep" type="radio" name="depth-group[]" value="Deep">
                     <label for="depth-deep">Deep (over 1.5m)</label>
                 </div>
             </div>
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label-bold" for="length">Length
+            <label class="form-label-bold" for="reinstatement-length">Length
                 <span class="form-hint">Hint text TBC</span>
             </label>
-            <input class="form-control" id="length" name="length" type="number" style="width:90px;" value="{{ data['length'] }}">
+            <input class="form-control" id="reinstatement-length" name="reinstatement-length[]" type="number" style="width:90px;">
         </div>
         <div class="form-group">
-            <label class="form-label-bold" for="width">Width
+            <label class="form-label-bold" for="reinstatement-width">Width
                 <span class="form-hint">Hint text TBC</span>
             </label>
-            <input class="form-control" id="width" name="width" type="number" style="width:90px;" value="{{ data['width'] }}">
+            <input class="form-control" id="reinstatement-width" name="reinstatement-width[]" type="number" style="width:90px;">
         </div>
         <div class="form-group">
             <label class="form-label-bold" for="location-x">Actual location coordinates</label>
             <span class="form-hint">Hint text TBC</span>
             <fieldset>
-                <input class="form-control" id="location-x" name="location-x" type="number" style="width:90px;" value="{{ data['location-x'] }}">
-                <input class="form-control" id="location-y" name="location-y" type="number" style="width:90px;" value="{{ data['location-y'] }}">
+                <input class="form-control" id="location-x" name="location-x[]" type="number" style="width:90px;">
+                <input class="form-control" id="location-y" name="location-y[]" type="number" style="width:90px;">
             </fieldset>
         </div>
         <fieldset>
@@ -169,27 +179,27 @@ Reinstatement - Street Manager
                 <label class="form-label-bold" for="works-position-1">Reinstatement location</label>
                 <div class="column-one-third">
                     <div class="multiple-choice">
-                        <input id="works-position-1" type="radio" name="works-position-group" value="Footway" {{ checked('works-position-group','Footway') }}>
+                        <input id="works-position-1" type="radio" name="works-position-group[]" value="Footway">
                         <label for="works-position-1">Footway</label>
                     </div>
                     <div class="multiple-choice">
-                        <input id="works-position-2" type="radio" name="works-position-group" value="Carriageway" {{ checked('works-position-group','Carriageway') }}>
+                        <input id="works-position-2" type="radio" name="works-position-group[]" value="Carriageway">
                         <label for="works-position-2">Carriageway</label>
                     </div>
                 </div>
                 <div class="column-one-third">
                     <div class="multiple-choice">
-                        <input id="works-position-3" type="radio" name="works-position-group" value="Verge" {{ checked('works-position-group','Verge') }}>
+                        <input id="works-position-3" type="radio" name="works-position-group[]" value="Verge">
                         <label for="works-position-3">Verge</label>
                     </div>
                     <div class="multiple-choice">
-                        <input id="works-position-4" type="radio" name="works-position-group" value="Cycleway" {{ checked('works-position-group','Cycleway') }}>
+                        <input id="works-position-4" type="radio" name="works-position-group[]" value="Cycleway">
                         <label for="works-position-4">Cycleway</label>
                     </div>
                 </div>
                 <div class="column-one-third">
                     <div class="multiple-choice">
-                        <input id="works-position-5" type="radio" name="works-position-group" value="Footpath" {{ checked('works-position-group','Footpath') }}>
+                        <input id="works-position-5" type="radio" name="works-position-group[]" value="Footpath">
                         <label for="works-position-5">Footpath</label>
                     </div>
                 </div>
@@ -197,26 +207,26 @@ Reinstatement - Street Manager
         </fieldset>
         <div class="form-group">
             <label class="form-label-bold" for="location-description">Reinstatement location description</label>
-            <input class="form-control" id="location-description" name="location-description" type="text" value="{{ data['location-description'] }}">
+            <input class="form-control" id="location-description" name="location-description[]" type="text">
         </div>
 
         <div class="form-group">
-            <label class="form-label-bold" for="warranty-end-date-day">Warranty period end date
+            <label class="form-label-bold" for="warranty-end-day">Warranty period end date
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
-                        <label class="form-label" for="warranty-end-date-day">Day</label>
-                        <input class="form-control" id="warranty-end-date-day" name="warranty-end-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['warranty-end-day'] }}">
+                        <label class="form-label" for="warranty-end-day">Day</label>
+                        <input class="form-control" id="warranty-end-day" name="warranty-end-day[]" type="number" pattern="[0-9]*" min="0" max="31">
                     </div>
                     <div class="form-group form-group-month">
-                        <label class="form-label" for="warranty-end-date-month">Month</label>
-                        <input class="form-control" id="warranty-end-date-month" name="warranty-end-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['warranty-end-month'] }}">
+                        <label class="form-label" for="warranty-end-month">Month</label>
+                        <input class="form-control" id="warranty-end-month" name="warranty-end-month[]" type="number" pattern="[0-9]*" min="0" max="12">
                     </div>
                     <div class="form-group form-group-year">
-                        <label class="form-label" for="warranty-end-date-year">Year</label>
-                        <input class="form-control" id="warranty-end-date-year" name="warranty-end-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['warranty-end-year'] }}">
+                        <label class="form-label" for="warranty-end-year">Year</label>
+                        <input class="form-control" id="warranty-end-year" name="warranty-end-year[]" type="number" pattern="[0-9]*" min="0" max="2020">
                     </div>
                 </div>
             </fieldset>
