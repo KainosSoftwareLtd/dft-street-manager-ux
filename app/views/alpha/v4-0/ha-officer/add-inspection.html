@@ -109,6 +109,11 @@ Add inspection
                                     <label for="inspection-type-third-party">Third party report</label>
                                 </div>
                                 <div class="multiple-choice">
+                                    <input id="inspection-type-third-routine" type="radio" name="inspection-type-group"
+                                           value="Routine" {{ checked('inspection-type-routine','Routine') }}>
+                                    <label for="inspection-type-third-party">Routine</label>
+                                </div>
+                                <div class="multiple-choice">
                                     <input id="inspection-type-defective-apparatus" type="radio"
                                            name="inspection-type-group" value="Defective apparatus" {{ checked('inspection-type-group','Defective
                                     apparatus') }}>
