@@ -349,6 +349,7 @@ router.post('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {
 })
 
 router.post('/alpha/v4-0/ha-officer/add-inspection', function (req, res) {
+  req.session.data['inspectionSubmitted'] = true
   res.render('alpha/v4-0/ha-officer/add-inspection')
 })
 

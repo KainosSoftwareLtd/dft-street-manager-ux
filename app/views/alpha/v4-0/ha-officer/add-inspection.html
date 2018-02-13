@@ -199,7 +199,9 @@ Add inspection
                             <th></th>
                             <th></th>
                             </thead>
+
                             <tbody id="attachment-table">
+                            {% if not data['inspectionSubmitted'] %}
                             {% set extension = ['PDF', 'PNG', 'PNG'] %}
                             {% for fileName in data['inspection-attached-detail'] %}
                             <tr id="{{ fileName }}">
@@ -210,6 +212,7 @@ Add inspection
                                 <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
                             </tr>
                             {% endfor %}
+                            {% endif %}
                             </tbody>
                         </table>
                         <br/>
