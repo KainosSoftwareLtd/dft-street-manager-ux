@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Failed inspections
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Failed inspections</h2>
+
+    <table class="table">
+        <tbody>
+        <thead>
+        <tr>
+            <th>Works Reference</th>
+            <th>Proposed Start Date</th>
+            <th>Estimated End Date</th>
+            <th>Works Category</th>
+            <th>Location Description</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tr>
+            <td>{{data['workreferencenumber']}}</td>
+            <td>{{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}}</td>
+            <td>{{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}}</td>
+            <td>{{data['workcategorygroup']}}</td>
+            <td>{{data['works-location-description']}}</td>
+            <td><a href="view-inspections">View</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</main>
+
+{% endblock %}
