@@ -209,7 +209,7 @@ Add inspection
                                 <td>{{extension[loop.index0]}}</td>
                                 <td><input class="form-control" name="inspection-attached-name[]" type="hidden" value="{{ data['inspection-attached-name'][loop.index -1 ] }}">{{ data['inspection-attached-name'][loop.index -1 ] }}</td>
                                 <td><img src='/public/images/inspection{{loop.index}}.jpg' alt='Preview' width='150' height='150'/></td>
-                                <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
+                                <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></span></td>
                             </tr>
                             {% endfor %}
                             {% endif %}
@@ -257,6 +257,7 @@ Add inspection
       $("#attachment-title").val("");
       $("#inspection-attachments").val("");
     });
+
 
   })();
 </script>
