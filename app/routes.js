@@ -245,6 +245,10 @@ router.post('/alpha/v4-0/promoter-planner/search.html', function (req, res) {
       sessionUtil.setSessionData(req.session.data, demoData[0])
       res.redirect('/alpha/v4-0/task-list-page.html')
       break
+    case '44443466' :
+      sessionUtil.setSessionData(req.session.data, demoData[3])
+      res.redirect('/alpha/v4-0/task-list-page.html')
+      break
     default:
       res.render('alpha/v4-0/promoter-planner/dashboard', {validationError: 'Not recognised, please check and retype.'})
   }
@@ -258,6 +262,10 @@ router.post('/alpha/v4-0/ha-officer/search.html', function (req, res) {
       break
     case 'CT1293823562' :
       sessionUtil.setSessionData(req.session.data, demoData[2])
+      res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
+      break
+    case '44443466' :
+      sessionUtil.setSessionData(req.session.data, demoData[3])
       res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
       break
     default:
@@ -354,6 +362,7 @@ router.post('/alpha/v4-0/ha-officer/assessment-decision', function (req, res) {
 
 router.post('/alpha/v4-0/ha-officer/add-inspection', function (req, res) {
   req.session.data['inspectionSubmitted'] = true
+  req.session.data['Screen8Complete'] = true
   res.redirect('/alpha/v4-0/ha-officer/add-inspection')
 })
 

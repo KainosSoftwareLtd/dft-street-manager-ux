@@ -41,6 +41,8 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['environmental-health-group'] = data.environmentalHealthGroup
   sessionData['project-reference'] = data.projectReference
   sessionData['Screen4Complete'] = data.screen4Complete
+  // Assess
+  sessionData['Screen5Complete'] = data.screen5Complete
   // On Site
   sessionData['actual-start-date-day'] = data.actualStartDateDay
   sessionData['actual-start-date-month'] = data.actualStartDateMonth
@@ -62,6 +64,7 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['outcome-group'] = data.outcomeGroup
   sessionData['inspection-attached-detail'] = data.inspectionAttachedDetail
   sessionData['inspection-attached-name'] = data.inspectionAttachedName
+  sessionData['Screen8Complete'] = data.screen8Complete
   // Reinstatement
   sessionData['reinstatement-status-group'] = data.reinstatementStatusGroup
   sessionData['reinstatement-date-day'] = data.reinstatementDateDay
@@ -78,4 +81,5 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['warranty-end-date-month'] = data.warrantyEndDateMonth
   sessionData['warranty-end-date-year'] = data.warrantyEndDateYear
   sessionData['Screen7Complete'] = data.screen7Complete
+  sessionData['ReinstatementRequired'] = data.reinstatementRequired
 }

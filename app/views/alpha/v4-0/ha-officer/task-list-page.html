@@ -98,20 +98,52 @@
             </li>
         </li>
         <br/>
+        {% if data['Screen5Complete'] %}
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">6. </span><a href="add-inspection.html">Inspections</a>
+            <span class="task-list-section-number">6. </span><a href="../promoter-planner/permit-application-on-site.html">On site</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen5Complete'] %}
+          {% if data['Screen6Complete'] %}
+          <strong class="task-completed" id="onsite-completed">Complete</strong>
+          {% else %}
+          <strong class="task-completed" id="onsite-incompleted">Incomplete</strong>
+          {% endif %}
+        </li>
+        </li>
+        <br/>
+        {% endif %}
+
+        {% if data['ReinstatementRequired'] %}
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">7. </span><a href="../promoter-planner/reinstatement.html">Reinstatement</a>
+          </h2>
+        <li class="task-list-item">
+          {% if data['Screen7Complete'] %}
+          <strong class="task-completed" id="reinstatement-completed">Complete</strong>
+          {% else %}
+          <strong class="task-completed" id="reinstatement-incompleted">Incomplete</strong>
+          {% endif %}
+        </li>
+        </li>
+        <br/>
+        {% endif %}
+
+        {% if data['Screen7Complete'] %}
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">8. </span><a href="add-inspection.html">Inspections</a>
+          </h2>
+        <li class="task-list-item">
+        {% if data['Screen8Complete'] %}
           <strong class="task-completed" id="inspections-completed">Complete</strong>
           {% else %}
           <strong class="task-completed" id="inspections-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
+        {% endif %}
       </ol>
-
     </div>
   </div>
 
