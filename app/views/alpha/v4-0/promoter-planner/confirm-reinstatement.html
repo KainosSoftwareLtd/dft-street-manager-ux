@@ -33,7 +33,9 @@ Permit Application Confirmation - Street Manager
                 <h1 class="heading-large">
                     Reinstatement registered
                 </h1>
-                <p>Completion date:  {{ data['reinstatement-date'][0]}}</p>
+                {% if data['reinstatement-status-group'] %}
+                <p>Completion date:  {{ data['reinstatement-day'][0 ] }}/{{ data['reinstatement-month'][0 ] }}/{{ data['reinstatement-year'][0 ] }}</p>
+                {% endif %}
             </div>
         </div>
     </div>
