@@ -265,7 +265,6 @@ router.post('/alpha/v4-0/ha-officer/search.html', function (req, res) {
       res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
       break
     case '44443466' :
-      sessionUtil.setSessionData(req.session.data, demoData[3])
       res.redirect('/alpha/v4-0/ha-officer/task-list-page.html')
       break
     default:
