@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Create New Work - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Check forward plan details before creating</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Work reference number</td>
+                <td>{{ data['workreferencenumber'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#workreferencenumber">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Promoter name</td>
+                <td>{{ data['promotername'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#promotername">
+                        Change <span class="visuallyhidden">promoter name</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Promoter agent</td>
+                <td>{{ data['promoteragent'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#promoteragent">
+                        Change <span class="visuallyhidden">promoter agent</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Highway authority</td>
+                <td>{{ data['highway-authority'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#highway-authority">
+                        Change <span class="visuallyhidden">highway authority</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>USRN</td>
+                <td>{{ data['usrn'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#usrn">
+                        Change <span class="visuallyhidden">usrn</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Proposed start</td>
+                {% if data['start-day'] != '' %}
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td class="change-answer">
+                    <a href="create-new-work#start-date-day">
+                        Change <span class="visuallyhidden">start date</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Proposed end</td>
+                {% if data['end-day'] != '' %}
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td class="change-answer">
+                    <a href="create-new-work#end-date-day">
+                        Change <span class="visuallyhidden">end date</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Date flexible</td>
+                <td>{{ data['date-flexible-group'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#date-flexible-yes">
+                        Change <span class="visuallyhidden">date flexible</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Works location</td>
+                <td>{{ data['works-location-group'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#works-location-1">
+                        Change <span class="visuallyhidden">works location</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Description of work #1</td>
+                <td>{{ data['description-of-work'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#description-of-work">
+                        Change <span class="visuallyhidden">description of work 1</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Description of work #2</td>
+                <td>{{ data['description-of-work-group'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#description-of-work-1">
+                        Change <span class="visuallyhidden">description of work 2</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Contact details</td>
+                <td>{{ data['contact-details'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#contact-details">
+                        Change <span class="visuallyhidden">contact details</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Commercially sensitive</td>
+                <td>{{ data['commercially-sensitive-group'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#commercially-sensitive-yes">
+                        Change <span class="visuallyhidden">commercially sensitive</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Reinstatement category</td>
+                <td>{{ data['reinstatement-category'] }}</td>
+                <td class="change-answer">
+                    <a href="create-new-work#reinstatement-category">
+                        Change <span class="visuallyhidden">reinstatement category</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <p>
+        <img src="/public/images/examplemap.png" alt="Map showing work created" height="400" width="600">
+    </p>
+
+    <h2 class="heading-medium">Now create your permit application</h2>
+
+    <p class="text">
+        By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
+    </p>
+
+    <div class="form-group">
+        <a href="confirm-work-record" class="button">Accept and create</a>
+    </div>
+</main>
+
+{% endblock %}
