@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+HA Officer Home - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Overdue Reinstatements</h2>
+
+    <p>Reinstatements not entered after 10 working days or more</p>
+
+    <table class="table" id="reinstatements-table">
+        <thead>
+            <th>Date</th>
+            <th>Works Reference</th>
+            <th>Promoter</th>
+            <th>Street</th>
+            <th>Reinstatement Location</th>
+            <th>Status</th>
+            <th></th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>12/01/2018</td>
+            <td>CT0224443466</td>
+            <td>Cadent</td>
+            <td>High Road Acton</td>
+            <td>Footway</td>
+            <td>Interim</td>
+            <td><a href="reinstatement-detail-view.html">View</a></td>
+        </tr>
+        <tr>
+            <td>28/01/2018</td>
+            <td>CT1234568</td>
+            <td>FM Conway</td>
+            <td>The Vale</td>
+            <td>Cycleway</td>
+            <td>Permanent</td>
+            <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+            <td>03/02/2018</td>
+            <td>EC40010725431</td>
+            <td>OpenReach</td>
+            <td>Appian Way</td>
+            <td>Carriageway</td>
+            <td>Interim</td>
+            <td><a href="#">View</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a style="float:right; margin-top: 20px" href="">Next ></a>
+</main>
+
+
+{% endblock %}

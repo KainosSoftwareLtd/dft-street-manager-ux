@@ -374,6 +374,55 @@ router.get('/alpha/v4-0/ha-officer/reinstatement-detail-view', function (req, re
   sessionUtil.setSessionData(req.session.data, demoData[2])
   res.render('alpha/v4-0/ha-officer/reinstatement-detail-view')
 })
+
+// V5 Routes
+
+router.post('/alpha/v5-0/sign-in.html', function (req, res) {
+  switch (req.body.email) {
+    case 'promo@sm.com' :
+      res.redirect('/alpha/v5-0/promoter-planner/dashboard.html')
+      break
+    case 'ha@sm.com' :
+      res.redirect('/alpha/v5-0/ha-officer/dashboard.html')
+      break
+    default:
+      res.render('alpha/v5-0/sign-in.html', {validationError: 'Invalid login credentials.'})
+  }
+})
+
+router.post('/alpha/v5-0/promoter-planner/search.html', function (req, res) {
+  switch (req.body.wrn_search) {
+    case 'CT0224443466' :
+      sessionUtil.setSessionData(req.session.data, demoData[0])
+      res.redirect('/alpha/v5-0/task-list-page.html')
+      break
+    case '44443466' :
+      sessionUtil.setSessionData(req.session.data, demoData[3])
+      res.redirect('/alpha/v5-0/task-list-page.html')
+      break
+    default:
+      res.render('alpha/v5-0/promoter-planner/dashboard', {validationError: 'Not recognised, please check and retype.'})
+  }
+})
+
+router.post('/alpha/v5-0/ha-officer/search.html', function (req, res) {
+  switch (req.body.wrn_search) {
+    case 'CT0938475839' :
+      sessionUtil.setSessionData(req.session.data, demoData[1])
+      res.redirect('/alpha/v5-0/ha-officer/task-list-page.html')
+      break
+    case 'CT1293823562' :
+      sessionUtil.setSessionData(req.session.data, demoData[2])
+      res.redirect('/alpha/v5-0/ha-officer/task-list-page.html')
+      break
+    case '44443466' :
+      res.redirect('/alpha/v5-0/ha-officer/task-list-page.html')
+      break
+    default:
+      res.render('alpha/v5-0/ha-officer/dashboard', {validationError: 'Not recognised, please check and retype.'})
+  }
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

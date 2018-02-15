@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">ha@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        On site
+    </h1>
+
+    {% include "../templates/keyinfo.html" %}
+
+    <form action="permit-application-on-site" method="post" >
+        <br/>
+        <div class="form-group">
+            <label class="form-label" for="actual-start-date-day">Actual start date</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="actual-start-date-day">Day</label>
+                        <input class="form-control" id="actual-start-date-day" name="start-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-date-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="actual-start-date-month">Month</label>
+                        <input class="form-control" id="actual-start-date-month" name="start-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-date-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="actual-start-date-year">Year</label>
+                        <input class="form-control" id="actual-start-date-year" name="start-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-date-year'] }}">
+                    </div>
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <input class="button" style="width:10%" value="Start" onclick="insertStartDateTime()">
+                </div>
+            </fieldset>
+
+            <div class="form-date">
+                <div class="form-group form-group-day">
+                    <label class="form-label" for="actual-start-date-hour">Hour (HH)</label>
+                    <input class="form-control" id="actual-start-date-hour" name="start-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['start-date-hour'] }}">
+                </div>
+                <div class="form-group form-group-month">
+                    <label class="form-label" for="actual-start-date-minute">Minute (MM)</label>
+                    <input class="form-control" id="actual-start-date-minute" name="start-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['start-date-minute'] }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="actual-end-date-day">Actual end date</label>
+            <fieldset>
+                <div class="form-date">
+                    <div class="form-group form-group-day">
+                        <label class="form-label" for="actual-end-date-day">Day</label>
+                        <input class="form-control" id="actual-end-date-day" name="end-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-date-day'] }}">
+                    </div>
+                    <div class="form-group form-group-month">
+                        <label class="form-label" for="actual-end-date-month">Month</label>
+                        <input class="form-control" id="actual-end-date-month" name="end-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-date-month'] }}">
+                    </div>
+                    <div class="form-group form-group-year">
+                        <label class="form-label" for="actual-end-date-year">Year</label>
+                        <input class="form-control" id="actual-end-date-year" name="end-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-date-year'] }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="button" style="width:10%" value="Stop" onclick="insertEndDateTime()">
+                </div>
+            </fieldset>
+            <div class="form-date">
+                <div class="form-group form-group-day">
+                    <label class="form-label" for="actual-end-date-hour">Hour (HH)</label>
+                    <input class="form-control" id="actual-end-date-hour" name="end-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['start-end-hour'] }}">
+                </div>
+                <div class="form-group form-group-month">
+                    <label class="form-label" for="actual-end-date-minute">Minute (MM)</label>
+                    <input class="form-control" id="actual-end-date-minute" name="end-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['start-end-minute'] }}">
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="inline">
+            <div class="form-group">
+                <label class="form-label" for="excavation-yes">Was an excavation required?</label>
+                <div class="multiple-choice" data-target="reinstatement">
+                    <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" {{ checked('excavation-group','Yes') }}>
+                    <label for="excavation-yes">Yes</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="excavation-no" type="radio" name="excavation-group" value="No" checked="checked" {{ checked('excavation-group','No') }}>
+                    <label for="excavation-no">No</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" id="reinstatement" class="button js-hidden" value="Add Reinstatement" >
+        </div>
+    </form>
+</main>
+
+<script>
+
+  function insertStartDateTime() {
+    var currentDateTime = new Date();
+    var day = currentDateTime.getDate();
+    var month = currentDateTime.getMonth() + 1;
+    var year = currentDateTime.getFullYear();
+    var hour = currentDateTime.getHours();
+    var minute = currentDateTime.getMinutes();
+
+    if(month.toString().length == 1) {
+      month = '0'+month;
+    }
+    if(day.toString().length == 1) {
+      day = '0'+day;
+    }
+    if(hour.toString().length == 1) {
+      hour = '0'+hour;
+    }
+    if(minute.toString().length == 1) {
+      minute = '0'+minute;
+    }
+
+    document.getElementById('actual-start-date-day').value=day;
+    document.getElementById('actual-start-date-month').value=month;
+    document.getElementById('actual-start-date-year').value=year;
+    document.getElementById('actual-start-date-hour').value=hour;
+    document.getElementById('actual-start-date-minute').value=minute;
+
+    var formattedDateTime = currentDateTime.toLocaleDateString() + " " + currentDateTime.toLocaleTimeString()
+    //document.getElementById('startdate').value=formattedDateTime;
+  }
+
+  function insertEndDateTime() {
+    var currentDateTime = new Date();
+    var day = currentDateTime.getDate();
+    var month = currentDateTime.getMonth() + 1;
+    var year = currentDateTime.getFullYear();
+    var hour = currentDateTime.getHours();
+    var minute = currentDateTime.getMinutes();
+
+    if(month.toString().length == 1) {
+      month = '0'+month;
+    }
+    if(day.toString().length == 1) {
+      day = '0'+day;
+    }
+    if(hour.toString().length == 1) {
+      hour = '0'+hour;
+    }
+    if(minute.toString().length == 1) {
+      minute = '0'+minute;
+    }
+    document.getElementById('actual-end-date-day').value=day;
+    document.getElementById('actual-end-date-month').value=month;
+    document.getElementById('actual-end-date-year').value=year;
+    document.getElementById('actual-end-date-hour').value=hour;
+    document.getElementById('actual-end-date-minute').value=minute;
+  }
+</script>
+
+{% endblock %}

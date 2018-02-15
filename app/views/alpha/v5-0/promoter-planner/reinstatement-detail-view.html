@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Reinstatement - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="reinstatement.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h1 class="heading-large">
+	   		<span class="heading-secondary">
+	   			WRN {{ data['workreferencenumber'] }}
+	   		</span>
+        Reinstatement
+    </h1>
+
+    {% include "../templates/keyinfo.html" %}
+
+    <br/>
+    <div>
+        <div class="heading-medium">Site 1 detail</div>
+        <table>
+            <tbody>
+            <tr>
+                <td class="bold-small">Status</td>
+                <td style="text-align: right">Permanent</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Completion date</td>
+                <td style="text-align: right">29/03/2018</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Depth</td>
+                <td style="text-align: right">Standard</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Length</td>
+                <td style="text-align: right">1m</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Width</td>
+                <td style="text-align: right">1m</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Location coordinates</td>
+                <td style="text-align: right">506757,-251254</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Location</td>
+                <td style="text-align: right">Footway</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Location description</td>
+                <td style="text-align: right">Opp 81 vale str</td>
+            </tr>
+            <tr>
+                <td class="bold-small">Warranty period end date</td>
+                <td style="text-align: right">29/03/2020</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+{% endblock %}

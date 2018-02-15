@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Promoter / Planner Home - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h2 class="heading-large">Promoter / Planner - Needs Action</h2>
+
+    <p>
+        <a class="button button-start" href="#" role="button">Create Job</a>
+    </p>
+
+    <table class="table">
+        <tbody>
+        <thead>
+        <tr>
+            <th>Works Reference</th>
+            <th>Proposed Start Date</th>
+            <th>Estimated End Date</th>
+            <th>Works Category</th>
+            <th>Location Description</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tr>
+            <td>CT0224443466</td>
+            <td>21/02/2018</td>
+            <td>23/02/2018</td>
+            <td>Minor</td>
+            <td>O/S Costa j/w Harrow Road</td>
+            <td><a href="permit-application-assessment">View</a></td>
+        </tr>
+        <tr>
+            <td>CT0222180881</td>
+            <td>05/02/2018</td>
+            <td>07/02/2018</td>
+            <td>Minor</td>
+            <td>O/S no 178 Boss by kerb</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        <tr>
+            <td>YG425353061</td>
+            <td>19/02/2018</td>
+            <td>05/04/2018</td>
+            <td>Standard</td>
+            <td>SB 10M B4 NORTHUMBERLAND AVE</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        <tr>
+            <td>YG425353061</td>
+            <td>13/02/2018</td>
+            <td>27/02/2018</td>
+            <td>Standard</td>
+            <td>J/W Celbridges Mews</td>
+            <td><a href="#">View</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a style="float:right; margin-top: 20px" href="">Next ></a>
+</main>
+
+{% endblock %}
