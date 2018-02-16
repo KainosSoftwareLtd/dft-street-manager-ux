@@ -562,6 +562,10 @@ router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) 
   }
 })
 
+router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
+  res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

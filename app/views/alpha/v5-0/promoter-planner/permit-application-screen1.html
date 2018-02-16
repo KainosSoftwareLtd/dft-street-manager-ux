@@ -189,12 +189,6 @@ Permit Application - Street Manager
         <fieldset class="inline">
             <div class="form-group {{'form-group-error' if validationWorkCategoryError}}">
                 <br/>
-                <label class="form-label" for="work-category-1">Work category</label>
-                {% if validationError %}<p class="error-message">{{ validationWorkCategoryError }}</p>{% endif %}
-                <div class="multiple-choice">
-                    <input id="work-category-1" type="radio" name="workcategorygroup" value="FPI" {{ checked('workcategorygroup','FPI') }}>
-                    <label for="work-category-1">FPI</label>
-                </div>
                 <div class="multiple-choice">
                     <input id="work-category-2" type="radio" name="workcategorygroup" value="Minor" {{ checked('workcategorygroup','Minor') }}>
                     <label for="work-category-2">Minor</label>
