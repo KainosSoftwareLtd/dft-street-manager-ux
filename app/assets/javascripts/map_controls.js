@@ -19,9 +19,9 @@ MAP_CONTROLS.draw_controls = function () {
 // Draw Polygon Button
 MAP_CONTROLS.polygon_button = function () {
   var button = document.createElement('button')
-  button.setAttribute('class', 'map-button polygon')
-  button.setAttribute('title', 'Draw Polygon')
-  button.innerHTML = 'Draw'
+  //button.setAttribute('class', 'map-button polygon')
+  //button.setAttribute('title', 'Draw Polygon')
+  //button.innerHTML = 'Draw'
   var handlePolygon = function () {
     MAP_CONTROLS.add_draw_interaction('Polygon', button)
   }
@@ -66,11 +66,8 @@ MAP_CONTROLS.add_draw_interaction = function (type, button) {
         'id': Date.now()
       })
       var coords = event.feature.getGeometry().getCoordinates();
-      var text = "New area drawn, click below to create work for this area:";
-      document.getElementById('drawnArea').innerHTML = text;
-      document.getElementById('create-work-button').style.display = "";
-      document.getElementById('results').style.display = "none";
-      document.getElementById('create-work-button').classList.add("button");
+      document.getElementById('create-works-panel').style.display = "";
+      document.getElementById('functions-panel').style.display = "none";
     })
 
     map.addInteraction(MAP_CONTROLS.current_interaction)
