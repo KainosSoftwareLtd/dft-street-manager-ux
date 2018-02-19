@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Permit Application Confirmation - Street Manager
+Edit Work Confirmation - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -24,30 +24,21 @@ Permit Application Confirmation - Street Manager
         <div class="column-two-thirds">
 
             <div class="govuk-box-highlight">
-                <h1 class="heading-large">
-                    Your works record has been submitted
+                <h1 class="heading-xlarge">
+                    Forward plan published
                 </h1>
-                <p class="font-large"id="currentDateTime"></p>
                 <p class="font-large">
                     Your work reference number is <br>
-                    <strong class="bold">{{ data['workreferencenumber'] }}</strong>
+                    <strong class="bold">CT0224443466</strong>
                 </p>
             </div>
         </div>
     </div>
 
     <div style="padding-top: 10px">
-        <a href="map-search-results" class="button" style="margin-right: 20px;">Create new work record</a>
-        <a href="dashboard" style="vertical-align: bottom">Return to dashboard</a>
+        <a href="map-search-results.html" class="button" style="margin-right: 20px;">Create new work record</a>
+        <a href="dashboard.html" style="vertical-align: bottom">Return to dashboard</a>
     </div>
-        
-
 </main>
-
-<script>
-  var today = new Date();
-  var today1 = today.toLocaleDateString() + " " + today.toLocaleTimeString()
-  document.getElementById('currentDateTime').innerHTML=today1;
-</script>
 
 {% endblock %}

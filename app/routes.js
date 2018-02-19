@@ -5,7 +5,7 @@ const demoData = require('./demo-data')
 
 var data = {'data': {
   'workreferencenumber': 'CT0224443466',
-  'promotername': 'JOHN CARRINGTON',
+  'promotername': 'BT Openreach',
   'promoteragent': 'FM CONWAY LTD',
   'highway-authority': 'Highway Authority',
   'usrn': '08400189',
@@ -524,6 +524,46 @@ router.get('/alpha/v5-0/ha-officer/overdue-reinstatements', function (req, res) 
 router.get('/alpha/v5-0/ha-officer/reinstatement-detail-view', function (req, res) {
   sessionUtil.setSessionData(req.session.data, demoData[2])
   res.render('alpha/v5-0/ha-officer/reinstatement-detail-view')
+})
+
+router.get('/alpha/v5-0/promoter-planner/work-record', function (req, res) {
+  res.render('alpha/v5-0/promoter-planner/work-record.html', data)
+})
+
+router.get('/alpha/v5-0/promoter-planner/withdraw-work-record', function (req, res) {
+  res.render('alpha/v5-0/promoter-planner/withdraw-work-record.html', data)
+})
+
+router.get('/alpha/v5-0/promoter-planner/edit-work-record', function (req, res) {
+  res.render('alpha/v5-0/promoter-planner/edit-work-record.html', data)
+})
+
+router.post('/alpha/v5-0/promoter-planner/edit-work-record.html', function (req, res) {
+  if (req.body.workreferencenumber === '') {
+    res.render('alpha/v5-0/promoter-planner/edit-work-record.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was a problem'})
+  } else if (req.body.promotername === '') {
+    res.render('alpha/v5-0/promoter-planner/edit-work-record.html', {validationPromoterNameError: 'Enter the Promoter name', validationError: 'There was a problem'})
+  } else if (req.body.promoteragent === '') {
+    res.render('alpha/v5-0/promoter-planner/edit-work-record.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
+  } else {
+    res.redirect('/alpha/v5-0/promoter-planner/edit-check-answers.html')
+  }
+})
+
+router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) {
+  if (req.body.workreferencenumber === '') {
+    res.render('alpha/v5-0/promoter-planner/create-new-work.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was a problem'})
+  } else if (req.body.promotername === '') {
+    res.render('alpha/v5-0/promoter-planner/create-new-work.html', {validationPromoterNameError: 'Enter the Promoter name', validationError: 'There was a problem'})
+  } else if (req.body.promoteragent === '') {
+    res.render('alpha/v5-0/promoter-planner/create-new-work.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
+  } else {
+    res.redirect('/alpha/v5-0/promoter-planner/work-record-check-answers.html')
+  }
+})
+
+router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
+  res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
 })
 
 // Add your routes here - above the module.exports line

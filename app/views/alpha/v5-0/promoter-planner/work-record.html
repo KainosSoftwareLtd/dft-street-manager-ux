@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+        <!-- main content starts -->
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Forward plan</h1>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>Work rerference number</td>
+            <td>{{ data['workreferencenumber'] }}</td>
+        </tr>
+        <tr>
+            <td>Work status</td>
+            <td>Draft forward plan</td>
+        </tr>
+        <tr>
+            <td>Promoter name</td>
+            <td>{{ data['promotername'] }}</td>
+        </tr>
+        <tr>
+            <td>Promoter agent</td>
+            <td>{{ data['promoteragent'] }}</td>
+        </tr>
+        <tr>
+            <td>Highway authority</td>
+            <td>{{ data['highway-authority'] }}</td>
+        </tr>
+        <tr>
+            <td>USRN</td>
+            <td>{{ data['usrn'] }}</td>
+        </tr>
+        <tr>
+            <td>Proposed start</td>
+            <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+        </tr>
+        <tr>
+            <td>Proposed end</td>
+            <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+        </tr>
+        <tr>
+            <td>Date flexible</td>
+            <td>{{ data['date-flexible-group']}}</td>
+        </tr>
+        <tr>
+            <td>Description of work #1</td>
+            <td>{{ data['description-of-work'] }}</td>
+        </tr>
+        <tr>
+            <td>Description of work #2</td>
+            <td>{{ data['description-of-work-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Contact details</td>
+            <td>{{ data['contact-details'] }}</td>
+        </tr>
+        <tr>
+            <td>Commercially sensitive</td>
+            <td>{{ data['commercially-sensitive-group'] }}</td>
+        </tr>
+        <tr>
+            <td>Reinstatement category</td>
+            <td>{{ data['reinstatement-category'] }}</td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 10px">
+        <a class="button" href="edit-work-record" role="button" style="margin-right: 20px;">Edit</a>
+        <a class="button" href="withdraw-work-record" role="button" style="margin-right: 20px;">Withdraw</a>
+        <a href="map-search-results" style="vertical-align: bottom">Return to map</a>
+    </div>
+</main>
+
+{% endblock %}
+
+

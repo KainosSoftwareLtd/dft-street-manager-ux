@@ -17,79 +17,73 @@ Forward Planning - Street Manager
 
 <div id="map" class="map">
 
+    <div id="layerIcon">
+        <img src="/public/images/layers-icon.png">
+    </div>
+
+    <div id="legend" style="display: none">
+        <form>
+            <fieldset>
+                <legend>
+                    <span class="body-text">Select all that apply</span>
+                </legend>
+                <div class="multiple-choice">
+                    <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
+                    <label for="layer-type-2">My planned works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-other-planned-works">
+                    <label for="layer-type-3">Third party planned works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-4" name="layer-types" type="checkbox" value="layer-current-works">
+                    <label for="layer-type-4">Current works</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
+                    <label for="layer-type-5">Restrictions</label>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="slider">
+        <input disabled type="text" id="amount" style="border: 0; background-color: #0c60a3; color: white; padding-left:10px; width: inherit;" />
+        <div id="slider-id">
+            <div class="ui-slider-handle"></div>
+        </div>
+    </div>
+
 </div>
 
 <div class="arrow_box" id="popup-container"></div>
 
 <div id="search-panel" class="charge-list">
-    <div id="functions-panel">
-        <a href="#">< Back</a>
 
-        <div id="results" class="results-block">
-            <h1 class="heading-small">Location: <span id="titleText">W3 7XA</span></h1>
-            <p>The Vale<br>London Borough of Ealing<br></p>
-        </div>
 
-        <div id="layers" class="results-block">
-            <h1 class="heading-small">Select layers:</h1>
-            <form>
-                <fieldset>
-                    <div class="multiple-choice">
-                        <input id="layer-type-1" name="layer-types" type="checkbox" value="layer-other-planned-works">
-                        <label for="layer-type-1">My works</label>
-                        <img src="/public/images/map-marker-red.png">
-                    </div>
-                    <div class="multiple-choice">
-                        <input id="layer-type-2" name="layer-types" type="checkbox" value="layer-planned-works">
-                        <label for="layer-type-2">Third party works</label>
-                        <img src="/public/images/map-marker-red.png">
-                    </div>
-                    <div class="multiple-choice">
-                        <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-current-works">
-                        <label for="layer-type-3">My plans</label>
-                        <img src="/public/images/map-marker-blue.png">
-                    </div>
-                    <div class="multiple-choice">
-                        <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
-                        <label for="layer-type-5">Third party plans</label>
-                        <img src="/public/images/map-marker-blue.png">
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+    <h1 class="heading-small">Search results for <span id="titleText"></span></h1>
+    <!-- <input class="form-control search-field maintain-searched" id="maintain-map-search" name="maintain-map-search" type="text"> -->
+    <input class="form-control" id="searched_term" type="text" value="{{searchDetails}}" name="searched_term">
+    <input class="button" type="submit" value="Search">
 
-        <div id="dateFilter">
-            <h1 class="heading-small">Select period of interest:</h1>
-            <form>
-                <select class="form-control" id="period-of-interest" name="period-of-interest">
-                    <option value="0">Today</option>
-                    <option value="1">2 weeks</option>
-                    <option value="2" selected>3 months</option>
-                    <option value="3">1 year</option>
-                </select>
-            </form>
-        </div>
-
-        <div id="draw-controls">
-            <h1 class="heading-small">Draw works area:</h1>
-            <div class="form-group">
-                <fieldset>
-                    <input id="draw-button" class="button" type="button" name="draw-button" value="Draw">
-                </fieldset>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group" id="create-works-panel" style="display: none;">
-        <a id="return-to-options" href="#">< Back to map options</a>
-        <h1 class="heading-small">New works area drawn</h1>
-        <p>Click below to create works for this area:</p>
+    <div id="drawnArea" style="padding-top: 20px;"></div>
+    <div class="form-group">
         <fieldset>
-            <form action="../task-list-page">
-                <input style="width: 100%;" id="create-work-button" class="button" type="submit" name="create-work-button" value="Create Work">
-            </form>
+            <a id="create-work-button" href="/alpha/v3-0/task-list-page" style="display: none;">Create Work</a>
         </fieldset>
     </div>
+    <div id="results" class="results-block">
+    <ol class="results-list">
+
+        <li class="individualResults">
+            <div class="search-result-header">
+                <h2 class="heading-small"><a id="result" href="#"></a>W3 7XA</h2>
+            </div>
+            <p>Cowley Rd<br>London<br></p>
+        </li>
+    </ol>
+</div>
 
 </div>
 
@@ -100,6 +94,14 @@ Forward Planning - Street Manager
         position: relative;
     }
 
+    #legend {
+        background-color: white;
+        position: absolute;
+        width: 240px;
+        padding: 10px;
+        top: 120px;
+        right: 50px;
+    }
     #slider {
         border-radius: 4px;
         background: #fff;
@@ -108,6 +110,12 @@ Forward Planning - Street Manager
         width: 450px;
         bottom: 20px;
         right: 50px;
+    }
+
+    #layerIcon {
+        position: absolute;
+        right: 50px;
+        top: 90px;
     }
 
     .ui-slider-handle.ui-corner-all.ui-state-default {
@@ -174,7 +182,7 @@ Forward Planning - Street Manager
     MAP_CONFIG.draw_layer_zindex = 2;
     // Draw Source
     MAP_CONFIG.draw_features = new ol.Collection();
-    //MAP_CONFIG.draw_controls = new MAP_CONTROLS.draw_controls();
+    MAP_CONFIG.draw_controls = new MAP_CONTROLS.draw_controls();
     MAP_CONFIG.draw_source = new ol.source.Vector({ features: MAP_CONFIG.draw_features });
     MAP_CONFIG.draw_layer = new ol.layer.Vector({
       source: MAP_CONFIG.draw_source,
@@ -186,21 +194,6 @@ Forward Planning - Street Manager
     })
   })(MAP_CONFIG);
 
-
-  $('#draw-button').click(function() {
-      MAP_CONTROLS.add_draw_interaction('Polygon', this)
-  })
-
-  $('#return-to-options').click(function(){
-      document.getElementById('create-works-panel').style.display = "none";
-      document.getElementById('functions-panel').style.display = "";
-      map.removeInteraction(MAP_CONTROLS.current_interaction);
-      $('#active-control').removeAttr('id')
-      MAP_CONFIG.draw_source.clear();
-      MAP_CONTROLS.toggle_draw_layer_style(draw_layer_styles.NONE)
-      MAP_CONTROLS.current_interaction = null
-  })
-
   var slider = new ol.control.Control({element: document.getElementById('slider')});
   var layerIcon = new ol.control.Control({element: document.getElementById('layerIcon')});
 
@@ -211,7 +204,7 @@ Forward Planning - Street Manager
     target: 'map',
     layers: [MAP_CONFIG.base_layer, MAP_CONFIG.draw_layer],
     controls: ol.control.defaults({attribution: false}).extend([
-      scaleLine
+      MAP_CONFIG.draw_controls, legend, scaleLine, slider, layerIcon
     ]),
     view: new ol.View({
       center: ol.proj.fromLonLat([-0.252, 51.5073]),
@@ -223,7 +216,6 @@ Forward Planning - Street Manager
      var view = map.getView();
      view.animate({zoom: 18, center: [-27683.567448866303, 6711417.071088102]})
   });
-
 
   var asset1 = new ol.Feature (
     {
@@ -312,22 +304,6 @@ Forward Planning - Street Manager
   })
   plannedWork2.setId(2);
 
-  var plannedWork3 = new ol.Feature({
-    geometry: new ol.geom.Point([-27496.55173198698, 6711710.308566612]),
-    text: 'Work Ref: CT0224443466 <br/>' +
-     'Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>' +
-     'Road Owner: London Borough of Acton <br/>' +
-     'Start date: 09/06/2018 <br/>' +
-     'End date: 19/07/2018 <br/>' +
-     'Status: Submitted for PA Approval <br/>' +
-     'Promoter Name: BT Openreach <br/>' +
-     'Promoter Agent: FM Conway LTD <br/>' +
-     'Contact: 0345 045 5212 <br/>' +
-     '<a href="work-record">View Work Record</a>',
-    dateOfWorks: new Date('2018/02/23').getTime() / 1000
-  })
-  plannedWork3.setId(3);
-
   var plannedWork4 = new ol.Feature({
     geometry: new ol.geom.Point([-28388.71517150302, 6711675.673038171]),
     text: 'ZE4103159-CE-30 <br/>' +
@@ -344,7 +320,7 @@ Forward Planning - Street Manager
   })
   plannedWork4.setId(4);
 
-  var plannedWorks = [plannedWork1, plannedWork2, plannedWork3, plannedWork4]
+  var plannedWorks = [plannedWork1, plannedWork2, plannedWork4]
 
   const plannedWorksSource = new ol.source.Vector({
     features: plannedWorks

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Permit Application Confirmation - Street Manager
+New Work Confirmation - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -24,13 +24,12 @@ Permit Application Confirmation - Street Manager
         <div class="column-two-thirds">
 
             <div class="govuk-box-highlight">
-                <h1 class="heading-large">
-                    Your works record has been submitted
+                <h1 class="heading-xlarge">
+                    Work record created
                 </h1>
-                <p class="font-large"id="currentDateTime"></p>
                 <p class="font-large">
                     Your work reference number is <br>
-                    <strong class="bold">{{ data['workreferencenumber'] }}</strong>
+                    <strong class="bold">CT12345678</strong>
                 </p>
             </div>
         </div>
@@ -43,11 +42,5 @@ Permit Application Confirmation - Street Manager
         
 
 </main>
-
-<script>
-  var today = new Date();
-  var today1 = today.toLocaleDateString() + " " + today.toLocaleTimeString()
-  document.getElementById('currentDateTime').innerHTML=today1;
-</script>
 
 {% endblock %}
