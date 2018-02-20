@@ -7,19 +7,22 @@ var data = {'data': {
   'workreferencenumber': 'CT0224443466',
   'promotername': 'BT Openreach',
   'promoteragent': 'FM CONWAY LTD',
-  'highway-authority': 'Highway Authority',
+  'highway-authority': 'LB Ealing',
   'usrn': '08400189',
-  'start-day': '28',
-  'start-month': '03',
-  'start-year': '2017',
-  'end-day': '30',
-  'end-month': '03',
-  'end-year': '2017',
+  'start-day': '09',
+  'start-month': '06',
+  'start-year': '2018',
+  'end-day': '19',
+  'end-month': '07',
+  'end-year': '2018',
   'date-flexible-group': 'Yes',
   'description-of-work': 'Digging up the road',
   'description-of-work-group': 'Minor',
   'contact-details': '004455500000',
-  'commercially-sensitive-group': 'No'}
+  'commercially-sensitive-group': 'No',
+  'reinstatement-category': 'Road Category 2',
+  'street-name' : 'The Vale'
+  }
 }
 
 // Route index page

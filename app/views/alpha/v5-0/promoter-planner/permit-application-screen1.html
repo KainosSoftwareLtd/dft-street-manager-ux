@@ -124,6 +124,7 @@ Permit Application - Street Manager
         <fieldset class="inline {{'form-group-error' if validationDurationError}}">
             <div class="form-group">
                 <label class="form-label" for="duration">Duration</label>
+                <span class="form-hint">Durations are in working days</span>
                 {% if validationError %}<p class="error-message">{{ validationDurationError }}</p>{% endif %}
                 <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
             </div>

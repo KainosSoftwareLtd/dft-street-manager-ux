@@ -38,7 +38,7 @@ Permit Application Confirmation - Street Manager
 
     <div style="padding-top: 10px">
         <a href="map-search-results" class="button" style="margin-right: 20px;">Create new work record</a>
-        <a href="dashboard" style="vertical-align: bottom">Return to dashboard</a>
+        <a href="dashboard" style="vertical-align: bottom">Return to homepage</a>
     </div>
         
 
@@ -46,7 +46,7 @@ Permit Application Confirmation - Street Manager
 
 <script>
   var today = new Date();
-  var today1 = today.toLocaleDateString() + " " + today.toLocaleTimeString()
+  var today1 = today.toLocaleDateString() + " " + today.toLocaleTimeString().slice(0,5)
   document.getElementById('currentDateTime').innerHTML=today1;
 </script>
 
