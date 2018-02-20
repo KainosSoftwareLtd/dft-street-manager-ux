@@ -31,17 +31,17 @@ Permit Application Confirmation - Street Manager
 
     {% include "../templates/keyinfo.html" %}
 
-    <div class="heading-medium">Assessment decision</div>
-    <div style="background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 20px">
-        <p>Comments by HA officer: Westminster</p>
-        <p>29 Jan</p>
-        <p>{{ data['comment'] }}
-        </p>
+    <div style="background-color: #DEE0E2; padding: 0 0 10px 10px; margin-bottom: 20px">
+        <div class="heading-medium">Assessment comments</div>
+        <p>Comments by HA officer: {{ data['highwayauthority'] }}</p>
+        <p>27 Feb 2018</p>
+        <p><pre>{{ data['comment'] }}</pre></p>
     </div>
 
+    <div class="heading-medium">Assessment decision</div>
 
     <form action="permit-application-assessment" method="post" >
-     <div class="heading-small">TM type change from Stop/Go to Two-way signals</div>
+     <div class="heading-small">Start date changed to {{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }} and End Date change to {{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</div>
                 <fieldset class="inline">
                     <div class="form-group">
                         <br/>
@@ -57,7 +57,7 @@ Permit Application Confirmation - Street Manager
                     </div>
                 </fieldset>
 
-            <div class="heading-small">New Condition NCT06a - Remove spoil by end of next working day</div>
+            <div class="heading-small">New Condition {{ data['conditions-name'][1] }} - {{ data['conditions-reason'][1] }}</div>
                 <fieldset class="inline">
                     <div class="form-group">
                         <br/>

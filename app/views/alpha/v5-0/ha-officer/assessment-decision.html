@@ -58,7 +58,7 @@ Work Record
                 {% else %}
                 <td></td>
                 {% endif %}
-                <td><a href="permit-application-screen1.html">Change</a></td>
+                <td><a href="change-work-dates.html">Change</a></td>
             </tr>
             <tr>
                 <td class="bold-small">End date</td>
@@ -139,7 +139,7 @@ Work Record
                         {{ data['conditions-name'] | join(", ") }}
                     {% endif %}
                 </td>
-                <td><a href="permit-application-screen3.html">Change</a></td>
+                <td><a href="change-conditions.html">Change</a></td>
             </tr>
             <tr>
                 <td class="bold-small">Traffic management plan</td>
@@ -169,13 +169,14 @@ Work Record
 
     <div class="heading-medium">Assessment decision</div>
 
-    {% if data['TmDecisionChanged'] %}
+    {% if data['WorkDatesChanged'] %}
     <div style="border: 2px solid #0b0c0c; padding: 10px 0 10px 10px; margin-bottom: 20px">
         <div>Changes required</div>
         <ul class="list list-bullet">
-            <li>Traffic management type Stop/go boards to Two-way signals </li>
+            <li>Start Date changed to {{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }} </li>
+            <li>End Date changed to {{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }} </li>
             {% if data['PermitConditionsChanged'] %}
-                <li>NCT06A has been added</li>
+                <li>Condition {{ data['conditions-name'][1] }} has been added with reason: {{ data['conditions-reason'][1] }}</li>
             {% endif %}
         </ul>
     </div>
@@ -205,7 +206,7 @@ Work Record
             </fieldset>
             <div style="padding-top: 20px">
                 <label>Comment</label>
-                <textarea id="comment" value="{{ data['comment'] }}" class="form-control form-control-3-4" name="comment" id="comment" rows="5"></textarea>
+                <textarea id="comment" value="{{ data['comment'] }}" class="form-control form-control-3-4" name="comment" id="comment" rows="5">{{ data['comment'] }}</textarea>
             </div>
         </div>
         <button class="button" type="submit">Submit decision</button>

@@ -463,6 +463,32 @@ router.post('/alpha/v5-0/promoter-planner/screen4-check-answers', function (req,
   res.render('alpha/v5-0/promoter-planner/screen4-check-answers.html')
 })
 
+router.get('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
+  req.session.data['old-start-day'] = req.session.data['start-day']
+  req.session.data['old-start-month'] = req.session.data['start-month']
+  req.session.data['old-start-year'] = req.session.data['start-year']
+  req.session.data['old-end-day'] = req.session.data['end-day']
+  req.session.data['old-end-month'] = req.session.data['end-month']
+  req.session.data['old-end-year'] = req.session.data['end-year']
+  res.render('alpha/v5-0/ha-officer/change-work-dates.html')
+})
+
+router.post('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
+  req.session.data['WorkDatesChanged'] = true
+  if(req.session.data['changeDatesComment']) {
+    req.session.data['comment'] = 'Reason for date change: ' + req.session.data['changeDatesComment']
+  }
+  res.redirect('assessment-decision.html')
+})
+
+router.post('/alpha/v5-0/ha-officer/change-conditions', function (req, res) {
+  req.session.data['PermitConditionsChanged'] = true
+  if(req.session.data['changeConditionsComment']) {
+    req.session.data['comment'] = req.session.data['comment'] + '\nReason for conditions change: ' + req.session.data['changeConditionsComment']
+  }
+  res.redirect('assessment-decision.html')
+})
+
 router.post('/alpha/v5-0/ha-officer/screen3-check-answers', function (req, res) {
   req.session.data['Screen3Complete'] = true
   res.render('alpha/v5-0/ha-officer/conditions-check-answers.html')
