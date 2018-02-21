@@ -383,9 +383,11 @@ router.get('/alpha/v4-0/ha-officer/reinstatement-detail-view', function (req, re
 router.post('/alpha/v5-0/sign-in.html', function (req, res) {
   switch (req.body.email) {
     case 'promo@sm.com' :
+      req.session.data['user-type'] = 'PP'
       res.redirect('/alpha/v5-0/promoter-planner/dashboard.html')
       break
     case 'ha@sm.com' :
+      req.session.data['user-type'] = 'HA'
       res.redirect('/alpha/v5-0/ha-officer/dashboard.html')
       break
     default:
