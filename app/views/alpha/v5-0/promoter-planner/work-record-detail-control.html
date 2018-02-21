@@ -1,0 +1,296 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Control</h2>
+
+    <form action="work-record-detail-control" method="post" >
+        <div class="form-group">
+
+            <div class="form-group {{'form-group-error' if validationWorkReferenceError}}">
+                <label class="form-label" for="workreferencenumber">Work reference number</label>
+                {% if validationError %}<p class="error-message">{{ validationWorkReferenceError }}</p>{% endif %}
+                <input class="form-control" id="workreferencenumber" type="text" name="workreferencenumber" value="{{ data['workreferencenumber'] }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="project-reference">Project reference number (optional)</label>
+                <input class="form-control" id="project-reference" type="text" name="project-reference" value="{{ data['project-reference'] }}">
+            </div>
+
+            <label class="form-label" for="road-closure">Traffic management type</label>
+            <div class="grid-row {{'form-group-error' if validationTMTypeError}}">
+                {% if validationError %}<p class="error-message">{{ validationTMTypeError }}</p>{% endif %}
+                <div class="column-one-third">
+                    <div class="multiple-choice" style="width: 100%;">
+                        <input id="road-closure" type="radio" name="trafficmanagementtypegroup" value="Road closure" {{ checked('trafficmanagementtypegroup','Road closure') }}>
+                        <label for="road-closure">Road closure</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="contra-flow" type="radio" name="trafficmanagementtypegroup" value="Road closure" {{ checked('trafficmanagementtypegroup','Contra flow') }}>
+                        <label for="contra-flow">Contra flow</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="lane-closure" type="radio" name="trafficmanagementtypegroup" value="Lane closure" {{ checked('trafficmanagementtypegroup','Lane closure') }}>
+                        <label for="lane-closure">Lane closure</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="convoy-working" type="radio" name="trafficmanagementtypegroup" value="Convoy working" {{ checked('trafficmanagementtypegroup','Convoy working') }}>
+                        <label for="convoy-working">Convoy working</label>
+                    </div>
+                </div>
+
+                <div class="column-one-third">
+                    <div class="multiple-choice">
+                        <input id="priority-working" type="radio" name="trafficmanagementtypegroup" value="Priority working" {{ checked('trafficmanagementtypegroup','Priority working') }}>
+                        <label for="priority-working">Priority working</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="give-take" type="radio" name="trafficmanagementtypegroup" value="Give & take" {{ checked('trafficmanagementtypegroup','Give & take') }}>
+                        <label for="give-take">Give & take</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="multi-way-signals" type="radio" name="trafficmanagementtypegroup" value="Multi-way signals" {{ checked('trafficmanagementtypegroup','Multi-way signals') }}>
+                        <label for="multi-way-signals">Multi-way signals</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="two-way-signals" type="radio" name="trafficmanagementtypegroup" value="Two-way signals" {{ checked('trafficmanagementtypegroup','Two-way signals') }}>
+                        <label for="two-way-signals">Two-way signals</label>
+                    </div>
+                </div>
+
+                <div class="column-one-third">
+                    <div class="multiple-choice">
+                        <input id="stop-go-boards" type="radio" name="trafficmanagementtypegroup" value="Stop/go boards" {{ checked('trafficmanagementtypegroup','Stop/go boards') }}>
+                        <label for="stop-go-boards">Stop/go boards</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="some-carriageway-incursion" type="radio" name="trafficmanagementtypegroup" value="Some carriageway incursion" {{ checked('trafficmanagementtypegroup','Some carriageway incursion') }}>
+                        <label for="some-carriageway-incursion">Some carriageway incursion</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="no-carriageway-incursion" type="radio" name="trafficmanagementtypegroup" value="No carriageway incursion" {{ checked('trafficmanagementtypegroup','No carriageway incursion') }}>
+                        <label for="no-carriageway-incursion">No carriageway incursion</label>
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="inline">
+                <div class="form-group">
+                    <br/>
+                    <label class="form-label" for="tm-yes">Is a traffic management plan required?</label>
+                    <div class="multiple-choice">
+                        <input id="tm-yes" type="radio" name="tm-group" value="Yes" {{ checked('tm-group','Yes') }}>
+                        <label for="tm-yes">Yes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="tm-no" type="radio" name="tm-group" value="No" {{ checked('tm-group','No') }}>
+                        <label for="tm-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="js-hidden" id="tm-plan">
+                <div class="form-group">
+                    <label class="form-label" for="traffic-management-plan">Traffic management plan</label>
+                    <input type="file" id="traffic-management-plan" name="traffic-management-plan"/>
+                </div>
+
+                <div class="panel panel-border-narrow" id="file-details">
+                    <label class="form-label" for="attachment-title">Attachment title</label>
+                    <input class="form-control" id="attachment-title" name="attachment-title" type="text" value="">
+                    <input class="button" type="button" value="Upload" role="button" id="upload-button">
+                </div>
+
+                <div id="attachments-table">
+                    <h3 class="heading-small">File attachments</h3>
+                    <table>
+                        <thead>
+                        <th>Title</th>
+                        <th>File type</th>
+                        <th>File name</th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for fileName in data['file-attached-detail'] %}
+                        <tr id="{{ fileName }}">
+                            <td><input class="form-control" name="file-attached-detail[]" type="hidden" value="{{ fileName }}">{{ fileName }}</td>
+                            <td>PNG Image</td>
+                            <td><input class="form-control" name="file-attached-name[]" type="hidden" value="{{ data['file-attached-name'][loop.index -1 ] }}">{{ data['file-attached-name'][loop.index -1 ] }}</td>
+                            <td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td>
+                            <td><span class="remove-attachment"><a href="#" onclick="removeAttachment({{ fileName }})">Remove</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <br/>
+                </div>
+            </div>
+
+            <fieldset class="inline">
+                <div class="form-group">
+                    <label class="form-label" for="commercially-sensitive-yes">Commercially sensitive (optional)</label>
+                    <div class="multiple-choice">
+                        <input id="commercially-sensitive-yes" type="radio" name="commercially-sensitive-group" value="Yes" {{ checked('commercially-sensitive-group','Yes') }}>
+                        <label for="commercially-sensitive-yes">Yes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="commercially-sensitive-no" type="radio" name="commercially-sensitive-group" value="No" {{ checked('commercially-sensitive-group','No') }}>
+                        <label for="commercially-sensitive-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="inline">
+                <div class="form-group">
+                    <label class="form-label" for="lane-rental-yes">Lane rental applicable</label>
+                    <div class="multiple-choice">
+                        <input id="lane-rental-yes" type="radio" name="lane-rental-group" value="Yes" {{ checked('lane-rental-group','Yes') }}>
+                        <label for="lane-rental-yes">Yes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="lane-rental-no" type="radio" name="lane-rental-group" value="No" {{ checked('lane-rental-group','No') }}>
+                        <label for="lane-rental-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <label class="form-label" for="condition-select">Select condition</label>
+                <select class="form-control" id="condition-select" name="condition-select">
+                    <option value="nct01a">NCT01a</option>
+                    <option value="nct01b">NCT01b</option>
+                    <option value="nct02a">NCT02a</option>
+                    <option value="nct02b">NCT02b</option>
+                    <option value="nct04a">NCT04a</option>
+                    <option value="nct04b">NCT04b</option>
+                    <option value="nct05a">NCT05a</option>
+                    <option value="nct06a">NCT06a</option>
+                    <option value="nct07a">NCT07a</option>
+                    <option value="nct08a">NCT08a</option>
+                    <option value="nct08b">NCT08b</option>
+                    <option value="nct09a">NCT09a</option>
+                    <option value="nct09b">NCT09b</option>
+                    <option value="nct09c">NCT09c</option>
+                    <option value="nct10a">NCT10a</option>
+                    <option value="nct11b">NCT11b</option>
+                    <option value="nct12a">NCT12a</option>
+                    <option value="nct13">NCT13</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="condition-reason">Permit condition reason</label>
+                <input class="form-control" id="condition-reason" name="condition-reason" type="text">
+            </div>
+            <br/>
+
+            <div class="form-group">
+                <input type="button" id="add-condition" class="button" value="Add">
+            </div>
+
+
+            <div id="conditions-table">
+                <h3 class="heading-small">Permit conditions</h3>
+                <table>
+                    <thead>
+                    <th>Name</th>
+                    <th>Reason</th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    {% for condition in data['conditions-name'] %}
+                    <tr id="{{ condition }}">
+                        <td><input class="form-control" name="conditions-name[]" type="hidden" value="{{ condition }}">{{ condition }}</td>
+                        <td><input class="form-control" name="conditions-reason[]" type="hidden" value="{{ data['conditions-reason'][loop.index -1 ] }}">{{ data['conditions-reason'][loop.index -1 ] }}</td>
+                        <td><span class="remove-condition"><a href="#" onclick="removeCondition({{ condition }})">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            <div class="form-group">
+                <input type="submit" class="button" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</main>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+
+    if($('#tm-yes').prop('checked')) {
+      $("#tm-plan").removeClass("js-hidden");
+      $("#tm-plan").show();
+    }
+
+    $('input[type=radio][name=tm-group]').change(function() {
+      if (this.value == 'Yes') {
+        $("#tm-plan").removeClass("js-hidden");
+        $("#tm-plan").show();
+      }
+      else if (this.value == 'No') {
+        $("#tm-plan").hide();
+      }
+    });
+
+
+    $("#upload-button").click(function () {
+      var file = $('#traffic-management-plan')[0].files[0];
+
+      var fileName = file.name;
+      var attachmentTitle = $("#attachment-title").val();
+      var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
+      $("table tbody").append(markup);
+
+      $("#attachments-table").removeClass("js-hidden");
+      $("#file-name").val("");
+    })
+
+    $("#add-condition").click(function () {
+      var conditionName = $("#condition-select option:selected").text();
+      var conditionReason = $("#condition-reason").val();
+      var conditionVal = $("#condition-select option:selected").val();
+
+      var conditionNameTD = "<td><input class='form-control' name='conditions-name[]' type='hidden' value='" + conditionName + "'>" + conditionName + "</td>"
+      var conditionReasonTD = "<td><input class='form-control' name='conditions-reason[]' type='hidden' value='" + conditionReason + "'>" + conditionReason + "</td>"
+      var markup = "<tr id='"+ conditionVal + "'>" + conditionNameTD + conditionReasonTD + "<td><span class=\"remove-condition\"><a href=\"#\" onclick='removeCondition(" + conditionVal + ")'>Remove</a></span></td></tr>";
+      $("table tbody").append(markup);
+
+      $("#condition-reason").val("");
+    })
+
+  });
+
+  function removeCondition(conditionId) {
+    $(conditionId).remove();
+  };
+</script>
+
+{% endblock %}

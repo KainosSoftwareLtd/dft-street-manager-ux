@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">People</h2>
+
+    <form action="wr-people-check-answers" method="post" >
+        <div class="form-group">
+
+            <div class="form-group {{'form-group-error' if validationPromoterNameError}}">
+                <label class="form-label" for="promotername">Promoter name</label>
+                {% if validationError %}<p class="error-message">{{ validationPromoterNameError }}</p>{% endif %}
+                <input class="form-control" id="promotername" name="promotername" type="text" value="{{ data['promotername'] }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="contact-details">Contact details</label>
+                <input class="form-control" id="contact-details" name="contact-details" type="text" value="{{ data['contact-details'] }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="promoter-agent">Promoter agent (optional)</label>
+                <input class="form-control" id="promoter-agent" name="promoter-agent" type="text" value="{{ data['promoter-agent'] }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="secondary-contact">Secondary site contact details</label>
+                <input class="form-control" id="secondary-contact" name="secondary-contact" type="text" value="{{ data['secondary-contact'] }}">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="button" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</main>
+
+{% endblock %}

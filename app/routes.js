@@ -595,6 +595,31 @@ router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
   res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
 })
 
+router.post('/alpha/v5-0/promoter-planner/work-record-detail-people', function (req, res) {
+  req.session.data['Screen2Complete'] = true // come back to change
+  res.render('alpha/v5-0/promoter-planner/wr-people-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/work-record-detail-control', function (req, res) {
+  req.session.data['Screen2Complete'] = true // change
+  res.render('alpha/v5-0/promoter-planner/wr-control-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/work-record-detail-location', function (req, res) {
+  req.session.data['Screen2Complete'] = true // change
+  res.render('alpha/v5-0/promoter-planner/wr-location-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/work-record-detail-timings', function (req, res) {
+  req.session.data['Screen2Complete'] = true // change
+  res.render('alpha/v5-0/promoter-planner/wr-timings-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/work-record-detail-coordination-collaboration', function (req, res) {
+  req.session.data['Screen2Complete'] = true // change
+  res.render('alpha/v5-0/promoter-planner/wr-coordination-collaboration-check-answers.html')
+})
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

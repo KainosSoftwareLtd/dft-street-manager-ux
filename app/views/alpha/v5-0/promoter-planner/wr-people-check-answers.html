@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check your answers</h1>
+
+    <table>
+        <tbody>
+            <tr><h2 class="heading-medium">People</h2></tr>
+            <tr>
+                <td>Promoter name</td>
+                <td>{{ data['promotername'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-people#promotername">
+                        Change <span class="visuallyhidden">promoter name</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Contact details</td>
+                <td>{{ data['contact-details'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-people#contact-details">
+                        Change <span class="visuallyhidden">contact details</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Promoter agent</td>
+                <td>{{ data['promoter-agent'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-people#promoter-agent">
+                        Change <span class="visuallyhidden">promoter agent</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Secondary site contact details</td>
+                <td>{{ data['secondary-contact'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-people#secondary-contact">
+                        Change <span class="visuallyhidden">secondary contact</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <div class="form-group">
+        <a href="work-record-detail-activity" class="button">Continue</a>
+    </div>
+</main>
+
+{% endblock %}

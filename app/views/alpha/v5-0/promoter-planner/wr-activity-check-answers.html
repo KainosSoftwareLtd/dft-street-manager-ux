@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check your answers</h1>
+
+    <table>
+        <tbody>
+            <tr><h2 class="heading-medium">Activity</h2></tr>
+            <tr>
+                <td>Description of work #1</td>
+                <td>{{ data['description-of-work-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#description-of-work-group">
+                        Change <span class="visuallyhidden">description of work #1</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Description of work #2</td>
+                <td>{{ data['description-of-work-2'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#description-of-work-2">
+                        Change <span class="visuallyhidden">description of work #2</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Excavation</td>
+                <td>{{ data['excavation-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#excavation-group">
+                        Change <span class="visuallyhidden">excavation</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Work category</td>
+                <td>{{ data['workcategorygroup'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#workcategorygroup">
+                        Change <span class="visuallyhidden">work category</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <div class="form-group">
+        <a href="work-record-detail-control" class="button">Continue</a>
+    </div>
+</main>
+
+{% endblock %}
