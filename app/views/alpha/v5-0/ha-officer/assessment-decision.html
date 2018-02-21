@@ -95,42 +95,42 @@ Work Record
             <tr>
                 <td class="bold-small">Road category</td>
                 <td>{{ data['roadcategorygroup'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Duration</td>
                 <td>{{ data['duration'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Works location description</td>
                 <td>{{ data['works-location-description'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Works Location</td>
                 <td>{{ data['works-location-group'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Description of work 1</td>
                 <td>{{ data['description-of-work-group'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Description of work 2</td>
                 <td>{{ data['description-of-work-2'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Excavation</td>
                 <td>{{ data['excavation-group'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Is traffic management plan required?</td>
                 <td>{{ data['tm-group'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Condition chosen</td>
@@ -146,22 +146,22 @@ Work Record
                 <td>
                     {{ data['file-attached-name']}}
                 </td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Collaboration type</td>
                 <td>{{ data['collaboration-type-group'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Collaboration details</td>
                 <td>{{ data['collaboration-details'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Environmental health notifiable</td>
                 <td>{{ data['environmental-health-group'] }}</td>
-                <td><a href="#">Change</a></td>
+                <td></td>
             </tr>
             </tbody>
         </table>
@@ -173,8 +173,8 @@ Work Record
     <div style="border: 2px solid #0b0c0c; padding: 10px 0 10px 10px; margin-bottom: 20px">
         <div>Changes required</div>
         <ul class="list list-bullet">
-            <li>Start Date changed to {{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }} </li>
-            <li>End Date changed to {{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }} </li>
+            <li>Start Date changed from {{ data['old-start-day'] }}/{{ data['old-start-month'] }}/{{ data['old-start-year'] }} to {{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }} </li>
+            <li>End Date changed from {{ data['old-end-day'] }}/{{ data['old-end-month'] }}/{{ data['old-end-year'] }} to {{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }} </li>
             {% if data['PermitConditionsChanged'] %}
                 <li>Condition {{ data['conditions-name'][1] }} has been added with reason: {{ data['conditions-reason'][1] }}</li>
             {% endif %}
