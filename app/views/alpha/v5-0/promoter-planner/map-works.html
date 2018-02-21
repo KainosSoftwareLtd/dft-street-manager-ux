@@ -70,6 +70,7 @@ Forward Planning - Street Manager
             </form>
         </div>
 
+        {% if data['map-flow'] !== 'map' %}
         <div id="draw-controls">
             <h1 class="heading-small">Draw works area:</h1>
             <div class="form-group">
@@ -78,17 +79,32 @@ Forward Planning - Street Manager
                 </fieldset>
             </div>
         </div>
+        {% endif %}
     </div>
+
 
     <div class="form-group" id="create-works-panel" style="display: none;">
         <a id="return-to-options" href="#">< Back to map options</a>
+
+        {% if data['map-flow'] == 'work' %}
         <h1 class="heading-small">New works area drawn</h1>
         <p>Click below to create works for this area:</p>
         <fieldset>
             <form action="../task-list-page">
-                <input style="width: 100%;" id="create-work-button" class="button" type="submit" name="create-work-button" value="Create Work">
+                <input style="width: 100%;" id="create-work-button" class="button" type="submit" name="create-work-button" value="Create work">
             </form>
         </fieldset>
+        {% endif %}
+
+        {% if data['map-flow'] == 'plan' %}
+        <h1 class="heading-small">New forward plan area drawn</h1>
+        <p>Click below to create forward plan for this area:</p>
+        <fieldset>
+            <form action="create-new-work.html">
+                <input style="width: 100%;" id="create-forward-plan-button" class="button" type="submit" name="create-forward-plan-button" value="Create forward plan">
+            </form>
+        </fieldset>
+        {% endif %}
     </div>
 
 </div>
@@ -256,28 +272,28 @@ Forward Planning - Street Manager
   var plannedWork1 = new ol.Feature({
     geometry: new ol.geom.Point([-28362.439943029985, 6711412.323589153]),
     text: 'Work Type: Footway resurfacing <br/>' +
-      'Road Owner: London Borough of Acton <br/>' +
+      'Road owner: London Borough of Acton <br/>' +
       'Start date: 09/06/2018 <br/>' +
       'End date: 19/07/2018 <br/>' +
       'Status: Draft forward plan <br/>' +
-      'Promoter Name: Michael Harris <br/>' +
-      'Promoter Agent: Cadent <br/>' +
+      'Promoter name: Michael Harris <br/>' +
+      'Promoter agent: Cadent <br/>' +
       'Contact: 0345 045 5212 <br/>' +
-      '<a href="/alpha/v2-0/work-record-not-editable">View Work Record</a>',
+      '<a href="/alpha/v2-0/work-record-not-editable">View forward plan</a>',
     dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork1.setId(1);
 
   var plannedWork3 = new ol.Feature({
-    geometry: new ol.geom.Point([-27496.55173198698, 6711710.308566612]),
-    text: 'Work Ref: CT0224443466 <br/>' +
+    geometry: new ol.geom.Point([-27800.130896630297, 6711420.357825179]),
+    text: 'Work ref: CT0224443466 <br/>' +
      'Description: Disconnect 1 X 32MM PE Service from main in carridgeway <br/>' +
-     'Road Owner: London Borough of Acton <br/>' +
+     'Road owner: London Borough of Acton <br/>' +
      'Start date: 09/06/2018 <br/>' +
      'End date: 19/07/2018 <br/>' +
      'Status: Submitted for PA Approval <br/>' +
-     'Promoter Name: Openreach <br/>' +
-     'Promoter Agent: FM Conway LTD <br/>' +
+     'Promoter name: Openreach <br/>' +
+     'Promoter agent: FM Conway LTD <br/>' +
      'Contact: 0345 045 5212 <br/>' +
      '<a href="work-record">View forward plan</a>',
     dateOfWorks: new Date('2018/02/23').getTime() / 1000
@@ -313,11 +329,21 @@ Forward Planning - Street Manager
   myPlans.push(myPlan1);
 
   var myPlan2 = new ol.Feature({
-    geometry: new ol.geom.Point([-27484.985901964374, 6711613.898791324])
+    geometry: new ol.geom.Point([-27663.594152667916, 6711422.727383554]),
+    text: 'Traffic management type: {{data['trafficmanagementtypegroup']}} <br/>' +
+      'Highway authority: {{data['highwayauthority']}} <br/>' +
+      'Start date: {{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}} <br/>' +
+      'End date: {{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}}<br/>' +
+      'Status: Draft forward plan <br/>' +
+      'Promoter name: {{data['promotername']}} <br/>' +
+      'Promoter agent: {{data['promoter-agent']}} <br/>' +
+      'Contact: {{data['contact-details']}} <br/>' +
+      '<a href="/alpha/v5-0/promoter-planner/work-record">View forward plan</a>'
   })
 
-  myPlans.push(myPlan2);
-
+  if ({{ data['map-flow'] === 'map'}}) {
+    myPlans.push(myPlan2);
+  }
 
   var myPlansSource = new ol.source.Vector({
     features: myPlans
@@ -386,8 +412,6 @@ Forward Planning - Street Manager
       myPlansLayer.setVisible(false)
     }
   });
-
-
 
   map.on('click', function (event) {
     console.log(event.coordinate)
