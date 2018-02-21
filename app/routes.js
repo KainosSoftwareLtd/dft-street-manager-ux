@@ -595,7 +595,7 @@ router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
   res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
 })
 
-router.get('/alpha/v5-0/promoter-planner/map-search:map', function (req, res) {
+router.get('/alpha/v5-0/promoter-planner/map-search:flow', function (req, res) {
   if (req.query.flow === 'map') {
     req.session.data['map-flow'] = 'map'
   } else if (req.query.flow === 'plan') {
@@ -605,6 +605,10 @@ router.get('/alpha/v5-0/promoter-planner/map-search:map', function (req, res) {
   } else {
     req.session.data['map-flow'] = null
   }
+  res.redirect('/alpha/v5-0/promoter-planner/map-search')
+})
+
+router.post('/alpha/v5-0/promoter-planner/map-search', function (req, res) {
   res.render('alpha/v5-0/promoter-planner/map-search-results.html')
 })
 
