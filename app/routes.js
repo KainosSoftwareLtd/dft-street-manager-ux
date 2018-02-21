@@ -21,8 +21,8 @@ var data = {'data': {
   'contact-details': '004455500000',
   'commercially-sensitive-group': 'No',
   'reinstatement-category': 'Road Category 2',
-  'street-name' : 'The Vale'
-  }
+  'street-name': 'The Vale'
+}
 }
 
 // Route index page
@@ -567,6 +567,19 @@ router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) 
 
 router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
   res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
+})
+
+router.get('/alpha/v5-0/promoter-planner/map-search:map', function (req, res) {
+  if (req.query.flow === 'map') {
+    req.session.data['map-flow'] = 'map'
+  } else if (req.query.flow === 'plan') {
+    req.session.data['map-flow'] = 'plan'
+  } else if (req.query.flow === 'work') {
+    req.session.data['map-flow'] = 'work'
+  } else {
+    req.session.data['map-flow'] = null
+  }
+  res.render('alpha/v5-0/promoter-planner/map-search-results.html')
 })
 
 // Add your routes here - above the module.exports line
