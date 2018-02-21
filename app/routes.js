@@ -21,8 +21,8 @@ var data = {'data': {
   'contact-details': '004455500000',
   'commercially-sensitive-group': 'No',
   'reinstatement-category': 'Road Category 2',
-  'street-name' : 'The Vale'
-  }
+  'street-name': 'The Vale'
+}
 }
 
 // Route index page
@@ -383,9 +383,11 @@ router.get('/alpha/v4-0/ha-officer/reinstatement-detail-view', function (req, re
 router.post('/alpha/v5-0/sign-in.html', function (req, res) {
   switch (req.body.email) {
     case 'promo@sm.com' :
+      req.session.data['user-type'] = 'PP'
       res.redirect('/alpha/v5-0/promoter-planner/dashboard.html')
       break
     case 'ha@sm.com' :
+      req.session.data['user-type'] = 'HA'
       res.redirect('/alpha/v5-0/ha-officer/dashboard.html')
       break
     default:
@@ -618,6 +620,23 @@ router.post('/alpha/v5-0/promoter-planner/work-record-detail-timings', function 
 router.post('/alpha/v5-0/promoter-planner/work-record-detail-coordination-collaboration', function (req, res) {
   req.session.data['Screen2Complete'] = true // change
   res.render('alpha/v5-0/promoter-planner/wr-coordination-collaboration-check-answers.html')
+})
+
+router.get('/alpha/v5-0/promoter-planner/map-search:flow', function (req, res) {
+  if (req.query.flow === 'map') {
+    req.session.data['map-flow'] = 'map'
+  } else if (req.query.flow === 'plan') {
+    req.session.data['map-flow'] = 'plan'
+  } else if (req.query.flow === 'work') {
+    req.session.data['map-flow'] = 'work'
+  } else {
+    req.session.data['map-flow'] = null
+  }
+  res.redirect('/alpha/v5-0/promoter-planner/map-search')
+})
+
+router.post('/alpha/v5-0/promoter-planner/map-search', function (req, res) {
+  res.render('alpha/v5-0/promoter-planner/map-search-results.html')
 })
 
 // Add your routes here - above the module.exports line

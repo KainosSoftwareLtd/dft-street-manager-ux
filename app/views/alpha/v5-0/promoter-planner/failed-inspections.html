@@ -27,8 +27,8 @@ Failed inspections
         <thead>
         <tr>
             <th>Works Reference</th>
-            <th>Proposed Start Date</th>
-            <th>Estimated End Date</th>
+            <th>Inspection Date</th>
+            <th>Outcome</th>
             <th>Works Category</th>
             <th>Location Description</th>
             <th></th>
@@ -37,11 +37,11 @@ Failed inspections
 
         <tr>
             <td>{{data['workreferencenumber']}}</td>
-            <td>{{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}}</td>
-            <td>{{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}}</td>
+            <td>{{ data['inspection-date-day']}}/{{ data['inspection-date-month']}}/{{ data['inspection-date-year']}}</td>
+            <td>{{data['outcome-group']}}</td>
             <td>{{data['workcategorygroup']}}</td>
             <td>{{data['works-location-description']}}</td>
-            <td><a href="view-inspections">View</a></td>
+            <td><a href="inspection-detail">View</a></td>
         </tr>
 
         </tbody>
