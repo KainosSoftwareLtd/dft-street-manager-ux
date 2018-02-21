@@ -46,7 +46,7 @@ Reinstatement - Street Manager
                     <th>Completion date</th>
                     <th>Length</th>
                     <th>Width</th>
-                    <th>Warranty period end date</th>
+                    <th>Location description</th>
                     <th></th>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@ Reinstatement - Street Manager
                         <td>{{ data['reinstatement-day'][loop.index -1 ] }}/{{ data['reinstatement-month'][loop.index -1 ] }}/{{ data['reinstatement-year'][loop.index -1 ] }}</td>
                         <td>{{ data['reinstatement-length'][loop.index -1 ] }}</td>
                         <td>{{ data['reinstatement-width'][loop.index -1 ] }}</td>
-                        <td>{{ data['warranty-end-day'][loop.index -1 ] }}/{{ data['warranty-end-month'][loop.index -1 ] }}/{{ data['warranty-end-year'][loop.index -1 ] }}</td>
+                        <td>{{ data['reinstatement-location-description'][loop.index -1 ] }}</td>
                         <td><span class="view-reinstatement"><a href="reinstatement-detail-view">View</a></td>
                     </tr>
                     {% endfor %}
@@ -99,7 +99,7 @@ Reinstatement - Street Manager
             <input class="form-control" name="location-x[]" type="hidden" value="{{ data['location-x'][loop.index - 1]  }}">
             <input class="form-control" name="location-y[]" type="hidden" value="{{ data['location-y'][loop.index - 1]  }}">
             <input class="form-control" name="works-position-group[]" type="hidden" value="{{ data['works-position-group'][loop.index - 1]  }}">
-            <input class="form-control" name="location-description[]" type="hidden" value="{{ data['location-description'][loop.index - 1]  }}">
+            <input class="form-control" name="reinstatement-location-description[]" type="hidden" value="{{ data['reinstatement-location-description'][loop.index - 1]  }}">
             <input class="form-control" name="warranty-end-day[]" type="hidden" value="{{ data['warranty-end-day'][loop.index - 1]  }}">
             <input class="form-control" name="warranty-end-month[]" type="hidden" value="{{ data['warranty-end-month'][loop.index - 1]  }}">
             <input class="form-control" name="warranty-end-year[]" type="hidden" value="{{ data['warranty-end-year'][loop.index - 1]  }}">
@@ -158,13 +158,13 @@ Reinstatement - Street Manager
             <label class="form-label-bold" for="reinstatement-length">Length
                 <span class="form-hint">Hint text TBC</span>
             </label>
-            <input class="form-control" id="reinstatement-length" name="reinstatement-length[]" type="number" style="width:90px;">
+            <input class="form-control" id="reinstatement-length" name="reinstatement-length[]" type="text" style="width:90px;">
         </div>
         <div class="form-group">
             <label class="form-label-bold" for="reinstatement-width">Width
                 <span class="form-hint">Hint text TBC</span>
             </label>
-            <input class="form-control" id="reinstatement-width" name="reinstatement-width[]" type="number" style="width:90px;">
+            <input class="form-control" id="reinstatement-width" name="reinstatement-width[]" type="text" style="width:90px;">
         </div>
         <div class="form-group">
             <label class="form-label-bold" for="location-x">Actual location coordinates</label>
@@ -206,8 +206,8 @@ Reinstatement - Street Manager
             </div>
         </fieldset>
         <div class="form-group">
-            <label class="form-label-bold" for="location-description">Reinstatement location description</label>
-            <input class="form-control" id="location-description" name="location-description[]" type="text">
+            <label class="form-label-bold" for="reinstatement-location-description">Reinstatement location description</label>
+            <input class="form-control" id="reinstatement-location-description" name="reinstatement-location-description[]" type="text">
         </div>
 
         <div class="form-group">

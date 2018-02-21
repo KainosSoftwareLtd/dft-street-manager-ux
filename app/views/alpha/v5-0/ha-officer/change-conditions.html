@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Permit Application - Street Manager
+Change Conditions - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -26,9 +26,9 @@ Permit Application - Street Manager
 
     <a href="task-list-page.html" class="link-back" title="Back to previous question">Back</a>
 
-    <h2 class="heading-large">3. Conditions</h2>
+    <h2 class="heading-large">Change Conditions</h2>
 
-    <form action="screen3-check-answers" method="post" >
+    <form action="change-conditions" method="post" >
 
         <div class="form-group">
             <label class="form-label" for="condition-select">Select condition</label>
@@ -83,6 +83,13 @@ Permit Application - Street Manager
                 </tbody>
             </table>
         </div>
+
+        <fieldset class="inline">
+            <div style="padding-top: 20px">
+                <label>Reason for changing conditions</label>
+                <textarea id="changeConditionsComment" value="" class="form-control form-control-3-4" name="changeConditionsComment" rows="5"></textarea>
+            </div>
+        </fieldset>
 
         <br/>
         <div class="form-group">
