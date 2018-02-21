@@ -20,39 +20,32 @@ HA Officer Home - Street Manager
         </div>
     </div>
 
-    <h2 class="heading-large">HA Officer - Needs Action</h2>
+    <h2 class="heading-large">Needs action</h2>
 
     <div class="form-group">
-        <label class="form-label" for="tm-plan-select">Filter by Traffic Management Type</label>
+        <label class="form-label" for="tm-plan-select">Filter by...</label>
         <select class="form-control" id="tm-plan-select" name="tm-plan-select">
-            <option value="NA">Select...</option>
-            <option value="0">No carriageway incursion</option>
-            <option value="1">Some carriageway incursion</option>
-            <option value="2">Traffic control (stop/go boards)</option>
-            <option value="3">Traffic control (two-way signals)</option>
-            <option value="4">Traffic control (multi-way signals)</option>
-            <option value="5">Traffic control (give and take)</option>
-            <option value="6">Traffic control (priority working)</option>
-            <option value="7">Traffic control (convoy working)</option>
-            <option value="8">Lane closure</option>
-            <option value="9">Contra-flow</option>
-            <option value="10">Road closure</option>
+            <option value="NA">Works category</option>
+            <option value="0">Major</option>
+            <option value="1">Minor</option>
+            <option value="2">Urgent</option>
+            <option value="3">Standard</option>
         </select>
     </div>
 
     <table class="table" id="needs-action-table">
         <thead>
-            <th>Works Reference</th>
-            <th>Proposed Start Date</th>
-            <th>Estimated End Date</th>
-            <th>Works Category</th>
-            <th>Location Description</th>
+            <th>Works reference</th>
+            <th>Proposed start date</th>
+            <th>Estimated end date</th>
+            <th>Works category</th>
+            <th>Location description</th>
             <th>Status</th>
             <th></th>
         </thead>
         <tbody>
         <tr>
-            <input type="hidden" name="tm-plan" value="2">
+            <input type="hidden" name="tm-plan" value="1">
             <td>CT0224443466</td>
             <td>21/02/2018</td>
             <td>23/02/2018</td>
@@ -62,7 +55,7 @@ HA Officer Home - Street Manager
             <td><a href="task-list-page.html">View</a></td>
         </tr>
         <tr>
-            <input type="hidden" name="tm-plan" value="0">
+            <input type="hidden" name="tm-plan" value="3">
             <td>EC40010725431</td>
             <td>03/04/2018</td>
             <td>14/04/2018</td>
@@ -72,7 +65,7 @@ HA Officer Home - Street Manager
             <td><a href="#">View</a></td>
         </tr>
         <tr>
-            <input type="hidden" name="tm-plan" value="1">
+            <input type="hidden" name="tm-plan" value="0">
             <td>YG4253530630</td>
             <td>29/03/2018</td>
             <td>30/09/2018</td>
