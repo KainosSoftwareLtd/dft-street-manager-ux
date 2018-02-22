@@ -434,6 +434,16 @@ Forward Planning - Street Manager
     console.log(event.coordinate)
   });
 
+  $('#period-of-interest').change(function(event) {
+      if( $('#period-of-interest').val() == 1) {
+          plannedWorksSource.removeFeature(plannedWork3);
+          assetsSource.removeFeature(asset1)
+      } else if ($('#period-of-interest').val() == 2) {
+          plannedWorksSource.addFeature(plannedWork3);
+          assetsSource.addFeature(asset1)
+      }
+  })
+
 </script>
 
 {% endblock %}
