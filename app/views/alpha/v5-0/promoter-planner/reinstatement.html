@@ -74,7 +74,7 @@ Reinstatement - Street Manager
             <div style="display:none; background-color: #DEE0E2; padding: 10px 0 10px 10px; margin-bottom: 40px" id="inspection-units">
                 <p>All reinstatements complete?</p>
                 <div class="form-group">
-                    <label class="form-label-bold" for="inspection-units">Actual inspection units</label>
+                    <label class="form-label" for="inspection-units">Actual inspection units</label>
                     <input class="form-control" id="inspection-units" name="inspection-units" type="text" value="{{ data['inspection-units'] }}">
                 </div>
                 <div class="form-group" id="register-reinstatement">
@@ -108,7 +108,7 @@ Reinstatement - Street Manager
         <fieldset class="inline">
             <div class="form-group">
                 <br/>
-                <label class="form-label-bold" for="reinstatement-permanent">Reinstatement status</label>
+                <label class="form-label" for="reinstatement-permanent">Reinstatement status</label>
                 <div class="multiple-choice">
                     <input id="reinstatement-permanent" type="radio" name="reinstatement-status-group[]" value="Permanent" >
                     <label for="reinstatement-permanent">Permanent</label>
@@ -121,7 +121,7 @@ Reinstatement - Street Manager
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label-bold" for="reinstatement-day">Reinstatement date</label>
+            <label class="form-label" for="reinstatement-day">Reinstatement date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
@@ -142,7 +142,7 @@ Reinstatement - Street Manager
 
         <fieldset class="inline">
             <div class="form-group">
-                <label class="form-label-bold" for="reinstatement-permanent">Depth</label>
+                <label class="form-label" for="reinstatement-permanent">Depth</label>
                 <div class="multiple-choice">
                     <input id="depth-standard" type="radio" name="depth-group[]" value="Standard">
                     <label for="depth-standard">Standard (under 1.5m)</label>
@@ -155,28 +155,29 @@ Reinstatement - Street Manager
         </fieldset>
 
         <div class="form-group">
-            <label class="form-label-bold" for="reinstatement-length">Length
+            <label class="form-label" for="reinstatement-length">Length
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <input class="form-control" id="reinstatement-length" name="reinstatement-length[]" type="text" style="width:90px;">
         </div>
         <div class="form-group">
-            <label class="form-label-bold" for="reinstatement-width">Width
+            <label class="form-label" for="reinstatement-width">Width
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <input class="form-control" id="reinstatement-width" name="reinstatement-width[]" type="text" style="width:90px;">
         </div>
         <div class="form-group">
-            <label class="form-label-bold" for="location-x">Actual location coordinates</label>
+            <label class="form-label" for="location-x">Actual location coordinates</label>
             <span class="form-hint">Hint text TBC</span>
             <fieldset>
                 <input class="form-control" id="location-x" name="location-x[]" type="number" style="width:90px;">
                 <input class="form-control" id="location-y" name="location-y[]" type="number" style="width:90px;">
             </fieldset>
         </div>
-        <fieldset>
-            <div class="form-group">
-                <label class="form-label-bold" for="works-position-1">Reinstatement location</label>
+
+        ;<div class="form-group">
+        <label class="form-label" for="works-position-1">Reinstatement location</label>
+            <div class="grid-row">
                 <div class="column-one-third">
                     <div class="multiple-choice">
                         <input id="works-position-1" type="radio" name="works-position-group[]" value="Footway">
@@ -204,14 +205,15 @@ Reinstatement - Street Manager
                     </div>
                 </div>
             </div>
-        </fieldset>
+        </div>
+
         <div class="form-group">
-            <label class="form-label-bold" for="reinstatement-location-description">Reinstatement location description</label>
+            <label class="form-label" for="reinstatement-location-description">Reinstatement location description</label>
             <input class="form-control" id="reinstatement-location-description" name="reinstatement-location-description[]" type="text">
         </div>
 
         <div class="form-group">
-            <label class="form-label-bold" for="warranty-end-day">Warranty period end date
+            <label class="form-label" for="warranty-end-day">Warranty period end date
                 <span class="form-hint">Hint text TBC</span>
             </label>
             <fieldset>

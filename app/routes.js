@@ -405,6 +405,9 @@ router.post('/alpha/v5-0/promoter-planner/search.html', function (req, res) {
       sessionUtil.setSessionData(req.session.data, demoData[3])
       res.redirect('/alpha/v5-0/task-list-page.html')
       break
+    case '44443488' :
+      res.redirect('/alpha/v5-0/task-list-page.html')
+      break
     default:
       res.render('alpha/v5-0/promoter-planner/dashboard', {validationError: 'Not recognised, please check and retype.'})
   }
@@ -421,6 +424,9 @@ router.post('/alpha/v5-0/ha-officer/search.html', function (req, res) {
       res.redirect('/alpha/v5-0/ha-officer/task-list-page.html')
       break
     case '44443466' :
+      res.redirect('/alpha/v5-0/ha-officer/task-list-page.html')
+      break
+    case '44443488' :
       res.redirect('/alpha/v5-0/ha-officer/task-list-page.html')
       break
     default:
@@ -570,7 +576,7 @@ router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) 
 })
 
 router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
-  res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
+  res.render('alpha/v5-0/ha-officer/needs-action')
 })
 
 router.post('/alpha/v5-0/promoter-planner/wr-people-check-answers', function (req, res) {

@@ -44,6 +44,18 @@ HA Officer Home - Street Manager
             <th></th>
         </thead>
         <tbody>
+        {% if data['workreferencenumber'] != '' %}
+            <tr>
+                <input type="hidden" name="tm-plan" value="1">
+                <td>{{ data['workreferencenumber'] }}</td>
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                <td>{{ data['end-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                <td>{{ data['workcategorygroup'] }}</td>
+                <td>{{ data['works-location-description'] }}</td>
+                <td>Submitted for PA Approval</td>
+                <td><a href="task-list-page.html">View</a></td>
+            </tr>
+        {% endif %}
         <tr>
             <input type="hidden" name="tm-plan" value="1">
             <td>CT0224443466</td>
@@ -52,7 +64,7 @@ HA Officer Home - Street Manager
             <td>Minor</td>
             <td>O/S Costa j/w Harrow Road</td>
             <td>Submitted for PA Approval</td>
-            <td><a href="task-list-page.html">View</a></td>
+            <td><a href="#">View</a></td>
         </tr>
         <tr>
             <input type="hidden" name="tm-plan" value="3">

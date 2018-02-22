@@ -31,6 +31,16 @@ Permit Application - Street Manager
     <form action="wr-location-check-answers" method="post" >
         <div class="form-group">
 
+            <div class="form-group">
+                <label class="form-label" for="street-name">Street name</label>
+                <input class="form-control" id="street-name" name="street-name" type="text" value="The Vale">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="area-name">Area name</label>
+                <input class="form-control" id="area-name" name="area-name" type="text" value="{{ data['area-name'] }}">
+            </div>
+
             <div class="form-group {{'form-group-error' if validationUsrnError}}">
                 <label class="form-label" for="usrn">USRN</label>
                 {% if validationError %}<p class="error-message">{{ validationUsrnError }}</p>{% endif %}
@@ -99,6 +109,10 @@ Permit Application - Street Manager
                     </div>
                 </div>
             </fieldset>
+            <br>
+            <p>
+                <img src="/public/images/examplemap.png" alt="Map showing work created" height="400" width="600">
+            </p>
 
             <div class="form-group">
                 <input type="submit" class="button" value="Save & Continue">
