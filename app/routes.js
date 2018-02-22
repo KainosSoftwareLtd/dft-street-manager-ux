@@ -460,7 +460,17 @@ router.post('/alpha/v5-0/ha-officer/screen3-check-answers', function (req, res) 
 })
 
 router.post('/alpha/v5-0/promoter-planner/permit-application-on-site', function (req, res) {
-  req.session.data['OnsiteComplete'] = true
+  console.log(req.body.actualEndDateDay)
+  if (req.body.actualEndDateDay === '' &&
+      req.body.actualEndDateMonth === '' &&
+      req.body.actualEndDateYear === '' &&
+      req.body.actualEndDateHour === '' &&
+      req.body.actualEndDateMinute === '') {
+    req.session.data['OnsiteComplete'] = false
+  } else {
+    req.session.data['OnsiteComplete'] = true
+  }
+
   if (req.body.excavationrequiredgroup.valueOf() === 'Yes') {
     req.session.data['ReinstatementRequired'] = true
   }
