@@ -73,6 +73,23 @@ Forward Planning - Street Manager
         {% if data['map-flow'] !== 'map' %}
         <div id="draw-controls">
             <h1 class="heading-small">Draw works area:</h1>
+
+            <div class="form-group">
+                <label class="form-label" for="polygon">Choose drawing type:</label>
+                <div class="multiple-choice">
+                    <input id="polygon" type="radio" name="drawing-type" value="Polygon" checked>
+                    <label for="polygon">Polygon</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="line" type="radio" name="drawing-type" value="Line">
+                    <label for="line">Line</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="point" type="radio" name="drawing-type" value="Point">
+                    <label for="point">Point</label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <fieldset>
                     <input id="draw-button" class="button" type="button" name="draw-button" value="Draw">
