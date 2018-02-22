@@ -39,7 +39,7 @@
             <span class="task-list-section-number">1. </span> <a href="promoter-planner/create-new-work.html">Forward planning</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen1Complete'] %}
+          {% if data['ForwardPlanComplete'] %}
           <strong class="task-completed" id="plan-completed">Complete</strong>
           {% else %}
           <strong class="task-completed" id="plan-incompleted">Incomplete</strong>
@@ -49,44 +49,68 @@
         <br/>
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">2. </span><a href="#">Work record detail</a>
+            <span class="task-list-section-number">2. </span>Work record detail
           </h2>
           <ul class="task-list-items">
             <li class="task-list-item">
               <a class="task-name" href="promoter-planner/work-record-detail-people" aria-describedby="people-completed">
                 People
               </a>
-              <strong class="task-completed" id="eligibility-completed">Completed</strong>
+              {% if data['PeopleComplete'] %}
+              <strong class="task-completed" id="people-completed">Completed</strong>
+              {% else %}
+              <strong class="task-completed" id="people-incompleted">Incomplete</strong>
+              {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-activity" aria-describedby="read-declaration-completed">
+              <a class="task-name" href="promoter-planner/work-record-detail-activity" aria-describedby="activity-completed">
                 Activity
               </a>
-              <strong class="task-completed" id="read-declaration-completed">Completed</strong>
+              {% if data['ActivityComplete'] %}
+              <strong class="task-completed" id="activity-completed">Completed</strong>
+              {% else %}
+              <strong class="task-completed" id="activity-incompleted">Incomplete</strong>
+              {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-control" aria-describedby="read-declaration-completed">
+              <a class="task-name" href="promoter-planner/work-record-detail-control" aria-describedby="control-completed">
                 Control
               </a>
-              <strong class="task-completed" id="read-declaration-completed">Completed</strong>
+              {% if data['ControlComplete'] %}
+              <strong class="task-completed" id="control-completed">Completed</strong>
+              {% else %}
+              <strong class="task-completed" id="control-incompleted">Incomplete</strong>
+              {% endif %}
             </li>
             <li class="task-list-item">
               <a class="task-name" href="promoter-planner/work-record-detail-location" aria-describedby="location-completed">
                 Location
               </a>
-              <strong class="task-completed" id="read-declaration-completed">Completed</strong>
+              {% if data['LocationComplete'] %}
+              <strong class="task-completed" id="location-completed">Completed</strong>
+              {% else %}
+              <strong class="task-completed" id="location-incompleted">Incomplete</strong>
+              {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-timings" aria-describedby="read-declaration-completed">
+              <a class="task-name" href="promoter-planner/work-record-detail-timings" aria-describedby="timings-completed">
                 Timings
               </a>
-              <strong class="task-completed" id="read-declaration-completed">Completed</strong>
+              {% if data['TimingsComplete'] %}
+              <strong class="task-completed" id="timings-completed">Completed</strong>
+              {% else %}
+              <strong class="task-completed" id="timings-incompleted">Incomplete</strong>
+              {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-coordination-collaboration" aria-describedby="read-declaration-completed">
+              <a class="task-name" href="promoter-planner/work-record-detail-coordination-collaboration" aria-describedby="coordination-collaboration-declaration-completed">
                 Coordination & collaboration
               </a>
-              <strong class="task-completed" id="read-declaration-completed">Completed</strong>
+              {% if data['CoordinationCollaborationComplete'] %}
+              <strong class="task-completed" id="coordination-collaboration-completed">Completed</strong>
+              {% else %}
+              <strong class="task-completed" id="coordination-collaboration-incompleted">Incomplete</strong>
+              {% endif %}
             </li>
           </ul>
         </li>
@@ -96,10 +120,10 @@
             <span class="task-list-section-number">3. </span><a href="promoter-planner/permit-application-assessment.html">Assess</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen3Complete'] %}
-          <strong class="task-completed" id="conditions-completed">Complete</strong>
+          {% if data['AssessComplete'] %}
+          <strong class="task-completed" id="assess-completed">Complete</strong>
           {% else %}
-          <strong class="task-completed" id="conditions-incompleted">Incomplete</strong>
+          <strong class="task-completed" id="assess-incompleted">Incomplete</strong>
           {% endif %}
         </li>
         </li>
@@ -109,10 +133,10 @@
             <span class="task-list-section-number">4. </span><a href="promoter-planner/permit-application-on-site.html">On site</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen4Complete'] %}
-          <strong class="task-completed" id="collaboration-completed">Complete</strong>
+          {% if data['OnsiteComplete'] %}
+          <strong class="task-completed" id="onsite-completed">Complete</strong>
           {% else %}
-          <strong class="task-completed" id="collaboration-incompleted">Incomplete</strong>
+          <strong class="task-completed" id="onsite-incompleted">Incomplete</strong>
           {% endif %}
         </li>
         </li>
@@ -123,40 +147,40 @@
             <span class="task-list-section-number">5. </span><a href="promoter-planner/reinstatement.html">Reinstatements</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen5Complete'] %}
-          <strong class="task-completed" id="assessment-completed">Complete</strong>
+          {% if data['ReinstatementsComplete'] %}
+          <strong class="task-completed" id="reinstatement-completed">Complete</strong>
           {% else %}
-          <strong class="task-completed" id="assessment-incompleted">Incomplete</strong>
+          <strong class="task-completed" id="reinstatement-incompleted">Incomplete</strong>
           {% endif %}
         </li>
         </li>
         {% endif %}
         <br/>
-        {% if data['Screen5Complete'] %}
+        {% if data['ReinstatementsComplete'] %}
         <li>
           <h2 class="task-list-section">
             <span class="task-list-section-number">6. </span><a href="promoter-planner/permit-application-on-site.html">Inspections</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen6Complete'] %}
-          <strong class="task-completed" id="onsite-completed">Complete</strong>
+          {% if data['InspectionsComplete'] %}
+          <strong class="task-completed" id="inspections-completed">Complete</strong>
           {% else %}
-          <strong class="task-completed" id="onsite-incompleted">Incomplete</strong>
+          <strong class="task-completed" id="inspections-incompleted">Incomplete</strong>
           {% endif %}
         </li>
         </li>
         {% endif %}
         <br/>
-        {% if data['ReinstatementRequired'] %}
+        {% if data['ReinstatementsComplete'] %}
         <li>
           <h2 class="task-list-section">
             <span class="task-list-section-number">7. </span><a href="#">Non Compliance</a>
           </h2>
         <li class="task-list-item">
-          {% if data['Screen7Complete'] %}
-          <strong class="task-completed" id="reinstatement-completed">Complete</strong>
+          {% if data['NoncomplianceComplete'] %}
+          <strong class="task-completed" id="noncompliance-completed">Complete</strong>
           {% else %}
-          <strong class="task-completed" id="reinstatement-incompleted">Incomplete</strong>
+          <strong class="task-completed" id="nocompliance-incompleted">Incomplete</strong>
           {% endif %}
         </li>
         </li>

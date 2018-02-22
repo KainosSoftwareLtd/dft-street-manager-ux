@@ -590,6 +590,7 @@ router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) 
     res.render('alpha/v5-0/promoter-planner/create-new-work.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
   } else {
     res.redirect('/alpha/v5-0/promoter-planner/work-record-check-answers.html')
+    req.session.data['ForwardPlanComplete'] = true
   }
 })
 
@@ -597,28 +598,33 @@ router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
   res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
 })
 
-router.post('/alpha/v5-0/promoter-planner/work-record-detail-people', function (req, res) {
-  req.session.data['Screen2Complete'] = true // come back to change
+router.post('/alpha/v5-0/promoter-planner/wr-people-check-answers', function (req, res) {
+  req.session.data['PeopleComplete'] = true
   res.render('alpha/v5-0/promoter-planner/wr-people-check-answers.html')
 })
 
-router.post('/alpha/v5-0/promoter-planner/work-record-detail-control', function (req, res) {
-  req.session.data['Screen2Complete'] = true // change
+router.post('/alpha/v5-0/promoter-planner/wr-activity-check-answers', function (req, res) {
+  req.session.data['ActivityComplete'] = true
+  res.render('alpha/v5-0/promoter-planner/wr-activity-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-control-check-answers', function (req, res) {
+  req.session.data['ControlComplete'] = true
   res.render('alpha/v5-0/promoter-planner/wr-control-check-answers.html')
 })
 
-router.post('/alpha/v5-0/promoter-planner/work-record-detail-location', function (req, res) {
-  req.session.data['Screen2Complete'] = true // change
+router.post('/alpha/v5-0/promoter-planner/wr-location-check-answers', function (req, res) {
+  req.session.data['LocationComplete'] = true
   res.render('alpha/v5-0/promoter-planner/wr-location-check-answers.html')
 })
 
-router.post('/alpha/v5-0/promoter-planner/work-record-detail-timings', function (req, res) {
-  req.session.data['Screen2Complete'] = true // change
+router.post('/alpha/v5-0/promoter-planner/wr-timings-check-answers', function (req, res) {
+  req.session.data['TimingsComplete'] = true
   res.render('alpha/v5-0/promoter-planner/wr-timings-check-answers.html')
 })
 
-router.post('/alpha/v5-0/promoter-planner/work-record-detail-coordination-collaboration', function (req, res) {
-  req.session.data['Screen2Complete'] = true // change
+router.post('/alpha/v5-0/promoter-planner/wr-coordination-collaboration-check-answers', function (req, res) {
+  req.session.data['CoordinationCollaborationComplete'] = true // change
   res.render('alpha/v5-0/promoter-planner/wr-coordination-collaboration-check-answers.html')
 })
 
