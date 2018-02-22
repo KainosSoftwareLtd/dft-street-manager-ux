@@ -267,7 +267,7 @@ Permit Application - Street Manager
       var fileName = file.name;
       var attachmentTitle = $("#attachment-title").val();
       var markup = "<tr><td><input type='hidden' name='file-attached-detail[]' value='"+ attachmentTitle+"'>" + attachmentTitle + "</td><td>PNG Image</td><td><input type='hidden' name='file-attached-name[]' value='" + fileName +"'>" + fileName + "</td><td><img src='/public/images/renteq.png' alt='Preview' width='150' height='150'/></td><td><span class=\"remove-attachment\"><a href=\"#\" onclick=\"removeAttachment(" + attachmentTitle + ")\">Remove</a></td></tr>";
-      $("table tbody").append(markup);
+      $("#attachments-table table tbody").append(markup);
 
       $("#attachments-table").removeClass("js-hidden");
       $("#file-name").val("");
@@ -281,7 +281,7 @@ Permit Application - Street Manager
       var conditionNameTD = "<td><input class='form-control' name='conditions-name[]' type='hidden' value='" + conditionName + "'>" + conditionName + "</td>"
       var conditionReasonTD = "<td><input class='form-control' name='conditions-reason[]' type='hidden' value='" + conditionReason + "'>" + conditionReason + "</td>"
       var markup = "<tr id='"+ conditionVal + "'>" + conditionNameTD + conditionReasonTD + "<td><span class=\"remove-condition\"><a href=\"#\" onclick='removeCondition(" + conditionVal + ")'>Remove</a></span></td></tr>";
-      $("table tbody").append(markup);
+      $("#conditions-table table tbody").append(markup);
 
       $("#condition-reason").val("");
     })
