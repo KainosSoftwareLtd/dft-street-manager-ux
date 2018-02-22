@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Work Record
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+        <!-- main content starts -->
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Forward plan</h1>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>Work Reference Number</td>
+            <td>CT0931631825</td>
+        </tr>
+        <tr>
+            <td>Work Status</td>
+            <td>Draft forward plan</td>
+        </tr>
+        <tr>
+            <td>Promoter Name</td>
+            <td>Michael Harris</td>
+        </tr>
+        <tr>
+            <td>Promoter Agent</td>
+            <td>Cadent</td>
+        </tr>
+        <tr>
+            <td>Highway Authority</td>
+            <td>London Borough of Acton</td>
+        </tr>
+        <tr>
+            <td>USRN</td>
+            <td>08400796</td>
+        </tr>
+        <tr>
+            <td>Proposed Start</td>
+            <td>09/06/2018</td>
+        </tr>
+        <tr>
+            <td>Proposed End</td>
+            <td>19/07/2018</td>
+        </tr>
+        <tr>
+            <td>Date Flexible</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Description of Work #1</td>
+            <td>Footway resurfacing</td>
+        </tr>
+        <tr>
+            <td>Description of Work #2</td>
+            <td>Minor</td>
+        </tr>
+        <tr>
+            <td>Contact Details</td>
+            <td>0345 045 5212</td>
+        </tr>
+        <tr>
+            <td>Commercially Sensitive</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Reinstatement Category</td>
+            <td></td>
+        </tr>
+    </table>
+    <br/>
+    <p>
+        <a href="map-search">Return to map</a>
+    </p>
+</main>
+
+{% endblock %}
+
+
