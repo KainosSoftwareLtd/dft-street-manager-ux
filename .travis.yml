@@ -1,8 +1,30 @@
-language: node_js
-node_js:
-- lts/*
+language: bash
+
+env:
+  global:
+  - PATH="${HOME}/bin:${PATH}"
+  - UI_REPO="dtf-street-works-ux"
+
+services:
+  - docker
+
+before_script:
+  - echo ${GOOGLE_CREDENTIALS} | base64 --decode > ${HOME}/cicd.json
+  - gcloud --quiet version
+  - mkdir -p ${HOME}/bin
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - chmod +x kubectl
+  - mv kubectl ${HOME}/bin
+  - gcloud config set project $(grep project_id ${HOME}/cicd.json |cut -d\" -f4)
+  - gcloud config set compute/zone europe-west2-a
+  - gcloud auth activate-service-account --key-file=${HOME}/cicd.json
+
+script:
+  - docker build -t ${DOCKER_REPO_HOSTNAME}/$(grep project_id ${HOME}/cicd.json |cut -d\" -f4)/${UI_REPO}:$TRAVIS_COMMIT .
+  - ./release.sh ${DOCKER_REPO_HOSTNAME} ${UI_REPO} $TRAVIS_COMMIT
+
 deploy:
-  provider: heroku
-  api_key:
-    secure: qFG1LJF44QbybTyAUjjyDBIya2HWaE6LlIGBkMXXE9dvXDqHBOSUFLjd/w7LFICSWg+WkBvccwIm+XvARLvXjeTH3CaNnzJ9QD1LQWLgfLngsCD5KK0lnXAe65S6VyrTew7tZ15Mts8fR0n1wVJujNrmVRqlVWRbhL28ITwpwfu7MIaSDmk9u6PfjvceJf3SWg+LNuB1YrhEiKrU7BHXXLIxl+5yzvPX1g4NJx7sNVqq1TF1f6AmDRsW5Oeo2MWVvHNVM48H5knmz9fsEkmnTN493jEcaFlJsS+1xrRPwdJ2IwdKdxhqpazJ0mdRNZQRYde2O+OIyiAyVnVQQn2dkhhK5Bdbg37woD+db3ZlXAe4LEHJ6aHx88XbzM5SSDmsgc1WAG88tBK0Bj3w80ULXydnvw8oN2Dbjt3dfozmg6V4M/199u9ZbFsg+5NZzkAwn1eI6+GdBfZDrLcb3kF3uTlAfZH0V/CH3amX1UW1xaLXaz3/t95ZngIXyjbWyQDV2Xk7ot4LeRlMqIDnOvCchEc7DvQyTrv+YlWNTKrugrx6FHayL5C4Q4gQDvIwwc/oomaiPd6//DrdVxUp8GKCKm/h6pqjQ/9pasdPMWKmK8At+28Ne0SMu2rJmm+RB9J8XGEmsZUOy7RISoOUmLZPY6xYxGGut6Torwync6hPnsU=
-  app: dft-street-manager-ux
+  - provider: script
+    script: "./deploy.sh streetworks-dev-cluster ${DOCKER_REPO_HOSTNAME} ${UI_REPO} $TRAVIS_COMMIT"
+    on:
+      branch: master
