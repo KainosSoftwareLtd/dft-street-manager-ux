@@ -31,11 +31,17 @@
             {% endif %}
 
         </tr>
-        <tr>
-            <td class="bold-small">Highway authority</td>
-            <td style="text-align: right">{{ data['highwayauthority'] }}</td>
-
-        </tr>
+        {% if data['user-type'] == 'PP' %}
+            <tr>
+                <td class="bold-small">Highway authority</td>
+                <td style="text-align: right">{{ data['highwayauthority'] }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="bold-small">Promoter name</td>
+                <td style="text-align: right">{{ data['promotername'] }}</td>
+            </tr>
+        {% endif %}
         <tr>
             <td class="bold-small">Work category</td>
             <td style="text-align: right">{{ data['workcategorygroup'] }}</td>

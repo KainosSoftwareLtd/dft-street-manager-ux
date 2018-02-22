@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check your answers</h1>
+
+    <table>
+        <tbody>
+            <tr><h2 class="heading-medium">Coordination & collaboration</h2></tr>
+            <tr>
+                <td>Environmental health notifiable</td>
+                <td>{{ data['environmental-health-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-coordination-collaboration#environmental-health-yes">
+                        Change <span class="visuallyhidden">environmental health notifiable</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaborative working</td>
+                <td>{{ data['collaboration-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-coordination-collaboration#collaboration-yes">
+                        Change <span class="visuallyhidden">collaborative working</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaboration type</td>
+                <td>{{ data['collaboration-type-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-coordination-collaboration#collaboration-type-1">
+                        Change <span class="visuallyhidden">collaboration type</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Collaboration details</td>
+                <td>{{ data['collaboration-details'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-coordination-collaboration#collaboration-details">
+                        Change <span class="visuallyhidden">collaboration details</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <div class="form-group">
+        <a href="permit-application-check-answers" class="button">Continue</a>
+    </div>
+</main>
+
+{% endblock %}

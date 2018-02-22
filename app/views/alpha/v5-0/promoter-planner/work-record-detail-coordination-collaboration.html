@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Coordination & collaboration</h2>
+
+    <form action="wr-coordination-collaboration-check-answers" method="post" >
+        <div class="form-group">
+            <fieldset class="inline">
+                <div class="form-group">
+                    <label class="form-label" for="environmental-health-yes">Environmental health notifiable</label>
+                    <div class="multiple-choice">
+                        <input id="environmental-health-yes" type="radio" name="environmental-health-group" value="Yes" {{ checked('environmental-health-group','Yes') }}>
+                        <label for="environmental-health-yes">Yes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="environmental-health-no" type="radio" name="environmental-health-group" value="No" {{ checked('environmental-health-group','No') }}>
+                        <label for="environmental-health-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="inline">
+                <div class="form-group">
+                    <label class="form-label" for="collaboration-yes">Collaborative working</label>
+                    <div class="multiple-choice" data-target="collaboration-type">
+                        <input id="collaboration-yes" type="radio" name="collaboration-group" value="Yes" {{ checked('collaboration-group','Yes') }}>
+                        <label for="collaboration-yes">Yes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="collaboration-no" type="radio" name="collaboration-group" value="No" {{ checked('collaboration-group','No') }}>
+                        <label for="collaboration-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="panel panel-border-narrow js-hidden" id="collaboration-type">
+                <fieldset>
+                    <label class="form-label" for="collaboration-type-1">Collaboration type</label>
+                    <div class="multiple-choice">
+                        <input id="collaboration-type-1" type="radio" name="collaboration-type-group" style="margin-bottom: 100px;" value="Trench sharing - primary promoter" {{ checked('description-of-work-group','Trench sharing - primary promoter') }}>
+                        <label for="collaboration-type-1" style="padding-right: 300px;">Trench sharing - primary promoter</label>
+                        <br/>
+                    </div>
+                    <br/>
+                    <div class="multiple-choice">
+                        <input id="collaboration-type-2" type="radio" name="collaboration-type-group" value="Trench sharing - secondary promoter" {{ checked('description-of-work-group','Trench sharing - secondary promoter') }}>
+                        <label for="collaboration-type-2">Trench sharing - secondary promoter</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="collaboration-type-3" type="radio" name="collaboration-type-group" value="Sharing traffic management only" {{ checked('description-of-work-group','Sharing traffic management only') }}>
+                        <label for="collaboration-type-3">Sharing traffic management only</label>
+                    </div>
+                </fieldset>
+                <br/>
+                <label class="form-label" for="collaboration-details">Collaboration details</label>
+                <input class="form-control" id="collaboration-details" name="collaboration-details" type="text" value="{{ data['collaboration-details'] }}">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="button" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</main>
+
+{% endblock %}

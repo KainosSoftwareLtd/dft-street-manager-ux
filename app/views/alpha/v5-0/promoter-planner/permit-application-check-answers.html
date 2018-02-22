@@ -24,9 +24,9 @@ Permit Application - Street Manager
         </div>
     </div>
 
-    <div class="heading-large">WRN CT12345</div>
+    <div class="heading-large">WRN {{ data['workreferencenumber'] }}</div>
 
-    <h2 class="heading-medium">Plan & Create</h2>
+    <h2 class="heading-medium">People</h2>
     <table style="width:100%;">
         <tbody>
             <colgroup>
@@ -38,153 +38,8 @@ Permit Application - Street Manager
                 <td>Promoter name</td>
                 <td>{{ data['promotername'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen1#promotername">
+                    <a href="work-record-detail-people#promotername">
                         Change <span class="visuallyhidden">promoter name</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>USRN</td>
-                <td>{{ data['usrn'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#usrn">
-                        Change <span class="visuallyhidden">usrn</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Road category</td>
-                <td>{{ data['roadcategorygroup'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#road-category-1">
-                        Change <span class="visuallyhidden">road category</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Highway authority</td>
-                <td>{{ data['highwayauthority'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#highwayauthority">
-                        Change <span class="visuallyhidden">highway authority</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Work reference number</td>
-                <td>{{ data['workreferencenumber'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#workreferencenumber">
-                        Change <span class="visuallyhidden">work reference number</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Proposed start date</td>
-                {% if data['start-day'] != '' %}
-                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
-                {% else %}
-                <td></td>
-                {% endif %}
-                <td class="change-answer">
-                    <a href="permit-application-screen1#start-date-day">
-                        Change <span class="visuallyhidden">start date</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Proposed end date</td>
-                {% if data['end-day'] != '' %}
-                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
-                {% else %}
-                <td></td>
-                {% endif %}
-                <td class="change-answer">
-                    <a href="permit-application-screen1#end-date-day">
-                        Change <span class="visuallyhidden">end date</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Duration</td>
-                <td>{{ data['duration'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#duration">
-                        Change <span class="visuallyhidden">duration</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Traffic management type</td>
-                <td>{{ data['trafficmanagementtypegroup'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#road-closure">
-                        Change <span class="visuallyhidden">traffic management type</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Work category</td>
-                <td>{{ data['workcategorygroup'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen1#work-category-1">
-                        Change <span class="visuallyhidden">work category</span>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2 class="heading-medium">Location & Contact</h2>
-    <table style="width:100%;">
-        <tbody>
-            <colgroup>
-                <col style="width:60%"/>
-                <col style="width:30%"/>
-                <col style="width:10%"/>
-            </colgroup>
-            <tr>
-                <td>Works location description</td>
-                <td>{{ data['works-location-description'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#works-location-description">
-                        Change <span class="visuallyhidden">works location description</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Works location</td>
-                <td>{{ data['works-location-group'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#works-location-1">
-                        Change <span class="visuallyhidden">works location</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Description of work #1</td>
-                <td>{{ data['description-of-work-group'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#description-of-work-1">
-                        Change <span class="visuallyhidden">description of work 1</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Description of work #2</td>
-                <td>{{ data['description-of-work-2'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#description-of-work-2">
-                        Change <span class="visuallyhidden">description of work 2</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Excavation</td>
-                <td>{{ data['excavation-group'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#excavation-yes">
-                        Change <span class="visuallyhidden">excavation</span>
                     </a>
                 </td>
             </tr>
@@ -192,7 +47,7 @@ Permit Application - Street Manager
                 <td>Contact details</td>
                 <td>{{ data['contact-details'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen2#contact-details">
+                    <a href="work-record-detail-people#contact-details">
                         Change <span class="visuallyhidden">contact details</span>
                     </a>
                 </td>
@@ -201,7 +56,7 @@ Permit Application - Street Manager
                 <td>Promoter agent</td>
                 <td>{{ data['promoter-agent'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen2#promoter-agent">
+                    <a href="work-record-detail-people#promoter-agent">
                         Change <span class="visuallyhidden">promoter agent</span>
                     </a>
                 </td>
@@ -210,32 +65,15 @@ Permit Application - Street Manager
                 <td>Secondary site contact details</td>
                 <td>{{ data['secondary-contact'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen2#secondary-contact">
-                        Change <span class="visuallyhidden">secondary site contact details</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Commercially sensitive</td>
-                <td>{{ data['commercially-sensitive-group'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#commercially-sensitive-yes">
-                        Change <span class="visuallyhidden">commercially sensitive</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Lane rental applicable</td>
-                <td>{{ data['lane-rental-group'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen2#lane-rental-yes">
-                        Change <span class="visuallyhidden">lane rental applicable</span>
+                    <a href="work-record-detail-people#secondary-contact">
+                        Change <span class="visuallyhidden">secondary contact</span>
                     </a>
                 </td>
             </tr>
         </tbody>
     </table>
-    <h2 class="heading-medium">Collaboration</h2>
+
+    <h2 class="heading-medium">Activity</h2>
     <table style="width:100%;">
         <tbody>
             <colgroup>
@@ -244,10 +82,83 @@ Permit Application - Street Manager
                 <col style="width:10%"/>
             </colgroup>
             <tr>
-                <td>Is TM Required</td>
+                <td>Description of work #1</td>
+                <td>{{ data['description-of-work-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#description-of-work-group">
+                        Change <span class="visuallyhidden">description of work #1</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Description of work #2</td>
+                <td>{{ data['description-of-work-2'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#description-of-work-2">
+                        Change <span class="visuallyhidden">description of work #2</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Excavation</td>
+                <td>{{ data['excavation-group'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#excavation-group">
+                        Change <span class="visuallyhidden">excavation</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Work category</td>
+                <td>{{ data['workcategorygroup'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-activity#workcategorygroup">
+                        Change <span class="visuallyhidden">work category</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 class="heading-medium">Control</h2>
+    <table style="width:100%;">
+        <tbody>
+            <colgroup>
+                <col style="width:60%"/>
+                <col style="width:30%"/>
+                <col style="width:10%"/>
+            </colgroup>
+            <tr>
+                <td>Work reference number</td>
+                <td>{{ data['workreferencenumber'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-control#workreferencenumber">
+                        Change <span class="visuallyhidden">work reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Project reference number</td>
+                <td>{{ data['project-reference'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-control#project-reference">
+                        Change <span class="visuallyhidden">project reference number</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Traffic management type</td>
+                <td>{{ data['trafficmanagementtypegroup'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-control#trafficmanagementtypegroup">
+                        Change <span class="visuallyhidden">traffic management type</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Is Traffic management required</td>
                 <td>{{ data['tm-group'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen4#tm-yes">
+                    <a href="work-record-detail-control#tm-yes">
                         Change <span class="visuallyhidden">TM required</span>
                     </a>
                 </td>
@@ -257,87 +168,218 @@ Permit Application - Street Manager
                 <td>Traffic Management Plan</td>
                 <td>{{ fileName }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen4#traffic-management-plan">
+                    <a href="work-record-detail-control#traffic-management-plan">
                         Change <span class="visuallyhidden">traffic management plan</span>
                     </a>
                 </td>
             </tr>
             {% endfor %}
             <tr>
-                <td>Collaborative Working</td>
-                <td>{{ data['collaboration-group'] }}</td>
+                <td>Commercially sensitive</td>
+                <td>{{ data['commercially-sensitive-group'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen4#collaboration-yes">
-                        Change <span class="visuallyhidden">collaborative working</span>
+                    <a href="work-record-detail-control#commercially-sensitive-group">
+                        Change <span class="visuallyhidden">commercially sensitive</span>
                     </a>
                 </td>
             </tr>
             <tr>
-                <td>Collaboration Type</td>
-                <td>{{ data['collaboration-type-group'] }}</td>
+                <td>Lane rental applicable</td>
+                <td>{{ data['lane-rental-group'] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen4#collaboration-type-1">
-                        Change <span class="visuallyhidden">collaboration type</span>
+                    <a href="work-record-detail-control#lane-rental-group">
+                        Change <span class="visuallyhidden">lane rental applicable</span>
                     </a>
                 </td>
             </tr>
+            {% for condition in data['conditions-name'] %}
             <tr>
-                <td>Collaboration Details</td>
-                <td>{{ data['collaboration-details'] }}</td>
+                <td>{{ condition }}</td>
+                <td>{{ data['conditions-reason'][loop.index -1 ] }}</td>
                 <td class="change-answer">
-                    <a href="permit-application-screen4#collaboration-details">
-                        Change <span class="visuallyhidden">collaboration details</span>
+                    <a href="work-record-detail-control">
+                        Change <span class="visuallyhidden">{{ condition }}</span>
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td>Environmental Health Notifiable</td>
-                <td>{{ data['environmental-health-group'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen4#environmental-health-yes">
-                        Change <span class="visuallyhidden">environmental health notifiable</span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>Project Reference Number</td>
-                <td>{{ data['project-reference'] }}</td>
-                <td class="change-answer">
-                    <a href="permit-application-screen4#project-reference">
-                        Change <span class="visuallyhidden">project reference number</span>
-                    </a>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
-
-    <p>
-    <h2 class="heading-medium">Conditions</h2>
-    </p>
-
+    <h2 class="heading-medium">Location</h2>
     <table style="width:100%;">
-        <thead>
-        <th>Permit condition</th>
-        <th>Permit reason</th>
-        <th></th>
-        </thead>
         <tbody>
         <colgroup>
             <col style="width:60%"/>
             <col style="width:30%"/>
             <col style="width:10%"/>
         </colgroup>
+        <tr>
+            <td>Work reference number</td>
+            <td>{{ data['workreferencenumber'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#workreferencenumber">
+                    Change <span class="visuallyhidden">work reference number</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Project reference number</td>
+            <td>{{ data['project-reference'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#project-reference">
+                    Change <span class="visuallyhidden">project reference number</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Traffic management type</td>
+            <td>{{ data['trafficmanagementtypegroup'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#trafficmanagementtypegroup">
+                    Change <span class="visuallyhidden">traffic management type</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Is Traffic management required</td>
+            <td>{{ data['tm-group'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#tm-yes">
+                    Change <span class="visuallyhidden">TM required</span>
+                </a>
+            </td>
+        </tr>
+        {% for fileName in data['file-attached-detail'] %}
+        <tr>
+            <td>Traffic Management Plan</td>
+            <td>{{ fileName }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#traffic-management-plan">
+                    Change <span class="visuallyhidden">traffic management plan</span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>Commercially sensitive</td>
+            <td>{{ data['commercially-sensitive-group'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#commercially-sensitive-group">
+                    Change <span class="visuallyhidden">commercially sensitive</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Lane rental applicable</td>
+            <td>{{ data['lane-rental-group'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-control#lane-rental-group">
+                    Change <span class="visuallyhidden">lane rental applicable</span>
+                </a>
+            </td>
+        </tr>
         {% for condition in data['conditions-name'] %}
         <tr>
             <td>{{ condition }}</td>
             <td>{{ data['conditions-reason'][loop.index -1 ] }}</td>
             <td class="change-answer">
-                <a href="permit-application-screen3">
+                <a href="work-record-detail-control">
                     Change <span class="visuallyhidden">{{ condition }}</span>
                 </a>
             </td>
         </tr>
         {% endfor %}
+        </tbody>
+    </table>
+    <h2 class="heading-medium">Timings</h2>
+    <table style="width:100%;">
+        <tbody>
+        <colgroup>
+            <col style="width:60%"/>
+            <col style="width:30%"/>
+            <col style="width:10%"/>
+        </colgroup>
+        <tr>
+            <td>Proposed start date</td>
+            {% if data['start-day'] != '' %}
+            <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            <td class="change-answer">
+                <a href="work-record-detail-timings#start-date-day">
+                    Change <span class="visuallyhidden">start date</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Proposed end date</td>
+            {% if data['end-day'] != '' %}
+            <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            <td class="change-answer">
+                <a href="work-record-detail-timings#end-date-day">
+                    Change <span class="visuallyhidden">end date</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Duration</td>
+            <td>{{ data['duration'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-timings#duration">
+                    Change <span class="visuallyhidden">duration</span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h2 class="heading-medium">Coordination & collaboration</h2>
+    <table style="width:100%;">
+        <tbody>
+        <colgroup>
+            <col style="width:60%"/>
+            <col style="width:30%"/>
+            <col style="width:10%"/>
+        </colgroup>
+        <tr>
+            <td>Environmental health notifiable</td>
+            <td>{{ data['environmental-health-group'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-coordination-collaboration#environmental-health-yes">
+                    Change <span class="visuallyhidden">environmental health notifiable</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Collaborative working</td>
+            <td>{{ data['collaboration-group'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-coordination-collaboration#collaboration-yes">
+                    Change <span class="visuallyhidden">collaborative working</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Collaboration type</td>
+            <td>{{ data['collaboration-type-group'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-coordination-collaboration#collaboration-type-1">
+                    Change <span class="visuallyhidden">collaboration type</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Collaboration details</td>
+            <td>{{ data['collaboration-details'] }}</td>
+            <td class="change-answer">
+                <a href="work-record-detail-coordination-collaboration#collaboration-details">
+                    Change <span class="visuallyhidden">collaboration details</span>
+                </a>
+            </td>
+        </tr>
         </tbody>
     </table>
 

@@ -383,9 +383,11 @@ router.get('/alpha/v4-0/ha-officer/reinstatement-detail-view', function (req, re
 router.post('/alpha/v5-0/sign-in.html', function (req, res) {
   switch (req.body.email) {
     case 'promo@sm.com' :
+      req.session.data['user-type'] = 'PP'
       res.redirect('/alpha/v5-0/promoter-planner/dashboard.html')
       break
     case 'ha@sm.com' :
+      req.session.data['user-type'] = 'HA'
       res.redirect('/alpha/v5-0/ha-officer/dashboard.html')
       break
     default:
@@ -426,46 +428,6 @@ router.post('/alpha/v5-0/ha-officer/search.html', function (req, res) {
   }
 })
 
-router.post('/alpha/v5-0/promoter-planner/screen1-check-answers', function (req, res) {
-  if (req.body.promotername === '') {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationPromoterNameError: 'Enter the Promoter name', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.usrn === '') {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationUsrnError: 'Enter the USRN', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.roadcategorygroup === undefined) {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationRoadCategoryError: 'Select the Road category', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.highwayauthority === '') {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationHighwayAuthorityError: 'Enter the Highway authority', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.workreferencenumber === '') {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.startdateday === null) {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationStartDateError: 'Enter the Start date', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.duration === '') {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationDurationError: 'Enter the Duration', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.trafficmanagementtypegroup === undefined) {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationTMTypeError: 'Select the Traffic management type', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else if (req.body.workcategorygroup === undefined) {
-    res.render('alpha/v5-0/promoter-planner/permit-application-screen1.html', {validationWorkCategoryError: 'Select the Work category', validationError: 'There was an error on your page. Correct any required fields and submit again.'})
-  } else {
-    req.session.data['Screen1Complete'] = true
-    res.redirect('screen1-check-answers.html')
-  }
-})
-
-router.post('/alpha/v5-0/promoter-planner/screen2-check-answers', function (req, res) {
-  req.session.data['Screen2Complete'] = true
-  res.render('alpha/v5-0/promoter-planner/screen2-check-answers.html')
-})
-
-router.post('/alpha/v5-0/promoter-planner/screen3-check-answers', function (req, res) {
-  req.session.data['Screen3Complete'] = true
-  res.render('alpha/v5-0/promoter-planner/conditions-check-answers.html')
-})
-
-router.post('/alpha/v5-0/promoter-planner/screen4-check-answers', function (req, res) {
-  req.session.data['Screen4Complete'] = true
-  res.render('alpha/v5-0/promoter-planner/screen4-check-answers.html')
-})
-
 router.get('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
   req.session.data['old-start-day'] = req.session.data['start-day']
   req.session.data['old-start-month'] = req.session.data['start-month']
@@ -478,7 +440,7 @@ router.get('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
 
 router.post('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
   req.session.data['WorkDatesChanged'] = true
-  if(req.session.data['changeDatesComment']) {
+  if (req.session.data['changeDatesComment']) {
     req.session.data['comment'] = 'Reason for date change: ' + req.session.data['changeDatesComment']
   }
   res.redirect('assessment-decision.html')
@@ -486,7 +448,7 @@ router.post('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
 
 router.post('/alpha/v5-0/ha-officer/change-conditions', function (req, res) {
   req.session.data['PermitConditionsChanged'] = true
-  if(req.session.data['changeConditionsComment']) {
+  if (req.session.data['changeConditionsComment']) {
     req.session.data['comment'] = req.session.data['comment'] + '\nReason for conditions change: ' + req.session.data['changeConditionsComment']
   }
   res.redirect('assessment-decision.html')
@@ -498,7 +460,7 @@ router.post('/alpha/v5-0/ha-officer/screen3-check-answers', function (req, res) 
 })
 
 router.post('/alpha/v5-0/promoter-planner/permit-application-on-site', function (req, res) {
-  req.session.data['Screen6Complete'] = true
+  req.session.data['OnsiteComplete'] = true
   if (req.body.excavationrequiredgroup.valueOf() === 'Yes') {
     req.session.data['ReinstatementRequired'] = true
   }
@@ -506,7 +468,7 @@ router.post('/alpha/v5-0/promoter-planner/permit-application-on-site', function 
 })
 
 router.post('/alpha/v5-0/promoter-planner/permit-application-assessment', function (req, res) {
-  req.session.data['Screen5Complete'] = true
+  req.session.data['AssessComplete'] = true
   res.render('alpha/v5-0/promoter-planner/grant-permit-application.html')
 })
 
@@ -515,7 +477,7 @@ router.post('/alpha/v5-0/promoter-planner/reinstatement', function (req, res) {
 })
 
 router.post('/alpha/v5-0/promoter-planner/all-sites', function (req, res) {
-  req.session.data['Screen7Complete'] = true
+  req.session.data['ReinstatementsComplete'] = true
   res.render('alpha/v5-0/promoter-planner/confirm-reinstatement.html')
 })
 
@@ -541,7 +503,7 @@ router.post('/alpha/v5-0/ha-officer/assessment-decision', function (req, res) {
 
 router.post('/alpha/v5-0/ha-officer/add-inspection', function (req, res) {
   req.session.data['inspectionSubmitted'] = true
-  req.session.data['Screen8Complete'] = true
+  req.session.data['InspectionsComplete'] = true
   res.redirect('/alpha/v5-0/ha-officer/add-inspection')
 })
 
@@ -592,12 +554,43 @@ router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) 
   } else if (req.body.promoteragent === '') {
     res.render('alpha/v5-0/promoter-planner/create-new-work.html', {validationPromoterAgentError: 'Enter the Promoter agent', validationError: 'There was a problem'})
   } else {
+    req.session.data['ForwardPlanComplete'] = true
     res.redirect('/alpha/v5-0/promoter-planner/work-record-check-answers.html')
   }
 })
 
 router.get('/alpha/v5-0/ha-officer/needs-action', function (req, res) {
   res.render('alpha/v5-0/ha-officer/needs-action', sessionUtil.setSessionData(req.session.data, demoData[2]))
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-people-check-answers', function (req, res) {
+  req.session.data['PeopleComplete'] = true
+  res.render('alpha/v5-0/promoter-planner/wr-people-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-activity-check-answers', function (req, res) {
+  req.session.data['ActivityComplete'] = true
+  res.render('alpha/v5-0/promoter-planner/wr-activity-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-control-check-answers', function (req, res) {
+  req.session.data['ControlComplete'] = true
+  res.render('alpha/v5-0/promoter-planner/wr-control-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-location-check-answers', function (req, res) {
+  req.session.data['LocationComplete'] = true
+  res.render('alpha/v5-0/promoter-planner/wr-location-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-timings-check-answers', function (req, res) {
+  req.session.data['TimingsComplete'] = true
+  res.render('alpha/v5-0/promoter-planner/wr-timings-check-answers.html')
+})
+
+router.post('/alpha/v5-0/promoter-planner/wr-coordination-collaboration-check-answers', function (req, res) {
+  req.session.data['CoordinationCollaborationComplete'] = true // change
+  res.render('alpha/v5-0/promoter-planner/wr-coordination-collaboration-check-answers.html')
 })
 
 router.get('/alpha/v5-0/promoter-planner/map-search:flow', function (req, res) {

@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Activity</h2>
+
+    <form action="wr-activity-check-answers" method="post" >
+        <div class="form-group">
+
+            <fieldset class="inline">
+                <div class="form-group">
+                    <label class="form-label" for="description-of-work-1">Description of work #1</label>
+                    <div class="multiple-choice">
+                        <input id="description-of-work-1" type="radio" name="description-of-work-group" value="Leakage" {{ checked('description-of-work-group','Leakage') }}>
+                        <label for="description-of-work-1">Leakage</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="description-of-work-2" type="radio" name="description-of-work-group" value="New supply" {{ checked('description-of-work-group','New supply') }}>
+                        <label for="description-of-work-2">New supply</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="description-of-work-3" type="radio" name="description-of-work-group" value="Resurfacing" {{ checked('description-of-work-group','Resurfacing') }}>
+                        <label for="description-of-work-3">Resurfacing</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <label class="form-label" for="description-of-work-2">Description of work #2</label>
+                <textarea class="form-control form-control-3-4" name="description-of-work-2" id="description-of-work-2" rows="5">{{ data['description-of-work-2'] }}</textarea>
+            </div>
+
+            <fieldset class="inline">
+                <div class="form-group">
+                    <label class="form-label" for="excavation-yes">Excavation</label>
+                    <div class="multiple-choice">
+                        <input id="excavation-yes" type="radio" name="excavation-group" value="Yes" {{ checked('excavation-group','Yes') }}>
+                        <label for="excavation-yes">Yes</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="excavation-no" type="radio" name="excavation-group" value="No" {{ checked('excavation-group','No') }}>
+                        <label for="excavation-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="inline">
+                <div class="form-group {{'form-group-error' if validationWorkCategoryError}}">
+                    <br/>
+                    <label class="form-label" for="work-category-1">Work category</label>
+                    {% if validationError %}<p class="error-message">{{ validationWorkCategoryError }}</p>{% endif %}
+                    <div class="multiple-choice">
+                        <input id="work-category-1" type="radio" name="workcategorygroup" value="Minor" {{ checked('workcategorygroup','Minor') }}>
+                        <label for="work-category-1">Minor</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="work-category-2" type="radio" name="workcategorygroup" value="Standard" {{ checked('workcategorygroup','Standard') }}>
+                        <label for="work-category-2">Standard</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="work-category-3" type="radio" name="workcategorygroup" value="Major" {{ checked('workcategorygroup','Major') }}>
+                        <label for="work-category-3">Major</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="work-category-4" type="radio" name="workcategorygroup" value="Immediate - urgent" {{ checked('workcategorygroup','Immediate - urgent') }}>
+                        <label for="work-category-4">Immediate - urgent</label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="multiple-choice">
+                        <input id="work-category-5" type="radio" name="workcategorygroup" value="Immediate - emergency" {{ checked('workcategorygroup','Immediate - emergency') }}>
+                        <label for="work-category-5">Immediate - emergency</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <input type="submit" class="button" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</main>
+
+{% endblock %}

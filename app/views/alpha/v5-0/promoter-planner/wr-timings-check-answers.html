@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <h1 class="heading-large">Check your answers</h1>
+
+    <table>
+        <tbody>
+            <tr><h2 class="heading-medium">Timings</h2></tr>
+            <tr>
+                <td>Proposed start date</td>
+                {% if data['start-day'] != '' %}
+                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td class="change-answer">
+                    <a href="work-record-detail-timings#start-date-day">
+                        Change <span class="visuallyhidden">start date</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Proposed end date</td>
+                {% if data['end-day'] != '' %}
+                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td class="change-answer">
+                    <a href="work-record-detail-timings#end-date-day">
+                        Change <span class="visuallyhidden">end date</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>{{ data['duration'] }}</td>
+                <td class="change-answer">
+                    <a href="work-record-detail-timings#duration">
+                        Change <span class="visuallyhidden">duration</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <div class="form-group">
+        <a href="work-record-detail-coordination-collaboration" class="button">Continue</a>
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Permit Application - Street Manager
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    <!-- alpha banner -->
+
+    {% include "includes/phase_banner_alpha.html" %}
+
+    {% if validationError %}
+    <p class="error-summary">{{validationError}}</p>
+    {% endif %}
+
+    <div class="breadcrumbs">
+        <div>
+            <!-- the rest of this label is hidden, only used for screenreaders -->
+            <span class="visuallyhidden"> to the previous page</span>
+            <a id="sign-out" href="sign_in" style="float:right">Sign out</a>
+            <span style="float:right; margin-right:10px;">promo@sm.com</span>
+        </div>
+    </div>
+
+    <a href="../task-list-page.html" class="link-back" title="Back to previous question">Back</a>
+
+    <h2 class="heading-large">Timings</h2>
+
+    <form action="wr-timings-check-answers" method="post" >
+        <div class="form-group">
+
+            <div class="form-group">
+                <label class="form-label" for="start-date-day">Proposed start date</label>
+                {% if validationError %}<p class="error-message">{{ validationStartDateError }}</p>{% endif %}
+                <fieldset>
+                    <div class="form-date">
+                        <div class="form-group form-group-day">
+                            <label class="form-label" for="start-date-day">Day</label>
+                            <input class="form-control" id="start-date-day" name="start-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['start-day'] }}">
+                        </div>
+                        <div class="form-group form-group-month">
+                            <label class="form-label" for="start-date-month">Month</label>
+                            <input class="form-control" id="start-date-month" name="start-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['start-month'] }}">
+                        </div>
+                        <div class="form-group form-group-year">
+                            <label class="form-label" for="start-date-year">Year</label>
+                            <input class="form-control" id="start-date-year" name="start-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['start-year'] }}">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="end-date-day">Proposed end date</label>
+                <fieldset>
+                    <div class="form-date">
+                        <div class="form-group form-group-day">
+                            <label class="form-label" for="end-date-day">Day</label>
+                            <input class="form-control" id="end-date-day" name="end-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['end-day'] }}">
+                        </div>
+                        <div class="form-group form-group-month">
+                            <label class="form-label" for="end-date-month">Month</label>
+                            <input class="form-control" id="end-date-month" name="end-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['end-month'] }}">
+                        </div>
+                        <div class="form-group form-group-year">
+                            <label class="form-label" for="end-date-year">Year</label>
+                            <input class="form-control" id="end-date-year" name="end-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['end-year'] }}">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <fieldset class="inline {{'form-group-error' if validationDurationError}}">
+                <div class="form-group">
+                    <label class="form-label" for="duration">Duration</label>
+                    <span class="form-hint">Durations are in working days</span>
+                    {% if validationError %}<p class="error-message">{{ validationDurationError }}</p>{% endif %}
+                    <input class="form-control" id="duration" name="duration" type="text" value="{{ data['duration'] }}">
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <input type="submit" class="button" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</main>
+
+{% endblock %}
