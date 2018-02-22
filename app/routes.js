@@ -579,6 +579,11 @@ router.post('/alpha/v5-0/promoter-planner/edit-work-record.html', function (req,
   }
 })
 
+router.get('/alpha/v5-0/promoter-planner/create-forward-plan', function (req, res) {
+  sessionUtil.setSessionData(req.session.data, demoData[4])
+  res.redirect('/alpha/v5-0/promoter-planner/create-new-work.html')
+})
+
 router.post('/alpha/v5-0/promoter-planner/create-new-work', function (req, res) {
   if (req.body.workreferencenumber === '') {
     res.render('alpha/v5-0/promoter-planner/create-new-work.html', {validationWorkReferenceError: 'Enter the Work reference number', validationError: 'There was a problem'})
