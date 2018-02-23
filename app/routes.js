@@ -538,11 +538,11 @@ router.get('/alpha/v5-0/promoter-planner/work-record', function (req, res) {
 })
 
 router.get('/alpha/v5-0/promoter-planner/withdraw-work-record', function (req, res) {
-  res.render('alpha/v5-0/promoter-planner/withdraw-work-record.html', data)
+  res.render('alpha/v5-0/promoter-planner/withdraw-work-record.html')
 })
 
 router.get('/alpha/v5-0/promoter-planner/edit-work-record', function (req, res) {
-  res.render('alpha/v5-0/promoter-planner/edit-work-record.html', data)
+  res.render('alpha/v5-0/promoter-planner/edit-work-record.html')
 })
 
 router.post('/alpha/v5-0/promoter-planner/edit-work-record.html', function (req, res) {

@@ -34,7 +34,7 @@ Task list
       {% include "../templates/keyinfo.html" %}
 
       <ol class="task-list">
-        <li>
+
           <h2 class="task-list-section">
             Work record detail
           </h2>
@@ -100,12 +100,12 @@ Task list
               {% endif %}
             </li>
           </ul>
-        </li>
+
         <br/>
-        <li>
-          <h2 class="task-list-section">
-            <a href="assessment-decision.html">Assess</a>
-          </h2>
+
+        <h2 class="task-list-section">
+          <a href="assessment-decision.html">Assess</a>
+        </h2>
         <li class="task-list-item">
           {% if data['AssessComplete'] %}
           <strong class="task-completed" id="assess-completed">Complete</strong>
@@ -113,12 +113,11 @@ Task list
           <strong class="task-completed" id="assess-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
         <br/>
-        <li>
-          <h2 class="task-list-section">
-            <a href="../promoter-planner/permit-application-on-site.html">On site</a>
-          </h2>
+
+        <h2 class="task-list-section">
+          <a href="../promoter-planner/permit-application-on-site.html">On site</a>
+        </h2>
         <li class="task-list-item">
           {% if data['OnsiteComplete'] %}
           <strong class="task-completed" id="onsite-completed">Complete</strong>
@@ -126,13 +125,12 @@ Task list
           <strong class="task-completed" id="onsite-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
         <br/>
+
         {% if data['ReinstatementRequired'] %}
-        <li>
-          <h2 class="task-list-section">
-            <a href="../promoter-planner/reinstatement.html">Reinstatements</a>
-          </h2>
+        <h2 class="task-list-section">
+          <a href="../promoter-planner/reinstatement.html">Reinstatements</a>
+        </h2>
         <li class="task-list-item">
           {% if data['ReinstatementsComplete'] %}
           <strong class="task-completed" id="reinstatement-completed">Complete</strong>
@@ -140,14 +138,13 @@ Task list
           <strong class="task-completed" id="reinstatement-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
-        {% endif %}
         <br/>
+        {% endif %}
+
         {% if data['ReinstatementsComplete'] %}
-        <li>
-          <h2 class="task-list-section">
-            <a href="add-inspection.html">Inspections</a>
-          </h2>
+        <h2 class="task-list-section">
+          <a href="add-inspection.html">Inspections</a>
+        </h2>
         <li class="task-list-item">
           {% if data['InspectionsComplete'] %}
           <strong class="task-completed" id="inspections-completed">Complete</strong>
@@ -155,14 +152,13 @@ Task list
           <strong class="task-completed" id="inspections-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
-        {% endif %}
         <br/>
+        {% endif %}
+
         {% if data['ReinstatementsComplete'] %}
-        <li>
-          <h2 class="task-list-section">
-            <a href="#">Non Compliance</a>
-          </h2>
+        <h2 class="task-list-section">
+          <a href="#">Non Compliance</a>
+        </h2>
         <li class="task-list-item">
           {% if data['NoncomplianceComplete'] %}
           <strong class="task-completed" id="noncompliance-completed">Complete</strong>
@@ -170,12 +166,17 @@ Task list
           <strong class="task-completed" id="nocompliance-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
+        <br/>
         {% endif %}
+
       </ol>
     </div>
   </div>
+
+  <div style="padding-top: 20px">
     <a href="view-history.html">View History</a>
+  </div>
+
 </main>
 
 {% endblock %}
