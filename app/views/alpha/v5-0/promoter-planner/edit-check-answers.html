@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Edit Work - Street Manager
+Amend forward plan - Street Manager
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@ Edit Work - Street Manager
         </div>
     </div>
 
-    <h2 class="heading-large">Check work record details before editing</h2>
+    <h2 class="heading-large">Check forward plan details before amending</h2>
 
     <table>
         <tbody>
@@ -48,18 +48,18 @@ Edit Work - Street Manager
             </tr>
             <tr>
                 <td>Promoter agent</td>
-                <td>{{ data['promoteragent'] }}</td>
+                <td>{{ data['promoter-agent'] }}</td>
                 <td class="change-answer">
-                    <a href="edit-work-record#promoteragent">
+                    <a href="edit-work-record#promoter-agent">
                         Change <span class="visuallyhidden">promoter agent</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Highway authority</td>
-                <td>{{ data['highway-authority'] }}</td>
+                <td>{{ data['highwayauthority'] }}</td>
                 <td class="change-answer">
-                    <a href="edit-work-record#highway-authority">
+                    <a href="edit-work-record#highwayauthority">
                         Change <span class="visuallyhidden">highway authority</span>
                     </a>
                 </td>
@@ -102,18 +102,18 @@ Edit Work - Street Manager
             </tr>
             <tr>
                 <td>Description of work #1</td>
-                <td>{{ data['description-of-work'] }}</td>
+                <td>{{ data['description-of-work-2'] }}</td>
                 <td class="change-answer">
-                    <a href="edit-work-record#description-of-work">
+                    <a href="edit-work-record#description-of-work-2">
                         Change <span class="visuallyhidden">description of work 1</span>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>Description of work #2</td>
-                <td>{{ data['description-of-work-group'] }}</td>
+                <td>{{ data['workcategorygroup'] }}</td>
                 <td class="change-answer">
-                    <a href="edit-work-record#description-of-work-1">
+                    <a href="edit-work-record#work-category-1">
                         Change <span class="visuallyhidden">description of work 2</span>
                     </a>
                 </td>
@@ -149,7 +149,7 @@ Edit Work - Street Manager
     </table>
     <br>
     <p>
-        <img src="/public/images/editlocation.png" alt="Map showing work created" height="400" width="550">
+        <img src="/public/images/examplemap.png" alt="Map showing work created" height="400" width="600">
     </p>
 
     <h2 class="heading-medium">Now submit changes to your forward plan</h2>
