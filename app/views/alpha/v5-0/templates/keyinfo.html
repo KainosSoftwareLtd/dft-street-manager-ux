@@ -52,6 +52,12 @@
             <td style="text-align: right">{{ data['trafficmanagementtypegroup'] }}</td>
 
         </tr>
+
+        <tr>
+            <td class="bold-small">Current status </td>
+            <td style="text-align: right"><strong class="task-completed" id="assessment-completed">{{data['status'] or 'Planned works'}}</strong></td>
+        </tr>
+
         </tbody>
     </table>
 </div>
