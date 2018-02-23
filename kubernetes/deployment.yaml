@@ -23,5 +23,16 @@ spec:
           requests:
             memory: 256Mi
             cpu: 0.1
+        env:
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: dft-street-manager-ux-access-credentials
+                key: USERNAME
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: dft-street-manager-ux-access-credentials
+                key: PASSWORD
       nodeSelector:
         system: "false"
