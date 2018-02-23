@@ -47,6 +47,7 @@
         </li>
         </li>
         <br/>
+
         <li>
           <h2 class="task-list-section">
             Work record detail
@@ -115,7 +116,7 @@
           </ul>
         </li>
         <br/>
-        <li>
+
           <h2 class="task-list-section">
             <a href="promoter-planner/permit-application-assessment.html">Assess</a>
           </h2>
@@ -128,6 +129,7 @@
         </li>
         </li>
         <br/>
+
         <li>
           <h2 class="task-list-section">
             <a href="promoter-planner/permit-application-on-site.html">On site</a>
@@ -141,11 +143,11 @@
         </li>
         </li>
         <br/>
+
         {% if data['ReinstatementRequired'] %}
-        <li>
-          <h2 class="task-list-section">
-            <a href="promoter-planner/reinstatement.html">Reinstatements</a>
-          </h2>
+        <h2 class="task-list-section">
+          <a href="promoter-planner/reinstatement.html">Reinstatements</a>
+        </h2>
         <li class="task-list-item">
           {% if data['ReinstatementsComplete'] %}
           <strong class="task-completed" id="reinstatement-completed">Complete</strong>
@@ -153,14 +155,13 @@
           <strong class="task-completed" id="reinstatement-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
-        {% endif %}
         <br/>
+        {% endif %}
+
         {% if data['ReinstatementsComplete'] %}
-        <li>
-          <h2 class="task-list-section">
-            <a href="ha-officer/add-inspection.html">Inspections</a>
-          </h2>
+        <h2 class="task-list-section">
+          <a href="ha-officer/add-inspection.html">Inspections</a>
+        </h2>
         <li class="task-list-item">
           {% if data['InspectionsComplete'] %}
           <strong class="task-completed" id="inspections-completed">Complete</strong>
@@ -168,11 +169,10 @@
           <strong class="task-completed" id="inspections-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
-        {% endif %}
         <br/>
+        {% endif %}
+
         {% if data['ReinstatementsComplete'] %}
-        <li>
           <h2 class="task-list-section">
             <a href="#">Non Compliance</a>
           </h2>
@@ -183,12 +183,17 @@
           <strong class="task-completed" id="nocompliance-incompleted">Incomplete</strong>
           {% endif %}
         </li>
-        </li>
+        <br/>
         {% endif %}
+
       </ol>
     </div>
   </div>
-  <a href="promoter-planner/view-history.html">View History</a>
+
+  <div style="padding-top: 20px;">
+    <a href="promoter-planner/view-history.html">View History</a>
+  </div>
+
 </main>
 
 {% endblock %}
