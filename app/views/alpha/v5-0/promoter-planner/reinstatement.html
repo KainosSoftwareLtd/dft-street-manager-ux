@@ -245,55 +245,6 @@ Reinstatement - Street Manager
 
 <script type="text/javascript">
 
-    var reinstatementCounter=0
-
-  $(document).ready(function () {
-
-    $("#add-reinstatement").click(function () {
-      var reinstatementStatus = $('input[name=reinstatement-status-group]:checked').val();
-      var reinstatementDay = $("#reinstatement-date-day").val();
-      var reinstatementMonth = $("#reinstatement-date-month").val();
-      var reinstatementYear = $("#reinstatement-date-year").val();
-      var length = $("#length").val();
-      var width = $("#width").val();
-      var warrantyDay = $("#warranty-end-date-day").val();
-      var warrantyMonth = $("#warranty-end-date-month").val();
-      var warrantyYear = $("#warranty-end-date-year").val();
-
-      var conditionVal = $("input[name=depth-group]:checked").val();
-      reinstatementCounter++
-
-      var reinstatementCounterTD = "<td><input class='form-control' name='reinstatement-counter[]' type='hidden' value='" + reinstatementCounter + "'>" + reinstatementCounter + "</td>"
-      var reinstatementStatusTD = "<td><input class='form-control' name='reinstatement-status[]' type='hidden' value='" + reinstatementStatus + "'>" + reinstatementStatus + "</td>"
-      var reinstatementDateTD = "<td><input class='form-control' name='reinstatement-date[]' type='hidden' value='" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "'>" + reinstatementDay + "/" + reinstatementMonth  + "/" + reinstatementYear + "</td>"
-      var lengthTD = "<td><input class='form-control' name='reinstatement-length[]' type='hidden' value='" + length + "'>" + length + "</td>"
-      var widthTD = "<td><input class='form-control' name='reinstatement-width[]' type='hidden' value='" + width + "'>" + width + "</td>"
-      var warrantyDateTD = "<td><input class='form-control' name='reinstatement-warrantydate[]' type='hidden' value='" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "'>" + warrantyDay + "/" + warrantyMonth  + "/" + warrantyYear + "</td>"
-
-      var markup = "<tr id='"+ conditionVal + "'>" + reinstatementCounterTD + reinstatementStatusTD + reinstatementDateTD + lengthTD + widthTD + warrantyDateTD +"<td><span class=\"view-reinstatement\"><a href=\"reinstatement-detail-view\">View</a></span></td></tr>";
-      $("#reinstatements tbody").append(markup);
-
-      $("#condition-reason").val("");
-
-      $("#reinstatement-date-day").val("");
-      $("#reinstatement-date-month").val("");
-      $("#reinstatement-date-year").val("");
-      $("#reinstatement-date-year").val("");
-      $("#length").val("");
-      $("#width").val("");
-      $("#location-x").val("");
-      $("#location-y").val("");
-      $("#location-description").val("");
-      $("#warranty-end-date-day").val("");
-      $("#warranty-end-date-month").val("");
-      $("#warranty-end-date-year").val("");
-      $("input[name=reinstatement-status-group]:checked").prop('checked', false);
-      $("input[name=depth-group]:checked").prop('checked', false);
-      $("input[name=works-position-group]:checked").prop('checked', false);
-
-    })
-  });
-
     $("#add-reinstatement").click(function () {
       $("#add-all-reinstatements").show();
       $("#reinstatements-table").show();

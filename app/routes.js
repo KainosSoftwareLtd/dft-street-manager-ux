@@ -466,7 +466,7 @@ router.post('/alpha/v5-0/ha-officer/screen3-check-answers', function (req, res) 
 })
 
 router.post('/alpha/v5-0/promoter-planner/permit-application-on-site', function (req, res) {
-  console.log(req.body.actualEndDateDay)
+  req.session.data['status'] = 'In progress'
   if (req.body.actualEndDateDay === '' &&
       req.body.actualEndDateMonth === '' &&
       req.body.actualEndDateYear === '' &&
@@ -494,6 +494,7 @@ router.post('/alpha/v5-0/promoter-planner/reinstatement', function (req, res) {
 
 router.post('/alpha/v5-0/promoter-planner/all-sites', function (req, res) {
   req.session.data['ReinstatementsComplete'] = true
+  req.session.data['status'] = 'Works complete'
   res.render('alpha/v5-0/promoter-planner/confirm-reinstatement.html')
 })
 
@@ -503,15 +504,10 @@ router.get('/alpha/v5-0/ha-officer/assessment-decision', function (req, res) {
 
 router.post('/alpha/v5-0/ha-officer/assessment-decision', function (req, res) {
   switch (req.body.options) {
-    // case 'Grant' :
-    //   res.redirect('/alpha/v5-0/ha-officer/grant-confirmation')
-    //   break
     case 'Grant with changes' :
+      req.session.data['status'] = 'PA approved'
       res.redirect('/alpha/v5-0/ha-officer/grant-confirmation')
       break
-    // case 'Revoke':
-    //   res.redirect('/alpha/v5-0/ha-officer/revoke')
-    //   break
     default:
       res.render('alpha/v5-0/ha-officer/assessment-decision.html', {validationError: 'There was an error on your page. Correct any required fields and submit again.'})
   }
