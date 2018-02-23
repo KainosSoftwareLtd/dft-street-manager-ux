@@ -25,7 +25,7 @@ Permit Application Confirmation - Street Manager
     <div class="grid-row">
         <div class="column-two-thirds">
         <p class="font-medium">
-            Work reference number: <strong class="bold">CT0224443466</strong> [Status]
+            Work reference number: <strong class="bold">{{ data['workreferencenumber'] }}</strong>
         </p>
             <div class="govuk-box-highlight">
                 <h1 class="heading-large">
@@ -33,14 +33,14 @@ Permit Application Confirmation - Street Manager
                 </h1>
                 <p class="font-large">
                     Your work reference number is <br>
-                    <strong class="bold">CT0224443466</strong>
+                    <strong class="bold">{{ data['workreferencenumber'] }}</strong>
                 </p>
             </div>
         </div>
     </div>
 
     <div style="padding-top: 10px">
-        <a href="#" class="button" style="margin-right: 20px;">View this work record</a>
+        <a href="../task-list-page.html" class="button" style="margin-right: 20px;">View this work record</a>
         <a href="dashboard" style="vertical-align: bottom" >Return to homepage</a>
     </div>
 

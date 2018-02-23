@@ -331,6 +331,7 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% if data['collaboration-group'] == 'Yes' %}
         <tr>
             <td>Collaboration type</td>
             <td>{{ data['collaboration-type-group'] }}</td>
@@ -349,6 +350,7 @@ Permit Application - Street Manager
                 </a>
             </td>
         </tr>
+        {% endif %}
         </tbody>
     </table>
 
