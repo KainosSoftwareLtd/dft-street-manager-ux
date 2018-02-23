@@ -31,7 +31,7 @@ Task list
         Permit application
       </h1>
 
-      {% include "./templates/keyinfo.html" %}
+      {% include "../templates/keyinfo.html" %}
 
       <ol class="task-list">
         <li>
@@ -53,7 +53,7 @@ Task list
           </h2>
           <ul class="task-list-items">
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-people" aria-describedby="people-completed">
+              <a  href="promoter-planner/work-record-detail-people" aria-describedby="people-completed">
                 People
               </a>
               {% if data['PeopleComplete'] %}
@@ -63,7 +63,7 @@ Task list
               {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-activity" aria-describedby="activity-completed">
+              <a  href="promoter-planner/work-record-detail-activity" aria-describedby="activity-completed">
                 Activity
               </a>
               {% if data['ActivityComplete'] %}
@@ -73,7 +73,7 @@ Task list
               {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-control" aria-describedby="control-completed">
+              <a  href="promoter-planner/work-record-detail-control" aria-describedby="control-completed">
                 Control
               </a>
               {% if data['ControlComplete'] %}
@@ -83,7 +83,7 @@ Task list
               {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-location" aria-describedby="location-completed">
+              <a  href="promoter-planner/work-record-detail-location" aria-describedby="location-completed">
                 Location
               </a>
               {% if data['LocationComplete'] %}
@@ -93,7 +93,7 @@ Task list
               {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-timings" aria-describedby="timings-completed">
+              <a  href="promoter-planner/work-record-detail-timings" aria-describedby="timings-completed">
                 Timings
               </a>
               {% if data['TimingsComplete'] %}
@@ -103,7 +103,7 @@ Task list
               {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="promoter-planner/work-record-detail-coordination-collaboration" aria-describedby="coordination-collaboration-declaration-completed">
+              <a  href="promoter-planner/work-record-detail-coordination-collaboration" aria-describedby="coordination-collaboration-declaration-completed">
                 Coordination & collaboration
               </a>
               {% if data['CoordinationCollaborationComplete'] %}

@@ -73,6 +73,23 @@ Forward Planning - Street Manager
         {% if data['map-flow'] !== 'map' %}
         <div id="draw-controls">
             <h1 class="heading-small">Draw works area:</h1>
+
+            <div class="form-group">
+                <label class="form-label" for="polygon">Choose drawing type:</label>
+                <div class="multiple-choice">
+                    <input id="polygon" type="radio" name="drawing-type" value="Polygon" checked>
+                    <label for="polygon">Polygon</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="line" type="radio" name="drawing-type" value="Line">
+                    <label for="line">Line</label>
+                </div>
+                <div class="multiple-choice">
+                    <input id="point" type="radio" name="drawing-type" value="Point">
+                    <label for="point">Point</label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <fieldset>
                     <input id="draw-button" class="button" type="button" name="draw-button" value="Draw">
@@ -416,6 +433,16 @@ Forward Planning - Street Manager
   map.on('click', function (event) {
     console.log(event.coordinate)
   });
+
+  $('#period-of-interest').change(function(event) {
+      if( $('#period-of-interest').val() == 1) {
+          plannedWorksSource.removeFeature(plannedWork3);
+          assetsSource.removeFeature(asset1)
+      } else if ($('#period-of-interest').val() == 2) {
+          plannedWorksSource.addFeature(plannedWork3);
+          assetsSource.addFeature(asset1)
+      }
+  })
 
 </script>
 

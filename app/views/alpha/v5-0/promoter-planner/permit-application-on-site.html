@@ -73,20 +73,20 @@ Permit Application - Street Manager
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="actual-end-date-day">Actual end date</label>
+            <label class="form-label" for="actualEndDateDay">Actual end date</label>
             <fieldset>
                 <div class="form-date">
                     <div class="form-group form-group-day">
-                        <label class="form-label" for="actual-end-date-day">Day</label>
-                        <input class="form-control" id="actual-end-date-day" name="actual-end-date-day" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['actual-end-date-day'] }}">
+                        <label class="form-label" for="actualEndDateDay">Day</label>
+                        <input class="form-control" id="actualEndDateDay" name="actualEndDateDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['actualEndDateDay'] }}">
                     </div>
                     <div class="form-group form-group-month">
-                        <label class="form-label" for="actual-end-date-month">Month</label>
-                        <input class="form-control" id="actual-end-date-month" name="actual-end-date-month" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['actual-end-date-month'] }}">
+                        <label class="form-label" for="actualEndDateMonth">Month</label>
+                        <input class="form-control" id="actualEndDateMonth" name="actualEndDateMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['actualEndDateMonth'] }}">
                     </div>
                     <div class="form-group form-group-year">
-                        <label class="form-label" for="actual-end-date-year">Year</label>
-                        <input class="form-control" id="actual-end-date-year" name="actual-end-date-year" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['actual-end-date-year'] }}">
+                        <label class="form-label" for="actualEndDateYear">Year</label>
+                        <input class="form-control" id="actualEndDateYear" name="actualEndDateYear" type="number" pattern="[0-9]*" min="0" max="2020" value="{{ data['actualEndDateYear'] }}">
                     </div>
                     <br/>
                 </div>
@@ -94,12 +94,12 @@ Permit Application - Street Manager
             <div class="form-date">
                 <br/>
                 <div class="form-group form-group-day">
-                    <label class="form-label" for="actual-end-date-hour">Hour (HH)</label>
-                    <input class="form-control" id="actual-end-date-hour" name="actual-end-date-hour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['actual-end-date-hour'] }}">
+                    <label class="form-label" for="actualEndDateHour">Hour (HH)</label>
+                    <input class="form-control" id="actualEndDateHour" name="actualEndDateHour" type="number" pattern="[0-9]*" min="0" max="23" value="{{ data['actualEndDateHour'] }}">
                 </div>
                 <div class="form-group form-group-month">
-                    <label class="form-label" for="actual-end-date-minute">Minute (MM)</label>
-                    <input class="form-control" id="actual-end-date-minute" name="actual-end-date-minute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['actual-end-date-minute'] }}">
+                    <label class="form-label" for="actualEndDateMinute">Minute (MM)</label>
+                    <input class="form-control" id="actualEndDateMinute" name="actualEndDateMinute" type="number" pattern="[0-9]*" min="0" max="59" value="{{ data['actualEndDateMinute'] }}">
                 </div>
             </div>
         </div>
@@ -167,23 +167,23 @@ Permit Application - Street Manager
     var hour = currentDateTime.getHours();
     var minute = currentDateTime.getMinutes();
 
-    if(month.toString().length == 1) {
-      month = '0'+month;
+    if (month.toString().length == 1) {
+      month = '0' + month;
     }
-    if(day.toString().length == 1) {
-      day = '0'+day;
+    if (day.toString().length == 1) {
+      day = '0' + day;
     }
-    if(hour.toString().length == 1) {
-      hour = '0'+hour;
+    if (hour.toString().length == 1) {
+      hour = '0' + hour;
     }
-    if(minute.toString().length == 1) {
-      minute = '0'+minute;
+    if (minute.toString().length == 1) {
+      minute = '0' + minute;
     }
-    document.getElementById('actual-end-date-day').value=day;
-    document.getElementById('actual-end-date-month').value=month;
-    document.getElementById('actual-end-date-year').value=year;
-    document.getElementById('actual-end-date-hour').value=hour;
-    document.getElementById('actual-end-date-minute').value=minute;
+    document.getElementById('actualEndDateDay').value = day;
+    document.getElementById('actualEndDateMonth').value = month;
+    document.getElementById('actualEndDateYear').value = year;
+    document.getElementById('actualEndDateHour').value = hour;
+    document.getElementById('actualEndDateMinute').value = minute;
   }
 </script>
 

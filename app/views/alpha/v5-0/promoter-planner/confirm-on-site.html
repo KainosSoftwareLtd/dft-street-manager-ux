@@ -36,8 +36,8 @@ Permit Application Confirmation - Street Manager
                 {% if data['actual-start-date-day'] != '' %}
                 <p>Work started: {{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}  {{ data['actual-start-date-hour'] }}:{{ data['actual-start-date-minute'] }}</p>
                 {% endif %}
-                {% if data['actual-end-date-day'] != '' %}
-                <p>Work stopped: {{ data['actual-end-date-day'] }}/{{ data['actual-end-date-month'] }}/{{ data['actual-end-date-year'] }}  {{ data['actual-end-date-hour'] }}:{{ data['actual-end-date-minute'] }}</p>
+                {% if data['actualEndDateDay'] != '' %}
+                <p>Work stopped: {{ data['actualEndDateDay'] }}/{{ data['actualEndDateMonth'] }}/{{ data['actualEndDateYear'] }}  {{ data['actualEndDateHour'] }}:{{ data['actualEndDateMinute'] }}</p>
                 {% endif %}
             </div>
         </div>
