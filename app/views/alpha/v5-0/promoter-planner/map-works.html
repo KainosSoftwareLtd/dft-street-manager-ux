@@ -104,8 +104,16 @@ Forward Planning - Street Manager
         <a id="return-to-options" href="#">< Back to map options</a>
 
         {% if data['map-flow'] == 'work' %}
-        <h1 class="heading-small">New works area drawn</h1>
-        <p>Click below to create works for this area:</p>
+        <h1 class="heading-small">Works details</h1>
+        <div style="background-color: #DEE0E2; padding: 0 0 10px 10px; margin-bottom: 20px">
+            <div>W3 7XA</div>
+            <div>The Vale</div>
+            <div>London Borough of Ealing</div>
+        </div>
+        <div style="background-color: #DEE0E2; padding: 0 0 10px 10px; margin-bottom: 20px">
+            <div>Period of interest:</div>
+            <div>3 months</div>
+        </div>
         <fieldset>
             <form action="../task-list-page">
                 <input style="width: 100%;" id="create-work-button" class="button" type="submit" name="create-work-button" value="Create work">
@@ -114,8 +122,16 @@ Forward Planning - Street Manager
         {% endif %}
 
         {% if data['map-flow'] == 'plan' %}
-        <h1 class="heading-small">New forward plan area drawn</h1>
-        <p>Click below to create forward plan for this area:</p>
+        <h1 class="heading-small">Works details</h1>
+        <div style="background-color: #DEE0E2; padding: 0 0 10px 10px; margin-bottom: 20px">
+            <div>W3 7XA</div>
+            <div>The Vale</div>
+            <div>London Borough of Ealing</div>
+        </div>
+        <div style="background-color: #DEE0E2; padding: 0 0 10px 10px; margin-bottom: 20px">
+            <div>Period of interest:</div>
+            <div>3 months</div>
+        </div>
         <fieldset>
             <form action="create-forward-plan">
                 <input style="width: 100%;" id="create-forward-plan-button" class="button" type="submit" name="create-forward-plan-button" value="Create forward plan">
