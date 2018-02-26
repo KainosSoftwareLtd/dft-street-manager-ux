@@ -353,7 +353,7 @@ module.exports = [
     screen1Complete: false,
     // Location & contact
     worksLocationDescription: '',
-    worksLocationGroup: [  ],
+    worksLocationGroup: [],
     descriptionOfWorkGroup: '',
     descriptionOfWork2: '',
     excavationGroup: '',
