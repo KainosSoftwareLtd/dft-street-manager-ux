@@ -46,7 +46,7 @@ Reinstatement - Street Manager
                     <th>Completion date</th>
                     <th>Length</th>
                     <th>Width</th>
-                    <th>Location description</th>
+                    <th>Location</th>
                     <th></th>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@ Reinstatement - Street Manager
                         <td>{{ data['reinstatement-day'][loop.index -1 ] }}/{{ data['reinstatement-month'][loop.index -1 ] }}/{{ data['reinstatement-year'][loop.index -1 ] }}</td>
                         <td>{{ data['reinstatement-length'][loop.index -1 ] }}</td>
                         <td>{{ data['reinstatement-width'][loop.index -1 ] }}</td>
-                        <td>{{ data['reinstatement-location-description'][loop.index -1 ] }}</td>
+                        <td>{{ data['works-position-group'][loop.index - 1]  }}</td>
                         <td><span class="view-reinstatement"><a href="reinstatement-detail-view">View</a></td>
                     </tr>
                     {% endfor %}
