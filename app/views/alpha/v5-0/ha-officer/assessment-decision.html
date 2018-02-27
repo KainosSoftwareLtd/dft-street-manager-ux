@@ -53,21 +53,23 @@ Assessment decision
             </tr>
             <tr>
                 <td class="bold-small">Start date</td>
-                {% if data['start-day'] != '' %}
-                <td>{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% if data['actual-start-date-day'] != '' %}
+                <td style="text-align: right">{{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}</td>
+                {% elif data['start-day'] != '' %}
+                <td style="text-align: right">{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
-                <td><a href="change-work-dates.html">Change</a></td>
             </tr>
             <tr>
                 <td class="bold-small">End date</td>
-                {% if data['end-day'] != '' %}
-                <td>{{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }}</td>
+                {% if data['actualEndDateDay'] != '' %}
+                <td style="text-align: right">{{ data['actualEndDateDay'] }}/{{ data['actualEndDateMonth'] }}/{{ data['actualEndDateYear'] }}</td>
+                {% elif data['end-day'] != '' %}
+                <td style="text-align: right">{{ data['end-date-day'] }}/{{ data['end-date-month'] }}/{{ data['end-date-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
-                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Highway Authority</td>
@@ -173,8 +175,8 @@ Assessment decision
     <div style="border: 2px solid #0b0c0c; padding: 10px 0 10px 10px; margin-bottom: 20px">
         <div>Changes required</div>
         <ul class="list list-bullet">
-            <li>Start Date changed from {{ data['old-start-day'] }}/{{ data['old-start-month'] }}/{{ data['old-start-year'] }} to {{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }} </li>
-            <li>End Date changed from {{ data['old-end-day'] }}/{{ data['old-end-month'] }}/{{ data['old-end-year'] }} to {{ data['end-day'] }}/{{ data['end-month'] }}/{{ data['end-year'] }} </li>
+            <li>Start Date changed from {{ data['old-start-day'] }}/{{ data['old-start-month'] }}/{{ data['old-start-year'] }} to {{ data['start-date-day'] }}/{{ data['start-date-month'] }}/{{ data['start-date-year'] }} </li>
+            <li>End Date changed from {{ data['old-end-day'] }}/{{ data['old-end-month'] }}/{{ data['old-end-year'] }} to {{ data['end-date-day'] }}/{{ data['end-date-month'] }}/{{ data['end-date-year'] }} </li>
             {% if data['PermitConditionsChanged'] %}
                 <li>Condition {{ data['conditions-name'][1] }} has been added with reason: {{ data['conditions-reason'][1] }}</li>
             {% endif %}

@@ -49,11 +49,11 @@ module.exports.setSessionData = function (sessionData, data) {
   sessionData['actual-start-date-year'] = data.actualStartDateYear
   sessionData['actual-start-date-hour'] = data.actualStartDateHour
   sessionData['actual-start-date-minute'] = data.actualStartDateMinute
-  sessionData['actual-end-date-day'] = data.actualEndDateDay
-  sessionData['actual-end-date-month'] = data.actualEndDateMonth
-  sessionData['actual-end-date-year'] = data.actualEndDateYear
-  sessionData['actual-end-date-hour'] = data.actualEndDateHour
-  sessionData['actual-end-date-minute'] = data.actualEndDateMinute
+  sessionData['actualEndDateDay'] = data.actualEndDateDay
+  sessionData['actualEndDateMonth'] = data.actualEndDateMonth
+  sessionData['actualEndDateYear'] = data.actualEndDateYear
+  sessionData['actualEndDateHour'] = data.actualEndDateHour
+  sessionData['actualEndDateMinute'] = data.actualEndDateMinute
   sessionData['excavation-required-group'] = data.excavationRequiredGroup
   sessionData['Screen6Complete'] = data.screen6Complete
   // Inspections
