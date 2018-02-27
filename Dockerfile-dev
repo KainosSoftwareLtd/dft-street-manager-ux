@@ -1,5 +1,6 @@
 # Base
 FROM alpine:3.7
+ENV NODE_ENV development
 RUN apk add --no-cache nodejs nodejs-npm tini
 VOLUME ["/root/app"]
 WORKDIR /root/app
