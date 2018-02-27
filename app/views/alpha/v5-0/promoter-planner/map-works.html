@@ -46,12 +46,12 @@ Forward Planning - Street Manager
                     </div>
                     <div class="multiple-choice">
                         <input id="layer-type-3" name="layer-types" type="checkbox" value="layer-current-works">
-                        <label for="layer-type-3">Third party works</label>
+                        <label for="layer-type-3">Third party plans</label>
                         <img src="/public/images/map-marker-blue.png">
                     </div>
                     <div class="multiple-choice">
                         <input id="layer-type-5" name="layer-types" type="checkbox" value="layer-restrictions">
-                        <label for="layer-type-5">Third party plans</label>
+                        <label for="layer-type-5">Third party works</label>
                         <img src="/public/images/map-marker-green.png">
                     </div>
                 </fieldset>
@@ -324,11 +324,11 @@ Forward Planning - Street Manager
      'Road owner: London Borough of Ealing <br/>' +
      'Start date: 09/05/2018 <br/>' +
      'End date: 19/06/2018 <br/>' +
-     'Status: Submitted for PA Approval <br/>' +
+     'Status: Draft forward plan <br/>' +
      'Promoter name: Openreach <br/>' +
      'Promoter agent: FM Conway LTD <br/>' +
      'Contact: 0345 045 5212 <br/>' +
-     '<a href="#">View work record</a>',
+     '<a href="#">View forward plan</a>',
     dateOfWorks: new Date('2018/02/23').getTime() / 1000
   })
   plannedWork3.setId(3);
@@ -415,8 +415,6 @@ Forward Planning - Street Manager
       overlay.setPosition(coords);
     }
   });
-
-  var dateOptions =  {year: 'numeric', month: 'numeric', day: 'numeric'};
 
     
   $('#layer-type-1').change(function (event) {
