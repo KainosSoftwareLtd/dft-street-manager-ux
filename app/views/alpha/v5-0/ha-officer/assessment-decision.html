@@ -53,19 +53,20 @@ Assessment decision
             </tr>
             <tr>
                 <td class="bold-small">Start date</td>
-                {% if data['actual-start-date-day'] != '' %}
+                {% if data['actual-start-date-day'] !== '' %}
                 <td style="text-align: right">{{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}</td>
-                {% elif data['start-day'] != '' %}
-                <td style="text-align: right">{{ data['start-day'] }}/{{ data['start-month'] }}/{{ data['start-year'] }}</td>
+                {% elif data['start-date-day'] !== '' %}
+                <td style="text-align: right">{{ data['start-date-day'] }}/{{ data['start-date-month'] }}/{{ data['start-date-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
+                <td><a href="change-work-dates.html">Change</a></td>
             </tr>
             <tr>
                 <td class="bold-small">End date</td>
-                {% if data['actualEndDateDay'] != '' %}
+                {% if data['actualEndDateDay'] !== '' %}
                 <td style="text-align: right">{{ data['actualEndDateDay'] }}/{{ data['actualEndDateMonth'] }}/{{ data['actualEndDateYear'] }}</td>
-                {% elif data['end-day'] != '' %}
+                {% elif data['end-date-day'] !== '' %}
                 <td style="text-align: right">{{ data['end-date-day'] }}/{{ data['end-date-month'] }}/{{ data['end-date-year'] }}</td>
                 {% else %}
                 <td></td>
