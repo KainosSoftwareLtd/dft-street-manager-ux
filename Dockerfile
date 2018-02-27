@@ -22,4 +22,5 @@ FROM base AS release
 COPY --from=dependencies /root/app/prod_node_modules ./node_modules
 COPY . .
 EXPOSE 3000
+ENV NODE_ENV production
 CMD npm run start
