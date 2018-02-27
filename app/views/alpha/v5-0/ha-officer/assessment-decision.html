@@ -54,9 +54,9 @@ Assessment decision
             <tr>
                 <td class="bold-small">Start date</td>
                 {% if data['actual-start-date-day'] !== '' %}
-                <td style="text-align: right">{{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}</td>
+                <td>{{ data['actual-start-date-day'] }}/{{ data['actual-start-date-month'] }}/{{ data['actual-start-date-year'] }}</td>
                 {% elif data['start-date-day'] !== '' %}
-                <td style="text-align: right">{{ data['start-date-day'] }}/{{ data['start-date-month'] }}/{{ data['start-date-year'] }}</td>
+                <td>{{ data['start-date-day'] }}/{{ data['start-date-month'] }}/{{ data['start-date-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
@@ -65,12 +65,13 @@ Assessment decision
             <tr>
                 <td class="bold-small">End date</td>
                 {% if data['actualEndDateDay'] !== '' %}
-                <td style="text-align: right">{{ data['actualEndDateDay'] }}/{{ data['actualEndDateMonth'] }}/{{ data['actualEndDateYear'] }}</td>
+                <td>{{ data['actualEndDateDay'] }}/{{ data['actualEndDateMonth'] }}/{{ data['actualEndDateYear'] }}</td>
                 {% elif data['end-date-day'] !== '' %}
-                <td style="text-align: right">{{ data['end-date-day'] }}/{{ data['end-date-month'] }}/{{ data['end-date-year'] }}</td>
+                <td>{{ data['end-date-day'] }}/{{ data['end-date-month'] }}/{{ data['end-date-year'] }}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
+                <td></td>
             </tr>
             <tr>
                 <td class="bold-small">Highway Authority</td>
