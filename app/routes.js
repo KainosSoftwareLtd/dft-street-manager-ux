@@ -435,12 +435,12 @@ router.post('/alpha/v5-0/ha-officer/search.html', function (req, res) {
 })
 
 router.get('/alpha/v5-0/ha-officer/change-work-dates', function (req, res) {
-  req.session.data['old-start-day'] = req.session.data['start-day']
-  req.session.data['old-start-month'] = req.session.data['start-month']
-  req.session.data['old-start-year'] = req.session.data['start-year']
-  req.session.data['old-end-day'] = req.session.data['end-day']
-  req.session.data['old-end-month'] = req.session.data['end-month']
-  req.session.data['old-end-year'] = req.session.data['end-year']
+  req.session.data['old-start-day'] = req.session.data['start-date-day']
+  req.session.data['old-start-month'] = req.session.data['start-date-month']
+  req.session.data['old-start-year'] = req.session.data['start-date-year']
+  req.session.data['old-end-day'] = req.session.data['end-date-day']
+  req.session.data['old-end-month'] = req.session.data['end-date-month']
+  req.session.data['old-end-year'] = req.session.data['end-date-year']
   res.render('alpha/v5-0/ha-officer/change-work-dates.html')
 })
 
